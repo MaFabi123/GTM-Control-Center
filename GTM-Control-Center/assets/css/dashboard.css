@@ -1,0 +1,278 @@
+/* ==========================================
+   GTM CONTROL CENTER
+========================================== */
+
+.control-center-section {
+    position: relative;
+    padding: 105px 0;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(217, 4, 41, 0.11),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #0b0c0e 0%,
+            #121315 100%
+        );
+}
+
+.control-center-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.025) 0,
+            rgba(255, 255, 255, 0.025) 2px,
+            transparent 2px,
+            transparent 14px
+        );
+}
+
+.control-center-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.control-center-heading {
+    max-width: 760px;
+    margin-bottom: 48px;
+}
+
+.control-center-heading p {
+    margin: 0 0 10px;
+    color: var(--gtm-red);
+    font-size: 14px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.control-center-heading h2 {
+    margin: 0;
+    color: var(--gtm-white);
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.control-center-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.control-card {
+    position: relative;
+    display: flex;
+    min-height: 300px;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 9px;
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            rgba(217, 4, 41, 0.13),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.012)
+        );
+    color: var(--gtm-white);
+    text-decoration: none;
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.control-card::before {
+    content: "";
+    position: absolute;
+    right: -70px;
+    bottom: -85px;
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgba(217, 4, 41, 0.14);
+    border-radius: 50%;
+    transition: transform 0.45s ease;
+}
+
+.control-card::after {
+    content: "";
+    position: absolute;
+    right: -22px;
+    bottom: -25px;
+    width: 120px;
+    height: 4px;
+    background: var(--gtm-red);
+    transform: rotate(-42deg);
+    box-shadow:
+        0 -15px 0 rgba(217, 4, 41, 0.38),
+        0 15px 0 rgba(217, 4, 41, 0.2);
+}
+
+.control-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(217, 4, 41, 0.7);
+    color: var(--gtm-white);
+    box-shadow:
+        0 32px 70px rgba(0, 0, 0, 0.48),
+        0 0 30px rgba(217, 4, 41, 0.08);
+}
+
+.control-card:hover::before {
+    transform: scale(1.18);
+}
+
+.control-card-featured {
+    grid-column: span 2;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(217, 4, 41, 0.3),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(217, 4, 41, 0.13),
+            rgba(255, 255, 255, 0.018)
+        );
+}
+
+.control-card-gold {
+    background:
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(212, 175, 55, 0.18),
+            transparent 43%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.05),
+            rgba(255, 255, 255, 0.012)
+        );
+}
+
+.control-card-gold:hover {
+    border-color: rgba(212, 175, 55, 0.75);
+}
+
+.control-card-gold::after {
+    background: var(--gtm-gold);
+    box-shadow:
+        0 -15px 0 rgba(212, 175, 55, 0.35),
+        0 15px 0 rgba(212, 175, 55, 0.18);
+}
+
+.control-card-number {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: rgba(255, 255, 255, 0.08);
+    font-size: 56px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+}
+
+.control-card-icon {
+    position: absolute;
+    top: 27px;
+    left: 30px;
+    display: grid;
+    width: 55px;
+    height: 55px;
+    place-items: center;
+    border: 1px solid rgba(217, 4, 41, 0.75);
+    border-radius: 50%;
+    color: var(--gtm-red);
+    font-size: 24px;
+}
+
+.control-card-content {
+    align-self: flex-end;
+    max-width: 390px;
+}
+
+.control-card-content > span {
+    color: var(--gtm-red);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.control-card-content h3 {
+    margin: 8px 0 12px;
+    color: var(--gtm-white);
+    font-size: clamp(27px, 2.6vw, 39px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.control-card-content p {
+    max-width: 355px;
+    margin: 0;
+    color: #adadb0;
+    line-height: 1.55;
+}
+
+.control-card-arrow {
+    position: absolute;
+    right: 27px;
+    bottom: 25px;
+    color: var(--gtm-red);
+    font-size: 31px;
+    font-weight: 700;
+    transition: transform 0.25s ease;
+}
+
+.control-card:hover .control-card-arrow {
+    transform: translateX(7px);
+}
+
+@media (max-width: 991px) {
+    .control-center-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .control-card-featured {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 650px) {
+    .control-center-section {
+        padding: 75px 0;
+    }
+
+    .control-center-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .control-card,
+    .control-card-featured {
+        grid-column: auto;
+        min-height: 275px;
+    }
+
+    .control-card-content h3 {
+        font-size: 31px;
+    }
+}

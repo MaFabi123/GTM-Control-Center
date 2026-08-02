@@ -1,0 +1,767 @@
+/* =========================================================
+   GTM TEAMSEITE
+========================================================= */
+
+.teams-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(130, 0, 0, 0.14),
+            transparent 34rem
+        ),
+        linear-gradient(
+            180deg,
+            #070707 0%,
+            #101010 100%
+        );
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.teams-hero {
+    padding: 76px 0 42px;
+    text-align: center;
+}
+
+.teams-eyebrow {
+    margin: 0 0 12px;
+    color: #d40000;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.teams-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+}
+
+.teams-intro {
+    max-width: 760px;
+    margin: 22px auto 0;
+    color: #b8b8b8;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   STATISTIK
+========================================================= */
+
+.teams-statistik {
+    padding: 12px 0 32px;
+}
+
+.teams-statistik-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.teams-statistik-karte {
+    position: relative;
+    overflow: hidden;
+    min-height: 138px;
+    padding: 26px 22px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 32, 32, 0.98),
+            rgba(19, 19, 19, 0.98)
+        );
+    border: 1px solid #303030;
+    border-radius: 20px;
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.teams-statistik-karte::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -45px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(212, 0, 0, 0.08);
+}
+
+.teams-statistik-karte:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 0, 0, 0.75);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.32),
+        0 0 26px rgba(212, 0, 0, 0.08);
+}
+
+.teams-statistik-karte strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.teams-statistik-karte span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 10px;
+    color: #999999;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.teams-filterbereich {
+    padding: 10px 0 35px;
+}
+
+.teams-toolbar {
+    display: grid;
+    grid-template-columns:
+        minmax(260px, 1.8fr)
+        repeat(3, minmax(170px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.92);
+    border: 1px solid #2d2d2d;
+    border-radius: 22px;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.teams-suche,
+.teams-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.teams-suche span,
+.teams-filter span {
+    color: #9f9f9f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.teams-suche input,
+.teams-filter select {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 16px;
+    color: #ffffff;
+    background: #111111;
+    border: 1px solid #383838;
+    border-radius: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.teams-filter select {
+    cursor: pointer;
+}
+
+.teams-filter select option {
+    color: #ffffff;
+    background: #151515;
+}
+
+.teams-suche input::placeholder {
+    color: #6f6f6f;
+}
+
+.teams-suche input:focus,
+.teams-filter select:focus {
+    background: #151515;
+    border-color: #d40000;
+    box-shadow:
+        0 0 0 4px rgba(212, 0, 0, 0.12);
+}
+
+/* =========================================================
+   INHALT
+========================================================= */
+
+.teams-inhalt {
+    padding: 0 0 80px;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* =========================================================
+   TEAMKARTE
+========================================================= */
+
+.team-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 540px;
+    padding: 28px;
+    background:
+        linear-gradient(
+            145deg,
+            #202020 0%,
+            #151515 58%,
+            #101010 100%
+        );
+    border: 1px solid #313131;
+    border-radius: 24px;
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.28);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.025),
+            transparent 35%
+        );
+}
+
+.team-card::after {
+    content: "GTM";
+    position: absolute;
+    right: -26px;
+    bottom: -42px;
+    color: rgba(255, 255, 255, 0.025);
+    font-size: 8rem;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    transform: rotate(-10deg);
+    pointer-events: none;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 0, 0, 0.9);
+    box-shadow:
+        0 28px 55px rgba(0, 0, 0, 0.4),
+        0 0 28px rgba(212, 0, 0, 0.1);
+}
+
+/* =========================================================
+   KARTENKOPF UND TEAMLOGO
+========================================================= */
+
+.team-card-kopf {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.team-card-identitaet {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.team-card-logo {
+    flex: 0 0 76px;
+    width: 76px;
+    height: 76px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background:
+        linear-gradient(
+            145deg,
+            #2a2a2a,
+            #111111
+        );
+    border: 1px solid #3a3a3a;
+    border-radius: 16px;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.team-card-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.team-card-name {
+    min-width: 0;
+}
+
+.team-card-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #d40000;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.team-card-kopf h2 {
+    overflow: hidden;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+    font-weight: 900;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.team-card-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.team-card-status.aktiv {
+    color: #7cff9d;
+    background: rgba(40, 180, 80, 0.12);
+    border: 1px solid rgba(70, 220, 110, 0.35);
+}
+
+.team-card-status.inaktiv {
+    color: #a7a7a7;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #363636;
+}
+
+/* =========================================================
+   TEAMSTATISTIK
+========================================================= */
+
+.team-card-statistik {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.team-card-statistik div {
+    padding: 14px 8px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+}
+
+.team-card-statistik strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.team-card-statistik span {
+    display: block;
+    margin-top: 6px;
+    color: #777777;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   TEAMINFO
+========================================================= */
+
+.team-card-info,
+.team-meisterschaft-info {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+}
+
+.team-card-info span,
+.team-meisterschaft-info span {
+    color: #777777;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.team-card-info strong,
+.team-meisterschaft-info strong {
+    color: #d4d4d4;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.team-meisterschaft-info {
+    border-color: rgba(212, 0, 0, 0.28);
+    background: rgba(212, 0, 0, 0.06);
+}
+
+/* =========================================================
+   FAHRERLISTE
+========================================================= */
+
+.team-fahrer-liste {
+    position: relative;
+    z-index: 2;
+    max-height: 320px;
+    overflow-y: auto;
+    margin-top: 12px;
+    padding-right: 4px;
+}
+
+.team-fahrer-liste h3 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.team-fahrer {
+    display: grid;
+    grid-template-columns: 58px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 9px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+}
+
+.team-fahrer-nummer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 9px;
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #e00000,
+            #9e0000
+        );
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.team-fahrer-inhalt {
+    min-width: 0;
+}
+
+.team-fahrer strong {
+    display: block;
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.team-fahrer-inhalt > span {
+    display: block;
+    overflow: hidden;
+    margin-top: 4px;
+    color: #818181;
+    font-size: 0.76rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.team-fahrer-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 9px;
+    border-radius: 999px;
+    font-size: 0.64rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.team-fahrer-status.aktiv {
+    color: #7cff9d;
+    background: rgba(40, 180, 80, 0.12);
+    border: 1px solid rgba(70, 220, 110, 0.3);
+}
+
+.team-fahrer-status.inaktiv {
+    color: #9a9a9a;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid #363636;
+}
+
+.team-fahrer-leer {
+    padding: 20px;
+    color: #888888;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+}
+
+/* =========================================================
+   PROFILBUTTON
+========================================================= */
+
+.team-profil-button {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 46px;
+    margin-top: auto;
+    padding: 0 16px;
+    color: #ffffff;
+    background: transparent;
+    border: 1px solid #444444;
+    border-radius: 12px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease;
+}
+
+.team-profil-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #d40000,
+            #960000
+        );
+    border-color: #d40000;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.team-fahrer-liste::-webkit-scrollbar {
+    width: 8px;
+}
+
+.team-fahrer-liste::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.team-fahrer-liste::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+    border-radius: 20px;
+}
+
+.team-fahrer-liste::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}
+
+/* =========================================================
+   FEHLER / KEINE ERGEBNISSE
+========================================================= */
+
+.keine-teams,
+.gtm-data-error {
+    padding: 48px 28px;
+    color: #bdbdbd;
+    text-align: center;
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 20px;
+}
+
+.gtm-data-error strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.gtm-data-error p {
+    margin: 0;
+    color: #8f8f8f;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+    .teams-toolbar {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .teams-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .teams-statistik-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .teams-hero {
+        padding-top: 54px;
+    }
+
+    .teams-toolbar {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .team-card {
+        padding: 22px;
+    }
+
+    .team-card-kopf {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .team-card-identitaet {
+        align-items: flex-start;
+    }
+
+    .team-card-logo {
+        flex-basis: 64px;
+        width: 64px;
+        height: 64px;
+    }
+
+    .team-card-status {
+        align-self: flex-start;
+    }
+
+    .team-card-statistik {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .team-card-info,
+    .team-meisterschaft-info {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .team-card-info strong,
+    .team-meisterschaft-info strong {
+        text-align: left;
+    }
+
+    .team-fahrer {
+        grid-template-columns: 54px 1fr;
+    }
+
+    .team-fahrer-status {
+        grid-column: 2;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 520px) {
+    .teams-statistik-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-card {
+        padding: 18px;
+    }
+
+    .team-card-identitaet {
+        flex-direction: column;
+    }
+
+    .team-card-kopf h2 {
+        font-size: 1.5rem;
+    }
+
+    .team-card-statistik {
+        grid-template-columns: 1fr;
+    }
+
+    .team-fahrer {
+        grid-template-columns: 1fr;
+    }
+
+    .team-fahrer-status {
+        grid-column: auto;
+    }
+}

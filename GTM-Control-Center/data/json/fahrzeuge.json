@@ -1,0 +1,488 @@
+[
+    {
+        "nummer":  1,
+        "hersteller":  "Aston Martin",
+        "anzeigename":  "Aston Martin V8 Vantage GT3",
+        "fahrzeug":  "V8 Vantage GT3",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  2,
+        "hersteller":  "Aston Martin",
+        "anzeigename":  "Aston Martin V12 Vantage GT3",
+        "fahrzeug":  "V12 Vantage GT3",
+        "klasse":  "GT3",
+        "baujahr":  2013,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  3,
+        "hersteller":  "Audi",
+        "anzeigename":  "Audi R8 LMS GT3",
+        "fahrzeug":  "R8 LMS GT3",
+        "klasse":  "GT3",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  4,
+        "hersteller":  "Audi",
+        "anzeigename":  "Audi R8 LMS GT3 Evo",
+        "fahrzeug":  "R8 LMS GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  5,
+        "hersteller":  "Bentley",
+        "anzeigename":  "Bentley Continental GT3",
+        "fahrzeug":  "Continental GT3",
+        "klasse":  "GT3",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  6,
+        "hersteller":  "Bentley",
+        "anzeigename":  "Bentley Continental GT3",
+        "fahrzeug":  "Continental GT3",
+        "klasse":  "GT3",
+        "baujahr":  2018,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  7,
+        "hersteller":  "BMW",
+        "anzeigename":  "BMW M4 GT3",
+        "fahrzeug":  "M4 GT3",
+        "klasse":  "GT3",
+        "baujahr":  2022,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  8,
+        "hersteller":  "BMW",
+        "anzeigename":  "BMW M6 GT3",
+        "fahrzeug":  "M6 GT3",
+        "klasse":  "GT3",
+        "baujahr":  2017,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  9,
+        "hersteller":  "Ferrari",
+        "anzeigename":  "Ferrari 488 GT3",
+        "fahrzeug":  "488 GT3",
+        "klasse":  "GT3",
+        "baujahr":  2018,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  10,
+        "hersteller":  "Ford",
+        "anzeigename":  "Ford Mustang GT3",
+        "fahrzeug":  "Mustang GT3",
+        "klasse":  "GT3",
+        "baujahr":  2024,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  11,
+        "hersteller":  "Honda",
+        "anzeigename":  "Honda NSX GT3",
+        "fahrzeug":  "NSX GT3",
+        "klasse":  "GT3",
+        "baujahr":  2017,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  12,
+        "hersteller":  "Honda",
+        "anzeigename":  "Honda NSX GT3 Evo",
+        "fahrzeug":  "NSX GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  13,
+        "hersteller":  "Jaguar",
+        "anzeigename":  "Jaguar Emil Frey G3",
+        "fahrzeug":  "Emil Frey G3",
+        "klasse":  "GT3",
+        "baujahr":  2012,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  14,
+        "hersteller":  "Lamborghini",
+        "anzeigename":  "Lamborghini Huracán GT3",
+        "fahrzeug":  "Huracán GT3",
+        "klasse":  "GT3",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  15,
+        "hersteller":  "Lamborghini",
+        "anzeigename":  "Lamborghini Huracán GT3 Evo",
+        "fahrzeug":  "Huracán GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  16,
+        "hersteller":  "Lexus",
+        "anzeigename":  "Lexus RC F GT3",
+        "fahrzeug":  "RC F GT3",
+        "klasse":  "GT3",
+        "baujahr":  2016,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  17,
+        "hersteller":  "McLaren",
+        "anzeigename":  "McLaren 720S GT3 Evo",
+        "fahrzeug":  "720S GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2023,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  18,
+        "hersteller":  "McLaren",
+        "anzeigename":  "McLaren 720S GT3",
+        "fahrzeug":  "720S GT3",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  19,
+        "hersteller":  "McLaren",
+        "anzeigename":  "McLaren 650S GT3",
+        "fahrzeug":  "650S GT3",
+        "klasse":  "GT3",
+        "baujahr":  2016,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  20,
+        "hersteller":  "Mercedes-AMG",
+        "anzeigename":  "Mercedes-AMG AMG GT3",
+        "fahrzeug":  "AMG GT3",
+        "klasse":  "GT3",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  21,
+        "hersteller":  "Nissan",
+        "anzeigename":  "Nissan GT-R Nismo GT3",
+        "fahrzeug":  "GT-R Nismo GT3",
+        "klasse":  "GT3",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  22,
+        "hersteller":  "Nissan",
+        "anzeigename":  "Nissan GT-R Nismo GT3",
+        "fahrzeug":  "GT-R Nismo GT3",
+        "klasse":  "GT3",
+        "baujahr":  2018,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  23,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT3 R (991)",
+        "fahrzeug":  "911 GT3 R (991)",
+        "klasse":  "GT3",
+        "baujahr":  2018,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  24,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT3 R (991 II)",
+        "fahrzeug":  "911 GT3 R (991 II)",
+        "klasse":  "GT3",
+        "baujahr":  2019,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  25,
+        "hersteller":  "Reiter Engineering",
+        "anzeigename":  "Reiter Engineering R-EX GT3",
+        "fahrzeug":  "R-EX GT3",
+        "klasse":  "GT3",
+        "baujahr":  2017,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  26,
+        "hersteller":  "Ferrari",
+        "anzeigename":  "Ferrari 488 GT3 Evo",
+        "fahrzeug":  "488 GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2020,
+        "inhalt":  "2020 GT World Challenge Pack"
+    },
+    {
+        "nummer":  27,
+        "hersteller":  "Mercedes-AMG",
+        "anzeigename":  "Mercedes-AMG AMG GT3 Evo",
+        "fahrzeug":  "AMG GT3 Evo",
+        "klasse":  "GT3",
+        "baujahr":  2020,
+        "inhalt":  "2020 GT World Challenge Pack"
+    },
+    {
+        "nummer":  28,
+        "hersteller":  "Audi",
+        "anzeigename":  "Audi R8 LMS GT3 Evo II",
+        "fahrzeug":  "R8 LMS GT3 Evo II",
+        "klasse":  "GT3",
+        "baujahr":  2022,
+        "inhalt":  "Challengers Pack"
+    },
+    {
+        "nummer":  29,
+        "hersteller":  "Ferrari",
+        "anzeigename":  "Ferrari 296 GT3",
+        "fahrzeug":  "296 GT3",
+        "klasse":  "GT3",
+        "baujahr":  2023,
+        "inhalt":  "2023 GT World Challenge Pack"
+    },
+    {
+        "nummer":  30,
+        "hersteller":  "Lamborghini",
+        "anzeigename":  "Lamborghini Huracán GT3 EVO2",
+        "fahrzeug":  "Huracán GT3 EVO2",
+        "klasse":  "GT3",
+        "baujahr":  2023,
+        "inhalt":  "2023 GT World Challenge Pack"
+    },
+    {
+        "nummer":  31,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT3 R (992)",
+        "fahrzeug":  "911 GT3 R (992)",
+        "klasse":  "GT3",
+        "baujahr":  2023,
+        "inhalt":  "2023 GT World Challenge Pack"
+    },
+    {
+        "nummer":  32,
+        "hersteller":  "Alpine",
+        "anzeigename":  "Alpine A110 GT4",
+        "fahrzeug":  "A110 GT4",
+        "klasse":  "GT4",
+        "baujahr":  2018,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  33,
+        "hersteller":  "Aston Martin",
+        "anzeigename":  "Aston Martin V8 Vantage GT4",
+        "fahrzeug":  "V8 Vantage GT4",
+        "klasse":  "GT4",
+        "baujahr":  2018,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  34,
+        "hersteller":  "Audi",
+        "anzeigename":  "Audi R8 LMS GT4",
+        "fahrzeug":  "R8 LMS GT4",
+        "klasse":  "GT4",
+        "baujahr":  2018,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  35,
+        "hersteller":  "BMW",
+        "anzeigename":  "BMW M4 GT4",
+        "fahrzeug":  "M4 GT4",
+        "klasse":  "GT4",
+        "baujahr":  2018,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  36,
+        "hersteller":  "Chevrolet",
+        "anzeigename":  "Chevrolet Camaro GT4.R",
+        "fahrzeug":  "Camaro GT4.R",
+        "klasse":  "GT4",
+        "baujahr":  2017,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  37,
+        "hersteller":  "Ginetta",
+        "anzeigename":  "Ginetta G55 GT4",
+        "fahrzeug":  "G55 GT4",
+        "klasse":  "GT4",
+        "baujahr":  2012,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  38,
+        "hersteller":  "KTM",
+        "anzeigename":  "KTM X-Bow GT4",
+        "fahrzeug":  "X-Bow GT4",
+        "klasse":  "GT4",
+        "baujahr":  2016,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  39,
+        "hersteller":  "Maserati",
+        "anzeigename":  "Maserati GranTurismo MC GT4",
+        "fahrzeug":  "GranTurismo MC GT4",
+        "klasse":  "GT4",
+        "baujahr":  2016,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  40,
+        "hersteller":  "McLaren",
+        "anzeigename":  "McLaren 570S GT4",
+        "fahrzeug":  "570S GT4",
+        "klasse":  "GT4",
+        "baujahr":  2016,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  41,
+        "hersteller":  "Mercedes-AMG",
+        "anzeigename":  "Mercedes-AMG AMG GT4",
+        "fahrzeug":  "AMG GT4",
+        "klasse":  "GT4",
+        "baujahr":  2016,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  42,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 718 Cayman GT4 Clubsport",
+        "fahrzeug":  "718 Cayman GT4 Clubsport",
+        "klasse":  "GT4",
+        "baujahr":  2019,
+        "inhalt":  "GT4 Pack"
+    },
+    {
+        "nummer":  43,
+        "hersteller":  "Audi",
+        "anzeigename":  "Audi R8 LMS GT2",
+        "fahrzeug":  "R8 LMS GT2",
+        "klasse":  "GT2",
+        "baujahr":  2021,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  44,
+        "hersteller":  "KTM",
+        "anzeigename":  "KTM X-Bow GT2",
+        "fahrzeug":  "X-Bow GT2",
+        "klasse":  "GT2",
+        "baujahr":  2024,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  45,
+        "hersteller":  "Maserati",
+        "anzeigename":  "Maserati MC20 GT2",
+        "fahrzeug":  "MC20 GT2",
+        "klasse":  "GT2",
+        "baujahr":  2023,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  46,
+        "hersteller":  "Mercedes-AMG",
+        "anzeigename":  "Mercedes-AMG AMG GT2",
+        "fahrzeug":  "AMG GT2",
+        "klasse":  "GT2",
+        "baujahr":  2022,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  47,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT2 RS Clubsport Evo",
+        "fahrzeug":  "911 GT2 RS Clubsport Evo",
+        "klasse":  "GT2",
+        "baujahr":  2023,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  48,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 935",
+        "fahrzeug":  "935",
+        "klasse":  "GT2",
+        "baujahr":  2019,
+        "inhalt":  "GT2 Pack"
+    },
+    {
+        "nummer":  49,
+        "hersteller":  "Ferrari",
+        "anzeigename":  "Ferrari 488 Challenge Evo",
+        "fahrzeug":  "488 Challenge Evo",
+        "klasse":  "GTC",
+        "baujahr":  2020,
+        "inhalt":  "Challengers Pack"
+    },
+    {
+        "nummer":  50,
+        "hersteller":  "Lamborghini",
+        "anzeigename":  "Lamborghini Huracán Super Trofeo",
+        "fahrzeug":  "Huracán Super Trofeo",
+        "klasse":  "GTC",
+        "baujahr":  2015,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  51,
+        "hersteller":  "Lamborghini",
+        "anzeigename":  "Lamborghini Huracán Super Trofeo EVO2",
+        "fahrzeug":  "Huracán Super Trofeo EVO2",
+        "klasse":  "GTC",
+        "baujahr":  2021,
+        "inhalt":  "Challengers Pack"
+    },
+    {
+        "nummer":  52,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT3 Cup (991 II)",
+        "fahrzeug":  "911 GT3 Cup (991 II)",
+        "klasse":  "GTC",
+        "baujahr":  2017,
+        "inhalt":  "Grundspiel"
+    },
+    {
+        "nummer":  53,
+        "hersteller":  "Porsche",
+        "anzeigename":  "Porsche 911 GT3 Cup (992)",
+        "fahrzeug":  "911 GT3 Cup (992)",
+        "klasse":  "GTC",
+        "baujahr":  2021,
+        "inhalt":  "Challengers Pack"
+    },
+    {
+        "nummer":  54,
+        "hersteller":  "BMW",
+        "anzeigename":  "BMW M2 CS Racing",
+        "fahrzeug":  "M2 CS Racing",
+        "klasse":  "TCX",
+        "baujahr":  2020,
+        "inhalt":  "Challengers Pack"
+    }
+]
