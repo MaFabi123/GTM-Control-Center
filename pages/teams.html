@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <base href="../">
+
+    <title>GTM Control Center | Teams</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/teams.css">
+</head>
+
+<body>
+
+    <header id="site-navbar"></header>
+
+    <main class="teams-page">
+
+        <section class="teams-hero">
+
+            <div class="container">
+
+                <p class="teams-eyebrow">
+                    German Touring Masters
+                </p>
+
+                <h1>
+                    Teams
+                </h1>
+
+                <p class="teams-intro">
+                    Alle registrierten Teams der German Touring Masters
+                    mit Fahrern, Fahrzeugen und aktuellem Meisterschaftsstatus.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="teams-statistik">
+
+            <div class="container">
+
+                <div class="teams-statistik-grid">
+
+                    <article class="teams-statistik-karte">
+
+                        <strong id="teams-anzahl">
+                            –
+                        </strong>
+
+                        <span>
+                            Teams
+                        </span>
+
+                    </article>
+
+                    <article class="teams-statistik-karte">
+
+                        <strong id="teams-meisterschaft">
+                            –
+                        </strong>
+
+                        <span>
+                            Aktuelle Meisterschaft
+                        </span>
+
+                    </article>
+
+                    <article class="teams-statistik-karte">
+
+                        <strong id="teams-fahrer">
+                            –
+                        </strong>
+
+                        <span>
+                            Zugeordnete Fahrer
+                        </span>
+
+                    </article>
+
+                    <article class="teams-statistik-karte">
+
+                        <strong id="teams-fahrzeuge">
+                            –
+                        </strong>
+
+                        <span>
+                            Fahrzeuge
+                        </span>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="teams-filterbereich">
+
+            <div class="container">
+
+                <div class="teams-toolbar">
+
+                    <label class="teams-suche">
+
+                        <span>
+                            Team suchen
+                        </span>
+
+                        <input
+                            id="team-suche"
+                            type="search"
+                            autocomplete="off"
+                            placeholder="Team, Fahrer oder Fahrzeug"
+                        >
+
+                    </label>
+
+                    <label class="teams-filter">
+
+                        <span>
+                            Fahrzeug
+                        </span>
+
+                        <select id="fahrzeug-filter">
+
+                            <option value="">
+                                Alle Fahrzeuge
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="teams-filter">
+
+                        <span>
+                            Meisterschaftsstatus
+                        </span>
+
+                        <select id="meisterschaft-filter">
+
+                            <option value="">
+                                Alle Teams
+                            </option>
+
+                            <option value="aktiv">
+                                Aktuelle Meisterschaft
+                            </option>
+
+                            <option value="inaktiv">
+                                Keine aktuelle Teilnahme
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="teams-filter">
+
+                        <span>
+                            Sortierung
+                        </span>
+
+                        <select id="team-sortierung">
+
+                            <option value="name">
+                                Teamname
+                            </option>
+
+                            <option value="fahrer">
+                                Anzahl Fahrer
+                            </option>
+
+                            <option value="status">
+                                Meisterschaftsteilnahme
+                            </option>
+
+                            <option value="punkte">
+                                Meisterschaftspunkte
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="teams-inhalt">
+
+            <div class="container">
+
+                <div
+                    id="teams-grid"
+                    class="teams-grid"
+                    aria-live="polite"
+                    aria-busy="true"
+                >
+
+                    <div class="text-center text-light py-5">
+                        Teamdaten werden geladen …
+                    </div>
+
+                </div>
+
+                <div
+                    id="keine-teams"
+                    class="keine-teams"
+                    hidden
+                >
+                    Keine passenden Teams gefunden.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <script src="assets/js/gtm-data.js"></script>
+    <script src="assets/js/gtm-utils.js"></script>
+    <script src="assets/js/gtm-ui.js"></script>
+    <script src="assets/js/gtm-page.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/teams.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,641 @@
+/* =========================================================
+   GTM STRAFENCENTER
+========================================================= */
+
+.strafencenter-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(130, 0, 0, 0.14),
+            transparent 34rem
+        ),
+        linear-gradient(
+            180deg,
+            #070707 0%,
+            #101010 100%
+        );
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.strafencenter-hero {
+    padding: 76px 0 42px;
+    text-align: center;
+}
+
+.strafencenter-eyebrow {
+    margin: 0 0 12px;
+    color: #d40000;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.strafencenter-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+}
+
+.strafencenter-intro {
+    max-width: 760px;
+    margin: 22px auto 0;
+    color: #b8b8b8;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   STATISTIK
+========================================================= */
+
+.strafencenter-statistik {
+    padding: 12px 0 32px;
+}
+
+.strafencenter-statistik-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.strafencenter-statistik-karte {
+    position: relative;
+    overflow: hidden;
+    min-height: 138px;
+    padding: 26px 22px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 32, 32, 0.98),
+            rgba(19, 19, 19, 0.98)
+        );
+    border: 1px solid #303030;
+    border-radius: 20px;
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.strafencenter-statistik-karte::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -45px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(212, 0, 0, 0.08);
+}
+
+.strafencenter-statistik-karte:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 0, 0, 0.75);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.32),
+        0 0 26px rgba(212, 0, 0, 0.08);
+}
+
+.strafencenter-statistik-karte strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.strafencenter-statistik-karte span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 10px;
+    color: #999999;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.strafencenter-filterbereich {
+    padding: 10px 0 35px;
+}
+
+.strafencenter-toolbar {
+    display: grid;
+    grid-template-columns:
+        minmax(260px, 1.8fr)
+        repeat(3, minmax(170px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.92);
+    border: 1px solid #2d2d2d;
+    border-radius: 22px;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.strafencenter-suche,
+.strafencenter-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.strafencenter-suche span,
+.strafencenter-filter span {
+    color: #9f9f9f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.strafencenter-suche input,
+.strafencenter-filter select {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 16px;
+    color: #ffffff;
+    background: #111111;
+    border: 1px solid #383838;
+    border-radius: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.strafencenter-filter select {
+    cursor: pointer;
+}
+
+.strafencenter-filter select option {
+    color: #ffffff;
+    background: #151515;
+}
+
+.strafencenter-suche input::placeholder {
+    color: #6f6f6f;
+}
+
+.strafencenter-suche input:focus,
+.strafencenter-filter select:focus {
+    background: #151515;
+    border-color: #d40000;
+    box-shadow:
+        0 0 0 4px rgba(212, 0, 0, 0.12);
+}
+
+/* =========================================================
+   INHALT
+========================================================= */
+
+.strafencenter-inhalt {
+    padding: 0 0 80px;
+}
+
+.strafen-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}/* =========================================================
+   STRAFKARTE
+========================================================= */
+
+.strafe-karte {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 460px;
+    padding: 26px;
+    background:
+        linear-gradient(
+            145deg,
+            #202020 0%,
+            #151515 60%,
+            #101010 100%
+        );
+    border: 1px solid #303030;
+    border-radius: 22px;
+    box-shadow:
+        0 18px 42px rgba(0,0,0,.28);
+    transition:
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
+}
+
+.strafe-karte::after{
+    content:"GTM";
+    position:absolute;
+    right:-28px;
+    bottom:-40px;
+    color:rgba(255,255,255,.025);
+    font-size:7rem;
+    font-weight:900;
+    transform:rotate(-10deg);
+}
+
+.strafe-karte:hover{
+    transform:translateY(-8px);
+    border-color:#d40000;
+    box-shadow:
+        0 28px 55px rgba(0,0,0,.42),
+        0 0 28px rgba(212,0,0,.08);
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.strafe-karte.status-aktiv{
+    border-left:6px solid #d40000;
+}
+
+.strafe-karte.status-erledigt{
+    border-left:6px solid #4caf50;
+}
+
+.strafe-status{
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    padding:0 12px;
+    border-radius:999px;
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.strafe-status.aktiv{
+    color:#ffb3b3;
+    background:rgba(212,0,0,.12);
+    border:1px solid rgba(212,0,0,.35);
+}
+
+.strafe-status.erledigt{
+    color:#7cff9d;
+    background:rgba(40,180,80,.12);
+    border:1px solid rgba(70,220,110,.35);
+}
+
+/* =========================================================
+   KOPF
+========================================================= */
+
+.strafe-karte-kopf{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:18px;
+    margin-bottom:24px;
+}
+
+.strafe-fahrer{
+    display:flex;
+    gap:16px;
+    align-items:center;
+}
+
+.strafe-nummer{
+    display:grid;
+    place-items:center;
+    width:54px;
+    height:54px;
+    color:#fff;
+    background:
+        linear-gradient(
+            135deg,
+            #e00000,
+            #990000
+        );
+    border-radius:50%;
+    font-weight:900;
+    font-size:1rem;
+}
+
+.strafe-fahrer h2{
+    margin:0 0 5px;
+    color:#fff;
+    font-size:1.45rem;
+    font-weight:900;
+}
+
+.strafe-fahrer p{
+    margin:0;
+    color:#9d9d9d;
+    font-size:.82rem;
+}
+
+/* =========================================================
+   META
+========================================================= */
+
+.strafe-meta{
+    display:grid;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.strafe-meta div{
+    padding:14px 10px;
+    text-align:center;
+    background:rgba(255,255,255,.03);
+    border:1px solid #2f2f2f;
+    border-radius:12px;
+}
+
+.strafe-meta span{
+    display:block;
+    color:#777;
+    font-size:.68rem;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.strafe-meta strong{
+    display:block;
+    margin-top:7px;
+    color:#fff;
+    font-size:.83rem;
+    font-weight:800;
+}
+
+/* =========================================================
+   VORFALL
+========================================================= */
+
+.strafe-vorfall,
+.strafe-entscheidung{
+
+    margin-bottom:18px;
+    padding:16px;
+    background:rgba(255,255,255,.025);
+    border:1px solid #2f2f2f;
+    border-radius:12px;
+
+}
+
+.strafe-vorfall span,
+.strafe-entscheidung span{
+
+    display:block;
+    margin-bottom:8px;
+    color:#d40000;
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+
+}
+
+.strafe-vorfall p{
+
+    margin:0;
+    color:#d8d8d8;
+    line-height:1.6;
+
+}
+
+.strafe-entscheidung strong{
+
+    color:#fff;
+    font-size:1rem;
+
+}
+
+/* =========================================================
+   WERTE
+========================================================= */
+
+.strafe-werte{
+
+    display:grid;
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin-top:auto;
+
+}
+
+.strafe-werte div{
+
+    padding:16px;
+    text-align:center;
+    background:rgba(255,255,255,.035);
+    border:1px solid #303030;
+    border-radius:12px;
+
+}
+
+.strafe-werte strong{
+
+    display:block;
+    color:#fff;
+    font-size:2rem;
+    font-weight:900;
+
+}
+
+.strafe-werte span{
+
+    display:block;
+    margin-top:8px;
+    color:#777;
+    font-size:.7rem;
+    font-weight:800;
+    text-transform:uppercase;
+
+}/* =========================================================
+   STRAFARTEN
+========================================================= */
+
+.strafe-karte.art-verwarnung {
+    box-shadow:
+        inset 0 4px 0 rgba(240, 190, 60, 0.85),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.strafe-karte.art-strafpunkte {
+    box-shadow:
+        inset 0 4px 0 rgba(230, 80, 40, 0.9),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.strafe-karte.art-rennssperre {
+    box-shadow:
+        inset 0 4px 0 rgba(212, 0, 0, 0.95),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.strafe-karte.art-disqualifikation {
+    box-shadow:
+        inset 0 4px 0 rgba(140, 70, 200, 0.95),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   FEHLER / KEINE EINTRÄGE
+========================================================= */
+
+.keine-strafen,
+.gtm-data-error {
+    padding: 48px 28px;
+    color: #bdbdbd;
+    text-align: center;
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 20px;
+}
+
+.gtm-data-error strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.gtm-data-error p {
+    margin: 0;
+    color: #8f8f8f;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.strafe-karte {
+    animation: strafeEinblenden 0.35s ease both;
+}
+
+@keyframes strafeEinblenden {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+    .strafencenter-toolbar {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .strafen-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .strafencenter-statistik-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .strafencenter-hero {
+        padding-top: 54px;
+    }
+
+    .strafencenter-toolbar {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .strafe-karte {
+        min-height: 0;
+        padding: 22px;
+    }
+
+    .strafe-karte-kopf {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .strafe-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .strafe-meta div {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 14px;
+        align-items: center;
+        text-align: left;
+    }
+
+    .strafe-meta strong {
+        margin-top: 0;
+        text-align: right;
+    }
+}
+
+@media (max-width: 520px) {
+    .strafencenter-statistik-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .strafe-karte {
+        padding: 18px;
+    }
+
+    .strafe-fahrer {
+        align-items: flex-start;
+    }
+
+    .strafe-nummer {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+    }
+
+    .strafe-fahrer h2 {
+        font-size: 1.2rem;
+    }
+
+    .strafe-werte {
+        grid-template-columns: 1fr;
+    }
+
+    .strafe-meta div {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .strafe-meta strong {
+        text-align: left;
+    }
+}

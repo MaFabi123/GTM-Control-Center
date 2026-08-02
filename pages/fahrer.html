@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <base href="../">
+
+    <title>GTM Control Center | Fahrer</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/fahrer.css">
+</head>
+
+<body>
+
+    <header id="site-navbar"></header>
+
+    <main class="fahrer-page">
+
+        <section class="fahrer-hero">
+
+            <div class="container">
+
+                <p class="fahrer-eyebrow">
+                    German Touring Masters
+                </p>
+
+                <h1>
+                    Fahrer
+                </h1>
+
+                <p class="fahrer-intro">
+                    Alle registrierten Fahrer der German Touring Masters
+                    mit Startnummer, Team, Fahrzeug und aktuellem Status.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="fahrer-statistik">
+
+            <div class="container">
+
+                <div class="fahrer-statistik-grid">
+
+                    <article class="fahrer-statistik-karte">
+
+                        <strong id="fahrer-anzahl">
+                            –
+                        </strong>
+
+                        <span>
+                            Fahrer
+                        </span>
+
+                    </article>
+
+                    <article class="fahrer-statistik-karte">
+
+                        <strong id="fahrer-team-anzahl">
+                            –
+                        </strong>
+
+                        <span>
+                            Teams
+                        </span>
+
+                    </article>
+
+                    <article class="fahrer-statistik-karte">
+
+                        <strong id="fahrer-fahrzeug-anzahl">
+                            –
+                        </strong>
+
+                        <span>
+                            Fahrzeuge
+                        </span>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="fahrer-filterbereich">
+
+            <div class="container">
+
+                <div class="fahrer-toolbar">
+
+                    <label class="fahrer-suche">
+
+                        <span>
+                            Fahrer suchen
+                        </span>
+
+                        <input
+                            id="fahrer-suche"
+                            type="search"
+                            autocomplete="off"
+                            placeholder="Name, Startnummer, Team oder Fahrzeug"
+                        >
+
+                    </label>
+
+                    <label class="fahrer-filter">
+
+                        <span>
+                            Team
+                        </span>
+
+                        <select id="team-filter">
+
+                            <option value="">
+                                Alle Teams
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="fahrer-filter">
+
+                        <span>
+                            Fahrzeug
+                        </span>
+
+                        <select id="fahrzeug-filter">
+
+                            <option value="">
+                                Alle Fahrzeuge
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="fahrer-filter">
+
+                        <span>
+                            Sortierung
+                        </span>
+
+                        <select id="fahrer-sortierung">
+
+                            <option value="startnummer">
+                                Startnummer
+                            </option>
+
+                            <option value="name">
+                                Name
+                            </option>
+
+                            <option value="team">
+                                Team
+                            </option>
+
+                            <option value="status">
+                                Meisterschaftsteilnahme
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="fahrer-inhalt">
+
+            <div class="container">
+
+                <div
+                    id="fahrer-grid"
+                    class="fahrer-grid"
+                    aria-live="polite"
+                    aria-busy="true"
+                >
+
+                    <div class="text-center text-light py-5">
+                        Fahrerdaten werden geladen …
+                    </div>
+
+                </div>
+
+                <div
+                    id="keine-fahrer"
+                    class="keine-fahrer"
+                    hidden
+                >
+                    Keine passenden Fahrer gefunden.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <script src="assets/js/gtm-data.js"></script>
+    <script src="assets/js/gtm-utils.js"></script>
+    <script src="assets/js/gtm-ui.js"></script>
+    <script src="assets/js/gtm-page.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/fahrer.js"></script>
+
+</body>
+
+</html>

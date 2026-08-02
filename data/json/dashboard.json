@@ -1,0 +1,82 @@
+{
+    "saison":  "GTM Masters Saison 1",
+    "status":  "lÃ¤uft",
+    "aktiveFahrer":  30,
+    "registrierteStartnummern":  92,
+    "teams":  18,
+    "rennenGesamt":  8,
+    "rennenAbgeschlossen":  4,
+    "rennenVerbleibend":  4,
+    "aktuellerLauf":  {
+                          "laufnummer":  5,
+                          "strecke":  "Snetterton",
+                          "datum":  "2026-08-30",
+                          "abgeschlossen":  false,
+                          "aktuell":  true,
+                          "naechster":  false,
+                          "status":  "aktuell"
+                      },
+    "naechsterLauf":  {
+                          "laufnummer":  6,
+                          "strecke":  "Donington Park",
+                          "datum":  "2026-09-13",
+                          "abgeschlossen":  false,
+                          "aktuell":  false,
+                          "naechster":  true,
+                          "status":  "nÃ¤chster"
+                      },
+    "tabellenfuehrer":  {
+                            "platzierung":  1,
+                            "nummer":  89,
+                            "name":  "M. Figge",
+                            "team":  "Bremsbackenspreizer",
+                            "teamZuordnung":  "Bremsbackenspreizer",
+                            "fahrzeug":  "Lamborghini Huracán GT3 EVO2",
+                            "bild":  "default.png",
+                            "wertung":  757,
+                            "fastLap":  8,
+                            "fahrzeugwechsel":  0,
+                            "punkte":  765
+                        },
+    "topDrei":  [
+                    {
+                        "platzierung":  1,
+                        "nummer":  89,
+                        "name":  "M. Figge",
+                        "team":  "Bremsbackenspreizer",
+                        "teamZuordnung":  "Bremsbackenspreizer",
+                        "fahrzeug":  "Lamborghini Huracán GT3 EVO2",
+                        "bild":  "default.png",
+                        "wertung":  757,
+                        "fastLap":  8,
+                        "fahrzeugwechsel":  0,
+                        "punkte":  765
+                    },
+                    {
+                        "platzierung":  2,
+                        "nummer":  478,
+                        "name":  "L. Geißler",
+                        "team":  "Bremsbackenspreizer",
+                        "teamZuordnung":  "Bremsbackenspreizer",
+                        "fahrzeug":  "Ford Mustang GT3",
+                        "bild":  "default.png",
+                        "wertung":  597,
+                        "fastLap":  0,
+                        "fahrzeugwechsel":  0,
+                        "punkte":  587
+                    },
+                    {
+                        "platzierung":  3,
+                        "nummer":  7,
+                        "name":  "P.Zuber",
+                        "team":  "MAD Racer",
+                        "teamZuordnung":  "MAD Racer I",
+                        "fahrzeug":  "Ferrari 296 GT3",
+                        "bild":  "default.png",
+                        "wertung":  535,
+                        "fastLap":  0,
+                        "fahrzeugwechsel":  0,
+                        "punkte":  520
+                    }
+                ]
+}

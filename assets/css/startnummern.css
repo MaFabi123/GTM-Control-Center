@@ -1,0 +1,544 @@
+/* =========================================================
+   GTM STARTNUMMERN
+========================================================= */
+
+.startnummern-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(130, 0, 0, 0.14),
+            transparent 34rem
+        ),
+        linear-gradient(
+            180deg,
+            #070707 0%,
+            #101010 100%
+        );
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.startnummern-hero {
+    padding: 76px 0 42px;
+    text-align: center;
+}
+
+.startnummern-eyebrow {
+    margin: 0 0 12px;
+    color: #d40000;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.startnummern-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+}
+
+.startnummern-intro {
+    max-width: 760px;
+    margin: 22px auto 0;
+    color: #b8b8b8;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   STATISTIK
+========================================================= */
+
+.startnummern-statistik {
+    padding: 12px 0 32px;
+}
+
+.startnummern-statistik-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.startnummern-statistik-karte {
+    position: relative;
+    overflow: hidden;
+    min-height: 138px;
+    padding: 26px 22px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 32, 32, 0.98),
+            rgba(19, 19, 19, 0.98)
+        );
+    border: 1px solid #303030;
+    border-radius: 20px;
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.startnummern-statistik-karte::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -45px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(212, 0, 0, 0.08);
+}
+
+.startnummern-statistik-karte:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 0, 0, 0.75);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.32),
+        0 0 26px rgba(212, 0, 0, 0.08);
+}
+
+.startnummern-statistik-karte strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.startnummern-statistik-karte span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 10px;
+    color: #999999;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.startnummern-filterbereich {
+    padding: 10px 0 35px;
+}
+
+.startnummern-toolbar {
+    display: grid;
+    grid-template-columns:
+        minmax(260px, 1.8fr)
+        repeat(3, minmax(170px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.92);
+    border: 1px solid #2d2d2d;
+    border-radius: 22px;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.startnummern-suche,
+.startnummern-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.startnummern-suche span,
+.startnummern-filter span {
+    color: #9f9f9f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.startnummern-suche input,
+.startnummern-filter select {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 16px;
+    color: #ffffff;
+    background: #111111;
+    border: 1px solid #383838;
+    border-radius: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.startnummern-filter select {
+    cursor: pointer;
+}
+
+.startnummern-filter select option {
+    color: #ffffff;
+    background: #151515;
+}
+
+.startnummern-suche input::placeholder {
+    color: #6f6f6f;
+}
+
+.startnummern-suche input:focus,
+.startnummern-filter select:focus {
+    background: #151515;
+    border-color: #d40000;
+    box-shadow:
+        0 0 0 4px rgba(212, 0, 0, 0.12);
+}
+
+/* =========================================================
+   INHALT
+========================================================= */
+
+.startnummern-inhalt {
+    padding: 0 0 80px;
+}
+
+.startnummern-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}/* =========================================================
+   STARTNUMMERNKARTE
+========================================================= */
+
+.startnummer-karte {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    min-height: 220px;
+    background:
+        linear-gradient(
+            145deg,
+            #202020 0%,
+            #151515 60%,
+            #101010 100%
+        );
+    border: 1px solid #303030;
+    border-radius: 22px;
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.28);
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.startnummer-karte::after {
+    content: "GTM";
+    position: absolute;
+    right: -28px;
+    bottom: -40px;
+    color: rgba(255, 255, 255, 0.025);
+    font-size: 7rem;
+    font-weight: 900;
+    transform: rotate(-10deg);
+    pointer-events: none;
+}
+
+.startnummer-karte:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 0, 0, 0.85);
+    box-shadow:
+        0 28px 55px rgba(0, 0, 0, 0.42),
+        0 0 28px rgba(212, 0, 0, 0.08);
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.startnummer-karte.status-vergeben {
+    border-left: 6px solid #d40000;
+}
+
+.startnummer-karte.status-frei {
+    border-left: 6px solid #4caf50;
+}
+
+.startnummer-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.startnummer-status.vergeben {
+    color: #ffb3b3;
+    background: rgba(212, 0, 0, 0.12);
+    border: 1px solid rgba(212, 0, 0, 0.35);
+}
+
+.startnummer-status.frei {
+    color: #7cff9d;
+    background: rgba(40, 180, 80, 0.12);
+    border: 1px solid rgba(70, 220, 110, 0.35);
+}
+
+/* =========================================================
+   NUMMER
+========================================================= */
+
+.startnummer-nummer {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    min-height: 100%;
+    color: #ffffff;
+    background:
+        linear-gradient(
+            145deg,
+            #2a2a2a,
+            #111111
+        );
+    border-right: 1px solid #303030;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+}
+
+.status-vergeben .startnummer-nummer {
+    background:
+        linear-gradient(
+            145deg,
+            #650000,
+            #1a0b0b
+        );
+}
+
+.status-frei .startnummer-nummer {
+    background:
+        linear-gradient(
+            145deg,
+            #16451f,
+            #0d1810
+        );
+}
+
+/* =========================================================
+   INHALT
+========================================================= */
+
+.startnummer-inhalt {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.startnummer-kopf {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.startnummer-label {
+    color: #d40000;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.startnummer-inhalt h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.startnummer-details {
+    display: grid;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.startnummer-details > div {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #2f2f2f;
+    border-radius: 11px;
+}
+
+.startnummer-details span {
+    color: #777777;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.startnummer-details strong {
+    color: #d6d6d6;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.startnummer-frei-hinweis {
+    margin-top: auto;
+    padding: 16px;
+    color: #a9d8b5;
+    background: rgba(40, 180, 80, 0.08);
+    border: 1px solid rgba(70, 220, 110, 0.2);
+    border-radius: 12px;
+    line-height: 1.5;
+}/* =========================================================
+   FEHLER / KEINE ERGEBNISSE
+========================================================= */
+
+.keine-startnummern,
+.gtm-data-error {
+    padding: 48px 28px;
+    color: #bdbdbd;
+    text-align: center;
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 20px;
+}
+
+.gtm-data-error strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.gtm-data-error p {
+    margin: 0;
+    color: #8f8f8f;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.startnummer-karte {
+    animation: startnummerEinblenden 0.35s ease both;
+}
+
+@keyframes startnummerEinblenden {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+    .startnummern-toolbar {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .startnummern-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .startnummern-statistik-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .startnummern-hero {
+        padding-top: 54px;
+    }
+
+    .startnummern-toolbar {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .startnummern-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .startnummer-karte {
+        grid-template-columns: 100px 1fr;
+        min-height: 200px;
+    }
+
+    .startnummer-inhalt {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+    .startnummern-statistik-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .startnummer-karte {
+        grid-template-columns: 1fr;
+    }
+
+    .startnummer-nummer {
+        min-height: 110px;
+        border-right: 0;
+        border-bottom: 1px solid #303030;
+    }
+
+    .startnummer-kopf {
+        flex-direction: column;
+    }
+
+    .startnummer-details > div {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .startnummer-details strong {
+        text-align: left;
+    }
+}

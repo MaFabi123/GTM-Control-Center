@@ -1,0 +1,446 @@
+[
+    {
+        "name":  "Bremsbackenspreizer",
+        "punkte":  1352,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Lamborghini Huracán GT3 EVO2",
+                          "Ford Mustang GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  89,
+                           "name":  "M. Figge",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Lamborghini Huracán GT3 EVO2",
+                           "punkte":  765,
+                           "platzierung":  1
+                       },
+                       {
+                           "nummer":  478,
+                           "name":  "L. Geißler",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ford Mustang GT3",
+                           "punkte":  587,
+                           "platzierung":  2
+                       }
+                   ],
+        "platzierung":  1
+    },
+    {
+        "name":  "MAD Racer I",
+        "punkte":  1034,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  7,
+                           "name":  "P.Zuber",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  520,
+                           "platzierung":  3
+                       },
+                       {
+                           "nummer":  232,
+                           "name":  "D. Makkaber",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  514,
+                           "platzierung":  4
+                       }
+                   ],
+        "platzierung":  2
+    },
+    {
+        "name":  "77Performance by GHc",
+        "punkte":  710,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  118,
+                           "name":  "Ralf B.",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  360,
+                           "platzierung":  9
+                       },
+                       {
+                           "nummer":  77,
+                           "name":  "Thomas",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  350,
+                           "platzierung":  10
+                       }
+                   ],
+        "platzierung":  3
+    },
+    {
+        "name":  "DarkTrade Racing by GHc",
+        "punkte":  692,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "BMW M4 GT3",
+                          "McLaren 720S GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  21,
+                           "name":  "O. Gambert",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  404,
+                           "platzierung":  8
+                       },
+                       {
+                           "nummer":  971,
+                           "name":  "R. Friedel",
+                           "bild":  "default.png",
+                           "fahrzeug":  "McLaren 720S GT3",
+                           "punkte":  288,
+                           "platzierung":  13
+                       }
+                   ],
+        "platzierung":  4
+    },
+    {
+        "name":  "PM Performance by GHc",
+        "punkte":  505,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Mercedes-AMG AMG GT3 Evo",
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  3,
+                           "name":  "Pascal",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
+                           "punkte":  417,
+                           "platzierung":  7
+                       },
+                       {
+                           "nummer":  88,
+                           "name":  "Mariusz",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  88,
+                           "platzierung":  22
+                       }
+                   ],
+        "platzierung":  5
+    },
+    {
+        "name":  "Rennsteig Racing II",
+        "punkte":  497,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Ford Mustang GT3",
+                          "McLaren 720S GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  56,
+                           "name":  "Lone-Wolf_Mike",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ford Mustang GT3",
+                           "punkte":  306,
+                           "platzierung":  11
+                       },
+                       {
+                           "nummer":  80,
+                           "name":  "ALDAPUNKER80 BE",
+                           "bild":  "default.png",
+                           "fahrzeug":  "McLaren 720S GT3",
+                           "punkte":  191,
+                           "platzierung":  15
+                       }
+                   ],
+        "platzierung":  6
+    },
+    {
+        "name":  "Rennsteig Racing I",
+        "punkte":  466,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  872,
+                           "name":  "A. Löbcke",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  289,
+                           "platzierung":  12
+                       },
+                       {
+                           "nummer":  141,
+                           "name":  "F. Hopf",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  177,
+                           "platzierung":  17
+                       }
+                   ],
+        "platzierung":  7
+    },
+    {
+        "name":  "MAD Racer II",
+        "punkte":  443,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "Ford Mustang GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  69,
+                           "name":  "R. Skopp",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ford Mustang GT3",
+                           "punkte":  443,
+                           "platzierung":  5
+                       }
+                   ],
+        "platzierung":  8
+    },
+    {
+        "name":  "MAD Racer",
+        "punkte":  437,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  206,
+                           "name":  "Noel",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  437,
+                           "platzierung":  6
+                       }
+                   ],
+        "platzierung":  9
+    },
+    {
+        "name":  "GG Racing",
+        "punkte":  417,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  169,
+                           "name":  "A. Freller",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  262,
+                           "platzierung":  14
+                       },
+                       {
+                           "nummer":  72,
+                           "name":  "D. Labra",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  155,
+                           "platzierung":  19
+                       }
+                   ],
+        "platzierung":  10
+    },
+    {
+        "name":  "Golden Graining by GHc",
+        "punkte":  217,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Mercedes-AMG AMG GT3 Evo",
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  15,
+                           "name":  "Mike McFly",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
+                           "punkte":  186,
+                           "platzierung":  16
+                       },
+                       {
+                           "nummer":  47,
+                           "name":  "Janissimo",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  31,
+                           "platzierung":  26
+                       }
+                   ],
+        "platzierung":  11
+    },
+    {
+        "name":  "BMW M Sport",
+        "punkte":  157,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  696,
+                           "name":  "T. Müller",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  157,
+                           "platzierung":  18
+                       }
+                   ],
+        "platzierung":  12
+    },
+    {
+        "name":  "MAD Racer IV",
+        "punkte":  137,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  25,
+                           "name":  "Koberner95",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  85,
+                           "platzierung":  23
+                       },
+                       {
+                           "nummer":  95,
+                           "name":  "Domi95",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  52,
+                           "platzierung":  25
+                       }
+                   ],
+        "platzierung":  13
+    },
+    {
+        "name":  "Jamaica Connection",
+        "punkte":  135,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  812,
+                           "name":  "S. Schneider",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  135,
+                           "platzierung":  20
+                       }
+                   ],
+        "platzierung":  14
+    },
+    {
+        "name":  "Maro Racing I",
+        "punkte":  98,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  420,
+                           "name":  "Adrian",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  77,
+                           "platzierung":  24
+                       },
+                       {
+                           "nummer":  92,
+                           "name":  "Maurer196",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  21,
+                           "platzierung":  27
+                       }
+                   ],
+        "platzierung":  15
+    },
+    {
+        "name":  "Maro Racing",
+        "punkte":  97,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "BMW M4 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  261,
+                           "name":  "Stigion13",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "punkte":  97,
+                           "platzierung":  21
+                       }
+                   ],
+        "platzierung":  16
+    },
+    {
+        "name":  "Quantum Point",
+        "punkte":  7,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  19,
+                           "name":  "L. Garske",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "punkte":  7,
+                           "platzierung":  28
+                       }
+                   ],
+        "platzierung":  17
+    },
+    {
+        "name":  "Maro Racing II",
+        "punkte":  0,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "Audi R8 LMS GT3 Evo",
+                          "Aston Martin V8 Vantage GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  296,
+                           "name":  "Audi-Fahrer_81",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Audi R8 LMS GT3 Evo",
+                           "punkte":  0,
+                           "platzierung":  29
+                       },
+                       {
+                           "nummer":  16,
+                           "name":  "Cello",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Aston Martin V8 Vantage GT3",
+                           "punkte":  0,
+                           "platzierung":  29
+                       }
+                   ],
+        "platzierung":  18
+    }
+]
