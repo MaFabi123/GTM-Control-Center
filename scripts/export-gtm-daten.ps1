@@ -1038,8 +1038,20 @@ $strafenkontoSheet =
 
     Write-JsonFile `
         -FileName "teams.json" `
-        -Data $teamsSortiert    # ========================================================
-    # 4. RENNKALENDER
+        -Data $teamsSortiert    
+    # ========================================================
+
+    # ========================================================
+    # 4. RENNKALENDER, TIME ATTACK UND FUN EVENTS
+    #
+    # Automatisch unterstützte Kalenderblätter:
+    #
+    # GTM Masters S1 Kalender
+    # GTM Masters Saison 2 Kalender
+    # TA Saison 2026 Kalender
+    # GTM TA S2027 Kalender
+    #
+    # Masters-Kalenderspalten:
     #
     # A = Laufnummer
     # B = Strecke
@@ -1047,71 +1059,476 @@ $strafenkontoSheet =
     # D = Abgeschlossen
     # E = Aktuell
     # F = Nächster
+    #
+    # TA-Kalenderspalten:
+    #
+    # A = Runde
+    # B = Strecke
+    # C = Zeitraum, zum Beispiel 01.01.–18.01.
+    #
+    # Automatisch unterstützte FUN-Event-Blätter:
+    #
+    # FUN-Event Laguna Seca 26.07.26
+    # FUN-Event Oulton Park 02.08.26
+    #
+    # Der leere Reiter "FUN-Event" bleibt eine Vorlage und
+    # wird nicht veröffentlicht.
     # ========================================================
+
+    function ConvertTo-KalenderBoolean {
+        param (
+            [AllowNull()]
+            [object]$Wert
+        )
+
+        if ($null -eq $Wert) {
+            return $false
+        }
+
+        $text = ([string]$Wert).Trim().ToLowerInvariant()
+
+        return (
+            $text -eq "ja" -or
+            $text -eq "j" -or
+            $text -eq "true" -or
+            $text -eq "wahr" -or
+            $text -eq "1" -or
+            $text -eq "x"
+        )
+    }
 
     $kalender = New-Object `
         System.Collections.Generic.List[object]
 
-    $letzteKalenderZeile = $kalenderSheet.Cells.Item(
-        $kalenderSheet.Rows.Count,
-        1
-    ).End($xlUp).Row
+    $funEventQuellen = New-Object `
+        System.Collections.Generic.List[object]
 
-    for (
-        $row = 2;
-        $row -le $letzteKalenderZeile;
-        $row++
-    ) {
-        $laufnummer = [int](
-            Get-CellNumber `
-                -Worksheet $kalenderSheet `
+    $taKalenderQuellen = New-Object `
+        System.Collections.Generic.List[object]
+
+    function Add-KalenderDaten {
+        param (
+            [Parameter(Mandatory = $true)]
+            [object]$Worksheet,
+
+            [Parameter(Mandatory = $true)]
+            [string]$SerieId,
+
+            [Parameter(Mandatory = $true)]
+            [string]$SerieName,
+
+            [Parameter(Mandatory = $true)]
+            [string]$Format,
+
+            [Parameter(Mandatory = $true)]
+            [int]$Saison
+        )
+
+        $letzteKalenderZeile = $Worksheet.Cells.Item(
+            $Worksheet.Rows.Count,
+            1
+        ).End($xlUp).Row
+
+        for (
+            $row = 2;
+            $row -le $letzteKalenderZeile;
+            $row++
+        ) {
+            $laufnummer = [int](
+                Get-CellNumber `
+                    -Worksheet $Worksheet `
+                    -Row $row `
+                    -Column 1
+            )
+
+            $strecke = Get-CellText `
+                -Worksheet $Worksheet `
                 -Row $row `
-                -Column 1
+                -Column 2
+
+            if (
+                $laufnummer -le 0 -or
+                [string]::IsNullOrWhiteSpace($strecke)
+            ) {
+                continue
+            }
+
+            $datumRoh = $Worksheet.Cells.Item(
+                $row,
+                3
+            ).Value2
+
+            $datum = ""
+
+            if (
+                $null -ne $datumRoh -and
+                -not [string]::IsNullOrWhiteSpace(
+                    [string]$datumRoh
+                )
+            ) {
+                $datum = Convert-ExcelDate $datumRoh
+            }
+
+            $abgeschlossenText = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row $row `
+                -Column 4
+
+            $aktuellText = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row $row `
+                -Column 5
+
+            $naechsterText = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row $row `
+                -Column 6
+
+            $abgeschlossen = ConvertTo-KalenderBoolean `
+                -Wert $abgeschlossenText
+
+            $aktuell = ConvertTo-KalenderBoolean `
+                -Wert $aktuellText
+
+            $naechster = ConvertTo-KalenderBoolean `
+                -Wert $naechsterText
+
+            $status = "bevorstehend"
+
+            if ($abgeschlossen) {
+                $status = "abgeschlossen"
+            }
+            elseif ($aktuell) {
+                $status = "aktuell"
+            }
+            elseif ($naechster) {
+                $status = "nächster"
+            }
+
+            $saisonId = "{0}-s{1}" -f `
+                $SerieId,
+                $Saison
+
+            $saisonName = "{0} Saison {1}" -f `
+                $SerieName,
+                $Saison
+
+            $terminId = "{0}-lauf-{1}" -f `
+                $saisonId,
+                $laufnummer
+
+            [void]$kalender.Add(
+                [PSCustomObject][ordered]@{
+                    id            = $terminId
+                    modul         = $SerieId
+                    format        = $Format
+                    serieId       = $SerieId
+                    serie         = $SerieName
+                    saisonId      = $saisonId
+                    saison        = $Saison
+                    saisonName    = $saisonName
+                    laufnummer    = $laufnummer
+                    strecke       = $strecke
+                    datum         = $datum
+                    abgeschlossen = $abgeschlossen
+                    aktuell       = $aktuell
+                    naechster     = $naechster
+                    status        = $status
+                }
+            )
+        }
+    }
+
+    function Add-TimeAttackKalenderQuelle {
+        param (
+            [Parameter(Mandatory = $true)]
+            [object]$Worksheet,
+
+            [Parameter(Mandatory = $true)]
+            [int]$Saison
+        )
+
+        $letzteZeile = $Worksheet.Cells.Item(
+            $Worksheet.Rows.Count,
+            1
+        ).End($xlUp).Row
+
+        for (
+            $row = 2;
+            $row -le $letzteZeile;
+            $row++
+        ) {
+            $runde = [int](
+                Get-CellNumber `
+                    -Worksheet $Worksheet `
+                    -Row $row `
+                    -Column 1
+            )
+
+            $strecke = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row $row `
+                -Column 2
+
+            $zeitraum = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row $row `
+                -Column 3
+
+            if (
+                $runde -le 0 -or
+                [string]::IsNullOrWhiteSpace($strecke) -or
+                [string]::IsNullOrWhiteSpace($zeitraum)
+            ) {
+                continue
+            }
+
+            $zeitraumTreffer = [regex]::Match(
+                $zeitraum,
+                "^\s*(\d{2})\.(\d{2})\.\s*[^0-9]+\s*(\d{2})\.(\d{2})\.\s*$"
+            )
+
+            if (-not $zeitraumTreffer.Success) {
+                Write-Warning (
+                    "TA-Zeitraum in Zeile {0} konnte nicht gelesen werden: {1}" -f
+                    $row,
+                    $zeitraum
+                )
+
+                continue
+            }
+
+            $startTag = [int]$zeitraumTreffer.Groups[1].Value
+            $startMonat = [int]$zeitraumTreffer.Groups[2].Value
+            $endeTag = [int]$zeitraumTreffer.Groups[3].Value
+            $endeMonat = [int]$zeitraumTreffer.Groups[4].Value
+            $endeJahr = $Saison
+
+            if ($endeMonat -lt $startMonat) {
+                $endeJahr++
+            }
+
+            try {
+                $startDatum = [datetime]::new(
+                    $Saison,
+                    $startMonat,
+                    $startTag
+                ).Date
+
+                $endeDatum = [datetime]::new(
+                    $endeJahr,
+                    $endeMonat,
+                    $endeTag
+                ).Date
+            }
+            catch {
+                Write-Warning (
+                    "Ungültiger TA-Zeitraum in Zeile {0}: {1}" -f
+                    $row,
+                    $zeitraum
+                )
+
+                continue
+            }
+
+            [void]$taKalenderQuellen.Add(
+                [PSCustomObject][ordered]@{
+                    saison     = $Saison
+                    runde      = $runde
+                    strecke    = $strecke.Trim()
+                    zeitraum   = $zeitraum.Trim()
+                    startDatum = $startDatum
+                    endeDatum  = $endeDatum
+                }
+            )
+        }
+    }
+
+    function Add-FunEventQuelle {
+        param (
+            [Parameter(Mandatory = $true)]
+            [object]$Worksheet,
+
+            [Parameter(Mandatory = $true)]
+            [string]$BlattName
         )
 
         $strecke = Get-CellText `
-            -Worksheet $kalenderSheet `
-            -Row $row `
-            -Column 2
+            -Worksheet $Worksheet `
+            -Row 2 `
+            -Column 5
+
+        $datumRoh = $Worksheet.Cells.Item(
+            2,
+            8
+        ).Value2
 
         if (
-            $laufnummer -le 0 -or
-            [string]::IsNullOrWhiteSpace($strecke)
+            [string]::IsNullOrWhiteSpace($strecke) -or
+            $null -eq $datumRoh -or
+            [string]::IsNullOrWhiteSpace([string]$datumRoh)
         ) {
+            Write-Warning (
+                "FUN-Event ohne Strecke oder Datum übersprungen: {0}" -f
+                $BlattName
+            )
+
+            return
+        }
+
+        $datum = Convert-ExcelDate $datumRoh
+
+        try {
+            $datumObjekt = [datetime]::ParseExact(
+                $datum,
+                "yyyy-MM-dd",
+                [System.Globalization.CultureInfo]::InvariantCulture
+            )
+        }
+        catch {
+            Write-Warning (
+                "FUN-Event mit ungültigem Datum übersprungen: {0}" -f
+                $BlattName
+            )
+
+            return
+        }
+
+        $eventName = $BlattName -replace "^FUN-Event\s+", ""
+        $eventName = $eventName -replace "\s+\d{2}\.\d{2}\.\d{2,4}$", ""
+
+        [void]$funEventQuellen.Add(
+            [PSCustomObject][ordered]@{
+                blattName  = $BlattName
+                eventName  = $eventName
+                strecke    = $strecke
+                datum      = $datum
+                datumWert  = $datumObjekt.Date
+                jahr       = $datumObjekt.Year
+            }
+        )
+    }
+
+    $arbeitsmappe = $kalenderSheet.Parent
+    $anzahlKalenderquellen = 0
+    $anzahlMastersKalender = 0
+    $anzahlTaKalender = 0
+    $anzahlFunEvents = 0
+
+    for (
+        $blattIndex = 1;
+        $blattIndex -le $arbeitsmappe.Worksheets.Count;
+        $blattIndex++
+    ) {
+        $blatt = $arbeitsmappe.Worksheets.Item(
+            $blattIndex
+        )
+
+        $blattName = [string]$blatt.Name
+
+        $mastersTreffer = [regex]::Match(
+            $blattName,
+            "^(?:GTM\s+)?Masters\s+S(?:aison\s*)?(\d+)\s+Kalender$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        if ($mastersTreffer.Success) {
+            $saisonNummer = [int]$mastersTreffer.Groups[1].Value
+
+            Write-Host (
+                "Masters-Kalender erkannt: {0}" -f
+                $blattName
+            ) -ForegroundColor Cyan
+
+            Add-KalenderDaten `
+                -Worksheet $blatt `
+                -SerieId "masters" `
+                -SerieName "GTM Masters" `
+                -Format "rennen" `
+                -Saison $saisonNummer
+
+            $anzahlMastersKalender++
+            $anzahlKalenderquellen++
+
             continue
         }
 
-        $datumRoh = $kalenderSheet.Cells.Item(
-            $row,
-            3
-        ).Value2
-
-        $abgeschlossenText = Get-CellText `
-            -Worksheet $kalenderSheet `
-            -Row $row `
-            -Column 4
-
-        $aktuellText = Get-CellText `
-            -Worksheet $kalenderSheet `
-            -Row $row `
-            -Column 5
-
-        $naechsterText = Get-CellText `
-            -Worksheet $kalenderSheet `
-            -Row $row `
-            -Column 6
-
-        $abgeschlossen = (
-            $abgeschlossenText.Trim().ToLower() -eq "ja"
+        $taTreffer = [regex]::Match(
+            $blattName,
+            "^(?:GTM\s+)?TA\s+S(?:aison\s*)?(\d+)\s+Kalender$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
         )
 
+        if ($taTreffer.Success) {
+            $saisonNummer = [int]$taTreffer.Groups[1].Value
+
+            Write-Host (
+                "TA-Kalender erkannt: {0}" -f
+                $blattName
+            ) -ForegroundColor Cyan
+
+            $vorherigeAnzahl = $taKalenderQuellen.Count
+
+            Add-TimeAttackKalenderQuelle `
+                -Worksheet $blatt `
+                -Saison $saisonNummer
+
+            if ($taKalenderQuellen.Count -gt $vorherigeAnzahl) {
+                $anzahlTaKalender++
+                $anzahlKalenderquellen++
+            }
+
+            continue
+        }
+
+        $istKonkretesFunEvent = [regex]::IsMatch(
+            $blattName,
+            "^FUN-Event\s+.+$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        if ($istKonkretesFunEvent) {
+            Write-Host (
+                "FUN-Event erkannt: {0}" -f
+                $blattName
+            ) -ForegroundColor Cyan
+
+            $vorherigeAnzahl = $funEventQuellen.Count
+
+            Add-FunEventQuelle `
+                -Worksheet $blatt `
+                -BlattName $blattName
+
+            if ($funEventQuellen.Count -gt $vorherigeAnzahl) {
+                $anzahlFunEvents++
+                $anzahlKalenderquellen++
+            }
+        }
+    }
+
+    $taTermineSortiert = @(
+        $taKalenderQuellen |
+        Sort-Object -Property startDatum, saison, runde
+    )
+
+    $naechsterTaTerminGesetzt = $false
+    $heute = (Get-Date).Date
+
+    foreach ($taTermin in $taTermineSortiert) {
+        $abgeschlossen = $taTermin.endeDatum -lt $heute
         $aktuell = (
-            $aktuellText.Trim().ToLower() -eq "ja"
+            $taTermin.startDatum -le $heute -and
+            $taTermin.endeDatum -ge $heute
         )
+        $naechster = $false
 
-        $naechster = (
-            $naechsterText.Trim().ToLower() -eq "ja"
-        )
+        if (
+            $taTermin.startDatum -gt $heute -and
+            -not $naechsterTaTerminGesetzt
+        ) {
+            $naechster = $true
+            $naechsterTaTerminGesetzt = $true
+        }
 
         $status = "bevorstehend"
 
@@ -1125,11 +1542,25 @@ $strafenkontoSheet =
             $status = "nächster"
         }
 
-        $kalender.Add(
+        $saisonId = "ta-s{0}" -f $taTermin.saison
+        $saisonName = "GTM Time Attack Saison {0}" -f $taTermin.saison
+        $terminId = "{0}-runde-{1}" -f $saisonId, $taTermin.runde
+
+        [void]$kalender.Add(
             [PSCustomObject][ordered]@{
-                laufnummer    = $laufnummer
-                strecke       = $strecke
-                datum         = Convert-ExcelDate $datumRoh
+                id            = $terminId
+                modul         = "ta"
+                format        = "time-attack"
+                serieId       = "ta"
+                serie         = "GTM Time Attack"
+                saisonId      = $saisonId
+                saison        = [int]$taTermin.saison
+                saisonName    = $saisonName
+                laufnummer    = [int]$taTermin.runde
+                strecke       = $taTermin.strecke
+                zeitraum      = $taTermin.zeitraum
+                datum         = $taTermin.startDatum.ToString("yyyy-MM-dd")
+                datumBis      = $taTermin.endeDatum.ToString("yyyy-MM-dd")
                 abgeschlossen = $abgeschlossen
                 aktuell       = $aktuell
                 naechster     = $naechster
@@ -1138,17 +1569,106 @@ $strafenkontoSheet =
         )
     }
 
+    $funEventsSortiert = @(
+        $funEventQuellen |
+        Sort-Object -Property datumWert, eventName
+    )
+
+    $funZaehlerJeJahr = @{}
+    $naechstesFunEventGesetzt = $false
+    $heute = (Get-Date).Date
+
+    foreach ($funEvent in $funEventsSortiert) {
+        $jahrSchluessel = [string]$funEvent.jahr
+
+        if (-not $funZaehlerJeJahr.ContainsKey($jahrSchluessel)) {
+            $funZaehlerJeJahr[$jahrSchluessel] = 0
+        }
+
+        $funZaehlerJeJahr[$jahrSchluessel]++
+        $laufnummer = [int]$funZaehlerJeJahr[$jahrSchluessel]
+
+        $abgeschlossen = $funEvent.datumWert -lt $heute
+        $aktuell = $funEvent.datumWert -eq $heute
+        $naechster = $false
+
+        if (
+            $funEvent.datumWert -gt $heute -and
+            -not $naechstesFunEventGesetzt
+        ) {
+            $naechster = $true
+            $naechstesFunEventGesetzt = $true
+        }
+
+        $status = "bevorstehend"
+
+        if ($abgeschlossen) {
+            $status = "abgeschlossen"
+        }
+        elseif ($aktuell) {
+            $status = "aktuell"
+        }
+        elseif ($naechster) {
+            $status = "nächster"
+        }
+
+        $saisonId = "fun-{0}" -f $funEvent.jahr
+        $saisonName = "GTM FUN Events {0}" -f $funEvent.jahr
+        $terminId = "{0}-event-{1}" -f $saisonId, $laufnummer
+
+        [void]$kalender.Add(
+            [PSCustomObject][ordered]@{
+                id            = $terminId
+                modul         = "fun"
+                format        = "fun-event"
+                serieId       = "fun"
+                serie         = "GTM FUN Events"
+                saisonId      = $saisonId
+                saison        = [int]$funEvent.jahr
+                saisonName    = $saisonName
+                laufnummer    = $laufnummer
+                eventName     = $funEvent.eventName
+                strecke       = $funEvent.strecke
+                datum         = $funEvent.datum
+                abgeschlossen = $abgeschlossen
+                aktuell       = $aktuell
+                naechster     = $naechster
+                status        = $status
+            }
+        )
+    }
+
+    if ($anzahlKalenderquellen -eq 0) {
+        throw "Keine gültigen Kalender- oder FUN-Event-Blätter gefunden."
+    }
+
     $kalenderSortiert = @(
         $kalender |
-        Sort-Object -Property laufnummer
+        Sort-Object `
+            -Property serieId, saison, laufnummer
     )
+
+    if ($kalenderSortiert.Count -eq 0) {
+        throw "Die erkannten Kalenderquellen enthalten keine gültigen Termine."
+    }
 
     Write-JsonFile `
         -FileName "kalender.json" `
         -Data $kalenderSortiert
 
-    # ========================================================
+    Write-Host (
+        "Kalenderexport abgeschlossen: {0} Masters-Kalender, {1} TA-Kalender, {2} FUN Events, {3} Termine." -f
+        $anzahlMastersKalender,
+        $anzahlTaKalender,
+        $anzahlFunEvents,
+        $kalenderSortiert.Count
+    ) -ForegroundColor Green
+
+
+
+    # =========================================================
     # 5. FAHRZEUGLISTE
+    # =========================================================
     #
     # Zeile 3 enthält die Überschriften.
     #
@@ -1159,7 +1679,30 @@ $strafenkontoSheet =
     # E = Klasse
     # F = Baujahr
     # G = Inhalt / DLC
-    # ========================================================
+    # =========================================================
+
+    $projektHauptordner = Split-Path `
+        -Parent `
+        $PSScriptRoot
+
+    $fahrzeugBildZuordnungPfad = Join-Path `
+        $projektHauptordner `
+        "data\fahrzeug-bildzuordnung.csv"
+
+    $fahrzeugBildZeilen = @()
+
+    if (Test-Path -LiteralPath $fahrzeugBildZuordnungPfad)
+    {
+        $fahrzeugBildZeilen = @(
+            Import-Csv `
+                -LiteralPath $fahrzeugBildZuordnungPfad
+        )
+    }
+    else
+    {
+        Write-Warning `
+            "Die Fahrzeug-Bildzuordnung wurde nicht gefunden: $fahrzeugBildZuordnungPfad"
+    }
 
     $fahrzeuge = New-Object `
         System.Collections.Generic.List[object]
@@ -1173,7 +1716,8 @@ $strafenkontoSheet =
         $row = 4;
         $row -le $letzteFahrzeugZeile;
         $row++
-    ) {
+    )
+    {
         $nummer = [int](
             Get-CellNumber `
                 -Worksheet $fahrzeugeSheet `
@@ -1189,9 +1733,20 @@ $strafenkontoSheet =
         if (
             $nummer -le 0 -or
             [string]::IsNullOrWhiteSpace($anzeigename)
-        ) {
+        )
+        {
             continue
         }
+
+        $bild = [string](
+            $fahrzeugBildZeilen |
+                Where-Object {
+                    [int]$_.nummer -eq $nummer
+                } |
+                Select-Object `
+                    -First 1 `
+                    -ExpandProperty bild
+        )
 
         $fahrzeuge.Add(
             [PSCustomObject][ordered]@{
@@ -1225,13 +1780,15 @@ $strafenkontoSheet =
                     -Worksheet $fahrzeugeSheet `
                     -Row $row `
                     -Column 7
+
+                bild        = $bild
             }
         )
     }
 
     $fahrzeugeSortiert = @(
         $fahrzeuge |
-        Sort-Object -Property nummer
+            Sort-Object -Property nummer
     )
 
     Write-JsonFile `

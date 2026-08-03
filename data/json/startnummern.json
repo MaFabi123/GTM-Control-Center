@@ -163,7 +163,7 @@
         "nummer":  60,
         "status":  "vergeben",
         "fahrer":  "Erkan",
-        "team":  "",
+        "team":  "Stefan Racing",
         "fahrzeug":  "",
         "bild":  "default.png"
     },
@@ -604,6 +604,14 @@
         "status":  "vergeben",
         "fahrer":  "K. Stein",
         "team":  "Effect Motorsport",
+        "fahrzeug":  "",
+        "bild":  "default.png"
+    },
+    {
+        "nummer":  566,
+        "status":  "vergeben",
+        "fahrer":  "J.Rotter",
+        "team":  "",
         "fahrzeug":  "",
         "bild":  "default.png"
     },

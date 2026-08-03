@@ -33,18 +33,93 @@
 
             <div class="container">
 
-                <p class="kalender-eyebrow">
-                    German Touring Masters
+                <p
+                    id="kalender-eyebrow"
+                    class="kalender-eyebrow"
+                >
+                    GTM Rennserien
                 </p>
 
                 <h1>
                     Rennkalender
                 </h1>
 
-                <p class="kalender-intro">
-                    Alle Renntermine der aktuellen GTM Masters Saison
-                    mit Strecke, Datum und Veranstaltungsstatus.
+                <p
+                    id="kalender-intro"
+                    class="kalender-intro"
+                >
+                    Alle Termine der GTM Rennserien mit Strecke,
+                    Datum, Saison und Veranstaltungsstatus.
                 </p>
+
+            </div>
+
+        </section>
+
+        <section
+            class="kalender-naechste"
+            aria-labelledby="kalender-naechste-titel"
+        >
+
+            <div class="container">
+
+                <div class="kalender-naechste-kopf">
+
+                    <div>
+
+                        <p class="kalender-naechste-eyebrow">
+                            Demnächst
+                        </p>
+
+                        <h2 id="kalender-naechste-titel">
+                            Nächste Rennen und Events
+                        </h2>
+
+                    </div>
+
+                    <div
+                        class="kalender-slider-steuerung"
+                        aria-label="Slider steuern"
+                    >
+
+                        <button
+                            id="kalender-slider-zurueck"
+                            type="button"
+                            aria-label="Vorherigen Termin anzeigen"
+                        >
+                            ‹
+                        </button>
+
+                        <button
+                            id="kalender-slider-weiter"
+                            type="button"
+                            aria-label="Nächsten Termin anzeigen"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="kalender-slider"
+                    class="kalender-slider"
+                    aria-live="polite"
+                    aria-roledescription="Karussell"
+                >
+
+                    <div class="kalender-slider-ladezustand">
+                        Nächste Termine werden geladen …
+                    </div>
+
+                </div>
+
+                <div
+                    id="kalender-slider-punkte"
+                    class="kalender-slider-punkte"
+                    aria-label="Termin auswählen"
+                ></div>
 
             </div>
 
@@ -63,7 +138,7 @@
                         </strong>
 
                         <span>
-                            Rennen gesamt
+                            Termine gesamt
                         </span>
 
                     </article>
@@ -99,12 +174,56 @@
                         </strong>
 
                         <span>
-                            Nächster Lauf
+                            Nächster Termin
                         </span>
 
                     </article>
 
                 </div>
+
+            </div>
+
+        </section>
+
+        <section class="kalender-ansicht">
+
+            <div class="container">
+
+                <div
+                    class="kalender-ansicht-reiter"
+                    role="tablist"
+                    aria-label="Kalenderansicht auswählen"
+                >
+
+                    <button
+                        id="kalender-ansicht-aktuell"
+                        class="ist-aktiv"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        data-kalender-ansicht="aktuell"
+                    >
+                        Aktuelle Kalender
+                    </button>
+
+                    <button
+                        id="kalender-ansicht-historie"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-kalender-ansicht="historie"
+                    >
+                        Historie
+                    </button>
+
+                </div>
+
+                <p
+                    id="kalender-ansicht-hinweis"
+                    class="kalender-ansicht-hinweis"
+                >
+                    Laufende Saisons und noch bevorstehende FUN Events.
+                </p>
 
             </div>
 
@@ -119,15 +238,47 @@
                     <label class="kalender-suche">
 
                         <span>
-                            Strecke suchen
+                            Termin suchen
                         </span>
 
                         <input
                             id="kalender-suche"
                             type="search"
                             autocomplete="off"
-                            placeholder="Strecke oder Datum"
+                            placeholder="Strecke, Serie oder Datum"
                         >
+
+                    </label>
+
+                    <label class="kalender-filter">
+
+                        <span>
+                            Serie
+                        </span>
+
+                        <select id="kalender-serie-filter">
+
+                            <option value="">
+                                Alle Serien
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="kalender-filter">
+
+                        <span>
+                            Saison
+                        </span>
+
+                        <select id="kalender-saison-filter">
+
+                            <option value="">
+                                Alle Saisons
+                            </option>
+
+                        </select>
 
                     </label>
 
@@ -140,7 +291,7 @@
                         <select id="kalender-status-filter">
 
                             <option value="">
-                                Alle Rennen
+                                Alle Termine
                             </option>
 
                             <option value="abgeschlossen">
@@ -152,7 +303,7 @@
                             </option>
 
                             <option value="nächster">
-                                Nächster Lauf
+                                Nächster Termin
                             </option>
 
                             <option value="bevorstehend">
@@ -177,6 +328,14 @@
 
                             <option value="datum">
                                 Datum
+                            </option>
+
+                            <option value="serie">
+                                Serie
+                            </option>
+
+                            <option value="saison">
+                                Saison
                             </option>
 
                             <option value="status">
@@ -219,7 +378,193 @@
                     class="keine-rennen"
                     hidden
                 >
-                    Keine passenden Rennen gefunden.
+                    Keine passenden Termine gefunden.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section
+            class="kalender-ausblick"
+            aria-labelledby="kalender-ausblick-titel"
+        >
+
+            <div class="container">
+
+                <div class="kalender-ausblick-kopf">
+
+                    <p class="kalender-ausblick-eyebrow">
+                        Ausblick
+                    </p>
+
+                    <h2 id="kalender-ausblick-titel">
+                        Kommende Saisons und FUN Events
+                    </h2>
+
+                    <p>
+                        Zukünftige Masters- und Time-Attack-Saisons sowie
+                        neue FUN Events werden automatisch freigeschaltet,
+                        sobald erste Termine vorhanden sind.
+                    </p>
+
+                </div>
+
+                <div class="kalender-ausblick-grid">
+
+                    <button
+                        id="kalender-naechste-saison-karte"
+                        class="kalender-vorschau-karte ist-gesperrt"
+                        type="button"
+                        data-vorschau="masters-naechste-saison"
+                        data-serie-id="masters"
+                        disabled
+                    >
+
+                        <span class="kalender-vorschau-bild">
+
+                            <img
+                                src="assets/images/logo/gtm-logo.png"
+                                alt=""
+                            >
+
+                            <span
+                                id="kalender-naechste-saison-status"
+                                class="kalender-vorschau-status"
+                            >
+                                In Vorbereitung
+                            </span>
+
+                        </span>
+
+                        <span class="kalender-vorschau-inhalt">
+
+                            <span class="kalender-vorschau-serie">
+                                GTM Masters
+                            </span>
+
+                            <strong id="kalender-naechste-saison-titel">
+                                Nächste Saison
+                            </strong>
+
+                            <span id="kalender-naechste-saison-hinweis">
+                                Der neue Rennkalender erscheint hier,
+                                sobald erste Termine feststehen.
+                            </span>
+
+                            <span
+                                id="kalender-naechste-saison-aktion"
+                                class="kalender-vorschau-aktion"
+                            >
+                                Noch nicht verfügbar
+                            </span>
+
+                        </span>
+
+                    </button>
+
+                    <button
+                        id="kalender-ta-naechste-saison-karte"
+                        class="kalender-vorschau-karte ist-gesperrt"
+                        type="button"
+                        data-vorschau="ta-naechste-saison"
+                        data-serie-id="ta"
+                        disabled
+                    >
+
+                        <span class="kalender-vorschau-bild">
+
+                            <img
+                                src="assets/images/logo/gtm-logo.png"
+                                alt=""
+                            >
+
+                            <span
+                                id="kalender-ta-naechste-saison-status"
+                                class="kalender-vorschau-status"
+                            >
+                                In Vorbereitung
+                            </span>
+
+                        </span>
+
+                        <span class="kalender-vorschau-inhalt">
+
+                            <span class="kalender-vorschau-serie">
+                                GTM Time Attack
+                            </span>
+
+                            <strong id="kalender-ta-naechste-saison-titel">
+                                Nächste TA-Saison
+                            </strong>
+
+                            <span id="kalender-ta-naechste-saison-hinweis">
+                                Weitere Time-Attack-Saisons erscheinen hier,
+                                sobald erste Termine feststehen.
+                            </span>
+
+                            <span
+                                id="kalender-ta-naechste-saison-aktion"
+                                class="kalender-vorschau-aktion"
+                            >
+                                Noch nicht verfügbar
+                            </span>
+
+                        </span>
+
+                    </button>
+
+                    <button
+                        id="kalender-fun-karte"
+                        class="kalender-vorschau-karte ist-gesperrt"
+                        type="button"
+                        data-vorschau="fun"
+                        data-serie-id="fun"
+                        disabled
+                    >
+
+                        <span class="kalender-vorschau-bild">
+
+                            <img
+                                src="assets/images/logo/gtm-logo.png"
+                                alt=""
+                            >
+
+                            <span
+                                id="kalender-fun-status"
+                                class="kalender-vorschau-status"
+                            >
+                                In Vorbereitung
+                            </span>
+
+                        </span>
+
+                        <span class="kalender-vorschau-inhalt">
+
+                            <span class="kalender-vorschau-serie">
+                                Sonderveranstaltungen
+                            </span>
+
+                            <strong id="kalender-fun-titel">
+                                GTM FUN Events
+                            </strong>
+
+                            <span id="kalender-fun-hinweis">
+                                Sobald konkrete FUN Events eingetragen sind,
+                                wird dieser Bereich automatisch freigeschaltet.
+                            </span>
+
+                            <span
+                                id="kalender-fun-aktion"
+                                class="kalender-vorschau-aktion"
+                            >
+                                Noch keine Termine
+                            </span>
+
+                        </span>
+
+                    </button>
+
                 </div>
 
             </div>

@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
        FAHRZEUGKARTE
     ====================================================== */
 
-    function createCard(fahrzeug) {
+        function createCard(fahrzeug) {
         const manufacturer =
             escapeHtml(
                 getManufacturer(fahrzeug)
@@ -209,11 +209,30 @@ document.addEventListener("DOMContentLoaded", async () => {
                 )
             );
 
+        const imageFile =
+            String(fahrzeug?.bild || "").trim();
+
+        const vehicleImage =
+            imageFile
+                ? `
+                    <div class="fahrzeug-bild">
+                        <img
+                            src="assets/images/fahrzeuge/${escapeHtml(imageFile)}"
+                            alt="${vehicleName}"
+                            loading="lazy"
+                            onerror="
+                                this.onerror = null;
+                                this.closest('.fahrzeug-bild').hidden = true;
+                            "
+                        >
+                    </div>
+                `
+                : "";
+
         return `
             <article class="fahrzeug-karte">
 
                 <div class="fahrzeug-logo">
-
                     <img
                         src="${logo}"
                         alt="Logo ${manufacturer}"
@@ -223,8 +242,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             this.src = 'assets/images/hersteller/default.png';
                         "
                     >
-
                 </div>
+
+                ${vehicleImage}
 
                 <div class="fahrzeug-content">
 
@@ -239,7 +259,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="fahrzeug-grid">
 
                         <div>
-
                             <span>
                                 Klasse
                             </span>
@@ -247,11 +266,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <strong>
                                 ${className}
                             </strong>
-
                         </div>
 
                         <div>
-
                             <span>
                                 Baujahr
                             </span>
@@ -259,11 +276,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <strong>
                                 ${year || "–"}
                             </strong>
-
                         </div>
 
                         <div>
-
                             <span>
                                 DLC
                             </span>
@@ -271,7 +286,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <strong>
                                 ${dlc}
                             </strong>
-
                         </div>
 
                     </div>

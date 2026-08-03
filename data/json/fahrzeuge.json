@@ -6,7 +6,8 @@
         "fahrzeug":  "V8 Vantage GT3",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Aston-Martin-V8-Vantage-2019.png"
     },
     {
         "nummer":  2,
@@ -15,7 +16,8 @@
         "fahrzeug":  "V12 Vantage GT3",
         "klasse":  "GT3",
         "baujahr":  2013,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Aston-Martin-V12-Vantage-2013.png"
     },
     {
         "nummer":  3,
@@ -24,7 +26,8 @@
         "fahrzeug":  "R8 LMS GT3",
         "klasse":  "GT3",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Audi-R8-LMS-2015.png"
     },
     {
         "nummer":  4,
@@ -33,7 +36,8 @@
         "fahrzeug":  "R8 LMS GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Audi-R8-LMS-Evo-2019.png"
     },
     {
         "nummer":  5,
@@ -42,7 +46,8 @@
         "fahrzeug":  "Continental GT3",
         "klasse":  "GT3",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Bentley-Continental-GT3-2015.png"
     },
     {
         "nummer":  6,
@@ -51,7 +56,8 @@
         "fahrzeug":  "Continental GT3",
         "klasse":  "GT3",
         "baujahr":  2018,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Bentley-Continental-GT3-2018.png"
     },
     {
         "nummer":  7,
@@ -60,7 +66,8 @@
         "fahrzeug":  "M4 GT3",
         "klasse":  "GT3",
         "baujahr":  2022,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "BMW-M4-GT3-2022.png"
     },
     {
         "nummer":  8,
@@ -69,7 +76,8 @@
         "fahrzeug":  "M6 GT3",
         "klasse":  "GT3",
         "baujahr":  2017,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "BMW-M6-GT3-2017.png"
     },
     {
         "nummer":  9,
@@ -78,7 +86,8 @@
         "fahrzeug":  "488 GT3",
         "klasse":  "GT3",
         "baujahr":  2018,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Ferrari-488-GT3-2018.png"
     },
     {
         "nummer":  10,
@@ -87,7 +96,8 @@
         "fahrzeug":  "Mustang GT3",
         "klasse":  "GT3",
         "baujahr":  2024,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Ford-Mustang-GT3-2024.png"
     },
     {
         "nummer":  11,
@@ -96,7 +106,8 @@
         "fahrzeug":  "NSX GT3",
         "klasse":  "GT3",
         "baujahr":  2017,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Honda-NSX-GT3-2017.png"
     },
     {
         "nummer":  12,
@@ -105,7 +116,8 @@
         "fahrzeug":  "NSX GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Honda-NSX-GT3-Evo-2019.png"
     },
     {
         "nummer":  13,
@@ -114,7 +126,8 @@
         "fahrzeug":  "Emil Frey G3",
         "klasse":  "GT3",
         "baujahr":  2012,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Jaguar-Emil-Frey-GT3-2012.png"
     },
     {
         "nummer":  14,
@@ -123,7 +136,8 @@
         "fahrzeug":  "Huracán GT3",
         "klasse":  "GT3",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Lamborghini-Huracan-GT3-2015.png"
     },
     {
         "nummer":  15,
@@ -132,7 +146,8 @@
         "fahrzeug":  "Huracán GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Lamborghini-Huracan-GT3-Evo-2019.png"
     },
     {
         "nummer":  16,
@@ -141,7 +156,8 @@
         "fahrzeug":  "RC F GT3",
         "klasse":  "GT3",
         "baujahr":  2016,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  ""
     },
     {
         "nummer":  17,
@@ -150,7 +166,8 @@
         "fahrzeug":  "720S GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2023,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "McLaren-720S-GT3-EVO-2023.png"
     },
     {
         "nummer":  18,
@@ -159,7 +176,8 @@
         "fahrzeug":  "720S GT3",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "McLaren-720S-GT3-2019.png"
     },
     {
         "nummer":  19,
@@ -168,7 +186,8 @@
         "fahrzeug":  "650S GT3",
         "klasse":  "GT3",
         "baujahr":  2016,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "McLaren-650S-GT3-2015.png"
     },
     {
         "nummer":  20,
@@ -177,7 +196,8 @@
         "fahrzeug":  "AMG GT3",
         "klasse":  "GT3",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Mercedes-AMG-GT3-2015.png"
     },
     {
         "nummer":  21,
@@ -186,7 +206,8 @@
         "fahrzeug":  "GT-R Nismo GT3",
         "klasse":  "GT3",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Nissan-GT-R-Nismo-GT3-2015.png"
     },
     {
         "nummer":  22,
@@ -195,7 +216,8 @@
         "fahrzeug":  "GT-R Nismo GT3",
         "klasse":  "GT3",
         "baujahr":  2018,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Nissan-GT-R-Nismo-GT3-2018.png"
     },
     {
         "nummer":  23,
@@ -204,7 +226,8 @@
         "fahrzeug":  "911 GT3 R (991)",
         "klasse":  "GT3",
         "baujahr":  2018,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Porsche-991-GT3-R-2018.png"
     },
     {
         "nummer":  24,
@@ -213,7 +236,8 @@
         "fahrzeug":  "911 GT3 R (991 II)",
         "klasse":  "GT3",
         "baujahr":  2019,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Porsche-991II-GT3-R-2019.png"
     },
     {
         "nummer":  25,
@@ -222,7 +246,8 @@
         "fahrzeug":  "R-EX GT3",
         "klasse":  "GT3",
         "baujahr":  2017,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  "Reiter-Engineering-R-EX-GT3-2017.png"
     },
     {
         "nummer":  26,
@@ -231,7 +256,8 @@
         "fahrzeug":  "488 GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2020,
-        "inhalt":  "2020 GT World Challenge Pack"
+        "inhalt":  "2020 GT World Challenge Pack",
+        "bild":  "Ferrari-488-GT3-Evo-2020.png"
     },
     {
         "nummer":  27,
@@ -240,7 +266,8 @@
         "fahrzeug":  "AMG GT3 Evo",
         "klasse":  "GT3",
         "baujahr":  2020,
-        "inhalt":  "2020 GT World Challenge Pack"
+        "inhalt":  "2020 GT World Challenge Pack",
+        "bild":  "Mercedes-AMG-GT3-2020.png"
     },
     {
         "nummer":  28,
@@ -249,7 +276,8 @@
         "fahrzeug":  "R8 LMS GT3 Evo II",
         "klasse":  "GT3",
         "baujahr":  2022,
-        "inhalt":  "Challengers Pack"
+        "inhalt":  "Challengers Pack",
+        "bild":  "Audi-R8-LMS-Evo-II-2022.png"
     },
     {
         "nummer":  29,
@@ -258,7 +286,8 @@
         "fahrzeug":  "296 GT3",
         "klasse":  "GT3",
         "baujahr":  2023,
-        "inhalt":  "2023 GT World Challenge Pack"
+        "inhalt":  "2023 GT World Challenge Pack",
+        "bild":  "Ferrari-296-GT3-2023.png"
     },
     {
         "nummer":  30,
@@ -267,7 +296,8 @@
         "fahrzeug":  "Huracán GT3 EVO2",
         "klasse":  "GT3",
         "baujahr":  2023,
-        "inhalt":  "2023 GT World Challenge Pack"
+        "inhalt":  "2023 GT World Challenge Pack",
+        "bild":  "Lamborghini-Huracan-GT3-EVO2-2023.png"
     },
     {
         "nummer":  31,
@@ -276,7 +306,8 @@
         "fahrzeug":  "911 GT3 R (992)",
         "klasse":  "GT3",
         "baujahr":  2023,
-        "inhalt":  "2023 GT World Challenge Pack"
+        "inhalt":  "2023 GT World Challenge Pack",
+        "bild":  "Porsche-992-GT3-R-2023.png"
     },
     {
         "nummer":  32,
@@ -285,7 +316,8 @@
         "fahrzeug":  "A110 GT4",
         "klasse":  "GT4",
         "baujahr":  2018,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Alpine-A110-GT4-2018.png"
     },
     {
         "nummer":  33,
@@ -294,7 +326,8 @@
         "fahrzeug":  "V8 Vantage GT4",
         "klasse":  "GT4",
         "baujahr":  2018,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Aston-Martin-AMR-V8-Vantage-GT4-2018.png"
     },
     {
         "nummer":  34,
@@ -303,7 +336,8 @@
         "fahrzeug":  "R8 LMS GT4",
         "klasse":  "GT4",
         "baujahr":  2018,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Audi-R8-LMS-GT4-2018.png"
     },
     {
         "nummer":  35,
@@ -312,7 +346,8 @@
         "fahrzeug":  "M4 GT4",
         "klasse":  "GT4",
         "baujahr":  2018,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "BMW-M4-GT4-2018.png"
     },
     {
         "nummer":  36,
@@ -321,7 +356,8 @@
         "fahrzeug":  "Camaro GT4.R",
         "klasse":  "GT4",
         "baujahr":  2017,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Chevrolet-Camaro-GT4.R-2017.png"
     },
     {
         "nummer":  37,
@@ -330,7 +366,8 @@
         "fahrzeug":  "G55 GT4",
         "klasse":  "GT4",
         "baujahr":  2012,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Ginetta-G55-GT4-2012.png"
     },
     {
         "nummer":  38,
@@ -339,7 +376,8 @@
         "fahrzeug":  "X-Bow GT4",
         "klasse":  "GT4",
         "baujahr":  2016,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "KTM-X-Bow-GT4-2016.png"
     },
     {
         "nummer":  39,
@@ -348,7 +386,8 @@
         "fahrzeug":  "GranTurismo MC GT4",
         "klasse":  "GT4",
         "baujahr":  2016,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Maserati-GranTurismo-MC-GT4-2016.png"
     },
     {
         "nummer":  40,
@@ -357,7 +396,8 @@
         "fahrzeug":  "570S GT4",
         "klasse":  "GT4",
         "baujahr":  2016,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "McLaren-570S-GT4-2016.png"
     },
     {
         "nummer":  41,
@@ -366,7 +406,8 @@
         "fahrzeug":  "AMG GT4",
         "klasse":  "GT4",
         "baujahr":  2016,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Mercedes-AMG-GT4-2016.png"
     },
     {
         "nummer":  42,
@@ -375,7 +416,8 @@
         "fahrzeug":  "718 Cayman GT4 Clubsport",
         "klasse":  "GT4",
         "baujahr":  2019,
-        "inhalt":  "GT4 Pack"
+        "inhalt":  "GT4 Pack",
+        "bild":  "Porsche-718-Cayman-GT4-Clubsport-2019.png"
     },
     {
         "nummer":  43,
@@ -384,7 +426,8 @@
         "fahrzeug":  "R8 LMS GT2",
         "klasse":  "GT2",
         "baujahr":  2021,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "Audi-R8-LMS-GT2.png"
     },
     {
         "nummer":  44,
@@ -393,7 +436,8 @@
         "fahrzeug":  "X-Bow GT2",
         "klasse":  "GT2",
         "baujahr":  2024,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "KTM-X-BOW-GT2.png"
     },
     {
         "nummer":  45,
@@ -402,7 +446,8 @@
         "fahrzeug":  "MC20 GT2",
         "klasse":  "GT2",
         "baujahr":  2023,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "Maserati-MC20-GT2.png"
     },
     {
         "nummer":  46,
@@ -411,7 +456,8 @@
         "fahrzeug":  "AMG GT2",
         "klasse":  "GT2",
         "baujahr":  2022,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "Mercedes-AMG-GT2.png"
     },
     {
         "nummer":  47,
@@ -420,7 +466,8 @@
         "fahrzeug":  "911 GT2 RS Clubsport Evo",
         "klasse":  "GT2",
         "baujahr":  2023,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "Porsche-991II-GT2-RS-CS-Evo.png"
     },
     {
         "nummer":  48,
@@ -429,7 +476,8 @@
         "fahrzeug":  "935",
         "klasse":  "GT2",
         "baujahr":  2019,
-        "inhalt":  "GT2 Pack"
+        "inhalt":  "GT2 Pack",
+        "bild":  "Porsche-935.png"
     },
     {
         "nummer":  49,
@@ -438,7 +486,8 @@
         "fahrzeug":  "488 Challenge Evo",
         "klasse":  "GTC",
         "baujahr":  2020,
-        "inhalt":  "Challengers Pack"
+        "inhalt":  "Challengers Pack",
+        "bild":  "Ferrari-488-Challenge-Evo-2020.png"
     },
     {
         "nummer":  50,
@@ -447,7 +496,8 @@
         "fahrzeug":  "Huracán Super Trofeo",
         "klasse":  "GTC",
         "baujahr":  2015,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  ""
     },
     {
         "nummer":  51,
@@ -456,7 +506,8 @@
         "fahrzeug":  "Huracán Super Trofeo EVO2",
         "klasse":  "GTC",
         "baujahr":  2021,
-        "inhalt":  "Challengers Pack"
+        "inhalt":  "Challengers Pack",
+        "bild":  "Lamborghini-Huracan-ST-EVO2-2021.png"
     },
     {
         "nummer":  52,
@@ -465,7 +516,8 @@
         "fahrzeug":  "911 GT3 Cup (991 II)",
         "klasse":  "GTC",
         "baujahr":  2017,
-        "inhalt":  "Grundspiel"
+        "inhalt":  "Grundspiel",
+        "bild":  ""
     },
     {
         "nummer":  53,
@@ -474,7 +526,8 @@
         "fahrzeug":  "911 GT3 Cup (992)",
         "klasse":  "GTC",
         "baujahr":  2021,
-        "inhalt":  "Challengers Pack"
+        "inhalt":  "Challengers Pack",
+        "bild":  "Porsche-992-GT3-Cup-2021.png"
     },
     {
         "nummer":  54,
@@ -483,6 +536,7 @@
         "fahrzeug":  "M2 CS Racing",
         "klasse":  "TCX",
         "baujahr":  2020,
-        "inhalt":  "Challengers Pack"
+        "inhalt":  "Challengers Pack",
+        "bild":  "BMW-M2-CS-Racing-2020.png"
     }
 ]
