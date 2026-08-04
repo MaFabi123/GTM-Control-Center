@@ -1,0 +1,342 @@
+/* ==========================================================
+   GTM FAHRZEUGPROFIL
+========================================================== */
+
+.fahrzeugprofil-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 80% 5%, rgba(130, 0, 0, 0.17), transparent 32rem),
+        #080808;
+}
+
+.fahrzeugprofil-laden,
+.fahrzeugprofil-fehler {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    color: #999999;
+    text-align: center;
+}
+
+.fahrzeugprofil-hero {
+    padding: 42px 0 28px;
+}
+
+.fahrzeugprofil-zurueck {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    margin-bottom: 20px;
+    color: #d0d0d0;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.fahrzeugprofil-zurueck:hover,
+.fahrzeugprofil-zurueck:focus-visible {
+    color: #ffffff;
+}
+
+.fahrzeugprofil-hero-karte {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(420px, 56%) minmax(0, 1fr);
+    min-height: 420px;
+    background: linear-gradient(145deg, #202020, #101010);
+    border: 1px solid #343434;
+    border-radius: 24px;
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.34);
+}
+
+.fahrzeugprofil-foto {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    background: linear-gradient(145deg, #280303, #111111);
+}
+
+.fahrzeugprofil-foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fahrzeugprofil-foto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 68%, #141414 100%);
+    pointer-events: none;
+}
+
+.fahrzeugprofil-hero-inhalt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(34px, 5vw, 65px);
+}
+
+.fahrzeugprofil-eyebrow,
+.fahrzeugprofil-bereich-kopf p {
+    margin: 0 0 7px;
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.fahrzeugprofil-hero-inhalt h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.94;
+    overflow-wrap: anywhere;
+}
+
+.fahrzeugprofil-hersteller {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 16px;
+    padding: 7px 11px;
+    color: #ffffff;
+    background: #d40000;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.fahrzeugprofil-bereich {
+    padding: 28px 0;
+}
+
+.fahrzeugprofil-bereich-kopf {
+    margin-bottom: 18px;
+}
+
+.fahrzeugprofil-bereich-kopf h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.fahrzeugprofil-statistik {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.fahrzeugprofil-statistik article {
+    padding: 22px 10px;
+    text-align: center;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #333333;
+    border-radius: 15px;
+}
+
+.fahrzeugprofil-statistik strong,
+.fahrzeugprofil-statistik span {
+    display: block;
+}
+
+.fahrzeugprofil-statistik strong {
+    color: #ffffff;
+    font-size: clamp(1.35rem, 3vw, 2.15rem);
+    font-weight: 900;
+}
+
+.fahrzeugprofil-statistik span {
+    margin-top: 6px;
+    color: #838383;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.fahrzeugprofil-daten {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.fahrzeugprofil-daten article {
+    padding: 20px;
+    background: #171717;
+    border: 1px solid #323232;
+    border-radius: 14px;
+}
+
+.fahrzeugprofil-daten span,
+.fahrzeugprofil-daten strong {
+    display: block;
+}
+
+.fahrzeugprofil-daten span {
+    color: #7f7f7f;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.fahrzeugprofil-daten strong {
+    margin-top: 7px;
+    color: #ffffff;
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.fahrzeugprofil-freisteller {
+    display: grid;
+    grid-template-columns: minmax(280px, 42%) minmax(0, 1fr);
+    overflow: hidden;
+    min-height: 320px;
+    background: linear-gradient(145deg, #1b1b1b, #101010);
+    border: 1px solid #343434;
+    border-radius: 20px;
+}
+
+.fahrzeugprofil-freisteller-bild {
+    display: grid;
+    min-height: 320px;
+    place-items: center;
+    padding: 22px;
+    background:
+        linear-gradient(45deg, #161616 25%, transparent 25%),
+        linear-gradient(-45deg, #161616 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #161616 75%),
+        linear-gradient(-45deg, transparent 75%, #161616 75%),
+        #101010;
+    background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    background-size: 24px 24px;
+}
+
+.fahrzeugprofil-freisteller-bild img {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.fahrzeugprofil-freisteller-platzhalter {
+    max-width: 270px;
+    color: #8c8c8c;
+    text-align: center;
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.fahrzeugprofil-freisteller-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(28px, 5vw, 55px);
+}
+
+.fahrzeugprofil-freisteller-text span {
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fahrzeugprofil-freisteller-text h3 {
+    margin: 8px 0 10px;
+    color: #ffffff;
+    font-size: clamp(1.6rem, 4vw, 2.7rem);
+    font-weight: 900;
+}
+
+.fahrzeugprofil-freisteller-text p {
+    margin: 0;
+    color: #929292;
+    line-height: 1.6;
+}
+
+.fahrzeugprofil-fahrer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.fahrzeugprofil-fahrer {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 13px;
+    padding: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #323232;
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fahrzeugprofil-fahrer:hover,
+.fahrzeugprofil-fahrer:focus-visible {
+    color: #ffffff;
+    transform: translateY(-3px);
+    border-color: rgba(212, 0, 0, 0.75);
+}
+
+.fahrzeugprofil-fahrer-nummer {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #d40000, #840000);
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+.fahrzeugprofil-fahrer strong,
+.fahrzeugprofil-fahrer span {
+    display: block;
+}
+
+.fahrzeugprofil-fahrer span {
+    margin-top: 4px;
+    color: #858585;
+    font-size: 0.75rem;
+}
+
+@media (max-width: 1100px) {
+    .fahrzeugprofil-statistik {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .fahrzeugprofil-daten,
+    .fahrzeugprofil-fahrer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .fahrzeugprofil-hero-karte,
+    .fahrzeugprofil-freisteller {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrzeugprofil-foto::after {
+        background: linear-gradient(180deg, transparent 70%, #141414 100%);
+    }
+}
+
+@media (max-width: 600px) {
+    .fahrzeugprofil-statistik,
+    .fahrzeugprofil-daten,
+    .fahrzeugprofil-fahrer-grid {
+        grid-template-columns: 1fr;
+    }
+}

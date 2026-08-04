@@ -11,7 +11,29 @@
         "wertung":  757,
         "fastLap":  8,
         "fahrzeugwechsel":  0,
-        "punkte":  765
+        "punkte":  765,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  478,
@@ -25,7 +47,20 @@
         "wertung":  597,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  587
+        "punkte":  587,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  7,
@@ -39,7 +74,46 @@
         "wertung":  535,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  520
+        "punkte":  520,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  232,
@@ -53,7 +127,46 @@
         "wertung":  514,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  514
+        "punkte":  514,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  69,
@@ -67,7 +180,46 @@
         "wertung":  443,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  443
+        "punkte":  443,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  206,
@@ -81,35 +233,83 @@
         "wertung":  437,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  437
+        "punkte":  437,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  3,
         "name":  "Pascal",
         "team":  "PM Performance by GHc",
         "teamZuordnung":  "PM Performance by GHc",
-        "bild":  "default.png",
+        "bild":  "3.png",
         "aktiveSaison":  true,
         "platzierung":  7,
         "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
         "wertung":  422,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  417
-    },
-    {
-        "nummer":  21,
-        "name":  "O. Gambert",
-        "team":  "DarkTrade Racing by GHc",
-        "teamZuordnung":  "DarkTrade Racing by GHc",
-        "bild":  "default.png",
-        "aktiveSaison":  true,
-        "platzierung":  8,
-        "fahrzeug":  "BMW M4 GT3",
-        "wertung":  404,
-        "fastLap":  0,
-        "fahrzeugwechsel":  0,
-        "punkte":  404
+        "punkte":  417,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  118,
@@ -123,7 +323,29 @@
         "wertung":  360,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  360
+        "punkte":  360,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  77,
@@ -137,7 +359,38 @@
         "wertung":  350,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  350
+        "punkte":  350,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  56,
@@ -151,21 +404,99 @@
         "wertung":  346,
         "fastLap":  0,
         "fahrzeugwechsel":  30,
-        "punkte":  306
+        "punkte":  306,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  872,
         "name":  "A. Löbcke",
         "team":  "Rennsteig Racing",
         "teamZuordnung":  "Rennsteig Racing I",
-        "bild":  "default.png",
+        "bild":  "872.png",
         "aktiveSaison":  true,
         "platzierung":  12,
         "fahrzeug":  "Ferrari 296 GT3",
         "wertung":  289,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  289
+        "punkte":  289,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  971,
@@ -179,7 +510,38 @@
         "wertung":  288,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  288
+        "punkte":  288,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  169,
@@ -193,7 +555,38 @@
         "wertung":  262,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  262
+        "punkte":  262,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  80,
@@ -207,35 +600,127 @@
         "wertung":  191,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  191
+        "punkte":  191,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  15,
         "name":  "Mike McFly",
         "team":  "Golden Graining by GHc",
         "teamZuordnung":  "Golden Graining by GHc",
-        "bild":  "default.png",
+        "bild":  "15.png",
         "aktiveSaison":  true,
         "platzierung":  16,
         "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
         "wertung":  186,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  186
+        "punkte":  186,
+        "serien":  [
+                       "fun",
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  141,
         "name":  "F. Hopf",
         "team":  "Rennsteig Racing",
         "teamZuordnung":  "Rennsteig Racing I",
-        "bild":  "default.png",
+        "bild":  "141.png",
         "aktiveSaison":  true,
         "platzierung":  17,
         "fahrzeug":  "Ferrari 296 GT3",
         "wertung":  177,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  177
+        "punkte":  177,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  696,
@@ -249,7 +734,29 @@
         "wertung":  157,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  157
+        "punkte":  157,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  72,
@@ -263,7 +770,20 @@
         "wertung":  155,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  155
+        "punkte":  155,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  812,
@@ -277,7 +797,29 @@
         "wertung":  135,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  135
+        "punkte":  135,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  261,
@@ -291,21 +833,65 @@
         "wertung":  107,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  97
+        "punkte":  97,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  88,
         "name":  "Mariusz",
         "team":  "PM Performance by GHc",
         "teamZuordnung":  "PM Performance by GHc",
-        "bild":  "default.png",
+        "bild":  "88.png",
         "aktiveSaison":  true,
         "platzierung":  22,
         "fahrzeug":  "Ferrari 296 GT3",
         "wertung":  88,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  88
+        "punkte":  88,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  25,
@@ -319,7 +905,20 @@
         "wertung":  85,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  85
+        "punkte":  85,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  420,
@@ -333,7 +932,20 @@
         "wertung":  87,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  77
+        "punkte":  77,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  95,
@@ -347,7 +959,20 @@
         "wertung":  52,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  52
+        "punkte":  52,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  47,
@@ -361,7 +986,38 @@
         "wertung":  36,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  31
+        "punkte":  31,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  92,
@@ -375,7 +1031,20 @@
         "wertung":  36,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  21
+        "punkte":  21,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  19,
@@ -389,7 +1058,29 @@
         "wertung":  12,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  7
+        "punkte":  7,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  16,
@@ -403,7 +1094,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  296,
@@ -417,7 +1121,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ]
     },
     {
         "nummer":  5,
@@ -431,7 +1148,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  8,
@@ -445,7 +1168,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  9,
@@ -459,7 +1195,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  10,
@@ -473,7 +1215,47 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
+    },
+    {
+        "nummer":  20,
+        "name":  "O. Gambert",
+        "team":  "DarkTrade Racing by GHc",
+        "teamZuordnung":  "DarkTrade Racing by GHc",
+        "bild":  "default.png",
+        "aktiveSaison":  false,
+        "platzierung":  0,
+        "fahrzeug":  "",
+        "wertung":  0,
+        "fastLap":  0,
+        "fahrzeugwechsel":  0,
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  23,
@@ -487,7 +1269,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  24,
@@ -501,7 +1289,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  28,
@@ -515,7 +1309,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  33,
@@ -529,7 +1329,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  39,
@@ -543,7 +1349,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  46,
@@ -557,7 +1369,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  50,
@@ -571,7 +1389,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  60,
@@ -585,7 +1409,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "fun"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           }
+                       ]
     },
     {
         "nummer":  65,
@@ -599,7 +1436,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  66,
@@ -613,7 +1456,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  68,
@@ -627,7 +1476,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  74,
@@ -641,7 +1496,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  76,
@@ -655,7 +1516,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  79,
@@ -669,7 +1536,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  81,
@@ -683,7 +1556,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  84,
@@ -697,7 +1576,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  86,
@@ -711,7 +1596,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  90,
@@ -725,7 +1616,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  97,
@@ -739,7 +1636,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  99,
@@ -753,7 +1663,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  100,
@@ -767,7 +1683,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  111,
@@ -781,7 +1703,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  112,
@@ -795,7 +1723,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  131,
@@ -809,7 +1743,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  133,
@@ -823,7 +1763,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  136,
@@ -837,7 +1783,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  156,
@@ -851,7 +1803,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  177,
@@ -865,7 +1830,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  187,
@@ -879,7 +1850,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  189,
@@ -893,7 +1870,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  214,
@@ -907,7 +1890,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  219,
@@ -921,7 +1910,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  224,
@@ -935,7 +1930,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  226,
@@ -949,7 +1950,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  258,
@@ -963,7 +1970,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  271,
@@ -977,7 +1990,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  279,
@@ -991,7 +2010,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  303,
@@ -1005,7 +2030,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  349,
@@ -1019,7 +2050,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  389,
@@ -1033,7 +2070,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  393,
@@ -1047,7 +2090,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  403,
@@ -1061,7 +2110,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  444,
@@ -1075,7 +2137,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  445,
@@ -1089,7 +2157,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  511,
@@ -1103,7 +2177,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  512,
@@ -1117,7 +2204,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  566,
@@ -1131,7 +2224,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  611,
@@ -1145,7 +2244,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  707,
@@ -1159,7 +2264,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  710,
@@ -1173,7 +2284,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  717,
@@ -1187,7 +2304,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  777,
@@ -1201,7 +2324,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  787,
@@ -1215,7 +2344,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  880,
@@ -1229,7 +2364,20 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     },
     {
         "nummer":  908,
@@ -1243,7 +2391,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  911,
@@ -1257,7 +2411,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  987,
@@ -1271,7 +2431,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  991,
@@ -1285,7 +2451,13 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ]
     },
     {
         "nummer":  997,
@@ -1299,6 +2471,19 @@
         "wertung":  0,
         "fastLap":  0,
         "fahrzeugwechsel":  0,
-        "punkte":  0
+        "punkte":  0,
+        "serien":  [
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
     }
 ]

@@ -256,8 +256,39 @@
 .kalender-slider-bild {
     position: relative;
     overflow: hidden;
+    display: block;
     min-height: 335px;
+    color: #ffffff;
+    text-decoration: none;
     background: #090909;
+}
+
+.kalender-slider-bild:focus-visible {
+    outline: 2px solid #ed0000;
+    outline-offset: -3px;
+}
+
+.kalender-slider-streckenlink {
+    position: absolute;
+    right: 22px;
+    top: 20px;
+    z-index: 3;
+    padding: 7px 10px;
+    color: #ffffff;
+    background: rgba(10, 10, 10, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    font-size: 0.62rem;
+    font-weight: 900;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.kalender-slider-bild:hover .kalender-slider-streckenlink,
+.kalender-slider-bild:focus-visible .kalender-slider-streckenlink {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .kalender-slider-foto {
@@ -1069,11 +1100,42 @@
     position: relative;
     z-index: 2;
     overflow: hidden;
+    display: block;
     min-height: 165px;
     margin-bottom: 17px;
+    color: #ffffff;
+    text-decoration: none;
     background: #0b0b0b;
     border: 1px solid #333333;
     border-radius: 14px;
+}
+
+.kalender-streckenmedium:focus-visible {
+    outline: 2px solid #ed0000;
+    outline-offset: 2px;
+}
+
+.kalender-streckenlink {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    z-index: 4;
+    padding: 6px 9px;
+    color: #ffffff;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 7px;
+    font-size: 0.58rem;
+    font-weight: 900;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.kalender-streckenmedium:hover .kalender-streckenlink,
+.kalender-streckenmedium:focus-visible .kalender-streckenlink {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .kalender-streckenfoto {

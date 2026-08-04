@@ -1,58 +1,76 @@
-/* ==========================================
+/* ==========================================================
    GTM CONTROL CENTER
-   Komponenten und echte Startseitendaten
-========================================== */
+   Globale Komponenten, Dashboard und Footer
+========================================================== */
+
+const GTM_TRACK_ASSETS = {
+    "barcelona": "barcelona",
+    "bathurst": "bathurst",
+    "brands hatch": "brandshatch",
+    "cota": "cota",
+    "donington park": "doningtonpark",
+    "hungaroring": "hungaroring",
+    "imola": "imola",
+    "indianapolis": "indianapolis",
+    "kyalami": "kyalami",
+    "laguna seca": "lagunaseca",
+    "misano": "misano",
+    "monza": "monza",
+    "nürburgring 24h": "nuerburgring24h",
+    "nurburgring 24h": "nuerburgring24h",
+    "nürburgring gp": "nuerburgringgp",
+    "nurburgring gp": "nuerburgringgp",
+    "oulton park": "oultonpark",
+    "paul ricard": "paulricard",
+    "red bull ring": "redbullring",
+    "silverstone": "silverstone",
+    "snetterton": "snetterton",
+    "spa": "spa",
+    "suzuka": "suzuka",
+    "valencia": "valencia",
+    "watkins glen": "watkinsglen",
+    "zandvoort": "zandvoort",
+    "zolder": "zolder"
+};
 
 async function loadComponent(id, file) {
     const element = document.getElementById(id);
-
-    if (!element) {
-        return false;
-    }
+    if (!element) return false;
 
     try {
-        const response = await fetch(file, {
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            throw new Error(
-                `${file} konnte nicht geladen werden. HTTP ${response.status}`
-            );
-        }
-
+        const response = await fetch(file, { cache: "no-store" });
+        if (!response.ok) throw new Error(`${file}: HTTP ${response.status}`);
         element.innerHTML = await response.text();
-
         return true;
     } catch (error) {
-        console.error(error);
-
-        element.innerHTML = `
-            <div class="container py-4 text-danger">
-                Die Komponente
-                <strong>${file}</strong>
-                konnte nicht geladen werden.
-            </div>
-        `;
-
+        console.error("Komponente konnte nicht geladen werden:", error);
+        element.innerHTML = `<div class="container py-4 text-danger">${escapeHtml(file)} konnte nicht geladen werden.</div>`;
         return false;
     }
 }
 
+function ensureStylesheet(href) {
+    if (document.querySelector(`link[href="${href}"]`)) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+function ensureFooterRoot() {
+    let footer = document.getElementById("site-footer");
+    if (footer) return footer;
+    footer = document.createElement("footer");
+    footer.id = "site-footer";
+    document.body.appendChild(footer);
+    return footer;
+}
+
 function setText(id, value, fallback = "–") {
     const element = document.getElementById(id);
-
-    if (!element) {
-        return;
-    }
-
-    const valid =
-        value !== null &&
-        value !== undefined &&
-        String(value).trim() !== "";
-
-    element.textContent =
-        valid ? String(value) : fallback;
+    if (!element) return;
+    const valid = value !== null && value !== undefined && String(value).trim() !== "";
+    element.textContent = valid ? String(value) : fallback;
 }
 
 function escapeHtml(value) {
@@ -65,16 +83,9 @@ function escapeHtml(value) {
 }
 
 function formatGermanDate(value) {
-    if (!value) {
-        return "Datum noch offen";
-    }
-
+    if (!value) return "Datum noch offen";
     const date = new Date(`${value}T00:00:00`);
-
-    if (Number.isNaN(date.getTime())) {
-        return String(value);
-    }
-
+    if (Number.isNaN(date.getTime())) return String(value);
     return new Intl.DateTimeFormat("de-DE", {
         day: "2-digit",
         month: "2-digit",
@@ -82,304 +93,223 @@ function formatGermanDate(value) {
     }).format(date);
 }
 
-function getDriverName(driver) {
-    return String(
-        driver?.name ??
-        driver?.fahrer ??
-        driver?.anzeigename ??
-        "Unbekannter Fahrer"
-    );
+function normalizeText(value) {
+    return String(value ?? "").trim().toLocaleLowerCase("de-DE");
 }
 
-function getDriverNumber(driver) {
-    return String(
-        driver?.nummer ??
-        driver?.startnummer ??
-        ""
-    );
+function isCompleted(event) {
+    return event?.abgeschlossen === true || normalizeText(event?.status) === "abgeschlossen";
 }
 
-function getDriverPoints(driver) {
-    return Number(
-        driver?.punkte ??
-        driver?.wertung ??
-        0
-    ) || 0;
+function eventTime(event) {
+    const time = new Date(`${event?.datum || "9999-12-31"}T12:00:00`).getTime();
+    return Number.isFinite(time) ? time : Number.MAX_SAFE_INTEGER;
 }
 
-function getNextRace(data) {
-    return (
-        data?.naechsterLauf ??
-        data?.aktuellerLauf ??
-        null
-    );
+function getTrackKey(name) {
+    const normalized = normalizeText(name).replace(/[-_]+/g, " ").replace(/\s+/g, " ");
+    return GTM_TRACK_ASSETS[normalized] || normalized.replace(/[^a-z0-9äöüß]/g, "");
+}
+
+function setImageWithFallback(element, sources) {
+    if (!element) return;
+    const queue = sources.filter(Boolean);
+    let index = 0;
+    const next = () => {
+        if (index >= queue.length) return;
+        element.src = queue[index++];
+    };
+    element.onerror = next;
+    next();
 }
 
 function renderTopThree(entries) {
-    const list =
-        document.getElementById("dashboard-top-drei");
-
-    if (!list) {
+    const list = document.getElementById("dashboard-top-drei");
+    if (!list) return;
+    if (!Array.isArray(entries) || !entries.length) {
+        list.innerHTML = "<li>Noch keine Fahrerwertung verfügbar.</li>";
         return;
     }
 
-    if (!Array.isArray(entries) || entries.length === 0) {
-        list.innerHTML = `
-            <li>
-                Noch keine Fahrerwertung verfügbar.
-            </li>
-        `;
-
-        return;
-    }
-
-    list.innerHTML = entries
-        .slice(0, 3)
-        .map((driver, index) => {
-            const name =
-                escapeHtml(getDriverName(driver));
-
-            const number =
-                escapeHtml(getDriverNumber(driver));
-
-            const points =
-                getDriverPoints(driver);
-
-            const position =
-                Number(driver?.platzierung) || index + 1;
-
-            return `
-                <li>
-                    <span class="dashboard-ranking-position">
-                        ${position}
-                    </span>
-
-                    <span class="dashboard-ranking-driver">
-                        <strong>
-                            ${number ? `#${number} ` : ""}
-                            ${name}
-                        </strong>
-
-                        <small>
-                            ${escapeHtml(
-                                driver?.teamZuordnung ||
-                                driver?.team ||
-                                "Kein Team"
-                            )}
-                        </small>
-                    </span>
-
-                    <span class="dashboard-ranking-points">
-                        ${points} Pkt.
-                    </span>
-                </li>
-            `;
-        })
-        .join("");
+    list.innerHTML = entries.slice(0, 3).map((driver, index) => {
+        const number = driver?.nummer ?? driver?.startnummer ?? "";
+        const name = driver?.name ?? driver?.fahrer ?? driver?.anzeigename ?? "Unbekannt";
+        const points = Number(driver?.punkte ?? driver?.wertung ?? 0) || 0;
+        const position = Number(driver?.platzierung) || index + 1;
+        const href = number ? `pages/fahrerprofil.html?nummer=${encodeURIComponent(number)}` : "pages/fahrer.html";
+        return `<li>
+            <a class="dashboard-ranking-link" href="${href}">
+                <span class="dashboard-ranking-position">${position}</span>
+                <span class="dashboard-ranking-driver">
+                    <strong>${number ? `#${escapeHtml(number)} ` : ""}${escapeHtml(name)}</strong>
+                    <small>${escapeHtml(driver?.teamZuordnung || driver?.team || "Kein Team")}</small>
+                </span>
+                <span class="dashboard-ranking-points">${points} Pkt.</span>
+            </a>
+        </li>`;
+    }).join("");
 }
 
-function renderSeasonProgress(data) {
-    const total =
-        Number(data?.rennenGesamt) || 0;
+function renderSeasonProgress(events) {
+    const masters = events.filter(event => normalizeText(event?.serieId || event?.modul) === "masters");
+    const completed = masters.filter(isCompleted).length;
+    const percentage = masters.length ? Math.round(completed / masters.length * 100) : 0;
+    setText("dashboard-fortschritt-text", `${completed} von ${masters.length} Rennen`);
+    const bar = document.getElementById("dashboard-fortschritt-balken");
+    if (bar) bar.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+}
 
-    const completed =
-        Number(data?.rennenAbgeschlossen) || 0;
+function findFocusEvent(events) {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const open = events
+        .filter(event => !isCompleted(event))
+        .sort((a, b) => eventTime(a) - eventTime(b));
+    return open.find(event => eventTime(event) >= now.getTime()) || open[0] ||
+        [...events].sort((a, b) => eventTime(b) - eventTime(a))[0] || null;
+}
 
-    const percentage =
-        total > 0
-            ? Math.min(
-                100,
-                Math.max(
-                    0,
-                    Math.round(
-                        completed / total * 100
-                    )
-                )
-            )
-            : 0;
+function renderLiveEvent(event) {
+    if (!event) {
+        setText("dashboard-live-status", "Noch offen");
+        setText("dashboard-live-strecke", "Nächster Termin wird geplant");
+        setText("dashboard-live-datum", "Neue Kalenderdaten erscheinen automatisch.");
+        return;
+    }
 
+    const key = getTrackKey(event.strecke);
+    setText("dashboard-live-label", isCompleted(event) ? "Zuletzt gefahren" : "Als Nächstes");
+    setText("dashboard-live-status", event.status || (isCompleted(event) ? "Abgeschlossen" : "Bevorstehend"));
+    setText("dashboard-live-serie", event.saisonName || event.serie || "GTM Rennserien");
+    setText("dashboard-live-strecke", event.strecke || event.eventName || "Termin");
+    setText("dashboard-live-datum", `${event.laufnummer ? `Lauf ${event.laufnummer} · ` : ""}${formatGermanDate(event.datum)}`);
+
+    setImageWithFallback(document.getElementById("dashboard-live-foto"), [
+        `assets/images/strecken/bilder/${key}.jpg`,
+        `assets/images/strecken/bilder/${key}.png`,
+        `assets/images/strecken/bilder/${key}.webp`,
+        `assets/images/strecken/bilder/${key}.jpeg`,
+        "assets/images/logo/gtm-logo.png"
+    ]);
+    setImageWithFallback(document.getElementById("dashboard-live-layout"), [
+        `assets/images/strecken/layouts/${key}-layout.png`,
+        `assets/images/strecken/layouts/${key}-layout.webp`,
+        "assets/images/logo/gtm-logo.png"
+    ]);
+}
+
+function renderSeriesStatus(events, seriesId, prefix) {
+    const series = events.filter(event => normalizeText(event?.serieId || event?.modul) === seriesId);
+    const open = series.filter(event => !isCompleted(event)).sort((a, b) => eventTime(a) - eventTime(b));
+    setText(`dashboard-serie-${prefix}-count`, series.length || "0");
     setText(
-        "dashboard-fortschritt-text",
-        `${completed} von ${total} Rennen`
+        `dashboard-serie-${prefix}-status`,
+        open[0] ? `Nächster Termin: ${formatGermanDate(open[0].datum)}` : series.length ? "Aktuell vollständig abgeschlossen" : "In Vorbereitung"
     );
-
-    const bar =
-        document.getElementById(
-            "dashboard-fortschritt-balken"
-        );
-
-    if (bar) {
-        bar.style.width = `${percentage}%`;
-    }
 }
 
-function renderDashboard(data) {
-    const activeDrivers =
-        Number(data?.aktiveFahrer) || 0;
-
-    const totalRaces =
-        Number(data?.rennenGesamt) || 0;
-
-    const remainingRaces =
-        Number(data?.rennenVerbleibend) || 0;
-
-    const assignedNumbers =
-        Number(data?.registrierteStartnummern) || 0;
-
-    const teams =
-        Number(data?.teams) || 0;
-
-    const season =
-        data?.saison || "GTM Masters Saison 1";
-
-    const status =
-        data?.status || "läuft";
-
-    const nextRace =
-        getNextRace(data);
+function renderDashboard(dashboard, events, teams, vehicles, numbers) {
+    const activeDrivers = Number(dashboard?.aktiveFahrer) || 0;
+    const masters = events.filter(event => normalizeText(event?.serieId || event?.modul) === "masters");
+    const nextMasters = masters.filter(event => !isCompleted(event)).sort((a, b) => eventTime(a) - eventTime(b))[0] || null;
+    const tracks = new Set(events.map(event => normalizeText(event?.strecke)).filter(Boolean));
 
     setText("hero-aktive-fahrer", activeDrivers);
-    setText("hero-rennen-gesamt", totalRaces);
-    setText("hero-rennen-verbleibend", remainingRaces);
-    setText("hero-saison-name", season);
-    setText("hero-saison-status", status);
+    setText("hero-rennen-gesamt", events.length);
+    setText("hero-rennen-verbleibend", events.filter(event => !isCompleted(event)).length);
+    setText("hero-saison-name", "GTM Rennserien");
+    setText("hero-saison-status", "Masters · Time Attack · FUN Events");
 
-    setText("dashboard-saison", season);
+    setText("dashboard-saison", dashboard?.saison || "Aktuelle Masters-Saison");
     setText("dashboard-fahrer-anzahl", activeDrivers);
-    setText("dashboard-team-anzahl", teams);
-    setText(
-        "dashboard-startnummern-anzahl",
-        assignedNumbers
-    );
+    setText("dashboard-team-anzahl", teams.length);
+    setText("dashboard-fahrzeuge-anzahl", vehicles.length);
+    setText("dashboard-fahrzeuge-kartenanzahl", vehicles.length);
+    setText("dashboard-strecken-anzahl", tracks.size);
+    setText("dashboard-termine-anzahl", events.length);
+    setText("dashboard-startnummern-anzahl", numbers.length || dashboard?.registrierteStartnummern || 0);
+    setText("dashboard-meisterschaft-text", `${activeDrivers} Fahrer, ${teams.length} Teams und ${masters.length} Masters-Läufe.`);
 
-    setText(
-        "dashboard-meisterschaft-text",
-        `${activeDrivers} Fahrer, ${teams} Teams und ${totalRaces} Saisonläufe.`
-    );
+    renderTopThree(Array.isArray(dashboard?.topDrei) ? dashboard.topDrei : []);
+    renderSeasonProgress(events);
+    renderLiveEvent(findFocusEvent(events));
+    renderSeriesStatus(events, "masters", "masters");
+    renderSeriesStatus(events, "ta", "ta");
+    renderSeriesStatus(events, "fun", "fun");
 
-    renderTopThree(
-        Array.isArray(data?.topDrei)
-            ? data.topDrei
-            : []
-    );
+    if (nextMasters) {
+        setText("dashboard-naechste-strecke", nextMasters.strecke);
+        setText("dashboard-naechstes-rennen", `Lauf ${nextMasters.laufnummer || "–"} am ${formatGermanDate(nextMasters.datum)}.`);
 
-    renderSeasonProgress(data);
-
-    if (nextRace) {
-        setText(
-            "dashboard-naechste-strecke",
-            nextRace.strecke,
-            "Noch nicht festgelegt"
-        );
-
-        const roundText =
-            nextRace.laufnummer
-                ? `Lauf ${nextRace.laufnummer}`
-                : "Nächster Lauf";
-
-        setText(
-            "dashboard-naechstes-rennen",
-            `${roundText} am ${formatGermanDate(
-                nextRace.datum
-            )}.`
-        );
+        const nextTrackKey = getTrackKey(nextMasters.strecke);
+        setImageWithFallback(document.getElementById("dashboard-next-race-foto"), [
+            `assets/images/strecken/bilder/${nextTrackKey}.jpg`,
+            `assets/images/strecken/bilder/${nextTrackKey}.png`,
+            `assets/images/strecken/bilder/${nextTrackKey}.webp`,
+            `assets/images/strecken/bilder/${nextTrackKey}.jpeg`,
+            "assets/images/logo/gtm-logo.png"
+        ]);
+        setImageWithFallback(document.getElementById("dashboard-next-race-layout"), [
+            `assets/images/strecken/layouts/${nextTrackKey}-layout.png`,
+            `assets/images/strecken/layouts/${nextTrackKey}-layout.webp`,
+            "assets/images/logo/gtm-logo.png"
+        ]);
     } else {
-        setText(
-            "dashboard-naechste-strecke",
-            "Noch nicht festgelegt"
-        );
-
-        setText(
-            "dashboard-naechstes-rennen",
-            "Der nächste Saisonlauf steht noch nicht fest."
-        );
+        setText("dashboard-naechste-strecke", "Saison abgeschlossen");
+        setText("dashboard-naechstes-rennen", "Die nächste Masters-Saison wird automatisch ergänzt.");
     }
 }
 
-function showDashboardError(error) {
-    console.error(
-        "Dashboarddaten konnten nicht geladen werden:",
-        error
-    );
-
-    setText(
-        "dashboard-meisterschaft-text",
-        "Die aktuellen GTM-Daten konnten nicht geladen werden."
-    );
-
-    setText(
-        "dashboard-naechste-strecke",
-        "Datenfehler"
-    );
-
-    setText(
-        "dashboard-naechstes-rennen",
-        "Prüfe bitte data/json/dashboard.json."
-    );
+async function loadJson(name, fallback) {
+    try {
+        if (window.GTM?.load) return await window.GTM.load(name, { forceReload: true });
+        const response = await fetch(`data/json/${name}.json`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.warn(`${name}.json konnte nicht geladen werden.`, error);
+        return fallback;
+    }
 }
 
 async function loadDashboardData() {
-    if (!window.GTM) {
-        showDashboardError(
-            new Error(
-                "Die GTM Data Engine wurde nicht geladen."
-            )
-        );
-
-        return;
-    }
-
-    try {
-        const data = await window.GTM.load(
-            "dashboard",
-            {
-                forceReload: true
-            }
-        );
-
-        if (
-            !data ||
-            typeof data !== "object" ||
-            Array.isArray(data)
-        ) {
-            throw new Error(
-                "dashboard.json enthält kein gültiges Datenobjekt."
-            );
-        }
-
-        renderDashboard(data);
-    } catch (error) {
-        showDashboardError(error);
-    }
+    const [dashboard, events, teams, vehicles, numbers] = await Promise.all([
+        loadJson("dashboard", {}),
+        loadJson("kalender", []),
+        loadJson("teams", []),
+        loadJson("fahrzeuge", []),
+        loadJson("startnummern", [])
+    ]);
+    renderDashboard(
+        dashboard && !Array.isArray(dashboard) ? dashboard : {},
+        Array.isArray(events) ? events : [],
+        Array.isArray(teams) ? teams : [],
+        Array.isArray(vehicles) ? vehicles : [],
+        Array.isArray(numbers) ? numbers : []
+    );
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-        await loadComponent(
-            "site-navbar",
-            "components/navbar.html"
-        );
+function activateFooter() {
+    setText("gtm-footer-jahr", new Date().getFullYear());
+    document.querySelector("[data-footer-nach-oben]")?.addEventListener("click", event => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
 
-        const heroLoaded =
-            await loadComponent(
-                "site-hero",
-                "components/hero.html"
-            );
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadComponent("site-navbar", "components/navbar.html");
 
-        const dashboardLoaded =
-            await loadComponent(
-                "site-dashboard",
-                "components/dashboard.html"
-            );
-
-        await loadComponent(
-            "site-footer",
-            "components/footer.html"
-        );
-
-        if (heroLoaded || dashboardLoaded) {
-            await loadDashboardData();
-        }
+    const dashboardRoot = document.getElementById("site-dashboard");
+    const heroRoot = document.getElementById("site-hero");
+    if (heroRoot) await loadComponent("site-hero", "components/hero.html");
+    if (dashboardRoot) {
+        await loadComponent("site-dashboard", "components/dashboard.html");
+        await loadDashboardData();
     }
-);
+
+    ensureStylesheet("assets/css/footer.css");
+    ensureFooterRoot();
+    await loadComponent("site-footer", "components/footer.html");
+    activateFooter();
+});

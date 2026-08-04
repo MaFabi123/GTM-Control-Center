@@ -330,6 +330,7 @@
 
 .fahrer-card-kopf {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     gap: 14px;
@@ -407,6 +408,51 @@
     border: 1px solid #363636;
 }
 
+.fahrer-card-events {
+    display: flex;
+    flex: 1 1 220px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.fahrer-event-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 0.64rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.fahrer-event-badge.masters {
+    color: #7cff9d;
+    background: rgba(40, 180, 80, 0.12);
+    border: 1px solid rgba(70, 220, 110, 0.35);
+}
+
+.fahrer-event-badge.ta {
+    color: #ffd76d;
+    background: rgba(226, 164, 20, 0.12);
+    border: 1px solid rgba(226, 164, 20, 0.4);
+}
+
+.fahrer-event-badge.fun {
+    color: #73dcff;
+    background: rgba(46, 187, 235, 0.11);
+    border: 1px solid rgba(46, 187, 235, 0.38);
+}
+
+.fahrer-event-badge.keine {
+    color: #a7a7a7;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #363636;
+}
+
 /* =========================================================
    ALLGEMEINE FAHRERINFOS
 ========================================================= */
@@ -449,6 +495,9 @@
 ========================================================= */
 
 .fahrer-profil-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     min-height: 46px;
     margin-top: 18px;
@@ -458,6 +507,7 @@
     border-radius: 12px;
     font-weight: 800;
     letter-spacing: 0.03em;
+    text-decoration: none;
     cursor: pointer;
     transition:
         background 0.22s ease,

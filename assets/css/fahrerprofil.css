@@ -1,0 +1,609 @@
+/* ==========================================================
+   GTM FAHRERPROFIL
+========================================================== */
+
+.fahrerprofil-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 80% 8%, rgba(120, 0, 0, 0.18), transparent 30%),
+        #080808;
+}
+
+.fahrerprofil-laden,
+.fahrerprofil-fehler {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    color: #9b9b9b;
+    text-align: center;
+}
+
+.fahrerprofil-hero {
+    padding: 42px 0 28px;
+}
+
+.fahrerprofil-zurueck {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    margin-bottom: 20px;
+    color: #d6d6d6;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.fahrerprofil-zurueck:hover,
+.fahrerprofil-zurueck:focus-visible {
+    color: #ffffff;
+}
+
+.fahrerprofil-hero-karte {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(280px, 34%) minmax(0, 1fr);
+    min-height: 390px;
+    background: linear-gradient(145deg, #202020, #101010);
+    border: 1px solid #343434;
+    border-radius: 24px;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.34);
+}
+
+.fahrerprofil-bild {
+    position: relative;
+    display: grid;
+    min-height: 390px;
+    place-items: end center;
+    padding: 22px 22px 0;
+    background:
+        linear-gradient(155deg, rgba(132, 0, 0, 0.9), rgba(42, 0, 0, 0.98));
+}
+
+.fahrerprofil-bild::after {
+    content: attr(data-nummer);
+    position: absolute;
+    right: 18px;
+    bottom: -28px;
+    color: rgba(255, 255, 255, 0.055);
+    font-size: clamp(8rem, 18vw, 15rem);
+    font-weight: 900;
+    line-height: 0.8;
+    pointer-events: none;
+}
+
+.fahrerprofil-bild img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+}
+
+.fahrerprofil-hero-inhalt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(34px, 6vw, 72px);
+}
+
+.fahrerprofil-eyebrow {
+    margin: 0 0 12px;
+    color: #ef1515;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-hero-inhalt h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.7rem, 7vw, 5.8rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.93;
+    overflow-wrap: anywhere;
+}
+
+.fahrerprofil-nummer {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 18px;
+    padding: 7px 12px;
+    color: #ffffff;
+    background: #d40000;
+    border-radius: 9px;
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+.fahrerprofil-status {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 8px 12px;
+    color: #b7b7b7;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #393939;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-status.aktiv {
+    color: #78f2a0;
+    background: rgba(29, 167, 72, 0.11);
+    border-color: rgba(29, 167, 72, 0.5);
+}
+
+.fahrerprofil-events {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.fahrerprofil-event-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-event-badge.masters {
+    color: #7cff9d;
+    background: rgba(40, 180, 80, 0.12);
+    border: 1px solid rgba(70, 220, 110, 0.35);
+}
+
+.fahrerprofil-event-badge.ta {
+    color: #ffd76d;
+    background: rgba(226, 164, 20, 0.12);
+    border: 1px solid rgba(226, 164, 20, 0.4);
+}
+
+.fahrerprofil-event-badge.fun {
+    color: #73dcff;
+    background: rgba(46, 187, 235, 0.11);
+    border: 1px solid rgba(46, 187, 235, 0.38);
+}
+
+.fahrerprofil-event-badge.keine {
+    color: #a7a7a7;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #363636;
+}
+
+.fahrerprofil-bereich {
+    padding: 28px 0;
+}
+
+.fahrerprofil-bereich-kopf {
+    margin-bottom: 18px;
+}
+
+.fahrerprofil-bereich-kopf p {
+    margin: 0 0 5px;
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-bereich-kopf h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.fahrerprofil-statistik {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.fahrerprofil-statistik article {
+    padding: 24px 14px;
+    text-align: center;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #343434;
+    border-radius: 16px;
+}
+
+.fahrerprofil-statistik strong,
+.fahrerprofil-statistik span {
+    display: block;
+}
+
+.fahrerprofil-statistik strong {
+    color: #ffffff;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+}
+
+.fahrerprofil-statistik span {
+    margin-top: 7px;
+    color: #8b8b8b;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.fahrerprofil-info {
+    padding: 25px;
+    background: linear-gradient(145deg, #1d1d1d, #111111);
+    border: 1px solid #323232;
+    border-radius: 18px;
+}
+
+.fahrerprofil-info > span {
+    display: block;
+    margin-bottom: 9px;
+    color: #d40000;
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-info h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.fahrerprofil-info p {
+    margin: 12px 0 0;
+    color: #9b9b9b;
+    font-size: 0.86rem;
+}
+
+.fahrerprofil-team-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    margin-top: 18px;
+    padding: 0 14px;
+    color: #ffffff;
+    background: rgba(212, 0, 0, 0.12);
+    border: 1px solid rgba(212, 0, 0, 0.45);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.fahrerprofil-team-link:hover,
+.fahrerprofil-team-link:focus-visible {
+    color: #ffffff;
+    background: #b50000;
+}
+
+.fahrerprofil-fahrzeugkarte {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(300px, 44%) minmax(0, 1fr);
+    background: linear-gradient(145deg, #1d1d1d, #111111);
+    border: 1px solid #343434;
+    border-radius: 20px;
+}
+
+.fahrerprofil-fahrzeugbild {
+    display: grid;
+    min-height: 280px;
+    place-items: center;
+    padding: 18px;
+    background: #0d0d0d;
+}
+
+.fahrerprofil-fahrzeugbild img {
+    display: block;
+    width: 100%;
+    max-height: 310px;
+    object-fit: contain;
+}
+
+.fahrerprofil-fahrzeugdaten {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(28px, 5vw, 55px);
+}
+
+.fahrerprofil-fahrzeugdaten > span {
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-fahrzeugdaten h3 {
+    margin: 8px 0 22px;
+    color: #ffffff;
+    font-size: clamp(1.7rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.fahrerprofil-fahrzeugmeta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.fahrerprofil-fahrzeugmeta div {
+    padding: 13px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid #333333;
+    border-radius: 11px;
+}
+
+.fahrerprofil-fahrzeugmeta small,
+.fahrerprofil-fahrzeugmeta strong {
+    display: block;
+}
+
+.fahrerprofil-fahrzeugmeta small {
+    color: #818181;
+    font-size: 0.61rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-fahrzeugmeta strong {
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+}
+
+.fahrerprofil-freisteller-slot {
+    display: grid;
+    min-height: 125px;
+    margin-top: 14px;
+    place-items: center;
+    padding: 12px;
+    background:
+        linear-gradient(45deg, #171717 25%, transparent 25%),
+        linear-gradient(-45deg, #171717 25%, transparent 25%),
+        #101010;
+    background-size: 20px 20px;
+    border: 1px dashed #424242;
+    border-radius: 12px;
+}
+
+.fahrerprofil-freisteller-slot img {
+    display: block;
+    width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.fahrerprofil-freisteller-slot span {
+    max-width: 320px;
+    color: #838383;
+    text-align: center;
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+
+.fahrerprofil-teilnahmen-gruppe + .fahrerprofil-teilnahmen-gruppe {
+    margin-top: 28px;
+}
+
+.fahrerprofil-teilnahmen-gruppe > h3 {
+    margin: 0 0 13px;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.fahrerprofil-teilnahmen {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.fahrerprofil-teilnahme {
+    padding: 18px;
+    background: linear-gradient(145deg, #1d1d1d, #111111);
+    border: 1px solid #303030;
+    border-left: 3px solid #d40000;
+    border-radius: 15px;
+}
+
+.fahrerprofil-teilnahme.ta {
+    border-left-color: #d9a11e;
+}
+
+.fahrerprofil-teilnahme.fun {
+    border-left-color: #35bfe8;
+}
+
+.fahrerprofil-teilnahme.historie {
+    opacity: 0.72;
+    filter: saturate(0.55);
+}
+
+.fahrerprofil-teilnahme span {
+    display: block;
+    margin-bottom: 8px;
+    color: #969696;
+    font-size: 0.63rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.fahrerprofil-teilnahme h3,
+.fahrerprofil-teilnahme p {
+    margin: 0;
+}
+
+.fahrerprofil-teilnahme h3 {
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.fahrerprofil-teilnahme p {
+    margin-top: 8px;
+    color: #9b9b9b;
+    font-size: 0.78rem;
+}
+
+.fahrerprofil-teilnahmen-leer {
+    margin: 0;
+    padding: 17px;
+    color: #858585;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px dashed #353535;
+    border-radius: 13px;
+}
+
+.fahrerprofil-historie-slider {
+    margin-top: 28px;
+}
+
+.fahrerprofil-historie-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 13px;
+}
+
+.fahrerprofil-historie-kopf h3 {
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.fahrerprofil-historie-steuerung {
+    display: flex;
+    gap: 8px;
+}
+
+.fahrerprofil-historie-steuerung button {
+    width: 39px;
+    height: 39px;
+    color: #ffffff;
+    background: #181818;
+    border: 1px solid #3b3b3b;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.fahrerprofil-historie-steuerung button:hover,
+.fahrerprofil-historie-steuerung button:focus-visible {
+    background: #860000;
+    border-color: #d40000;
+}
+
+.fahrerprofil-historie-steuerung button:disabled {
+    opacity: 0.28;
+    cursor: default;
+}
+
+.fahrerprofil-historie-slider.ist-statisch .fahrerprofil-historie-steuerung {
+    visibility: hidden;
+}
+
+.fahrerprofil-historie-track {
+    overflow-x: auto;
+    display: grid;
+    grid-auto-columns: minmax(255px, calc((100% - 28px) / 3));
+    grid-auto-flow: column;
+    gap: 14px;
+    padding: 2px 2px 12px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #690000 #171717;
+    scrollbar-width: thin;
+}
+
+.fahrerprofil-historie-track .fahrerprofil-teilnahme {
+    min-height: 130px;
+    scroll-snap-align: start;
+}
+
+@media (max-width: 1000px) {
+    .fahrerprofil-statistik {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .fahrerprofil-teilnahmen {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .fahrerprofil-historie-track {
+        grid-auto-columns: minmax(255px, calc((100% - 14px) / 2));
+    }
+}
+
+@media (max-width: 760px) {
+    .fahrerprofil-hero-karte,
+    .fahrerprofil-info-grid,
+    .fahrerprofil-fahrzeugkarte {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrerprofil-bild {
+        min-height: 300px;
+    }
+
+    .fahrerprofil-statistik {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .fahrerprofil-fahrzeugmeta {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrerprofil-teilnahmen {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrerprofil-historie-track {
+        grid-auto-columns: minmax(250px, 86%);
+    }
+}
+
+@media (max-width: 480px) {
+    .fahrerprofil-statistik {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrerprofil-hero-inhalt {
+        padding: 30px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fahrerprofil-team-link {
+        transition: none;
+    }
+}

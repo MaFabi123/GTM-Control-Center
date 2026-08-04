@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="../">
+
+    <title>GTM Control Center | Strecken</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/strecken.css">
+</head>
+
+<body>
+
+    <header id="site-navbar"></header>
+
+    <main class="strecken-page">
+
+        <section class="strecken-hero">
+            <div class="container">
+                <p class="strecken-eyebrow">GTM Strecken-Bibliothek</p>
+                <h1>Alle Strecken</h1>
+                <p class="strecken-intro">
+                    Rennstrecken aus GTM Masters, Time Attack und FUN Events –
+                    mit Streckenbild, Layout und allen zugehörigen GTM-Terminen.
+                </p>
+            </div>
+        </section>
+
+        <section class="strecken-slider-bereich" aria-labelledby="strecken-slider-titel">
+            <div class="container">
+                <div class="strecken-slider-kopf">
+                    <div>
+                        <p>Strecken im Fokus</p>
+                        <h2 id="strecken-slider-titel">Häufig gefahrene Kurse</h2>
+                    </div>
+
+                    <div class="strecken-slider-steuerung" aria-label="Strecken-Slider steuern">
+                        <button id="strecken-slider-zurueck" type="button" aria-label="Vorherige Strecke anzeigen">‹</button>
+                        <button id="strecken-slider-weiter" type="button" aria-label="Nächste Strecke anzeigen">›</button>
+                    </div>
+                </div>
+
+                <div
+                    id="strecken-slider"
+                    class="strecken-slider"
+                    aria-live="polite"
+                    aria-roledescription="Karussell"
+                >
+                    <div class="strecken-laden">Streckendaten werden geladen …</div>
+                </div>
+
+                <div id="strecken-slider-punkte" class="strecken-slider-punkte" aria-label="Strecke auswählen"></div>
+            </div>
+        </section>
+
+        <section class="strecken-statistik">
+            <div class="container">
+                <div class="strecken-statistik-grid">
+                    <article><strong id="strecken-anzahl">–</strong><span>Strecken</span></article>
+                    <article><strong id="strecken-laender">–</strong><span>Länder</span></article>
+                    <article><strong id="strecken-termine">–</strong><span>GTM-Termine</span></article>
+                    <article><strong id="strecken-kommend">–</strong><span>Noch bevorstehend</span></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="strecken-filterbereich">
+            <div class="container">
+                <div class="strecken-toolbar">
+                    <label class="strecken-suche">
+                        <span>Strecke suchen</span>
+                        <input
+                            id="strecken-suche"
+                            type="search"
+                            autocomplete="off"
+                            placeholder="Strecke, Land oder Rennserie"
+                        >
+                    </label>
+
+                    <label class="strecken-filter">
+                        <span>Rennserie</span>
+                        <select id="strecken-serie-filter">
+                            <option value="">Alle Rennserien</option>
+                            <option value="masters">GTM Masters</option>
+                            <option value="ta">GTM Time Attack</option>
+                            <option value="fun">GTM FUN Events</option>
+                        </select>
+                    </label>
+
+                    <label class="strecken-filter">
+                        <span>Land</span>
+                        <select id="strecken-land-filter">
+                            <option value="">Alle Länder</option>
+                        </select>
+                    </label>
+
+                    <label class="strecken-filter">
+                        <span>Sortierung</span>
+                        <select id="strecken-sortierung">
+                            <option value="name">Streckenname</option>
+                            <option value="termine">Meiste GTM-Termine</option>
+                            <option value="kommend">Kommende Termine</option>
+                            <option value="land">Land</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="strecken-inhalt">
+            <div class="container">
+                <div id="strecken-grid" class="strecken-grid" aria-live="polite" aria-busy="true">
+                    <div class="strecken-laden">Streckendaten werden geladen …</div>
+                </div>
+
+                <div id="keine-strecken" class="keine-strecken" hidden>
+                    Keine passenden Strecken gefunden.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/gtm-data.js"></script>
+    <script src="assets/js/gtm-utils.js"></script>
+    <script src="assets/js/gtm-ui.js"></script>
+    <script src="assets/js/gtm-page.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/strecken.js"></script>
+
+</body>
+
+</html>

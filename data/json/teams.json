@@ -1,7 +1,31 @@
 [
     {
         "name":  "Bremsbackenspreizer",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  1352,
+        "platzierung":  1,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Lamborghini Huracán GT3 EVO2",
@@ -13,23 +37,74 @@
                            "name":  "M. Figge",
                            "bild":  "default.png",
                            "fahrzeug":  "Lamborghini Huracán GT3 EVO2",
+                           "aktiveSaison":  true,
                            "punkte":  765,
-                           "platzierung":  1
+                           "platzierung":  1,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  478,
                            "name":  "L. Geißler",
                            "bild":  "default.png",
                            "fahrzeug":  "Ford Mustang GT3",
+                           "aktiveSaison":  true,
                            "punkte":  587,
-                           "platzierung":  2
+                           "platzierung":  2,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  1
+                   ]
     },
     {
         "name":  "MAD Racer I",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  1034,
+        "platzierung":  2,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Ferrari 296 GT3"
@@ -40,78 +115,249 @@
                            "name":  "P.Zuber",
                            "bild":  "default.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  520,
-                           "platzierung":  3
+                           "platzierung":  3,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  232,
                            "name":  "D. Makkaber",
                            "bild":  "default.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  514,
-                           "platzierung":  4
+                           "platzierung":  4,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  2
+                   ]
     },
     {
         "name":  "77Performance by GHc",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  710,
+        "platzierung":  3,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "BMW M4 GT3"
                       ],
         "fahrer":  [
                        {
-                           "nummer":  118,
-                           "name":  "Ralf B.",
-                           "bild":  "default.png",
-                           "fahrzeug":  "BMW M4 GT3",
-                           "punkte":  360,
-                           "platzierung":  9
-                       },
-                       {
                            "nummer":  77,
                            "name":  "Thomas",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  350,
-                           "platzierung":  10
-                       }
-                   ],
-        "platzierung":  3
-    },
-    {
-        "name":  "DarkTrade Racing by GHc",
-        "punkte":  692,
-        "anzahlFahrer":  2,
-        "fahrzeuge":  [
-                          "BMW M4 GT3",
-                          "McLaren 720S GT3"
-                      ],
-        "fahrer":  [
-                       {
-                           "nummer":  21,
-                           "name":  "O. Gambert",
-                           "bild":  "default.png",
-                           "fahrzeug":  "BMW M4 GT3",
-                           "punkte":  404,
-                           "platzierung":  8
+                           "platzierung":  10,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        },
                        {
-                           "nummer":  971,
-                           "name":  "R. Friedel",
+                           "nummer":  118,
+                           "name":  "Ralf B.",
                            "bild":  "default.png",
-                           "fahrzeug":  "McLaren 720S GT3",
-                           "punkte":  288,
-                           "platzierung":  13
+                           "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  360,
+                           "platzierung":  9,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  4
+                   ]
     },
     {
         "name":  "PM Performance by GHc",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  505,
+        "platzierung":  4,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Mercedes-AMG AMG GT3 Evo",
@@ -121,25 +367,94 @@
                        {
                            "nummer":  3,
                            "name":  "Pascal",
-                           "bild":  "default.png",
+                           "bild":  "3.png",
                            "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
+                           "aktiveSaison":  true,
                            "punkte":  417,
-                           "platzierung":  7
+                           "platzierung":  7,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  88,
                            "name":  "Mariusz",
-                           "bild":  "default.png",
+                           "bild":  "88.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  88,
-                           "platzierung":  22
+                           "platzierung":  22,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  5
+                   ]
     },
     {
         "name":  "Rennsteig Racing II",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  497,
+        "platzierung":  5,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Ford Mustang GT3",
@@ -151,50 +466,222 @@
                            "name":  "Lone-Wolf_Mike",
                            "bild":  "default.png",
                            "fahrzeug":  "Ford Mustang GT3",
+                           "aktiveSaison":  true,
                            "punkte":  306,
-                           "platzierung":  11
+                           "platzierung":  11,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  80,
                            "name":  "ALDAPUNKER80 BE",
                            "bild":  "default.png",
                            "fahrzeug":  "McLaren 720S GT3",
+                           "aktiveSaison":  true,
                            "punkte":  191,
-                           "platzierung":  15
+                           "platzierung":  15,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  6
+                   ]
     },
     {
         "name":  "Rennsteig Racing I",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  466,
+        "platzierung":  6,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Ferrari 296 GT3"
                       ],
         "fahrer":  [
                        {
-                           "nummer":  872,
-                           "name":  "A. Löbcke",
-                           "bild":  "default.png",
-                           "fahrzeug":  "Ferrari 296 GT3",
-                           "punkte":  289,
-                           "platzierung":  12
-                       },
-                       {
                            "nummer":  141,
                            "name":  "F. Hopf",
-                           "bild":  "default.png",
+                           "bild":  "141.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  177,
-                           "platzierung":  17
+                           "platzierung":  17,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  872,
+                           "name":  "A. Löbcke",
+                           "bild":  "872.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  289,
+                           "platzierung":  12,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  7
+                   ]
     },
     {
         "name":  "MAD Racer II",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  443,
+        "platzierung":  7,
         "anzahlFahrer":  1,
         "fahrzeuge":  [
                           "Ford Mustang GT3"
@@ -205,61 +692,586 @@
                            "name":  "R. Skopp",
                            "bild":  "default.png",
                            "fahrzeug":  "Ford Mustang GT3",
+                           "aktiveSaison":  true,
                            "punkte":  443,
-                           "platzierung":  5
+                           "platzierung":  5,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  8
+                   ]
     },
     {
         "name":  "MAD Racer",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  437,
-        "anzahlFahrer":  1,
+        "platzierung":  8,
+        "anzahlFahrer":  6,
         "fahrzeuge":  [
-                          "BMW M4 GT3"
+                          "Ferrari 296 GT3",
+                          "BMW M4 GT3",
+                          "Ford Mustang GT3"
                       ],
         "fahrer":  [
+                       {
+                           "nummer":  7,
+                           "name":  "P.Zuber",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  520,
+                           "platzierung":  3,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  25,
+                           "name":  "Koberner95",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  85,
+                           "platzierung":  23,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  69,
+                           "name":  "R. Skopp",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ford Mustang GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  443,
+                           "platzierung":  5,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  95,
+                           "name":  "Domi95",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  52,
+                           "platzierung":  25,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
                        {
                            "nummer":  206,
                            "name":  "Noel",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  437,
-                           "platzierung":  6
+                           "platzierung":  6,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  232,
+                           "name":  "D. Makkaber",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  514,
+                           "platzierung":  4,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  9
+                   ]
     },
     {
         "name":  "GG Racing",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  417,
+        "platzierung":  9,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Ferrari 296 GT3"
                       ],
         "fahrer":  [
                        {
-                           "nummer":  169,
-                           "name":  "A. Freller",
-                           "bild":  "default.png",
-                           "fahrzeug":  "Ferrari 296 GT3",
-                           "punkte":  262,
-                           "platzierung":  14
-                       },
-                       {
                            "nummer":  72,
                            "name":  "D. Labra",
                            "bild":  "default.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  155,
-                           "platzierung":  19
+                           "platzierung":  19,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  169,
+                           "name":  "A. Freller",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  262,
+                           "platzierung":  14,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
+                   ]
+    },
+    {
+        "name":  "DarkTrade Racing by GHc",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
                    ],
-        "platzierung":  10
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
+        "punkte":  288,
+        "platzierung":  10,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+                          "McLaren 720S GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  20,
+                           "name":  "O. Gambert",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  971,
+                           "name":  "R. Friedel",
+                           "bild":  "default.png",
+                           "fahrzeug":  "McLaren 720S GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  288,
+                           "platzierung":  13,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       }
+                   ]
     },
     {
         "name":  "Golden Graining by GHc",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  217,
+        "platzierung":  11,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Mercedes-AMG AMG GT3 Evo",
@@ -269,25 +1281,111 @@
                        {
                            "nummer":  15,
                            "name":  "Mike McFly",
-                           "bild":  "default.png",
+                           "bild":  "15.png",
                            "fahrzeug":  "Mercedes-AMG AMG GT3 Evo",
+                           "aktiveSaison":  true,
                            "punkte":  186,
-                           "platzierung":  16
+                           "platzierung":  16,
+                           "serien":  [
+                                          "fun",
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  47,
                            "name":  "Janissimo",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  31,
-                           "platzierung":  26
+                           "platzierung":  26,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  11
+                   ]
     },
     {
         "name":  "BMW M Sport",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  157,
+        "platzierung":  12,
         "anzahlFahrer":  1,
         "fahrzeuge":  [
                           "BMW M4 GT3"
@@ -298,15 +1396,52 @@
                            "name":  "T. Müller",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  157,
-                           "platzierung":  18
+                           "platzierung":  18,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  12
+                   ]
     },
     {
         "name":  "MAD Racer IV",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  137,
+        "platzierung":  13,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "BMW M4 GT3"
@@ -317,88 +1452,385 @@
                            "name":  "Koberner95",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  85,
-                           "platzierung":  23
+                           "platzierung":  23,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  95,
                            "name":  "Domi95",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  52,
-                           "platzierung":  25
+                           "platzierung":  25,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  13
+                   ]
     },
     {
         "name":  "Jamaica Connection",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  135,
-        "anzahlFahrer":  1,
+        "platzierung":  14,
+        "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "Ferrari 296 GT3"
                       ],
         "fahrer":  [
                        {
+                           "nummer":  156,
+                           "name":  "BeSa",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
                            "nummer":  812,
                            "name":  "S. Schneider",
                            "bild":  "default.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  135,
-                           "platzierung":  20
+                           "platzierung":  20,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  14
+                   ]
     },
     {
         "name":  "Maro Racing I",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  98,
+        "platzierung":  15,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
                           "BMW M4 GT3"
                       ],
         "fahrer":  [
                        {
+                           "nummer":  92,
+                           "name":  "Maurer196",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  21,
+                           "platzierung":  27,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
+                       {
                            "nummer":  420,
                            "name":  "Adrian",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  77,
-                           "platzierung":  24
+                           "platzierung":  24,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Maro Racing",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
+        "punkte":  97,
+        "platzierung":  16,
+        "anzahlFahrer":  5,
+        "fahrzeuge":  [
+                          "Aston Martin V8 Vantage GT3",
+                          "BMW M4 GT3",
+                          "Audi R8 LMS GT3 Evo"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  16,
+                           "name":  "Cello",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Aston Martin V8 Vantage GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  0,
+                           "platzierung":  29,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        },
                        {
                            "nummer":  92,
                            "name":  "Maurer196",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  21,
-                           "platzierung":  27
-                       }
-                   ],
-        "platzierung":  15
-    },
-    {
-        "name":  "Maro Racing",
-        "punkte":  97,
-        "anzahlFahrer":  1,
-        "fahrzeuge":  [
-                          "BMW M4 GT3"
-                      ],
-        "fahrer":  [
+                           "platzierung":  27,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
                        {
                            "nummer":  261,
                            "name":  "Stigion13",
                            "bild":  "default.png",
                            "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  97,
-                           "platzierung":  21
+                           "platzierung":  21,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  296,
+                           "name":  "Audi-Fahrer_81",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Audi R8 LMS GT3 Evo",
+                           "aktiveSaison":  true,
+                           "punkte":  0,
+                           "platzierung":  29,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  420,
+                           "name":  "Adrian",
+                           "bild":  "default.png",
+                           "fahrzeug":  "BMW M4 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  77,
+                           "platzierung":  24,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  16
+                   ]
     },
     {
         "name":  "Quantum Point",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
         "punkte":  7,
+        "platzierung":  17,
         "anzahlFahrer":  1,
         "fahrzeuge":  [
                           "Ferrari 296 GT3"
@@ -409,38 +1841,720 @@
                            "name":  "L. Garske",
                            "bild":  "default.png",
                            "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
                            "punkte":  7,
-                           "platzierung":  28
+                           "platzierung":  28,
+                           "serien":  [
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
                        }
-                   ],
-        "platzierung":  17
+                   ]
     },
     {
         "name":  "Maro Racing II",
+        "aktiveMeisterschaft":  true,
+        "serien":  [
+                       "masters"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           }
+                       ],
         "punkte":  0,
+        "platzierung":  18,
         "anzahlFahrer":  2,
         "fahrzeuge":  [
-                          "Audi R8 LMS GT3 Evo",
-                          "Aston Martin V8 Vantage GT3"
+                          "Aston Martin V8 Vantage GT3",
+                          "Audi R8 LMS GT3 Evo"
                       ],
         "fahrer":  [
-                       {
-                           "nummer":  296,
-                           "name":  "Audi-Fahrer_81",
-                           "bild":  "default.png",
-                           "fahrzeug":  "Audi R8 LMS GT3 Evo",
-                           "punkte":  0,
-                           "platzierung":  29
-                       },
                        {
                            "nummer":  16,
                            "name":  "Cello",
                            "bild":  "default.png",
                            "fahrzeug":  "Aston Martin V8 Vantage GT3",
+                           "aktiveSaison":  true,
                            "punkte":  0,
-                           "platzierung":  29
+                           "platzierung":  29,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  296,
+                           "name":  "Audi-Fahrer_81",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Audi R8 LMS GT3 Evo",
+                           "aktiveSaison":  true,
+                           "punkte":  0,
+                           "platzierung":  29,
+                           "serien":  [
+                                          "masters"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              }
+                                          ]
                        }
+                   ]
+    },
+    {
+        "name":  "Effect Motorsport",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
                    ],
-        "platzierung":  18
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  3,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  271,
+                           "name":  "D. Neumann",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  512,
+                           "name":  "K. Stein",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  777,
+                           "name":  "M. Kropidlowski",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Fiss Sportsbar",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  911,
+                           "name":  "C. Schmid",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Maja Motorsport",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  2,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  90,
+                           "name":  "M. Brahms",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  611,
+                           "name":  "J. Lindström",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Noob Racing Team",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  4,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  84,
+                           "name":  "D. Atze",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  131,
+                           "name":  "T. Magarec",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  177,
+                           "name":  "Heizer",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  187,
+                           "name":  "NRT_StrafZettel",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Rennsteig Racing",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+                       "fun",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "fun-oulton-park-02-08-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Oulton Park 02.08.26"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  4,
+        "fahrzeuge":  [
+                          "Ford Mustang GT3",
+                          "McLaren 720S GT3",
+                          "Ferrari 296 GT3"
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  56,
+                           "name":  "Lone-Wolf_Mike",
+                           "bild":  "default.png",
+                           "fahrzeug":  "Ford Mustang GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  306,
+                           "platzierung":  11,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  80,
+                           "name":  "ALDAPUNKER80 BE",
+                           "bild":  "default.png",
+                           "fahrzeug":  "McLaren 720S GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  191,
+                           "platzierung":  15,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  141,
+                           "name":  "F. Hopf",
+                           "bild":  "141.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  177,
+                           "platzierung":  17,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       },
+                       {
+                           "nummer":  872,
+                           "name":  "A. Löbcke",
+                           "bild":  "872.png",
+                           "fahrzeug":  "Ferrari 296 GT3",
+                           "aktiveSaison":  true,
+                           "punkte":  289,
+                           "platzierung":  12,
+                           "serien":  [
+                                          "fun",
+                                          "masters",
+                                          "ta"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              },
+                                              {
+                                                  "id":  "fun-oulton-park-02-08-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Oulton Park 02.08.26"
+                                              },
+                                              {
+                                                  "id":  "masters-s1",
+                                                  "serieId":  "masters",
+                                                  "serie":  "GTM Masters",
+                                                  "saison":  1,
+                                                  "saisonName":  "GTM Masters Saison 1",
+                                                  "event":  "GTM Masters Saison 1"
+                                              },
+                                              {
+                                                  "id":  "ta-2026",
+                                                  "serieId":  "ta",
+                                                  "serie":  "GTM Time Attack",
+                                                  "saison":  2026,
+                                                  "saisonName":  "GTM Time Attack Saison 2026",
+                                                  "event":  "GTM Time Attack Saison 2026"
+                                              }
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Stefan Racing",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+                       "fun"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           }
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  60,
+                           "name":  "Erkan",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+                                          "fun"
+                                      ],
+                           "teilnahmen":  [
+                                              {
+                                                  "id":  "fun-laguna-seca-26-07-26",
+                                                  "serieId":  "fun",
+                                                  "serie":  "GTM FUN Events",
+                                                  "saison":  0,
+                                                  "saisonName":  "GTM FUN Events",
+                                                  "event":  "Laguna Seca 26.07.26"
+                                              }
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Team Fun Racer",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  3,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  226,
+                           "name":  "TFR-Danny",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  710,
+                           "name":  "Rupert",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       },
+                       {
+                           "nummer":  987,
+                           "name":  "TFR_ToSchi987",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "Underdog Motorsport",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  389,
+                           "name":  "S.Storm",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
+    },
+    {
+        "name":  "White Tiger Racing",
+        "aktiveMeisterschaft":  false,
+        "serien":  [
+
+                   ],
+        "teilnahmen":  [
+
+                       ],
+        "punkte":  0,
+        "platzierung":  0,
+        "anzahlFahrer":  1,
+        "fahrzeuge":  [
+
+                      ],
+        "fahrer":  [
+                       {
+                           "nummer":  46,
+                           "name":  "Heppi",
+                           "bild":  "default.png",
+                           "fahrzeug":  "",
+                           "aktiveSaison":  false,
+                           "punkte":  0,
+                           "platzierung":  0,
+                           "serien":  [
+
+                                      ],
+                           "teilnahmen":  [
+
+                                          ]
+                       }
+                   ]
     }
 ]

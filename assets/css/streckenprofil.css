@@ -1,0 +1,377 @@
+/* ==========================================================
+   GTM STRECKENPROFIL
+========================================================== */
+
+.streckenprofil-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 82% 4%, rgba(135, 0, 0, 0.18), transparent 33rem),
+        #080808;
+}
+
+.streckenprofil-laden,
+.streckenprofil-fehler {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    color: #929292;
+    text-align: center;
+}
+
+.streckenprofil-hero {
+    padding: 42px 0 28px;
+}
+
+.streckenprofil-zurueck {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    margin-bottom: 20px;
+    color: #d0d0d0;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.streckenprofil-zurueck:hover,
+.streckenprofil-zurueck:focus-visible {
+    color: #ffffff;
+}
+
+.streckenprofil-hero-karte {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(430px, 58%) minmax(0, 1fr);
+    min-height: 465px;
+    background: linear-gradient(145deg, #1e1e1e, #101010);
+    border: 1px solid #343434;
+    border-radius: 24px;
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.35);
+}
+
+.streckenprofil-hero-bild {
+    position: relative;
+    overflow: hidden;
+    min-height: 465px;
+    background: #111111;
+}
+
+.streckenprofil-foto {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.streckenprofil-bild-verlauf {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 58%, #151515 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.4), transparent 52%);
+}
+
+.streckenprofil-layout {
+    position: absolute;
+    right: 28px;
+    bottom: 25px;
+    width: min(35%, 250px);
+    max-height: 45%;
+    object-fit: contain;
+    filter: drop-shadow(0 7px 16px rgba(0, 0, 0, 0.86));
+}
+
+.streckenprofil-hero-inhalt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(34px, 5vw, 62px);
+}
+
+.streckenprofil-eyebrow,
+.streckenprofil-bereich-kopf p {
+    margin: 0 0 8px;
+    color: #e00000;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.streckenprofil-hero-inhalt h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -0.07em;
+    line-height: 0.92;
+    overflow-wrap: anywhere;
+}
+
+.streckenprofil-land {
+    align-self: flex-start;
+    margin-top: 16px;
+    padding: 7px 11px;
+    color: #ffffff;
+    background: #c90000;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.streckenprofil-serien {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+}
+
+.streckenprofil-serien span {
+    padding: 6px 9px;
+    border: 1px solid;
+    border-radius: 99px;
+    font-size: 0.58rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.streckenprofil-serien .serie-masters { color: #ff5b5b; background: rgba(180, 0, 0, 0.18); border-color: rgba(222, 0, 0, 0.6); }
+.streckenprofil-serien .serie-ta { color: #ffd867; background: rgba(171, 121, 0, 0.15); border-color: rgba(210, 153, 8, 0.55); }
+.streckenprofil-serien .serie-fun { color: #66dcff; background: rgba(0, 129, 169, 0.16); border-color: rgba(16, 165, 210, 0.55); }
+.streckenprofil-serien .ist-neutral { color: #a4a4a4; background: rgba(255, 255, 255, 0.04); border-color: #414141; }
+
+.streckenprofil-bereich {
+    padding: 28px 0;
+}
+
+.streckenprofil-historie {
+    background: rgba(255, 255, 255, 0.012);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.streckenprofil-bereich-kopf {
+    margin-bottom: 18px;
+}
+
+.streckenprofil-bereich-kopf h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.045em;
+}
+
+.streckenprofil-statistik,
+.streckenprofil-daten {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.streckenprofil-statistik article,
+.streckenprofil-daten article {
+    padding: 22px 15px;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #343434;
+    border-radius: 15px;
+}
+
+.streckenprofil-statistik article {
+    text-align: center;
+}
+
+.streckenprofil-statistik strong,
+.streckenprofil-statistik span,
+.streckenprofil-daten strong,
+.streckenprofil-daten span {
+    display: block;
+}
+
+.streckenprofil-statistik strong {
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    font-weight: 900;
+}
+
+.streckenprofil-statistik span,
+.streckenprofil-daten span {
+    margin-top: 6px;
+    color: #898989;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.streckenprofil-daten strong {
+    margin-top: 8px;
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+.streckenprofil-termin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.streckenprofil-termin {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    padding: 20px;
+    background: linear-gradient(145deg, #1c1c1c, #111111);
+    border: 1px solid #343434;
+    border-radius: 16px;
+}
+
+.streckenprofil-termin::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    bottom: -55px;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    opacity: 0.12;
+}
+
+.streckenprofil-termin.serie-masters::after { background: #ed0000; }
+.streckenprofil-termin.serie-ta::after { background: #e2a500; }
+.streckenprofil-termin.serie-fun::after { background: #00a6d8; }
+
+.streckenprofil-termin-kopf {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.streckenprofil-termin-kopf > span {
+    color: #a0a0a0;
+    font-size: 0.66rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.streckenprofil-termin-kopf > strong {
+    flex: 0 0 auto;
+    padding: 5px 7px;
+    border: 1px solid #444444;
+    border-radius: 99px;
+    font-size: 0.52rem;
+    text-transform: uppercase;
+}
+
+.streckenprofil-termin-kopf > strong.status-abgeschlossen { color: #68dc84; border-color: rgba(49, 171, 80, 0.48); background: rgba(25, 125, 50, 0.13); }
+.streckenprofil-termin-kopf > strong.status-aktuell { color: #ff6666; border-color: rgba(224, 0, 0, 0.55); background: rgba(180, 0, 0, 0.16); }
+.streckenprofil-termin-kopf > strong.status-nächster,
+.streckenprofil-termin-kopf > strong.status-bevorstehend { color: #ffd766; border-color: rgba(203, 151, 20, 0.48); background: rgba(165, 114, 0, 0.13); }
+
+.streckenprofil-termin h3 {
+    position: relative;
+    z-index: 1;
+    margin: 18px 0 7px;
+    font-size: 1.65rem;
+    font-weight: 900;
+}
+
+.streckenprofil-termin p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #939393;
+    font-size: 0.78rem;
+}
+
+.streckenprofil-termin a {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    margin-top: 18px;
+    color: #ffffff;
+    font-size: 0.73rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.streckenprofil-termin a:hover,
+.streckenprofil-termin a:focus-visible {
+    color: #ff4343;
+}
+
+.streckenprofil-leer {
+    grid-column: 1 / -1;
+    padding: 36px 20px;
+    color: #898989;
+    text-align: center;
+    background: #131313;
+    border: 1px dashed #3a3a3a;
+    border-radius: 15px;
+}
+
+.streckenprofil-weitere-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.streckenprofil-weitere-karte {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 145px auto auto;
+    color: #ffffff;
+    text-decoration: none;
+    background: #151515;
+    border: 1px solid #343434;
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.streckenprofil-weitere-karte:hover,
+.streckenprofil-weitere-karte:focus-visible {
+    color: #ffffff;
+    transform: translateY(-4px);
+    border-color: #c90000;
+}
+
+.streckenprofil-weitere-karte img {
+    display: block;
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+}
+
+.streckenprofil-weitere-karte span {
+    padding: 14px 15px 0;
+    color: #e00000;
+    font-size: 0.58rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.streckenprofil-weitere-karte strong {
+    padding: 5px 15px 16px;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+@media (max-width: 1100px) {
+    .streckenprofil-termin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .streckenprofil-weitere-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 850px) {
+    .streckenprofil-hero-karte { grid-template-columns: 1fr; }
+    .streckenprofil-hero-bild { min-height: 360px; }
+    .streckenprofil-bild-verlauf { background: linear-gradient(0deg, #151515 0%, transparent 36%); }
+    .streckenprofil-statistik,
+    .streckenprofil-daten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .streckenprofil-hero-bild { min-height: 290px; }
+    .streckenprofil-statistik,
+    .streckenprofil-daten,
+    .streckenprofil-termin-grid,
+    .streckenprofil-weitere-grid { grid-template-columns: 1fr; }
+}

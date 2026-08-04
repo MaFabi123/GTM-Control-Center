@@ -2,62 +2,62 @@
    GTM Navigation
 ========================================== */
 
-.navbar{
-
-    background:#0f1012 !important;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-
-    padding:16px 0;
-
-    transition:.35s;
-
+.navbar {
+    background: #0f1012 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    padding: 16px 0;
+    transition: .35s;
 }
 
-.navbar-brand img{
-
-    height:58px;
-
-    transition:.35s;
-
+.navbar-brand img {
+    height: 58px;
+    transition: .35s;
 }
 
-.navbar-nav{
-
-    gap:12px;
-
+.navbar-nav {
+    gap: 6px;
 }
 
-.nav-link{
-
-    color:#d6d6d6 !important;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    letter-spacing:.3px;
-
-    padding:10px 14px !important;
-
-    border-radius:8px;
-
-    transition:.25s;
-
+.nav-link {
+    color: #d6d6d6 !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .2px;
+    padding: 10px 10px !important;
+    border-radius: 8px;
+    transition: .25s;
 }
 
-.nav-link:hover{
-
-    color:white !important;
-
-    background:rgba(217,4,41,.12);
-
+.nav-link:hover {
+    color: white !important;
+    background: rgba(217, 4, 41, .12);
 }
 
-.nav-link.active{
+.nav-link.active {
+    color: white !important;
+    background: var(--gtm-red);
+}
 
-    color:white !important;
+.nav-link-ta {
+    color: #e1b454 !important;
+}
 
-    background:var(--gtm-red);
+.nav-link-ta:hover,
+.nav-link-ta.active {
+    color: #fff !important;
+    background: rgba(216, 163, 60, .18);
+}
 
+@media (max-width: 1199px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+
+    .navbar-nav {
+        gap: 3px;
+    }
+
+    .nav-link {
+        padding: 10px 12px !important;
+    }
 }

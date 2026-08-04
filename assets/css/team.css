@@ -1,0 +1,528 @@
+/* =========================================================
+   GTM TEAMPROFIL
+========================================================= */
+
+.teamprofil-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(130, 0, 0, 0.16), transparent 35rem),
+        linear-gradient(180deg, #070707 0%, #101010 100%);
+}
+
+.teamprofil-laden,
+.teamprofil-fehler {
+    padding: 90px 20px;
+    color: #999999;
+    text-align: center;
+}
+
+.teamprofil-zurueck {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 24px;
+    color: #b6b6b6;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.teamprofil-zurueck:hover,
+.teamprofil-zurueck:focus-visible {
+    color: #ffffff;
+}
+
+.teamprofil-hero {
+    padding: 64px 0 34px;
+}
+
+.teamprofil-hero-karte {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.4fr);
+    min-height: 370px;
+    background: linear-gradient(135deg, #202020, #0e0e0e);
+    border: 1px solid #303030;
+    border-radius: 26px;
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.38);
+}
+
+.teamprofil-logo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 42px;
+    background: linear-gradient(145deg, rgba(110, 0, 0, 0.68), rgba(30, 0, 0, 0.9));
+    border-right: 1px solid #363636;
+}
+
+.teamprofil-logo::after {
+    content: "GTM";
+    position: absolute;
+    right: -20px;
+    bottom: -34px;
+    color: rgba(255, 255, 255, 0.035);
+    font-size: 8rem;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    transform: rotate(-9deg);
+}
+
+.teamprofil-logo img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(250px, 85%);
+    max-height: 230px;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 25px rgba(0, 0, 0, 0.52));
+}
+
+.teamprofil-hero-inhalt {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 42px;
+}
+
+.teamprofil-eyebrow {
+    margin: 0 0 10px;
+    color: #d40000;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.teamprofil-hero h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 0.96;
+}
+
+.teamprofil-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.teamprofil-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 11px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #3a3a3a;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.teamprofil-badge.masters {
+    background: rgba(212, 0, 0, 0.14);
+    border-color: rgba(212, 0, 0, 0.5);
+}
+
+.teamprofil-badge.ta {
+    color: #ffd977;
+    background: rgba(239, 177, 30, 0.12);
+    border-color: rgba(239, 177, 30, 0.42);
+}
+
+.teamprofil-badge.fun {
+    color: #77ddff;
+    background: rgba(66, 207, 255, 0.1);
+    border-color: rgba(66, 207, 255, 0.4);
+}
+
+.teamprofil-kurzinfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+.teamprofil-kurzinfo span {
+    padding: 8px 11px;
+    color: #bcbcbc;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid #343434;
+    border-radius: 9px;
+    font-size: 0.8rem;
+}
+
+.teamprofil-bereich {
+    padding: 0 0 34px;
+}
+
+.teamprofil-bereich:last-child {
+    padding-bottom: 82px;
+}
+
+.teamprofil-bereich-kopf {
+    margin-bottom: 16px;
+}
+
+.teamprofil-bereich-kopf p {
+    margin: 0 0 5px;
+    color: #d40000;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.teamprofil-bereich-kopf h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.teamprofil-statistik {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.teamprofil-statistik article {
+    padding: 22px 18px;
+    text-align: center;
+    background: linear-gradient(145deg, #202020, #141414);
+    border: 1px solid #303030;
+    border-radius: 17px;
+}
+
+.teamprofil-statistik strong {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.teamprofil-statistik span {
+    display: block;
+    margin-top: 7px;
+    color: #858585;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.teamprofil-teilnahmen {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.teamprofil-teilnahmen-gruppe + .teamprofil-teilnahmen-gruppe {
+    margin-top: 28px;
+}
+
+.teamprofil-teilnahmen-gruppe > h3 {
+    margin: 0 0 13px;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.teamprofil-teilnahme {
+    padding: 19px;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #303030;
+    border-radius: 16px;
+}
+
+.teamprofil-teilnahme.aktuell {
+    border-left: 3px solid #d40000;
+}
+
+.teamprofil-teilnahme.aktuell.ta {
+    border-left-color: #d9a11e;
+}
+
+.teamprofil-teilnahme.aktuell.fun {
+    border-left-color: #35bfe8;
+}
+
+.teamprofil-teilnahme.historie {
+    opacity: 0.72;
+    filter: saturate(0.55);
+}
+
+.teamprofil-historie-slider {
+    margin-top: 28px;
+}
+
+.teamprofil-historie-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 13px;
+}
+
+.teamprofil-historie-kopf h3 {
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.teamprofil-historie-steuerung {
+    display: flex;
+    gap: 8px;
+}
+
+.teamprofil-historie-steuerung button {
+    width: 39px;
+    height: 39px;
+    color: #ffffff;
+    background: #181818;
+    border: 1px solid #3b3b3b;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.teamprofil-historie-steuerung button:hover,
+.teamprofil-historie-steuerung button:focus-visible {
+    background: #860000;
+    border-color: #d40000;
+}
+
+.teamprofil-historie-steuerung button:disabled {
+    opacity: 0.28;
+    cursor: default;
+}
+
+.teamprofil-historie-slider.ist-statisch .teamprofil-historie-steuerung {
+    visibility: hidden;
+}
+
+.teamprofil-historie-track {
+    overflow-x: auto;
+    display: grid;
+    grid-auto-columns: minmax(255px, calc((100% - 28px) / 3));
+    grid-auto-flow: column;
+    gap: 14px;
+    padding: 2px 2px 12px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #690000 #171717;
+    scrollbar-width: thin;
+}
+
+.teamprofil-historie-track .teamprofil-teilnahme {
+    min-height: 130px;
+    scroll-snap-align: start;
+}
+
+.teamprofil-teilnahme > span {
+    display: inline-flex;
+    margin-bottom: 11px;
+    color: #d40000;
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.teamprofil-teilnahme.ta > span {
+    color: #efb11e;
+}
+
+.teamprofil-teilnahme.fun > span {
+    color: #42cfff;
+}
+
+.teamprofil-teilnahme h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+.teamprofil-fahrer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.teamprofil-fahrer {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    padding: 17px;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(145deg, #1e1e1e, #121212);
+    border: 1px solid #303030;
+    border-radius: 15px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teamprofil-fahrer-bild {
+    overflow: hidden;
+    width: 66px;
+    height: 66px;
+    background: radial-gradient(circle at 50% 25%, #5a1010, #160707 72%);
+    border: 1px solid #4b1a1a;
+    border-radius: 14px;
+}
+
+.teamprofil-fahrer-bild img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+.teamprofil-fahrer .teamprofil-fahrer-startnummer {
+    display: inline-flex;
+    width: auto;
+    margin: 0 0 5px;
+    padding: 3px 7px;
+    color: #ffffff;
+    background: #a90000;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 900;
+}
+
+.teamprofil-fahrer:hover,
+.teamprofil-fahrer:focus-visible {
+    color: #ffffff;
+    transform: translateY(-3px);
+    border-color: rgba(212, 0, 0, 0.75);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+.teamprofil-fahrer-nummer {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #d40000, #8e0000);
+    border-radius: 13px;
+    font-size: 0.85rem;
+    font-weight: 900;
+}
+
+.teamprofil-fahrer strong,
+.teamprofil-fahrer span {
+    display: block;
+}
+
+.teamprofil-fahrer strong {
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.teamprofil-fahrer span {
+    margin-top: 4px;
+    color: #858585;
+    font-size: 0.77rem;
+}
+
+.teamprofil-einsatzteams,
+.teamprofil-fahrzeuge {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.teamprofil-einsatzteams span,
+.teamprofil-fahrzeuge span {
+    padding: 10px 13px;
+    color: #d0d0d0;
+    background: #181818;
+    border: 1px solid #343434;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.teamprofil-einsatzteams span {
+    color: #ffffff;
+    background: rgba(212, 0, 0, 0.1);
+    border-color: rgba(212, 0, 0, 0.4);
+}
+
+.teamprofil-leer {
+    padding: 28px;
+    color: #858585;
+    text-align: center;
+    background: #151515;
+    border: 1px solid #303030;
+    border-radius: 16px;
+}
+
+@media (max-width: 1000px) {
+    .teamprofil-statistik {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .teamprofil-teilnahmen,
+    .teamprofil-fahrer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .teamprofil-historie-track {
+        grid-auto-columns: minmax(255px, calc((100% - 14px) / 2));
+    }
+}
+
+@media (max-width: 700px) {
+    .teamprofil-hero {
+        padding-top: 48px;
+    }
+
+    .teamprofil-hero-karte {
+        grid-template-columns: 1fr;
+    }
+
+    .teamprofil-logo {
+        min-height: 230px;
+        border-right: 0;
+        border-bottom: 1px solid #363636;
+    }
+
+    .teamprofil-logo img {
+        max-height: 160px;
+    }
+
+    .teamprofil-hero-inhalt {
+        padding: 28px;
+    }
+
+    .teamprofil-teilnahmen,
+    .teamprofil-fahrer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teamprofil-historie-track {
+        grid-auto-columns: minmax(250px, 86%);
+    }
+}
+
+@media (max-width: 480px) {
+    .teamprofil-statistik {
+        grid-template-columns: 1fr;
+    }
+}

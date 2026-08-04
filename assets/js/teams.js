@@ -1,48 +1,45 @@
 /* ==========================================================
-   GTM TEAMSEITE
+   GTM TEAM-BIBLIOTHEK
 ========================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
     "use strict";
 
-    const grid =
-        document.getElementById("teams-grid");
+    const grid = document.getElementById("teams-grid");
+    const searchInput = document.getElementById("team-suche");
+    const seriesFilter = document.getElementById("serie-filter");
+    const vehicleFilter = document.getElementById("fahrzeug-filter");
+    const participationFilter = document.getElementById("teilnahme-filter");
+    const sortSelect = document.getElementById("team-sortierung");
+    const noResults = document.getElementById("keine-teams");
 
-    const searchInput =
-        document.getElementById("team-suche");
-
-    const vehicleFilter =
-        document.getElementById("fahrzeug-filter");
-
-    const championshipFilter =
-        document.getElementById("meisterschaft-filter");
-
-    const sortSelect =
-        document.getElementById("team-sortierung");
-
-    const noResults =
-        document.getElementById("keine-teams");
+    const slider = document.getElementById("teams-slider");
+    const sliderDots = document.getElementById("teams-slider-punkte");
+    const sliderPrevious = document.getElementById("teams-slider-zurueck");
+    const sliderNext = document.getElementById("teams-slider-weiter");
 
     let alleTeams = [];
+    let alleKalender = [];
+    let sliderTeams = [];
+    let sliderIndex = 0;
+    let sliderTimer = null;
 
-    /* ======================================================
-       GRUNDPRÜFUNG
-    ====================================================== */
+    const seriesLabels = {
+        masters: "GTM Masters",
+        ta: "GTM Time Attack",
+        fun: "GTM FUN Events"
+    };
 
-    if (
-        !window.GTM ||
-        typeof window.GTM.loadFahrer !== "function"
-    ) {
-        showError(
-            "Die GTM Data Engine wurde nicht geladen."
-        );
+    const seriesOrder = {
+        masters: 1,
+        ta: 2,
+        fun: 3
+    };
 
+    if (!window.GTM || typeof window.GTM.load !== "function") {
+        showError("Die GTM Data Engine wurde nicht geladen.");
         return;
     }
-
-    /* ======================================================
-       HILFSFUNKTIONEN
-    ====================================================== */
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -61,1129 +58,726 @@ document.addEventListener("DOMContentLoaded", async () => {
             .replace(/[\u0300-\u036f]/g, "");
     }
 
-    function toNumber(
-        value,
-        fallback = 0
-    ) {
-        const number =
-            Number(value);
-
-        return Number.isFinite(number)
-            ? number
-            : fallback;
+    function toNumber(value, fallback = 0) {
+        const number = Number(value);
+        return Number.isFinite(number) ? number : fallback;
     }
 
-    function getDriverTeam(fahrer) {
-        return String(
-            fahrer?.teamZuordnung ||
-            fahrer?.team ||
-            ""
-        ).trim();
+    function getParticipationDate(participation) {
+        const match = String(participation?.event || "")
+            .match(/(\d{1,2})\.(\d{1,2})\.(\d{2,4})/);
+        if (!match) return "";
+        const year = Number(match[3]) < 100 ? 2000 + Number(match[3]) : Number(match[3]);
+        return `${String(year).padStart(4, "0")}-${String(Number(match[2])).padStart(2, "0")}-${String(Number(match[1])).padStart(2, "0")}`;
     }
 
-    function getDriverVehicle(fahrer) {
-        return String(
-            fahrer?.fahrzeug ||
-            ""
-        ).trim();
+    function getCalendarEntries(participation) {
+        const seriesId = normalizeText(participation?.serieId);
+        const season = toNumber(participation?.saison, 0);
+        const eventDate = getParticipationDate(participation);
+
+        return alleKalender.filter((entry) => {
+            if (normalizeText(entry?.serieId) !== seriesId) return false;
+            if (seriesId === "fun" && eventDate) return String(entry?.datum || "") === eventDate;
+            return season <= 0 || toNumber(entry?.saison, 0) === season;
+        });
     }
 
-    function getTeamLogo(teamName) {
-    const fallback =
-        "assets/images/teams/default.png";
+    function isHistoricalParticipation(participation) {
+        const entries = getCalendarEntries(participation);
+        if (entries.length > 0) {
+            return entries.every((entry) => normalizeText(entry?.status) === "abgeschlossen");
+        }
 
-    let normalizedName =
-        String(teamName ?? "")
-            .trim()
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/ß/g, "ss");
+        const eventDate = getParticipationDate(participation);
+        if (eventDate) {
+            const today = new Date();
+            const todayIso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+            return eventDate < todayIso;
+        }
 
-    /*
-     * Team-Zusätze am Ende entfernen:
-     * Rennsteig Racing I   -> Rennsteig Racing
-     * Rennsteig Racing II  -> Rennsteig Racing
-     * MAD Racer 1          -> MAD Racer
-     * MAD Racer Team II    -> MAD Racer Team
-     */
-    normalizedName =
-        normalizedName.replace(
-            /\s+(?:i{1,3}|iv|v|vi{0,3}|ix|x|\d+)$/,
-            ""
-        );
+        const seriesId = normalizeText(participation?.serieId);
+        const season = toNumber(participation?.saison, 0);
+        const knownSeasons = alleKalender
+            .filter((entry) => normalizeText(entry?.serieId) === seriesId)
+            .map((entry) => toNumber(entry?.saison, 0))
+            .filter((value) => value > 0);
+        return season > 0 && knownSeasons.length > 0 && season < Math.max(...knownSeasons);
+    }
 
-    const slug =
-        normalizedName
+    function addParticipationStatus(team) {
+        const aktuelleTeilnahmen = team.teilnahmen.filter((entry) => !isHistoricalParticipation(entry));
+        const historischeTeilnahmen = team.teilnahmen.filter(isHistoricalParticipation);
+        const aktuelleSerien = [...new Set(aktuelleTeilnahmen.map((entry) => entry.serieId))]
+            .sort((a, b) => (seriesOrder[a] || 99) - (seriesOrder[b] || 99));
+
+        return {
+            ...team,
+            aktuelleTeilnahmen,
+            historischeTeilnahmen,
+            aktuelleSerien
+        };
+    }
+
+    function createSlug(value) {
+        return normalizeText(value)
+            .replace(/ß/g, "ss")
             .replace(/&/g, "und")
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/^-+|-+$/g, "");
-
-    if (!slug) {
-        return fallback;
     }
 
-    return `assets/images/teams/${slug}.png`;
-}
+    function getTeamLogoCandidates(team) {
+        const names = [
+            team?.name,
+            ...(Array.isArray(team?.einsatzteams) ? team.einsatzteams : [])
+        ];
 
-    function isValidTeam(team) {
-        const value =
-            String(team ?? "").trim();
-
-        return (
-            value !== "" &&
-            normalizeText(value) !== "kein team" &&
-            value !== "0"
-        );
-    }
-
-    function participatesInChampionship(team) {
-        return (
-            team?.aktiveMeisterschaft === true
-        );
-    }
-
-    function getTeamSearchText(team) {
-        const drivers =
-            Array.isArray(team.fahrer)
-                ? team.fahrer
-                    .map(
-                        (fahrer) =>
-                            fahrer.name
-                    )
-                    .join(" ")
-                : "";
-
-        const vehicles =
-            Array.isArray(team.fahrzeuge)
-                ? team.fahrzeuge.join(" ")
-                : "";
-
-        return normalizeText(
-            [
-                team.name,
-                drivers,
-                vehicles,
-                team.punkte,
-                participatesInChampionship(team)
-                    ? "aktuelle meisterschaft aktiv"
-                    : "keine aktuelle teilnahme inaktiv"
-            ].join(" ")
-        );
-    }
-
-    /* ======================================================
-       FILTER BEFÜLLEN
-    ====================================================== */
-
-    function fillSelect(
-        select,
-        values,
-        defaultLabel
-    ) {
-        if (!select) {
-            return;
-        }
-
-        const currentValue =
-            select.value;
-
-        const uniqueValues = [
-            ...new Set(
-                values
-                    .map(
-                        (value) =>
-                            String(
-                                value ?? ""
-                            ).trim()
-                    )
+        return [
+            ...new Set([
+                ...names
+                    .map(createSlug)
                     .filter(Boolean)
-            )
-        ].sort(
-            (a, b) =>
-                a.localeCompare(
-                    b,
-                    "de",
-                    {
-                        sensitivity: "base"
-                    }
-                )
-        );
-
-        select.innerHTML = "";
-
-        const defaultOption =
-            document.createElement(
-                "option"
-            );
-
-        defaultOption.value = "";
-        defaultOption.textContent =
-            defaultLabel;
-
-        select.appendChild(
-            defaultOption
-        );
-
-        uniqueValues.forEach(
-            (value) => {
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-                option.value = value;
-                option.textContent =
-                    value;
-
-                select.appendChild(
-                    option
-                );
-            }
-        );
-
-        if (
-            uniqueValues.includes(
-                currentValue
-            )
-        ) {
-            select.value =
-                currentValue;
-        }
+                    .map((slug) => `assets/images/teams/${slug}.png`),
+                "assets/images/teams/default.png"
+            ])
+        ];
     }
 
-    /* ======================================================
-       TEAMS AUS FAHRERN UND MEISTERSCHAFT BAUEN
-    ====================================================== */
-
-    function buildTeams(
-        drivers,
-        championshipTeams
-    ) {
-        const championshipMap =
-            new Map();
-
-        championshipTeams.forEach(
-            (team) => {
-                const name =
-                    String(
-                        team?.name ||
-                        team?.team ||
-                        ""
-                    ).trim();
-
-                if (!name) {
-                    return;
-                }
-
-                championshipMap.set(
-                    normalizeText(name),
-                    team
-                );
-            }
-        );
-
-        const teamMap =
-            new Map();
-
-        drivers.forEach(
-            (fahrer) => {
-                const teamName =
-                    getDriverTeam(fahrer);
-
-                if (
-                    !isValidTeam(
-                        teamName
-                    )
-                ) {
-                    return;
-                }
-
-                const key =
-                    normalizeText(
-                        teamName
-                    );
-
-                if (
-                    !teamMap.has(key)
-                ) {
-                    teamMap.set(
-                        key,
-                        {
-                            name: teamName,
-                            fahrer: [],
-                            fahrzeuge:
-                                new Set(),
-                            aktiveFahrer: 0,
-                            aktiveMeisterschaft:
-                                false,
-                            punkte: 0,
-                            platzierung: 0
-                        }
-                    );
-                }
-
-                const team =
-                    teamMap.get(key);
-
-                const vehicle =
-                    getDriverVehicle(
-                        fahrer
-                    );
-
-                team.fahrer.push({
-                    nummer:
-                        toNumber(
-                            fahrer.nummer,
-                            0
-                        ),
-
-                    name:
-                        String(
-                            fahrer.name ||
-                            fahrer.anzeigename ||
-                            fahrer.fahrer ||
-                            "Unbekannter Fahrer"
-                        ).trim(),
-
-                    fahrzeug:
-                        vehicle,
-
-                    aktiveSaison:
-                        fahrer.aktiveSaison ===
-                        true,
-
-                    punkte:
-                        toNumber(
-                            fahrer.punkte,
-                            0
-                        ),
-
-                    platzierung:
-                        toNumber(
-                            fahrer.platzierung,
-                            0
-                        )
-                });
-
-                if (vehicle) {
-                    team.fahrzeuge.add(
-                        vehicle
-                    );
-                }
-
-                if (
-                    fahrer.aktiveSaison ===
-                    true
-                ) {
-                    team.aktiveFahrer++;
-                }
-            }
-        );
-
-        championshipMap.forEach(
-            (
-                championshipTeam,
-                key
-            ) => {
-                if (
-                    !teamMap.has(key)
-                ) {
-                    teamMap.set(
-                        key,
-                        {
-                            name:
-                                championshipTeam.name ||
-                                championshipTeam.team,
-
-                            fahrer: [],
-
-                            fahrzeuge:
-                                new Set(),
-
-                            aktiveFahrer: 0,
-
-                            aktiveMeisterschaft:
-                                true,
-
-                            punkte:
-                                toNumber(
-                                    championshipTeam.punkte,
-                                    0
-                                ),
-
-                            platzierung:
-                                toNumber(
-                                    championshipTeam.platzierung,
-                                    0
-                                )
-                        }
-                    );
-                }
-
-                const team =
-                    teamMap.get(key);
-
-                team.aktiveMeisterschaft =
-                    true;
-
-                team.punkte =
-                    toNumber(
-                        championshipTeam.punkte,
-                        team.punkte
-                    );
-
-                team.platzierung =
-                    toNumber(
-                        championshipTeam.platzierung,
-                        team.platzierung
-                    );
-
-                const vehicles =
-                    Array.isArray(
-                        championshipTeam.fahrzeuge
-                    )
-                        ? championshipTeam.fahrzeuge
-                        : [];
-
-                vehicles.forEach(
-                    (vehicle) => {
-                        if (vehicle) {
-                            team.fahrzeuge.add(
-                                vehicle
-                            );
-                        }
-                    }
-                );
-            }
-        );
-
-        return Array.from(
-            teamMap.values()
-        ).map(
-            (team) => ({
-                ...team,
-
-                fahrzeuge:
-                    Array.from(
-                        team.fahrzeuge
-                    ).sort(
-                        (a, b) =>
-                            a.localeCompare(
-                                b,
-                                "de",
-                                {
-                                    sensitivity:
-                                        "base"
-                                }
-                            )
-                    ),
-
-                fahrer:
-                    [...team.fahrer]
-                        .sort(
-                            (a, b) =>
-                                a.nummer -
-                                b.nummer
-                        )
-            })
-        );
-    }
-
-    /* ======================================================
-       FAHRERLISTE
-    ====================================================== */
-
-    function createDriverList(team) {
-        if (
-            !Array.isArray(
-                team.fahrer
-            ) ||
-            team.fahrer.length === 0
-        ) {
-            return `
-                <div class="team-fahrer-leer">
-                    Keine Fahrer zugeordnet
-                </div>
-            `;
-        }
-
-        return team.fahrer
-            .map(
-                (fahrer) => `
-                    <div class="team-fahrer">
-
-                        <span class="team-fahrer-nummer">
-                            #${escapeHtml(
-                                fahrer.nummer ||
-                                "–"
-                            )}
-                        </span>
-
-                        <div class="team-fahrer-inhalt">
-
-                            <strong>
-                                ${escapeHtml(
-                                    fahrer.name
-                                )}
-                            </strong>
-
-                            <span>
-                                ${escapeHtml(
-                                    fahrer.fahrzeug ||
-                                    "Kein Fahrzeug eingetragen"
-                                )}
-                            </span>
-
-                        </div>
-
-                        <span
-                            class="team-fahrer-status ${
-                                fahrer.aktiveSaison
-                                    ? "aktiv"
-                                    : "inaktiv"
-                            }"
-                        >
-                            ${
-                                fahrer.aktiveSaison
-                                    ? "Masters"
-                                    : "GTM"
-                            }
-                        </span>
-
-                    </div>
-                `
-            )
-            .join("");
-    }
-
-    /* ======================================================
-       TEAMKARTE
-    ====================================================== */
-
-    function createTeamCard(team) {
-        const name =
-            escapeHtml(
-                team.name
-            );
-
-        const logo =
-            escapeHtml(
-                getTeamLogo(
-                    team.name
-                )
-            );
-
-        const active =
-            participatesInChampionship(
-                team
-            );
-
-        const driverCount =
-            Array.isArray(
-                team.fahrer
-            )
-                ? team.fahrer.length
-                : 0;
-
-        const activeDriverCount =
-            toNumber(
-                team.aktiveFahrer,
-                0
-            );
-
-        const vehicleCount =
-            Array.isArray(
-                team.fahrzeuge
-            )
-                ? team.fahrzeuge.length
-                : 0;
-
-        const points =
-            toNumber(
-                team.punkte,
-                0
-            );
-
-        const ranking =
-            toNumber(
-                team.platzierung,
-                0
-            );
-
-        const vehicles =
-            vehicleCount > 0
-                ? team.fahrzeuge
-                    .map(
-                        (vehicle) =>
-                            escapeHtml(
-                                vehicle
-                            )
-                    )
-                    .join(", ")
-                : "Keine Fahrzeuge eingetragen";
+    function createTeamLogoAttributes(team) {
+        const candidates = getTeamLogoCandidates(team);
+        const first = candidates.shift() || "assets/images/teams/default.png";
 
         return `
-            <article
-                class="team-card"
-                data-status="${
-                    active
-                        ? "aktiv"
-                        : "inaktiv"
-                }"
-            >
-
-                <div class="team-card-kopf">
-
-                    <div class="team-card-identitaet">
-
-                        <div class="team-card-logo">
-
-                            <img
-                                src="${logo}"
-                                alt="Logo ${name}"
-                                loading="lazy"
-                                onerror="
-                                    this.onerror = null;
-                                    this.src = 'assets/images/teams/default.png';
-                                "
-                            >
-
-                        </div>
-
-                        <div class="team-card-name">
-
-                            <span class="team-card-label">
-                                GTM Team
-                            </span>
-
-                            <h2>
-                                ${name}
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <span
-                        class="team-card-status ${
-                            active
-                                ? "aktiv"
-                                : "inaktiv"
-                        }"
-                    >
-                        ${
-                            active
-                                ? "Aktuelle Meisterschaft"
-                                : "Keine aktuelle Teilnahme"
-                        }
-                    </span>
-
-                </div>
-
-                <div class="team-card-statistik">
-
-                    <div>
-
-                        <strong>
-                            ${driverCount}
-                        </strong>
-
-                        <span>
-                            Fahrer
-                        </span>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            ${activeDriverCount}
-                        </strong>
-
-                        <span>
-                            Masters-Fahrer
-                        </span>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            ${vehicleCount}
-                        </strong>
-
-                        <span>
-                            Fahrzeuge
-                        </span>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            ${
-                                active
-                                    ? points
-                                    : "–"
-                            }
-                        </strong>
-
-                        <span>
-                            Punkte
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="team-card-info">
-
-                    <span>
-                        Fahrzeuge
-                    </span>
-
-                    <strong>
-                        ${vehicles}
-                    </strong>
-
-                </div>
-
-                ${
-                    active
-                        ? `
-                            <div class="team-meisterschaft-info">
-
-                                <span>
-                                    Teamwertung
-                                </span>
-
-                                <strong>
-                                    ${
-                                        ranking > 0
-                                            ? `Platz ${ranking}`
-                                            : "Aktive Teilnahme"
-                                    }
-                                </strong>
-
-                            </div>
-                        `
-                        : ""
-                }
-
-                <div class="team-fahrer-liste">
-
-                    <h3>
-                        Fahrer
-                    </h3>
-
-                    ${createDriverList(
-                        team
-                    )}
-
-                </div>
-
-                <button
-                    type="button"
-                    class="team-profil-button"
-                    data-team-name="${name}"
-                >
-                    Teamprofil
-                </button>
-
-            </article>
+            src="${escapeHtml(first)}"
+            data-logo-fallback="${escapeHtml(candidates.join("|"))}"
+            onerror="window.GTMTeamLogoFallback(this)"
         `;
     }
 
-    /* ======================================================
-       STATISTIKEN
-    ====================================================== */
+    window.GTMTeamLogoFallback = (image) => {
+        const candidates = String(image?.dataset?.logoFallback || "")
+            .split("|")
+            .filter(Boolean);
+        const next = candidates.shift();
+
+        if (!next) {
+            image.onerror = null;
+            return;
+        }
+
+        image.dataset.logoFallback = candidates.join("|");
+        image.src = next;
+    };
+
+    function getTeamUrl(team) {
+        return `pages/team.html?team=${encodeURIComponent(team.id)}`;
+    }
+
+    function normalizeParticipation(participation) {
+        const serieId = normalizeText(participation?.serieId);
+
+        return {
+            id: String(participation?.id || "").trim(),
+            serieId,
+            serie: String(participation?.serie || seriesLabels[serieId] || "GTM").trim(),
+            saison: toNumber(participation?.saison, 0),
+            saisonName: String(participation?.saisonName || "").trim(),
+            event: String(participation?.event || participation?.saisonName || "").trim()
+        };
+    }
+
+    function normalizeTeam(team) {
+        const participations = Array.isArray(team?.teilnahmen)
+            ? team.teilnahmen
+                .map(normalizeParticipation)
+                .filter((entry) => entry.id && entry.serieId)
+            : [];
+
+        const series = [
+            ...new Set([
+                ...(Array.isArray(team?.serien) ? team.serien : []),
+                ...participations.map((entry) => entry.serieId)
+            ].map(normalizeText).filter(Boolean))
+        ].sort((a, b) => (seriesOrder[a] || 99) - (seriesOrder[b] || 99));
+
+        const drivers = Array.isArray(team?.fahrer)
+            ? team.fahrer.map((driver) => ({
+                nummer: toNumber(driver?.nummer, 0),
+                name: String(driver?.name || "Unbekannter Fahrer").trim(),
+                bild: String(driver?.bild || "default.png").trim(),
+                fahrzeug: String(driver?.fahrzeug || "").trim(),
+                aktiveSaison: driver?.aktiveSaison === true,
+                punkte: toNumber(driver?.punkte, 0),
+                platzierung: toNumber(driver?.platzierung, 0)
+            }))
+            : [];
+
+        const vehicles = [
+            ...new Set([
+                ...(Array.isArray(team?.fahrzeuge) ? team.fahrzeuge : []),
+                ...drivers.map((driver) => driver.fahrzeug)
+            ].map((value) => String(value || "").trim()).filter(Boolean))
+        ].sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
+
+        const name = String(team?.name || "Unbekanntes Team").trim();
+
+        return {
+            id: createSlug(name),
+            name,
+            einsatzteams: [name],
+            serien: series,
+            teilnahmen: participations,
+            fahrer: drivers,
+            fahrzeuge: vehicles,
+            punkte: toNumber(team?.punkte, 0),
+            platzierung: toNumber(team?.platzierung, 0),
+            aktiveMeisterschaft: team?.aktiveMeisterschaft === true
+        };
+    }
+
+    function getTeamFamilyName(teamName, allTeamNames) {
+        const name = String(teamName || "").trim();
+        const match = name.match(/^(.*\S)\s+([IVXLCDM]+)$/i);
+
+        if (!match) {
+            return name;
+        }
+
+        const possibleBaseName = match[1].trim();
+        const normalizedBaseName = normalizeText(possibleBaseName);
+        const baseExists = allTeamNames.some((entry) => (
+            normalizeText(entry) === normalizedBaseName
+        ));
+
+        return baseExists ? possibleBaseName : name;
+    }
+
+    function mergeUniqueBy(entries, createKey) {
+        const result = new Map();
+
+        entries.forEach((entry) => {
+            const key = createKey(entry);
+
+            if (key && !result.has(key)) {
+                result.set(key, entry);
+            }
+        });
+
+        return [...result.values()];
+    }
+
+    function combineTeamFamilies(teams) {
+        const allTeamNames = teams.map((team) => team.name);
+        const families = new Map();
+
+        teams.forEach((team) => {
+            const familyName = getTeamFamilyName(team.name, allTeamNames);
+            const familyId = createSlug(familyName);
+
+            if (!families.has(familyId)) {
+                families.set(familyId, { id: familyId, name: familyName, members: [] });
+            }
+
+            families.get(familyId).members.push(team);
+        });
+
+        return [...families.values()].map((family) => {
+            const members = family.members;
+            const placements = members
+                .map((team) => team.platzierung)
+                .filter((placement) => placement > 0);
+            const teamNames = [...new Set(members.map((team) => team.name))]
+                .sort((a, b) => {
+                    if (normalizeText(a) === normalizeText(family.name)) return -1;
+                    if (normalizeText(b) === normalizeText(family.name)) return 1;
+                    return a.localeCompare(b, "de", { sensitivity: "base" });
+                });
+
+            return {
+                id: family.id,
+                name: family.name,
+                einsatzteams: teamNames,
+                serien: [...new Set(members.flatMap((team) => team.serien))]
+                    .sort((a, b) => (seriesOrder[a] || 99) - (seriesOrder[b] || 99)),
+                teilnahmen: mergeUniqueBy(
+                    members.flatMap((team) => team.teilnahmen),
+                    (entry) => `${entry.serieId}|${entry.id}`
+                ),
+                fahrer: mergeUniqueBy(
+                    members.flatMap((team) => team.fahrer),
+                    (driver) => driver.nummer > 0
+                        ? `nummer-${driver.nummer}`
+                        : `name-${normalizeText(driver.name)}`
+                ),
+                fahrzeuge: [...new Set(members.flatMap((team) => team.fahrzeuge))]
+                    .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" })),
+                punkte: members.reduce((sum, team) => sum + team.punkte, 0),
+                platzierung: placements.length > 0 ? Math.min(...placements) : 0,
+                aktiveMeisterschaft: members.some((team) => team.aktiveMeisterschaft)
+            };
+        });
+    }
+
+    function createSeriesBadges(team) {
+        if (team.aktuelleTeilnahmen.length === 0) {
+            return `
+                <span class="team-serie-badge registriert">
+                    ${team.historischeTeilnahmen.length > 0 ? "Derzeit ohne Teilnahme" : "Nur registriert"}
+                </span>
+            `;
+        }
+
+        return team.aktuelleTeilnahmen.map((entry) => {
+            const label = entry.serieId === "masters"
+                ? `Masters S${entry.saison || "?"}`
+                : entry.serieId === "ta"
+                    ? `TA ${entry.saison || ""}`.trim()
+                    : entry.event || "GTM FUN Event";
+
+            return `
+            <span class="team-serie-badge ${escapeHtml(entry.serieId)}">
+                ${escapeHtml(label)}
+            </span>
+        `;
+        }).join("");
+    }
+
+    function getParticipationLabel(participation) {
+        if (participation.serieId === "fun") {
+            return participation.event || "GTM FUN Event";
+        }
+
+        return participation.saisonName || participation.event || participation.serie;
+    }
+
+    function createParticipationPreview(team, limit = 3) {
+        if (team.aktuelleTeilnahmen.length === 0) {
+            return `
+                <li>${team.historischeTeilnahmen.length > 0 ? "Historie im Teamprofil vorhanden" : "Noch keiner Veranstaltung zugeordnet"}</li>
+            `;
+        }
+
+        const entries = team.aktuelleTeilnahmen.slice(0, limit).map((participation) => `
+            <li>${escapeHtml(getParticipationLabel(participation))}</li>
+        `);
+
+        const remaining = team.aktuelleTeilnahmen.length - limit;
+
+        if (remaining > 0) {
+            entries.push(`<li>+ ${remaining} weitere</li>`);
+        }
+
+        return entries.join("");
+    }
+
+    function createEntryTeamPreview(team) {
+        if (!Array.isArray(team.einsatzteams) || team.einsatzteams.length <= 1) {
+            return "";
+        }
+
+        return `
+            <div class="team-card-einsatzteams">
+                <span>Einsatzteams</span>
+                <p>${team.einsatzteams.map(escapeHtml).join(" · ")}</p>
+            </div>
+        `;
+    }
+
+    function getTeamSearchText(team) {
+        return normalizeText([
+            team.name,
+            ...team.einsatzteams,
+            ...team.serien.map((serieId) => seriesLabels[serieId] || serieId),
+            ...team.teilnahmen.map(getParticipationLabel),
+            ...team.fahrer.map((driver) => driver.name),
+            ...team.fahrzeuge
+        ].join(" "));
+    }
+
+    function fillVehicleFilter() {
+        if (!vehicleFilter) {
+            return;
+        }
+
+        const vehicles = [
+            ...new Set(alleTeams.flatMap((team) => team.fahrzeuge))
+        ].sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
+
+        vehicleFilter.innerHTML = [
+            '<option value="">Alle Fahrzeuge</option>',
+            ...vehicles.map((vehicle) => (
+                `<option value="${escapeHtml(vehicle)}">${escapeHtml(vehicle)}</option>`
+            ))
+        ].join("");
+    }
+
+    function createTeamCard(team) {
+        const url = escapeHtml(getTeamUrl(team));
+        const name = escapeHtml(team.name);
+        const points = team.aktiveMeisterschaft ? team.punkte : "–";
+
+        return `
+            <a
+                class="team-card"
+                href="${url}"
+                aria-label="Teamprofil ${name} öffnen"
+            >
+                <div class="team-card-kopf">
+                    <div class="team-card-logo">
+                        <img
+                            ${createTeamLogoAttributes(team)}
+                            alt="Logo ${name}"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="team-card-titel">
+                        <span>GTM Team</span>
+                        <h2>${name}</h2>
+                    </div>
+                </div>
+
+                <div class="team-card-badges">
+                    ${createSeriesBadges(team)}
+                </div>
+
+                ${createEntryTeamPreview(team)}
+
+                <div class="team-card-events">
+                    <span>Teilnahmen</span>
+                    <ul>${createParticipationPreview(team)}</ul>
+                </div>
+
+                <div class="team-card-statistik">
+                    <div>
+                        <strong>${team.fahrer.length}</strong>
+                        <span>Fahrer</span>
+                    </div>
+
+                    <div>
+                        <strong>${team.fahrzeuge.length}</strong>
+                        <span>Fahrzeuge</span>
+                    </div>
+
+                    <div>
+                        <strong>${escapeHtml(points)}</strong>
+                        <span>Masters-Punkte gesamt</span>
+                    </div>
+                </div>
+
+                <span class="team-card-profil">
+                    Teamprofil öffnen
+                </span>
+            </a>
+        `;
+    }
 
     function updateStatistics() {
-        const activeTeams =
-            alleTeams.filter(
-                participatesInChampionship
-            );
+        const activeTeams = alleTeams.filter((team) => team.aktuelleTeilnahmen.length > 0);
+        const driverKeys = new Set();
+        const events = new Set();
 
-        const drivers =
-            alleTeams.reduce(
-                (
-                    total,
-                    team
-                ) =>
-                    total +
-                    (
-                        Array.isArray(
-                            team.fahrer
-                        )
-                            ? team.fahrer.length
-                            : 0
-                    ),
-                0
-            );
+        alleTeams.forEach((team) => {
+            team.fahrer.forEach((driver) => {
+                driverKeys.add(driver.nummer > 0 ? `n-${driver.nummer}` : `x-${normalizeText(driver.name)}`);
+            });
 
-        const vehicles =
-            new Set(
-                alleTeams.flatMap(
-                    (team) =>
-                        Array.isArray(
-                            team.fahrzeuge
-                        )
-                            ? team.fahrzeuge
-                            : []
-                )
-            );
+            team.aktuelleTeilnahmen.forEach((participation) => events.add(participation.id));
+        });
 
-        window.GTM.Utils?.setText(
-            "teams-anzahl",
-            alleTeams.length
-        );
-
-        window.GTM.Utils?.setText(
-            "teams-meisterschaft",
-            activeTeams.length
-        );
-
-        window.GTM.Utils?.setText(
-            "teams-fahrer",
-            drivers
-        );
-
-        window.GTM.Utils?.setText(
-            "teams-fahrzeuge",
-            vehicles.size
-        );
+        window.GTM.Utils?.setText("teams-anzahl", alleTeams.length);
+        window.GTM.Utils?.setText("teams-aktiv", activeTeams.length);
+        window.GTM.Utils?.setText("teams-fahrer", driverKeys.size);
+        window.GTM.Utils?.setText("teams-events", events.size);
     }
-
-    /* ======================================================
-       SORTIERUNG
-    ====================================================== */
 
     function sortTeams(entries) {
-        const sortValue =
-            sortSelect?.value ||
-            "name";
+        const sortValue = sortSelect?.value || "name";
 
-        return [...entries].sort(
-            (a, b) => {
-                if (
-                    sortValue ===
-                    "fahrer"
-                ) {
-                    const difference =
-                        b.fahrer.length -
-                        a.fahrer.length;
-
-                    if (difference !== 0) {
-                        return difference;
-                    }
-                }
-
-                if (
-                    sortValue ===
-                    "status"
-                ) {
-                    const difference =
-                        Number(
-                            participatesInChampionship(
-                                b
-                            )
-                        ) -
-                        Number(
-                            participatesInChampionship(
-                                a
-                            )
-                        );
-
-                    if (
-                        difference !== 0
-                    ) {
-                        return difference;
-                    }
-                }
-
-                if (
-                    sortValue ===
-                    "punkte"
-                ) {
-                    const difference =
-                        toNumber(
-                            b.punkte,
-                            0
-                        ) -
-                        toNumber(
-                            a.punkte,
-                            0
-                        );
-
-                    if (
-                        difference !== 0
-                    ) {
-                        return difference;
-                    }
-                }
-
-                return a.name.localeCompare(
-                    b.name,
-                    "de",
-                    {
-                        sensitivity: "base"
-                    }
-                );
+        return [...entries].sort((a, b) => {
+            if (sortValue === "bereiche") {
+                return b.aktuelleSerien.length - a.aktuelleSerien.length || compareNames(a, b);
             }
-        );
+
+            if (sortValue === "teilnahmen") {
+                return b.aktuelleTeilnahmen.length - a.aktuelleTeilnahmen.length || compareNames(a, b);
+            }
+
+            if (sortValue === "fahrer") {
+                return b.fahrer.length - a.fahrer.length || compareNames(a, b);
+            }
+
+            if (sortValue === "punkte") {
+                return b.punkte - a.punkte || compareNames(a, b);
+            }
+
+            return compareNames(a, b);
+        });
     }
 
-    /* ======================================================
-       FILTER
-    ====================================================== */
+    function compareNames(a, b) {
+        return a.name.localeCompare(b.name, "de", { sensitivity: "base" });
+    }
 
     function filterTeams() {
-        const query =
-            normalizeText(
-                searchInput?.value
-            );
+        const query = normalizeText(searchInput?.value);
+        const selectedSeries = String(seriesFilter?.value || "");
+        const selectedVehicle = String(vehicleFilter?.value || "");
+        const selectedParticipation = String(participationFilter?.value || "");
 
-        const selectedVehicle =
-            String(
-                vehicleFilter?.value ||
-                ""
-            ).trim();
+        const filtered = alleTeams.filter((team) => {
+            const hasParticipation = team.aktuelleTeilnahmen.length > 0;
+            const matchesSearch = !query || getTeamSearchText(team).includes(query);
+            const matchesSeries = !selectedSeries || team.aktuelleSerien.includes(selectedSeries);
+            const matchesVehicle = !selectedVehicle || team.fahrzeuge.includes(selectedVehicle);
+            const matchesParticipation =
+                !selectedParticipation ||
+                (selectedParticipation === "aktiv" && hasParticipation) ||
+                (selectedParticipation === "registriert" && !hasParticipation);
 
-        const selectedStatus =
-            String(
-                championshipFilter
-                    ?.value ||
-                ""
-            ).trim();
+            return matchesSearch && matchesSeries && matchesVehicle && matchesParticipation;
+        });
 
-        const filtered =
-            alleTeams.filter(
-                (team) => {
-                    const matchesSearch =
-                        query === "" ||
-                        getTeamSearchText(
-                            team
-                        ).includes(query);
-
-                    const matchesVehicle =
-                        selectedVehicle ===
-                            "" ||
-                        team.fahrzeuge.includes(
-                            selectedVehicle
-                        );
-
-                    const active =
-                        participatesInChampionship(
-                            team
-                        );
-
-                    const matchesStatus =
-                        selectedStatus ===
-                            "" ||
-                        (
-                            selectedStatus ===
-                                "aktiv" &&
-                            active
-                        ) ||
-                        (
-                            selectedStatus ===
-                                "inaktiv" &&
-                            !active
-                        );
-
-                    return (
-                        matchesSearch &&
-                        matchesVehicle &&
-                        matchesStatus
-                    );
-                }
-            );
-
-        renderTeams(
-            sortTeams(
-                filtered
-            )
-        );
+        renderTeams(sortTeams(filtered));
     }
-
-    /* ======================================================
-       RENDERN
-    ====================================================== */
 
     function renderTeams(entries) {
         if (!grid) {
             return;
         }
 
-        if (
-            entries.length === 0
-        ) {
-            grid.innerHTML = "";
+        grid.innerHTML = entries.map(createTeamCard).join("");
+        grid.setAttribute("aria-busy", "false");
 
-            if (noResults) {
-                noResults.hidden =
-                    false;
+        if (noResults) {
+            noResults.hidden = entries.length > 0;
+        }
+    }
+
+    function selectSliderTeams() {
+        return [...alleTeams]
+            .filter((team) => team.aktuelleTeilnahmen.length > 0)
+            .sort((a, b) => {
+                return (
+                    b.aktuelleSerien.length - a.aktuelleSerien.length ||
+                    b.aktuelleTeilnahmen.length - a.aktuelleTeilnahmen.length ||
+                    b.punkte - a.punkte ||
+                    compareNames(a, b)
+                );
+            })
+            .slice(0, 8);
+    }
+
+    function createSlide(team, index) {
+        const activeClass = index === 0 ? " ist-aktiv" : "";
+        const ariaHidden = index === 0 ? "false" : "true";
+        const name = escapeHtml(team.name);
+
+        return `
+            <article
+                class="teams-slide${activeClass}"
+                aria-hidden="${ariaHidden}"
+                aria-roledescription="Folie"
+                aria-label="${index + 1} von ${sliderTeams.length}: ${name}"
+            >
+                <div class="teams-slide-logo">
+                    <img
+                        ${createTeamLogoAttributes(team)}
+                        alt="Logo ${name}"
+                    >
+                </div>
+
+                <div class="teams-slide-inhalt">
+                    <span class="teams-slide-label">GTM Team im Fokus</span>
+                    <h3>${name}</h3>
+
+                    <div class="teams-slide-badges">
+                        ${createSeriesBadges(team)}
+                    </div>
+
+                    <div class="teams-slide-meta">
+                        <span>${team.fahrer.length} Fahrer</span>
+                        <span>${team.fahrzeuge.length} Fahrzeuge</span>
+                        <span>${team.aktuelleTeilnahmen.length} aktuelle Teilnahmen</span>
+                        <span>${team.einsatzteams.length} Einsatzteams</span>
+                    </div>
+
+                    <a
+                        class="teams-slide-link"
+                        href="${escapeHtml(getTeamUrl(team))}"
+                    >
+                        Teamprofil öffnen
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+
+    function showSlide(index, restartTimer = true) {
+        if (sliderTeams.length === 0) {
+            return;
+        }
+
+        sliderIndex = (index + sliderTeams.length) % sliderTeams.length;
+
+        slider?.querySelectorAll(".teams-slide").forEach((slide, slideIndex) => {
+            const isActive = slideIndex === sliderIndex;
+            slide.classList.toggle("ist-aktiv", isActive);
+            slide.setAttribute("aria-hidden", String(!isActive));
+        });
+
+        sliderDots?.querySelectorAll("button").forEach((dot, dotIndex) => {
+            const isActive = dotIndex === sliderIndex;
+            dot.classList.toggle("ist-aktiv", isActive);
+            dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+
+        if (restartTimer) {
+            startSliderTimer();
+        }
+    }
+
+    function stopSliderTimer() {
+        if (sliderTimer !== null) {
+            window.clearInterval(sliderTimer);
+            sliderTimer = null;
+        }
+    }
+
+    function startSliderTimer() {
+        stopSliderTimer();
+
+        if (sliderTeams.length <= 1 || document.hidden) {
+            return;
+        }
+
+        sliderTimer = window.setInterval(() => {
+            showSlide(sliderIndex + 1, false);
+        }, 7000);
+    }
+
+    function renderSlider() {
+        if (!slider) {
+            return;
+        }
+
+        sliderTeams = selectSliderTeams();
+        sliderIndex = 0;
+
+        if (sliderTeams.length === 0) {
+            slider.innerHTML = '<div class="teams-slider-leer">Noch keine Teamteilnahmen vorhanden.</div>';
+
+            if (sliderDots) {
+                sliderDots.innerHTML = "";
             }
 
-            grid.setAttribute(
-                "aria-busy",
-                "false"
-            );
+            if (sliderPrevious) {
+                sliderPrevious.disabled = true;
+            }
+
+            if (sliderNext) {
+                sliderNext.disabled = true;
+            }
 
             return;
         }
 
-        grid.innerHTML =
-            entries
-                .map(createTeamCard)
-                .join("");
+        slider.innerHTML = sliderTeams.map(createSlide).join("");
 
-        grid.setAttribute(
-            "aria-busy",
-            "false"
-        );
-
-        if (noResults) {
-            noResults.hidden =
-                true;
+        if (sliderDots) {
+            sliderDots.innerHTML = sliderTeams.map((team, index) => `
+                <button
+                    type="button"
+                    class="${index === 0 ? "ist-aktiv" : ""}"
+                    data-slide-index="${index}"
+                    aria-label="${escapeHtml(team.name)} anzeigen"
+                    aria-current="${index === 0 ? "true" : "false"}"
+                ></button>
+            `).join("");
         }
-    }
 
-    /* ======================================================
-       FEHLER
-    ====================================================== */
+        const multiple = sliderTeams.length > 1;
+
+        if (sliderPrevious) {
+            sliderPrevious.disabled = !multiple;
+        }
+
+        if (sliderNext) {
+            sliderNext.disabled = !multiple;
+        }
+
+        startSliderTimer();
+    }
 
     function showError(message) {
         console.error(message);
 
-        if (!grid) {
-            return;
+        if (grid) {
+            grid.innerHTML = `
+                <div class="gtm-data-error">
+                    <strong>Die Teamdaten konnten nicht geladen werden.</strong>
+                    <span>${escapeHtml(message)}</span>
+                </div>
+            `;
+            grid.setAttribute("aria-busy", "false");
         }
-
-        grid.innerHTML = `
-            <div class="gtm-data-error">
-
-                <strong>
-                    Die Teamdaten konnten nicht geladen werden.
-                </strong>
-
-                <p>
-                    ${escapeHtml(message)}
-                </p>
-
-            </div>
-        `;
-
-        grid.setAttribute(
-            "aria-busy",
-            "false"
-        );
     }
-
-    /* ======================================================
-       DATEN LADEN
-    ====================================================== */
 
     async function loadTeams() {
         try {
-            const [
-                drivers,
-                championshipTeams
-            ] = await Promise.all([
-                window.GTM.loadFahrer({
-                    forceReload: true
-                }),
-
-                window.GTM.load(
-                    "teams",
-                    {
-                        forceReload: true
-                    }
-                ).catch(() => [])
+            const [data, calendarData] = await Promise.all([
+                window.GTM.load("teams", { forceReload: true }),
+                window.GTM.load("kalender", { forceReload: true }).catch(() => [])
             ]);
 
-            if (
-                !Array.isArray(
-                    drivers
-                )
-            ) {
-                throw new Error(
-                    "fahrer.json enthält keine gültige Fahrerliste."
-                );
+            if (!Array.isArray(data)) {
+                throw new Error("teams.json enthält keine gültige Teamliste.");
             }
 
-            alleTeams =
-                buildTeams(
-                    drivers,
-                    Array.isArray(
-                        championshipTeams
-                    )
-                        ? championshipTeams
-                        : []
-                );
+            const normalizedTeams = data
+                .filter((team) => team && String(team.name || "").trim())
+                .map(normalizeTeam);
 
-            fillSelect(
-                vehicleFilter,
-                alleTeams.flatMap(
-                    (team) =>
-                        team.fahrzeuge
-                ),
-                "Alle Fahrzeuge"
-            );
+            alleKalender = Array.isArray(calendarData) ? calendarData : [];
+            alleTeams = combineTeamFamilies(normalizedTeams).map(addParticipationStatus);
 
+            fillVehicleFilter();
             updateStatistics();
+            renderSlider();
             filterTeams();
         } catch (error) {
-            showError(
-                error.message ||
-                "Unbekannter Fehler"
-            );
+            showError(error?.message || "Unbekannter Fehler");
         }
     }
 
-    /* ======================================================
-       EVENTS
-    ====================================================== */
+    searchInput?.addEventListener("input", filterTeams);
+    seriesFilter?.addEventListener("change", filterTeams);
+    vehicleFilter?.addEventListener("change", filterTeams);
+    participationFilter?.addEventListener("change", filterTeams);
+    sortSelect?.addEventListener("change", filterTeams);
 
-    searchInput?.addEventListener(
-        "input",
-        filterTeams
-    );
+    sliderPrevious?.addEventListener("click", () => showSlide(sliderIndex - 1));
+    sliderNext?.addEventListener("click", () => showSlide(sliderIndex + 1));
 
-    vehicleFilter?.addEventListener(
-        "change",
-        filterTeams
-    );
+    sliderDots?.addEventListener("click", (event) => {
+        const dot = event.target.closest("[data-slide-index]");
 
-    championshipFilter
-        ?.addEventListener(
-            "change",
-            filterTeams
-        );
-
-    sortSelect?.addEventListener(
-        "change",
-        filterTeams
-    );
-
-    grid?.addEventListener(
-        "click",
-        (event) => {
-            const button =
-                event.target.closest(
-                    ".team-profil-button"
-                );
-
-            if (!button) {
-                return;
-            }
-
-            console.info(
-                `Teamprofil „${button.dataset.teamName}“ wird später ergänzt.`
-            );
+        if (dot) {
+            showSlide(toNumber(dot.dataset.slideIndex, 0));
         }
-    );
+    });
+
+    slider?.addEventListener("pointerenter", stopSliderTimer);
+    slider?.addEventListener("pointerleave", startSliderTimer);
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopSliderTimer();
+        } else {
+            startSliderTimer();
+        }
+    });
 
     await loadTeams();
 });

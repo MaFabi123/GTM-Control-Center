@@ -24,6 +24,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("keine-fahrer");
 
     let alleFahrer = [];
+    let alleTeams = [];
+    let alleKalender = [];
+
+    const serienNamen = {
+        masters: "GTM Masters",
+        ta: "GTM Time Attack",
+        fun: "GTM FUN Events"
+    };
+
+    const serienReihenfolge = ["masters", "ta", "fun"];
 
     if (
         !window.GTM ||
@@ -76,8 +86,163 @@ document.addEventListener("DOMContentLoaded", async () => {
         ).trim();
     }
 
-    function participatesInCurrentSeason(fahrer) {
-        return fahrer?.aktiveSaison === true;
+    function getParticipationDate(participation) {
+        const match = String(participation?.event || "")
+            .match(/(\d{1,2})\.(\d{1,2})\.(\d{2,4})/);
+
+        if (!match) return "";
+
+        const year = Number(match[3]) < 100
+            ? 2000 + Number(match[3])
+            : Number(match[3]);
+
+        return [
+            String(year).padStart(4, "0"),
+            String(Number(match[2])).padStart(2, "0"),
+            String(Number(match[1])).padStart(2, "0")
+        ].join("-");
+    }
+
+    function getCalendarEntries(participation) {
+        const seriesId = normalizeText(participation?.serieId);
+        const season = toNumber(participation?.saison, 0);
+        const eventDate = getParticipationDate(participation);
+
+        return alleKalender.filter((entry) => {
+            if (normalizeText(entry?.serieId) !== seriesId) return false;
+            if (seriesId === "fun" && eventDate) {
+                return String(entry?.datum || "") === eventDate;
+            }
+            return season <= 0 || toNumber(entry?.saison, 0) === season;
+        });
+    }
+
+    function isHistoricalParticipation(participation) {
+        const entries = getCalendarEntries(participation);
+
+        if (entries.length > 0) {
+            return entries.every((entry) => (
+                normalizeText(entry?.status) === "abgeschlossen"
+            ));
+        }
+
+        const eventDate = getParticipationDate(participation);
+        if (eventDate) {
+            const today = new Date();
+            const todayIso = [
+                today.getFullYear(),
+                String(today.getMonth() + 1).padStart(2, "0"),
+                String(today.getDate()).padStart(2, "0")
+            ].join("-");
+            return eventDate < todayIso;
+        }
+
+        const seriesId = normalizeText(participation?.serieId);
+        const season = toNumber(participation?.saison, 0);
+        const knownSeasons = alleKalender
+            .filter((entry) => normalizeText(entry?.serieId) === seriesId)
+            .map((entry) => toNumber(entry?.saison, 0))
+            .filter((value) => value > 0);
+
+        return season > 0 && knownSeasons.length > 0 && season < Math.max(...knownSeasons);
+    }
+
+    function getCurrentParticipations(fahrer) {
+        return (Array.isArray(fahrer?.teilnahmen) ? fahrer.teilnahmen : [])
+            .filter((entry) => entry && !isHistoricalParticipation(entry));
+    }
+
+    function getEventSeries(fahrer) {
+        const nummer = toNumber(fahrer?.nummer, 0);
+        const teamNames = new Set([
+            normalizeText(fahrer?.team),
+            normalizeText(fahrer?.teamZuordnung)
+        ].filter(Boolean));
+        const series = new Set();
+
+        const hasDirectParticipationData =
+            Array.isArray(fahrer?.teilnahmen);
+
+        getCurrentParticipations(fahrer)
+            .map((entry) => normalizeText(entry?.serieId))
+            .filter(Boolean)
+            .forEach((serie) => series.add(serie));
+
+        if (hasDirectParticipationData) {
+            return serienReihenfolge.filter((serie) => series.has(serie));
+        }
+
+        // Abwaertskompatibilitaet fuer alte fahrer.json-Dateien:
+        // Nur wenn direkte Fahrer-Teilnahmen fehlen, wird ueber Teams ermittelt.
+        alleTeams.forEach((team) => {
+            if (!teamNames.has(normalizeText(team?.name))) {
+                return;
+            }
+
+            const driverIsAssigned = !Array.isArray(team?.fahrer) ||
+                team.fahrer.length === 0 ||
+                team.fahrer.some((entry) => toNumber(entry?.nummer, 0) === nummer);
+
+            if (!driverIsAssigned) {
+                return;
+            }
+
+            (Array.isArray(team?.serien) ? team.serien : [])
+                .map(normalizeText)
+                .filter(Boolean)
+                .forEach((serie) => series.add(serie));
+
+            (Array.isArray(team?.teilnahmen) ? team.teilnahmen : [])
+                .filter((entry) => !isHistoricalParticipation(entry))
+                .map((entry) => normalizeText(entry?.serieId))
+                .filter(Boolean)
+                .forEach((serie) => series.add(serie));
+        });
+
+        return serienReihenfolge.filter((serie) => series.has(serie));
+    }
+
+    function createEventBadges(fahrer) {
+        const participations = getCurrentParticipations(fahrer);
+        const hasHistory = (Array.isArray(fahrer?.teilnahmen) ? fahrer.teilnahmen : [])
+            .some(isHistoricalParticipation);
+
+        if (participations.length > 0) {
+            return participations.map((entry) => {
+                const seriesId = normalizeText(entry?.serieId);
+                const season = toNumber(entry?.saison, 0);
+                const label = seriesId === "masters"
+                    ? `Masters S${season || "?"}`
+                    : seriesId === "ta"
+                        ? `TA ${season || ""}`.trim()
+                        : entry?.event || "GTM FUN Event";
+
+                return `
+                    <span
+                        class="fahrer-event-badge ${escapeHtml(seriesId)}"
+                        title="${escapeHtml(entry?.saisonName || entry?.event || label)}"
+                    >
+                        ${escapeHtml(label)}
+                    </span>
+                `;
+            }).join("");
+        }
+
+        const series = getEventSeries(fahrer);
+
+        if (series.length === 0) {
+            return `
+                <span class="fahrer-event-badge keine">
+                    ${hasHistory ? "Derzeit keine Teilnahme" : "Keine erfasste Teilnahme"}
+                </span>
+            `;
+        }
+
+        return series.map((serie) => `
+            <span class="fahrer-event-badge ${escapeHtml(serie)}">
+                ${escapeHtml(serienNamen[serie] || serie)}
+            </span>
+        `).join("");
     }
 
     function getDriverImage(fahrer) {
@@ -98,9 +263,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 fahrer?.name,
                 getTeam(fahrer),
                 getVehicle(fahrer),
-                participatesInCurrentSeason(fahrer)
-                    ? "aktuelle meisterschaft teilnahme aktiv"
-                    : "keine meisterschaftsteilnahme inaktiv"
+                ...getEventSeries(fahrer).map((serie) => serienNamen[serie] || serie),
+                getEventSeries(fahrer).length > 0
+                    ? "teilnahme aktiv"
+                    : "keine teilnahme inaktiv"
             ].join(" ")
         );
     }
@@ -130,15 +296,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 getDriverImage(fahrer)
             );
 
-        const nimmtTeil =
-            participatesInCurrentSeason(fahrer);
+        const eventSeries = getEventSeries(fahrer);
 
         return `
             <article
                 class="fahrer-card"
                 data-team="${team}"
                 data-fahrzeug="${fahrzeug}"
-                data-status="${nimmtTeil ? "aktiv" : "inaktiv"}"
+                data-status="${escapeHtml(eventSeries.join(" ") || "inaktiv")}"
             >
                 <div class="fahrer-card-bild">
 
@@ -162,19 +327,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             #${nummer || "–"}
                         </span>
 
-                        <span
-                            class="fahrer-card-status ${
-                                nimmtTeil
-                                    ? "aktiv"
-                                    : "inaktiv"
-                            }"
-                        >
-                            ${
-                                nimmtTeil
-                                    ? "Aktuelle Meisterschaft"
-                                    : "Keine aktuelle Teilnahme"
-                            }
-                        </span>
+                        <div class="fahrer-card-events">
+                            ${createEventBadges(fahrer)}
+                        </div>
 
                     </div>
 
@@ -224,13 +379,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     </div>
 
-                    <button
-                        type="button"
+                    <a
                         class="fahrer-profil-button"
-                        data-fahrer-nummer="${nummer}"
+                        href="pages/fahrerprofil.html?nummer=${encodeURIComponent(nummer)}"
                     >
                         Fahrerprofil
-                    </button>
+                    </a>
 
                 </div>
 
@@ -387,12 +541,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "status"
                 ) {
                     const statusDifference =
-                        Number(
-                            participatesInCurrentSeason(b)
-                        ) -
-                        Number(
-                            participatesInCurrentSeason(a)
-                        );
+                        getEventSeries(b).length -
+                        getEventSeries(a).length;
 
                     if (statusDifference !== 0) {
                         return statusDifference;
@@ -527,10 +677,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function loadDrivers() {
         try {
-            const data =
-                await window.GTM.loadFahrer({
+            const [data, teamData, calendarData] = await Promise.all([
+                window.GTM.loadFahrer({
                     forceReload: true
-                });
+                }),
+                window.GTM.load("teams", {
+                    forceReload: true
+                }).catch(() => []),
+                window.GTM.load("kalender", {
+                    forceReload: true
+                }).catch(() => [])
+            ]);
 
             if (!Array.isArray(data)) {
                 throw new Error(
@@ -545,6 +702,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         fahrer.nummer &&
                         fahrer.name
                 );
+
+            alleTeams = Array.isArray(teamData)
+                ? teamData
+                : [];
+
+            alleKalender = Array.isArray(calendarData)
+                ? calendarData
+                : [];
 
             fillSelect(
                 teamFilter,
@@ -586,27 +751,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     sortSelect?.addEventListener(
         "change",
         filterDrivers
-    );
-
-    grid?.addEventListener(
-        "click",
-        (event) => {
-            const button =
-                event.target.closest(
-                    ".fahrer-profil-button"
-                );
-
-            if (!button) {
-                return;
-            }
-
-            const nummer =
-                button.dataset.fahrerNummer;
-
-            console.info(
-                `Fahrerprofil #${nummer} wird später ergänzt.`
-            );
-        }
     );
 
     await loadDrivers();

@@ -3,187 +3,132 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../">
 
     <title>GTM Control Center | Meisterschaft</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
-    <link
-        rel="stylesheet"
-        href="assets/css/theme.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="assets/css/navbar.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="assets/css/meisterschaft.css"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/meisterschaft.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-
     <header id="site-navbar"></header>
 
     <main class="meisterschaft-page">
-
         <section class="meisterschaft-hero">
+            <div class="container meisterschaft-hero-grid">
+                <div class="meisterschaft-hero-content">
+                    <div class="meisterschaft-hero-meta">
+                        <span id="meisterschaft-saison">GTM Masters Saison 1</span>
+                        <strong id="meisterschaft-status">Wird geladen …</strong>
+                    </div>
 
-            <div class="container">
+                    <p class="meisterschaft-eyebrow">German Touring Masters</p>
+                    <h1>Meisterschaft</h1>
+                    <p class="meisterschaft-intro">
+                        Fahrer, Teams und Fahrzeuge im direkten Kampf um den GTM-Masters-Titel.
+                    </p>
 
-                <p class="meisterschaft-eyebrow">
-                    GTM Masters Saison 1
-                </p>
+                    <div class="meisterschaft-next-race">
+                        <span>Nächster Masters-Lauf</span>
+                        <strong id="meisterschaft-naechste-strecke">Wird geladen …</strong>
+                        <small id="meisterschaft-naechstes-datum">Kalenderdaten werden geladen.</small>
+                    </div>
+                </div>
 
-                <h1>
-                    Fahrerwertung
-                </h1>
-
-                <p class="meisterschaft-intro">
-                    Aktuelle Meisterschaft der German Touring Masters.
-                </p>
-
+                <div class="meisterschaft-hero-stage" aria-hidden="true">
+                    <span id="meisterschaft-hero-number" class="meisterschaft-hero-number">#01</span>
+                    <span class="meisterschaft-hero-ring"></span>
+                    <img id="meisterschaft-hero-car" src="assets/images/hero/mercedes-amg-gt3.png" alt="">
+                </div>
             </div>
-
         </section>
 
         <section class="meisterschaft-stats">
-
             <div class="container">
-
                 <div class="meisterschaft-stat-grid">
-
-                    <article class="meisterschaft-stat">
-
-                        <strong id="stat-fahrer">
-                            –
-                        </strong>
-
-                        <span>
-                            Fahrer
-                        </span>
-
-                    </article>
-
-                    <article class="meisterschaft-stat">
-
-                        <strong id="stat-teams">
-                            –
-                        </strong>
-
-                        <span>
-                            Teams
-                        </span>
-
-                    </article>
-
-                    <article class="meisterschaft-stat">
-
-                        <strong id="stat-rennen">
-                            –
-                        </strong>
-
-                        <span>
-                            Rennen
-                        </span>
-
-                    </article>
-
-                    <article class="meisterschaft-stat">
-
-                        <strong id="stat-fortschritt">
-                            –
-                        </strong>
-
-                        <span>
-                            Saisonfortschritt
-                        </span>
-
-                    </article>
-
+                    <article><strong id="stat-fahrer">–</strong><span>Fahrer</span></article>
+                    <article><strong id="stat-teams">–</strong><span>Teams</span></article>
+                    <article><strong id="stat-rennen">–</strong><span>Rennen</span></article>
+                    <article><strong id="stat-fortschritt">–</strong><span>Saisonfortschritt</span></article>
                 </div>
-
             </div>
-
-        </section>
-
-        <section class="meisterschaft-toolbar">
-
-            <div class="container">
-
-                <div class="toolbar">
-
-                    <input
-                        id="meisterschaft-suche"
-                        type="search"
-                        autocomplete="off"
-                        placeholder="Fahrer, Team oder Fahrzeug..."
-                    >
-
-                </div>
-
-            </div>
-
         </section>
 
         <section class="meisterschaft-content">
-
             <div class="container">
+                <header class="meisterschaft-section-heading">
+                    <div>
+                        <p>Championship Focus</p>
+                        <h2>Spitzenfeld</h2>
+                    </div>
+                    <a href="pages/kalender.html">Masters-Kalender öffnen <span>→</span></a>
+                </header>
 
-                <div
-                    id="meisterschaft-grid"
-                    class="meisterschaft-grid"
-                    aria-live="polite"
-                    aria-busy="true"
-                >
+                <div id="meisterschaft-podium" class="meisterschaft-podium" aria-live="polite">
+                    <div class="meisterschaft-loading">Podium wird geladen …</div>
+                </div>
 
-                    <div class="text-center text-light py-5">
-                        Meisterschaft wird geladen...
+                <section class="meisterschaft-teams-section">
+                    <header class="meisterschaft-section-heading meisterschaft-section-heading-small">
+                        <div>
+                            <p>Team Pulse</p>
+                            <h2>Stärkste Teams</h2>
+                        </div>
+                        <a href="pages/teams.html">Alle Teams <span>→</span></a>
+                    </header>
+                    <div id="meisterschaft-teams" class="meisterschaft-team-grid"></div>
+                </section>
+
+                <section class="meisterschaft-ranking-section">
+                    <div class="meisterschaft-ranking-head">
+                        <div>
+                            <p>Gesamtwertung</p>
+                            <h2>Fahrerwertung</h2>
+                        </div>
+
+                        <div class="meisterschaft-toolbar">
+                            <label>
+                                <span>Fahrer suchen</span>
+                                <input id="meisterschaft-suche" type="search" autocomplete="off" placeholder="Name, Nummer, Team oder Fahrzeug">
+                            </label>
+                            <label>
+                                <span>Sortierung</span>
+                                <select id="meisterschaft-sortierung">
+                                    <option value="platzierung">Platzierung</option>
+                                    <option value="punkte">Punkte</option>
+                                    <option value="fastlaps">Fast Laps</option>
+                                    <option value="startnummer">Startnummer</option>
+                                </select>
+                            </label>
+                        </div>
                     </div>
 
-                </div>
+                    <div id="meisterschaft-grid" class="meisterschaft-grid" aria-live="polite" aria-busy="true">
+                        <div class="meisterschaft-loading">Meisterschaft wird geladen …</div>
+                    </div>
 
-                <div
-                    id="keine-eintraege"
-                    class="keine-eintraege"
-                    hidden
-                >
-                    Keine Fahrer gefunden.
-                </div>
-
+                    <div id="keine-eintraege" class="keine-eintraege" hidden>
+                        Keine passenden Fahrer gefunden.
+                    </div>
+                </section>
             </div>
-
         </section>
-
     </main>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <footer id="site-footer"></footer>
 
-    <!-- Reihenfolge unbedingt beibehalten -->
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/gtm-data.js"></script>
     <script src="assets/js/gtm-utils.js"></script>
     <script src="assets/js/gtm-ui.js"></script>
     <script src="assets/js/gtm-page.js"></script>
-
     <script src="assets/js/main.js"></script>
     <script src="assets/js/meisterschaft.js"></script>
-
 </body>
 
 </html>

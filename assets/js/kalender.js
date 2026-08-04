@@ -251,6 +251,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         return trackAssets[normalizeTrackKey(race?.strecke)] || null;
     }
 
+    function getTrackProfileUrl(race) {
+        const trackKey = normalizeTrackKey(race?.strecke);
+        return trackAssets[trackKey]
+            ? `pages/streckenprofil.html?strecke=${encodeURIComponent(trackKey)}`
+            : "pages/strecken.html";
+    }
+
     function parseDate(value) {
         if (!value) {
             return null;
@@ -512,9 +519,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         const track = escapeHtml(race?.strecke || "Strecke");
         const photoPath = escapeHtml(`assets/images/strecken/bilder/${media.photo}`);
         const layoutPath = escapeHtml(`assets/images/strecken/layouts/${media.layout}`);
+        const profileUrl = escapeHtml(getTrackProfileUrl(race));
 
         return `
-            <div class="kalender-streckenmedium">
+            <a
+                class="kalender-streckenmedium"
+                href="${profileUrl}"
+                aria-label="Streckenprofil ${track} öffnen"
+            >
                 <img
                     class="kalender-streckenfoto"
                     src="${photoPath}"
@@ -530,7 +542,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     alt="Streckenlayout: ${track}"
                     loading="lazy"
                 >
-            </div>
+
+                <span class="kalender-streckenlink">Streckenprofil öffnen →</span>
+            </a>
         `;
     }
 
@@ -756,6 +770,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const countdown = escapeHtml(getCountdownText(race));
         const status = getRaceStatus(race);
         const statusLabel = escapeHtml(getStatusLabel(status));
+        const profileUrl = escapeHtml(getTrackProfileUrl(race));
         const activeClass = index === 0 ? " ist-aktiv" : "";
         const ariaHidden = index === 0 ? "false" : "true";
         const lead = getSerieId(race) === "fun"
@@ -815,9 +830,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </button>
                 </div>
 
-                <div class="kalender-slider-bild">
+                <a
+                    class="kalender-slider-bild"
+                    href="${profileUrl}"
+                    aria-label="Streckenprofil ${track} öffnen"
+                >
                     ${mediaHtml}
-                </div>
+                    <span class="kalender-slider-streckenlink">Streckenprofil öffnen →</span>
+                </a>
             </article>
         `;
     }
@@ -1505,6 +1525,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             selectInitialCalendar();
+
+            const requestedTrack = new URLSearchParams(window.location.search).get("strecke");
+            if (requestedTrack && searchInput) {
+                searchInput.value = requestedTrack;
+            }
+
             renderSlider();
             updatePreviewCards();
             applyFilters();

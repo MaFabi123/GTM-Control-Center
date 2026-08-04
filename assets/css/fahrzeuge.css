@@ -130,6 +130,246 @@
 }
 
 /* =========================================================
+   ERFOLGS-SLIDER
+========================================================= */
+
+.fahrzeuge-erfolg {
+    padding: 10px 0 42px;
+}
+
+.fahrzeuge-erfolg-kopf {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.fahrzeuge-erfolg-kopf p {
+    margin: 0 0 5px;
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.fahrzeuge-erfolg-kopf h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.fahrzeuge-erfolg-kopf span {
+    display: block;
+    margin-top: 7px;
+    color: #8b8b8b;
+    font-size: 0.83rem;
+}
+
+.fahrzeuge-erfolg-steuerung {
+    display: flex;
+    gap: 8px;
+}
+
+.fahrzeuge-erfolg-steuerung button {
+    width: 46px;
+    height: 46px;
+    color: #ffffff;
+    background: #161616;
+    border: 1px solid #383838;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.fahrzeuge-erfolg-steuerung button:hover,
+.fahrzeuge-erfolg-steuerung button:focus-visible {
+    background: #a90000;
+    border-color: #d40000;
+}
+
+.fahrzeuge-erfolg-steuerung button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.fahrzeuge-erfolg-slider {
+    position: relative;
+    overflow: hidden;
+    min-height: 410px;
+    background: #101010;
+    border: 1px solid #323232;
+    border-radius: 22px;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+}
+
+.fahrzeuge-erfolg-slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(360px, 53%) minmax(0, 1fr);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.fahrzeuge-erfolg-slide.ist-aktiv {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.fahrzeuge-erfolg-bild {
+    position: relative;
+    overflow: hidden;
+    min-height: 410px;
+    background: linear-gradient(145deg, #2a0505, #0e0e0e);
+}
+
+.fahrzeuge-erfolg-bild img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fahrzeuge-erfolg-bild::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 65%, #101010 100%);
+}
+
+.fahrzeuge-erfolg-bild strong {
+    position: absolute;
+    z-index: 2;
+    top: 18px;
+    left: 18px;
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    color: #ffffff;
+    background: #d40000;
+    border-radius: 16px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+.fahrzeuge-erfolg-inhalt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(28px, 5vw, 54px);
+}
+
+.fahrzeuge-erfolg-inhalt > span {
+    color: #d40000;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fahrzeuge-erfolg-inhalt h3 {
+    margin: 8px 0 6px;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.fahrzeuge-erfolg-inhalt > p {
+    margin: 0;
+    color: #999999;
+}
+
+.fahrzeuge-erfolg-werte {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.fahrzeuge-erfolg-werte div {
+    padding: 11px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid #333333;
+    border-radius: 10px;
+}
+
+.fahrzeuge-erfolg-werte strong,
+.fahrzeuge-erfolg-werte span {
+    display: block;
+}
+
+.fahrzeuge-erfolg-werte strong {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+
+.fahrzeuge-erfolg-werte span {
+    margin-top: 3px;
+    color: #777777;
+    font-size: 0.59rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.fahrzeuge-erfolg-inhalt > a {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    min-height: 44px;
+    margin-top: 20px;
+    padding: 0 14px;
+    color: #ffffff;
+    background: rgba(212, 0, 0, 0.11);
+    border: 1px solid rgba(212, 0, 0, 0.45);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.fahrzeuge-erfolg-punkte {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 13px;
+}
+
+.fahrzeuge-erfolg-punkte button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    background: #494949;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.fahrzeuge-erfolg-punkte button.ist-aktiv {
+    width: 28px;
+    background: #d40000;
+}
+
+.fahrzeuge-erfolg-laden {
+    display: grid;
+    min-height: 410px;
+    place-items: center;
+    color: #898989;
+}
+
+/* =========================================================
    FILTER
 ========================================================= */
 
@@ -228,6 +468,8 @@
     min-width: 0;
     min-height: 250px;
     overflow: hidden;
+    color: #ffffff;
+    text-decoration: none;
     background:
         linear-gradient(
             145deg,
@@ -257,7 +499,9 @@
     pointer-events: none;
 }
 
-.fahrzeug-karte:hover {
+.fahrzeug-karte:hover,
+.fahrzeug-karte:focus-visible {
+    color: #ffffff;
     transform: translateY(-8px);
     border-color: rgba(212, 0, 0, 0.88);
     box-shadow:
@@ -541,6 +785,19 @@
     .fahrzeuge-statistik-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .fahrzeuge-erfolg-slide {
+        grid-template-columns: 1fr;
+    }
+
+    .fahrzeuge-erfolg-bild {
+        min-height: 270px;
+        max-height: 330px;
+    }
+
+    .fahrzeuge-erfolg-bild::after {
+        background: linear-gradient(180deg, transparent 70%, #101010 100%);
+    }
 }
 
 @media (max-width: 700px) {
@@ -555,6 +812,11 @@
 
     .fahrzeuge-grid {
         grid-template-columns: 1fr;
+    }
+
+    .fahrzeuge-erfolg-kopf {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .fahrzeug-content {
@@ -636,4 +898,16 @@
     .fahrzeuge-statistik-grid {
         grid-template-columns: 1fr;
     }
+
+    .fahrzeuge-erfolg-werte {
+        grid-template-columns: 1fr;
+    }
+}
+
+.fahrzeug-profil-link {
+    display: block;
+    margin-top: 12px;
+    color: #d0d0d0;
+    font-size: 0.72rem;
+    font-weight: 900;
 }

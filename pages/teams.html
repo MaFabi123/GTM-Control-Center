@@ -34,17 +34,87 @@
             <div class="container">
 
                 <p class="teams-eyebrow">
-                    German Touring Masters
+                    GTM Team-Bibliothek
                 </p>
 
                 <h1>
-                    Teams
+                    Alle Teams
                 </h1>
 
                 <p class="teams-intro">
-                    Alle registrierten Teams der German Touring Masters
-                    mit Fahrern, Fahrzeugen und aktuellem Meisterschaftsstatus.
+                    Zentrale Übersicht aller registrierten GTM Teams –
+                    unabhängig davon, ob sie bei Masters, Time Attack,
+                    FUN Events oder derzeit bei keiner Veranstaltung antreten.
                 </p>
+
+            </div>
+
+        </section>
+
+        <section
+            class="teams-slider-bereich"
+            aria-labelledby="teams-slider-titel"
+        >
+
+            <div class="container">
+
+                <div class="teams-slider-kopf">
+
+                    <div>
+
+                        <p>
+                            Teams im Fokus
+                        </p>
+
+                        <h2 id="teams-slider-titel">
+                            Aktive GTM Teams
+                        </h2>
+
+                    </div>
+
+                    <div
+                        class="teams-slider-steuerung"
+                        aria-label="Team-Slider steuern"
+                    >
+
+                        <button
+                            id="teams-slider-zurueck"
+                            type="button"
+                            aria-label="Vorheriges Team anzeigen"
+                        >
+                            ‹
+                        </button>
+
+                        <button
+                            id="teams-slider-weiter"
+                            type="button"
+                            aria-label="Nächstes Team anzeigen"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="teams-slider"
+                    class="teams-slider"
+                    aria-live="polite"
+                    aria-roledescription="Karussell"
+                >
+
+                    <div class="teams-slider-laden">
+                        Teamdaten werden geladen …
+                    </div>
+
+                </div>
+
+                <div
+                    id="teams-slider-punkte"
+                    class="teams-slider-punkte"
+                    aria-label="Team auswählen"
+                ></div>
 
             </div>
 
@@ -58,49 +128,33 @@
 
                     <article class="teams-statistik-karte">
 
-                        <strong id="teams-anzahl">
-                            –
-                        </strong>
+                        <strong id="teams-anzahl">–</strong>
 
-                        <span>
-                            Teams
-                        </span>
+                        <span>Teams insgesamt</span>
 
                     </article>
 
                     <article class="teams-statistik-karte">
 
-                        <strong id="teams-meisterschaft">
-                            –
-                        </strong>
+                        <strong id="teams-aktiv">–</strong>
 
-                        <span>
-                            Aktuelle Meisterschaft
-                        </span>
+                        <span>Mit Teilnahme</span>
 
                     </article>
 
                     <article class="teams-statistik-karte">
 
-                        <strong id="teams-fahrer">
-                            –
-                        </strong>
+                        <strong id="teams-fahrer">–</strong>
 
-                        <span>
-                            Zugeordnete Fahrer
-                        </span>
+                        <span>Zugeordnete Fahrer</span>
 
                     </article>
 
                     <article class="teams-statistik-karte">
 
-                        <strong id="teams-fahrzeuge">
-                            –
-                        </strong>
+                        <strong id="teams-events">–</strong>
 
-                        <span>
-                            Fahrzeuge
-                        </span>
+                        <span>Veranstaltungen</span>
 
                     </article>
 
@@ -118,30 +172,42 @@
 
                     <label class="teams-suche">
 
-                        <span>
-                            Team suchen
-                        </span>
+                        <span>Team suchen</span>
 
                         <input
                             id="team-suche"
                             type="search"
                             autocomplete="off"
-                            placeholder="Team, Fahrer oder Fahrzeug"
+                            placeholder="Team, Fahrer, Fahrzeug oder Event"
                         >
 
                     </label>
 
                     <label class="teams-filter">
 
-                        <span>
-                            Fahrzeug
-                        </span>
+                        <span>Rennbereich</span>
+
+                        <select id="serie-filter">
+
+                            <option value="">Alle Bereiche</option>
+
+                            <option value="masters">GTM Masters</option>
+
+                            <option value="ta">GTM Time Attack</option>
+
+                            <option value="fun">GTM FUN Events</option>
+
+                        </select>
+
+                    </label>
+
+                    <label class="teams-filter">
+
+                        <span>Fahrzeug</span>
 
                         <select id="fahrzeug-filter">
 
-                            <option value="">
-                                Alle Fahrzeuge
-                            </option>
+                            <option value="">Alle Fahrzeuge</option>
 
                         </select>
 
@@ -149,23 +215,15 @@
 
                     <label class="teams-filter">
 
-                        <span>
-                            Meisterschaftsstatus
-                        </span>
+                        <span>Teilnahmestatus</span>
 
-                        <select id="meisterschaft-filter">
+                        <select id="teilnahme-filter">
 
-                            <option value="">
-                                Alle Teams
-                            </option>
+                            <option value="">Alle Teams</option>
 
-                            <option value="aktiv">
-                                Aktuelle Meisterschaft
-                            </option>
+                            <option value="aktiv">Mit Teilnahme</option>
 
-                            <option value="inaktiv">
-                                Keine aktuelle Teilnahme
-                            </option>
+                            <option value="registriert">Nur registriert</option>
 
                         </select>
 
@@ -173,27 +231,19 @@
 
                     <label class="teams-filter">
 
-                        <span>
-                            Sortierung
-                        </span>
+                        <span>Sortierung</span>
 
                         <select id="team-sortierung">
 
-                            <option value="name">
-                                Teamname
-                            </option>
+                            <option value="name">Teamname</option>
 
-                            <option value="fahrer">
-                                Anzahl Fahrer
-                            </option>
+                            <option value="bereiche">Anzahl Bereiche</option>
 
-                            <option value="status">
-                                Meisterschaftsteilnahme
-                            </option>
+                            <option value="teilnahmen">Teilnahmen</option>
 
-                            <option value="punkte">
-                                Meisterschaftspunkte
-                            </option>
+                            <option value="fahrer">Anzahl Fahrer</option>
+
+                            <option value="punkte">Masters-Punkte</option>
 
                         </select>
 
@@ -216,7 +266,7 @@
                     aria-busy="true"
                 >
 
-                    <div class="text-center text-light py-5">
+                    <div class="teams-laden">
                         Teamdaten werden geladen …
                     </div>
 

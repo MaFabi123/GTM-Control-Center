@@ -16,6 +16,7 @@
 #   data/json/teams.json
 #   data/json/meisterschaft.json
 #   data/json/kalender.json
+#   data/json/ta.json
 #   data/json/fahrzeuge.json
 #   data/json/dashboard.json
 #
@@ -74,6 +75,16 @@ function Get-CellText {
         return ""
     }
 
+    # Excel-Fehlerwerte wie #N/A werden über COM teilweise als
+    # negative HRESULT-Zahlen (z. B. -2146826246) geliefert.
+    if (
+        $value -isnot [string] -and
+        $value -is [System.IConvertible] -and
+        [double]$value -lt -2000000000
+    ) {
+        return ""
+    }
+
     return ([string]$value).Trim()
 }
 
@@ -96,11 +107,59 @@ function Get-CellNumber {
         return 0
     }
 
+    # Numerische Excel-Zellen direkt übernehmen. Dadurch wird aus
+    # 348,5 nicht versehentlich 3485, wenn PowerShell mit einer
+    # anderen Gebietseinstellung gestartet wurde.
+    if (
+        $value -is [byte] -or
+        $value -is [int16] -or
+        $value -is [int32] -or
+        $value -is [int64] -or
+        $value -is [single] -or
+        $value -is [double] -or
+        $value -is [decimal]
+    ) {
+        $numericValue = [double]$value
+
+        if ($numericValue -lt -2000000000) {
+            return 0
+        }
+
+        return $numericValue
+    }
+
+    $textValue = ([string]$value).Trim()
     $number = 0.0
 
     if (
         [double]::TryParse(
-            ([string]$value),
+            $textValue,
+            [System.Globalization.NumberStyles]::Float,
+            [System.Globalization.CultureInfo]::CurrentCulture,
+            [ref]$number
+        )
+    ) {
+        return $number
+    }
+
+    if (
+        [double]::TryParse(
+            $textValue,
+            [System.Globalization.NumberStyles]::Float,
+            [System.Globalization.CultureInfo]::InvariantCulture,
+            [ref]$number
+        )
+    ) {
+        return $number
+    }
+
+    $normalisiert = $textValue.Replace(',', '.')
+
+    if (
+        [double]::TryParse(
+            $normalisiert,
+            [System.Globalization.NumberStyles]::Float,
+            [System.Globalization.CultureInfo]::InvariantCulture,
             [ref]$number
         )
     ) {
@@ -147,6 +206,144 @@ function Get-ValidStartnummer {
     }
 
     return $number
+}
+
+function Test-ValidTeamName {
+    param (
+        $Value
+    )
+
+    if ($null -eq $Value) {
+        return $false
+    }
+
+    $name = ([string]$Value).Trim()
+
+    if ([string]::IsNullOrWhiteSpace($name)) {
+        return $false
+    }
+
+    if (
+        $name -eq "0" -or
+        $name -match "^#" -or
+        $name -match "^-?\d+(?:[\.,]\d+)?$" -or
+        $name -match "^(Teamwertung|Teamzuordnung|Temzuordnung|Round\s+\d+)$"
+    ) {
+        return $false
+    }
+
+    return $true
+}
+
+function Convert-ToTeamId {
+    param (
+        [string]$Value
+    )
+
+    $id = $Value.Trim().ToLowerInvariant()
+    $id = $id `
+        -replace "ä", "ae" `
+        -replace "ö", "oe" `
+        -replace "ü", "ue" `
+        -replace "ß", "ss" `
+        -replace "&", "und" `
+        -replace "[^a-z0-9]+", "-" `
+        -replace "^-+|-+$", ""
+
+    return $id
+}
+
+function Get-WorksheetColumn {
+    param (
+        $Worksheet,
+        [string[]]$Headers
+    )
+
+    $lastColumn = $Worksheet.UsedRange.Columns.Count
+
+    foreach ($candidate in $Headers) {
+        for ($column = 1; $column -le $lastColumn; $column++) {
+            $header = Get-CellText `
+                -Worksheet $Worksheet `
+                -Row 1 `
+                -Column $column
+
+            if ($header -ieq $candidate) {
+                return $column
+            }
+        }
+    }
+
+    return 0
+}
+
+function Add-TeamCatalogEntry {
+    param (
+        [hashtable]$Catalog,
+        [string]$Name,
+        $Participation = $null
+    )
+
+    if (-not (Test-ValidTeamName $Name)) {
+        return
+    }
+
+    $cleanName = $Name.Trim()
+    $key = $cleanName.ToLowerInvariant()
+
+    if (-not $Catalog.ContainsKey($key)) {
+        $Catalog[$key] = [PSCustomObject][ordered]@{
+            name        = $cleanName
+            teilnahmen  = New-Object System.Collections.Generic.List[object]
+        }
+    }
+
+    if ($null -eq $Participation) {
+        return
+    }
+
+    $alreadyAdded = @(
+        $Catalog[$key].teilnahmen |
+        Where-Object {
+            $_.id -eq $Participation.id
+        }
+    ).Count -gt 0
+
+    if (-not $alreadyAdded) {
+        $Catalog[$key].teilnahmen.Add($Participation)
+    }
+}
+
+function Add-DriverParticipation {
+    param (
+        [hashtable]$Catalog,
+        [int]$Number,
+        $Participation
+    )
+
+    if (
+        $Number -lt 1 -or
+        $Number -gt 999 -or
+        $null -eq $Participation
+    ) {
+        return
+    }
+
+    if (-not $Catalog.ContainsKey($Number)) {
+        $Catalog[$Number] = New-Object `
+            System.Collections.Generic.List[object]
+    }
+
+    $alreadyAdded = @(
+        $Catalog[$Number] |
+        Where-Object {
+            $_.id -eq $Participation.id
+        }
+    ).Count -gt 0
+
+    if (-not $alreadyAdded) {
+        $Catalog[$Number].Add($Participation)
+    }
 }
 
 function Convert-ExcelDate {
@@ -512,7 +709,14 @@ $strafenkontoSheet =
             }
         }
 
-        $bildNachNummer[$nummer] = "default.png"
+        if (Test-Path -LiteralPath $bildPfad) {
+            # Manuell hinterlegte Fahrerbilder bleiben erhalten und
+            # werden auch ohne eingebettetes Excel-Bild verwendet.
+            $bildNachNummer[$nummer] = $bildDatei
+        }
+        else {
+            $bildNachNummer[$nummer] = "default.png"
+        }
     }    # ========================================================
     # 1. SAISONFAHRER UND MEISTERSCHAFT
     #
@@ -685,6 +889,131 @@ $strafenkontoSheet =
         -Data $meisterschaft
 
     # ========================================================
+    # DIREKTE EVENTTEILNAHMEN JE FAHRER
+    #
+    # Die Zuordnung erfolgt ueber die Startnummer direkt aus
+    # Masters-, Time-Attack- und konkreten FUN-Event-Blaettern.
+    # Dadurch bleiben Teilnahmen auch ohne Team sichtbar.
+    # ========================================================
+
+    $fahrerTeilnahmenNachNummer = @{}
+
+    foreach ($teilnahmeSheet in $workbook.Worksheets) {
+        $teilnahmeSheetName = ([string]$teilnahmeSheet.Name).Trim()
+        $teilnahmeSerieId = ""
+        $teilnahmeSerieName = ""
+        $teilnahmeSaison = 0
+        $teilnahmeSaisonName = ""
+        $teilnahmeEventName = ""
+        $teilnahmeId = ""
+
+        $teilnahmeMastersMatch = [regex]::Match(
+            $teilnahmeSheetName,
+            "^GTM Masters Saison\s+(\d+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        $teilnahmeTaMatch = [regex]::Match(
+            $teilnahmeSheetName,
+            "^TA Saison\s+(\d+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        $teilnahmeFunMatch = [regex]::Match(
+            $teilnahmeSheetName,
+            "^FUN-Event\s+(.+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        if ($teilnahmeMastersMatch.Success) {
+            $teilnahmeSerieId = "masters"
+            $teilnahmeSerieName = "GTM Masters"
+            $teilnahmeSaison = [int]$teilnahmeMastersMatch.Groups[1].Value
+            $teilnahmeSaisonName = "GTM Masters Saison $teilnahmeSaison"
+            $teilnahmeEventName = $teilnahmeSaisonName
+            $teilnahmeId = "masters-s$teilnahmeSaison"
+        }
+        elseif ($teilnahmeTaMatch.Success) {
+            $teilnahmeSerieId = "ta"
+            $teilnahmeSerieName = "GTM Time Attack"
+            $teilnahmeSaison = [int]$teilnahmeTaMatch.Groups[1].Value
+            $teilnahmeSaisonName = "GTM Time Attack Saison $teilnahmeSaison"
+            $teilnahmeEventName = $teilnahmeSaisonName
+            $teilnahmeId = "ta-$teilnahmeSaison"
+        }
+        elseif ($teilnahmeFunMatch.Success) {
+            $teilnahmeSerieId = "fun"
+            $teilnahmeSerieName = "GTM FUN Events"
+            $teilnahmeEventName = $teilnahmeFunMatch.Groups[1].Value.Trim()
+
+            $teilnahmeYearMatch = [regex]::Match(
+                $teilnahmeEventName,
+                "(20\d{2})"
+            )
+
+            if ($teilnahmeYearMatch.Success) {
+                $teilnahmeSaison = [int]$teilnahmeYearMatch.Groups[1].Value
+            }
+
+            $teilnahmeSaisonName = if ($teilnahmeSaison -gt 0) {
+                "GTM FUN Events $teilnahmeSaison"
+            }
+            else {
+                "GTM FUN Events"
+            }
+
+            $teilnahmeId = "fun-$(Convert-ToTeamId $teilnahmeEventName)"
+        }
+        else {
+            continue
+        }
+
+        $teilnahmeStartnummerColumn = Get-WorksheetColumn `
+            -Worksheet $teilnahmeSheet `
+            -Headers @("Startnummer")
+
+        if ($teilnahmeStartnummerColumn -le 0) {
+            continue
+        }
+
+        $teilnahmeLetzteZeile = $teilnahmeSheet.Cells.Item(
+            $teilnahmeSheet.Rows.Count,
+            $teilnahmeStartnummerColumn
+        ).End($xlUp).Row
+
+        $teilnahmeObjekt = [PSCustomObject][ordered]@{
+            id          = $teilnahmeId
+            serieId     = $teilnahmeSerieId
+            serie       = $teilnahmeSerieName
+            saison      = $teilnahmeSaison
+            saisonName  = $teilnahmeSaisonName
+            event       = $teilnahmeEventName
+        }
+
+        for (
+            $teilnahmeRow = 2;
+            $teilnahmeRow -le $teilnahmeLetzteZeile;
+            $teilnahmeRow++
+        ) {
+            $teilnahmeStartnummer = Get-ValidStartnummer(
+                $teilnahmeSheet.Cells.Item(
+                    $teilnahmeRow,
+                    $teilnahmeStartnummerColumn
+                ).Value2
+            )
+
+            if ($null -eq $teilnahmeStartnummer) {
+                continue
+            }
+
+            Add-DriverParticipation `
+                -Catalog $fahrerTeilnahmenNachNummer `
+                -Number $teilnahmeStartnummer `
+                -Participation $teilnahmeObjekt
+        }
+    }
+
+    # ========================================================
     # 2. ALLE GTM-FAHRER AUS DEM BLATT "DATENBANK"
     #
     # A = Fahrernummer
@@ -751,6 +1080,8 @@ $strafenkontoSheet =
         $fahrzeugwechsel = 0
         $punkte = 0
         $teamZuordnung = $team
+        $teilnahmen = @()
+        $serien = @()
 
         if ($saisonNachNummer.ContainsKey($nummer)) {
             $saisonEintrag =
@@ -783,6 +1114,21 @@ $strafenkontoSheet =
             }
         }
 
+        if ($fahrerTeilnahmenNachNummer.ContainsKey($nummer)) {
+            $teilnahmen = @(
+                $fahrerTeilnahmenNachNummer[$nummer] |
+                Sort-Object `
+                    @{ Expression = "serieId"; Ascending = $true },
+                    @{ Expression = "saison"; Ascending = $true },
+                    @{ Expression = "event"; Ascending = $true }
+            )
+
+            $serien = @(
+                $teilnahmen |
+                Select-Object -ExpandProperty serieId -Unique
+            )
+        }
+
         # ----------------------------------------------------
         # Alle GTM-Fahrer
         # ----------------------------------------------------
@@ -801,6 +1147,8 @@ $strafenkontoSheet =
                 fastLap         = $fastLap
                 fahrzeugwechsel = $fahrzeugwechsel
                 punkte          = $punkte
+                serien          = $serien
+                teilnahmen      = $teilnahmen
             }
         )
 
@@ -946,19 +1294,180 @@ $strafenkontoSheet =
         -Data $startnummernSortiert
 
     # ========================================================
-    # 3. TEAMS AUS DER AKTUELLEN SAISON
+    # 3. ZENTRALER TEAMKATALOG
+    #
+    # Enthält:
+    # - alle in der Datenbank registrierten Stammteams
+    # - Teamzuordnungen aus Masters-Saisons
+    # - Teams aus Time Attack
+    # - Teams aus konkreten FUN-Event-Reitern
+    # - Serien- und Eventzuordnungen je Team
     # ========================================================
+
+    $teamCatalog = @{}
+
+    foreach ($fahrerEintrag in $alleFahrerSortiert) {
+        Add-TeamCatalogEntry `
+            -Catalog $teamCatalog `
+            -Name $fahrerEintrag.team
+
+        Add-TeamCatalogEntry `
+            -Catalog $teamCatalog `
+            -Name $fahrerEintrag.teamZuordnung
+    }
+
+    foreach ($sheet in $workbook.Worksheets) {
+        $sheetName = ([string]$sheet.Name).Trim()
+        $serieId = ""
+        $serieName = ""
+        $saisonNumber = 0
+        $saisonName = ""
+        $eventName = ""
+        $participationId = ""
+
+        $mastersMatch = [regex]::Match(
+            $sheetName,
+            "^GTM Masters Saison\s+(\d+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        $taMatch = [regex]::Match(
+            $sheetName,
+            "^TA Saison\s+(\d+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        $funMatch = [regex]::Match(
+            $sheetName,
+            "^FUN-Event\s+(.+)$",
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        if ($mastersMatch.Success) {
+            $serieId = "masters"
+            $serieName = "GTM Masters"
+            $saisonNumber = [int]$mastersMatch.Groups[1].Value
+            $saisonName = "GTM Masters Saison $saisonNumber"
+            $eventName = $saisonName
+            $participationId = "masters-s$saisonNumber"
+        }
+        elseif ($taMatch.Success) {
+            $serieId = "ta"
+            $serieName = "GTM Time Attack"
+            $saisonNumber = [int]$taMatch.Groups[1].Value
+            $saisonName = "GTM Time Attack Saison $saisonNumber"
+            $eventName = $saisonName
+            $participationId = "ta-$saisonNumber"
+        }
+        elseif ($funMatch.Success) {
+            $serieId = "fun"
+            $serieName = "GTM FUN Events"
+            $eventName = $funMatch.Groups[1].Value.Trim()
+
+            $yearMatch = [regex]::Match(
+                $eventName,
+                "(20\d{2})"
+            )
+
+            if ($yearMatch.Success) {
+                $saisonNumber = [int]$yearMatch.Groups[1].Value
+            }
+
+            $saisonName = if ($saisonNumber -gt 0) {
+                "GTM FUN Events $saisonNumber"
+            }
+            else {
+                "GTM FUN Events"
+            }
+
+            $participationId = "fun-$(Convert-ToTeamId $eventName)"
+        }
+        else {
+            continue
+        }
+
+        $startnummerColumn = Get-WorksheetColumn `
+            -Worksheet $sheet `
+            -Headers @("Startnummer")
+
+        $teamColumn = Get-WorksheetColumn `
+            -Worksheet $sheet `
+            -Headers @(
+                "Temzuordnung",
+                "Teamzuordnung",
+                "Team"
+            )
+
+        $fallbackTeamColumn = Get-WorksheetColumn `
+            -Worksheet $sheet `
+            -Headers @("Team")
+
+        if (
+            $startnummerColumn -le 0 -or
+            $teamColumn -le 0
+        ) {
+            continue
+        }
+
+        $lastTeamRow = $sheet.Cells.Item(
+            $sheet.Rows.Count,
+            $startnummerColumn
+        ).End($xlUp).Row
+
+        $participation = [PSCustomObject][ordered]@{
+            id          = $participationId
+            serieId     = $serieId
+            serie       = $serieName
+            saison      = $saisonNumber
+            saisonName  = $saisonName
+            event       = $eventName
+        }
+
+        for (
+            $teamRow = 2;
+            $teamRow -le $lastTeamRow;
+            $teamRow++
+        ) {
+            $startnummer = Get-ValidStartnummer(
+                $sheet.Cells.Item(
+                    $teamRow,
+                    $startnummerColumn
+                ).Value2
+            )
+
+            if ($null -eq $startnummer) {
+                continue
+            }
+
+            $teamName = Get-CellText `
+                -Worksheet $sheet `
+                -Row $teamRow `
+                -Column $teamColumn
+
+            if (
+                -not (Test-ValidTeamName $teamName) -and
+                $fallbackTeamColumn -gt 0
+            ) {
+                $teamName = Get-CellText `
+                    -Worksheet $sheet `
+                    -Row $teamRow `
+                    -Column $fallbackTeamColumn
+            }
+
+            Add-TeamCatalogEntry `
+                -Catalog $teamCatalog `
+                -Name $teamName `
+                -Participation $participation
+        }
+    }
+
+    $meisterschaftNachTeam = @{}
 
     $teamsGruppiert = $saisonFahrerSortiert |
         Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.teamZuordnung
-            )
+            Test-ValidTeamName $_.teamZuordnung
         } |
         Group-Object -Property teamZuordnung
-
-    $teams = New-Object `
-        System.Collections.Generic.List[object]
 
     foreach ($gruppe in $teamsGruppiert) {
         $fahrerDesTeams = @(
@@ -977,25 +1486,79 @@ $strafenkontoSheet =
             $punkteGesamt = 0
         }
 
+        $meisterschaftNachTeam[
+            $gruppe.Name.ToLowerInvariant()
+        ] = [PSCustomObject][ordered]@{
+            punkte       = $punkteGesamt
+            fahrer       = $fahrerDesTeams
+        }
+    }
+
+    $teams = New-Object `
+        System.Collections.Generic.List[object]
+
+    foreach ($catalogEntry in $teamCatalog.Values) {
+        $teamKey = $catalogEntry.name.ToLowerInvariant()
+        $meisterschaftTeam = $null
+
+        if ($meisterschaftNachTeam.ContainsKey($teamKey)) {
+            $meisterschaftTeam = $meisterschaftNachTeam[$teamKey]
+        }
+
+        $fahrerDesTeams = @(
+            $alleFahrerSortiert |
+            Where-Object {
+                (
+                    (Test-ValidTeamName $_.team) -and
+                    $_.team -ieq $catalogEntry.name
+                ) -or
+                (
+                    (Test-ValidTeamName $_.teamZuordnung) -and
+                    $_.teamZuordnung -ieq $catalogEntry.name
+                )
+            } |
+            Sort-Object -Property nummer -Unique
+        )
+
+        $punkteGesamt = 0
+        $platzierung = 0
+
+        if ($null -ne $meisterschaftTeam) {
+            $punkteGesamt = $meisterschaftTeam.punkte
+        }
+
+        $teilnahmen = @(
+            $catalogEntry.teilnahmen |
+            Sort-Object `
+                @{ Expression = "serieId"; Ascending = $true },
+                @{ Expression = "saison"; Ascending = $true },
+                @{ Expression = "event"; Ascending = $true }
+        )
+
+        $serien = @(
+            $teilnahmen |
+            Select-Object -ExpandProperty serieId -Unique
+        )
+
+        $fahrzeuge = @(
+            $fahrerDesTeams |
+            Select-Object -ExpandProperty fahrzeug -Unique |
+            Where-Object {
+                -not [string]::IsNullOrWhiteSpace($_)
+            }
+        )
+
         $teams.Add(
             [PSCustomObject][ordered]@{
-                name = $gruppe.Name
-
-                punkte = $punkteGesamt
-
-                anzahlFahrer = $fahrerDesTeams.Count
-
-                fahrzeuge = @(
-                    $fahrerDesTeams |
-                    Select-Object `
-                        -ExpandProperty fahrzeug `
-                        -Unique |
-                    Where-Object {
-                        -not [string]::IsNullOrWhiteSpace($_)
-                    }
-                )
-
-                fahrer = @(
+                name                  = $catalogEntry.name
+                aktiveMeisterschaft  = ($null -ne $meisterschaftTeam)
+                serien                = $serien
+                teilnahmen            = $teilnahmen
+                punkte                = $punkteGesamt
+                platzierung           = $platzierung
+                anzahlFahrer          = $fahrerDesTeams.Count
+                fahrzeuge             = $fahrzeuge
+                fahrer                = @(
                     $fahrerDesTeams |
                     ForEach-Object {
                         [PSCustomObject][ordered]@{
@@ -1003,8 +1566,11 @@ $strafenkontoSheet =
                             name         = $_.name
                             bild         = $_.bild
                             fahrzeug     = $_.fahrzeug
+                            aktiveSaison = $_.aktiveSaison
                             punkte       = $_.punkte
                             platzierung  = $_.platzierung
+                            serien       = $_.serien
+                            teilnahmen   = $_.teilnahmen
                         }
                     }
                 )
@@ -1015,30 +1581,23 @@ $strafenkontoSheet =
     $teamsSortiert = @(
         $teams |
         Sort-Object `
-            @{
-                Expression = "punkte"
-                Descending = $true
-            },
-            @{
-                Expression = "name"
-                Ascending = $true
-            }
+            @{ Expression = "aktiveMeisterschaft"; Descending = $true },
+            @{ Expression = "punkte"; Descending = $true },
+            @{ Expression = "name"; Ascending = $true }
     )
 
-    $teamPosition = 1
+    $aktiveTeamPosition = 1
 
     foreach ($team in $teamsSortiert) {
-        $team |
-            Add-Member `
-                -NotePropertyName platzierung `
-                -NotePropertyValue $teamPosition
-
-        $teamPosition++
+        if ($team.aktiveMeisterschaft) {
+            $team.platzierung = $aktiveTeamPosition
+            $aktiveTeamPosition++
+        }
     }
 
     Write-JsonFile `
         -FileName "teams.json" `
-        -Data $teamsSortiert    
+        -Data $teamsSortiert
     # ========================================================
 
     # ========================================================
@@ -1667,6 +2226,353 @@ $strafenkontoSheet =
 
 
     # =========================================================
+    # 4B. GTM TIME ATTACK – ALLE SAISONS DYNAMISCH
+    # =========================================================
+    #
+    # Erkannt werden alle Tabellenblätter mit Namen wie:
+    #   TA Saison 2026
+    #   TA Saison 2027
+    #   TA Saison 2028
+    #
+    # Die Spalten werden anhand ihrer Überschriften erkannt.
+    # Leere Zukunftssaisons bleiben als vorbereitete Saison im
+    # Export erhalten und erscheinen auf der Webseite als Platzhalter.
+    # =========================================================
+
+    $taSaisons = New-Object `
+        System.Collections.Generic.List[object]
+
+    foreach ($taSheet in $workbook.Worksheets) {
+        $taTreffer = [regex]::Match(
+            [string]$taSheet.Name,
+            '^TA\s+Saison\s+(\d{4})$',
+            [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+
+        if (-not $taTreffer.Success) {
+            continue
+        }
+
+        $taJahr = [int]$taTreffer.Groups[1].Value
+        $taSpaltenAnzahl = [int]$taSheet.UsedRange.Columns.Count
+        $taZeilenAnzahl = [int]$taSheet.UsedRange.Rows.Count
+
+        $taSpalten = @{}
+        $taRundenSpalten = New-Object `
+            System.Collections.Generic.List[object]
+
+        for (
+            $taSpalte = 1;
+            $taSpalte -le $taSpaltenAnzahl;
+            $taSpalte++
+        ) {
+            $taUeberschrift = Get-CellText `
+                -Worksheet $taSheet `
+                -Row 1 `
+                -Column $taSpalte
+
+            $taUeberschriftNormal = (
+                $taUeberschrift.Trim().ToLowerInvariant()
+            )
+
+            switch ($taUeberschriftNormal) {
+                'platzierung'     { $taSpalten.platzierung = $taSpalte; break }
+                'startnummer'     { $taSpalten.startnummer = $taSpalte; break }
+                'anzeigename'     { $taSpalten.anzeigename = $taSpalte; break }
+                'team'            { $taSpalten.team = $taSpalte; break }
+                'fahrzeug'        { $taSpalten.fahrzeug = $taSpalte; break }
+                'wertung'         { $taSpalten.wertung = $taSpalte; break }
+                'fahrzeugwechsel' { $taSpalten.fahrzeugwechsel = $taSpalte; break }
+                'gesamtwertung'   { $taSpalten.gesamtwertung = $taSpalte; break }
+                'endwertung'      { $taSpalten.endwertung = $taSpalte; break }
+            }
+
+            $rundenTreffer = [regex]::Match(
+                $taUeberschrift,
+                '^Round\s+(\d+)$',
+                [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+            )
+
+            if ($rundenTreffer.Success) {
+                [void]$taRundenSpalten.Add(
+                    [PSCustomObject][ordered]@{
+                        runde  = [int]$rundenTreffer.Groups[1].Value
+                        spalte = $taSpalte
+                    }
+                )
+            }
+        }
+
+        $taFahrer = New-Object `
+            System.Collections.Generic.List[object]
+
+        $taAbgeschlosseneRunden = New-Object `
+            System.Collections.Generic.HashSet[int]
+
+        if (
+            $taSpalten.ContainsKey('startnummer') -and
+            $taSpalten.ContainsKey('anzeigename')
+        ) {
+            for (
+                $taZeile = 2;
+                $taZeile -le $taZeilenAnzahl;
+                $taZeile++
+            ) {
+                $taNummerRoh = $taSheet.Cells.Item(
+                    $taZeile,
+                    [int]$taSpalten.startnummer
+                ).Value2
+
+                $taNummer = Get-ValidStartnummer $taNummerRoh
+                $taName = Get-CellText `
+                    -Worksheet $taSheet `
+                    -Row $taZeile `
+                    -Column ([int]$taSpalten.anzeigename)
+
+                if ($null -eq $taNummer) {
+                    continue
+                }
+
+                if (
+                    [string]::IsNullOrWhiteSpace($taName) -or
+                    $taName -match '^#N/A$' -or
+                    $taName -match '^-21468\d+$'
+                ) {
+                    $taName = 'Fahrer #{0} - noch nicht zugeordnet' -f $taNummer
+                }
+
+                $taTeam = ''
+                $taFahrzeug = ''
+
+                if ($taSpalten.ContainsKey('team')) {
+                    $taTeam = Get-CellText `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.team)
+                }
+
+                if ($taSpalten.ContainsKey('fahrzeug')) {
+                    $taFahrzeug = Get-CellText `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.fahrzeug)
+                }
+
+                if ($taTeam -match '^(0|#N/A)$') { $taTeam = '' }
+                if ($taFahrzeug -match '^(0|#N/A)$') { $taFahrzeug = '' }
+
+                $taPlatzierung = 0
+                $taWertung = 0
+                $taFahrzeugwechsel = 0
+                $taPunkte = 0
+
+                if ($taSpalten.ContainsKey('platzierung')) {
+                    $taPlatzierung = [int](
+                        Get-CellNumber `
+                            -Worksheet $taSheet `
+                            -Row $taZeile `
+                            -Column ([int]$taSpalten.platzierung)
+                    )
+                }
+
+                if ($taSpalten.ContainsKey('wertung')) {
+                    $taWertung = Get-CellNumber `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.wertung)
+                }
+
+                if ($taSpalten.ContainsKey('fahrzeugwechsel')) {
+                    $taFahrzeugwechsel = Get-CellNumber `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.fahrzeugwechsel)
+                }
+
+                if ($taSpalten.ContainsKey('gesamtwertung')) {
+                    $taPunkte = Get-CellNumber `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.gesamtwertung)
+                }
+                elseif ($taSpalten.ContainsKey('endwertung')) {
+                    $taPunkte = Get-CellNumber `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taSpalten.endwertung)
+                }
+                else {
+                    $taPunkte = $taWertung
+                }
+
+                $taErgebnisse = New-Object `
+                    System.Collections.Generic.List[object]
+                $taSiege = 0
+                $taPodien = 0
+                $taBestePlatzierung = 0
+
+                foreach (
+                    $taRundenSpalte in @(
+                        $taRundenSpalten |
+                        Sort-Object -Property runde
+                    )
+                ) {
+                    $taErgebnis = Get-CellText `
+                        -Worksheet $taSheet `
+                        -Row $taZeile `
+                        -Column ([int]$taRundenSpalte.spalte)
+
+                    if (
+                        [string]::IsNullOrWhiteSpace($taErgebnis) -or
+                        $taErgebnis -match '^(0|#N/A)$'
+                    ) {
+                        continue
+                    }
+
+                    [void]$taAbgeschlosseneRunden.Add(
+                        [int]$taRundenSpalte.runde
+                    )
+
+                    $taErgebnisPlatz = 0
+                    $taErgebnisTreffer = [regex]::Match(
+                        $taErgebnis,
+                        '(\d+)'
+                    )
+
+                    if ($taErgebnisTreffer.Success) {
+                        $taErgebnisPlatz = [int]$taErgebnisTreffer.Groups[1].Value
+
+                        if ($taErgebnisPlatz -eq 1) { $taSiege++ }
+                        if ($taErgebnisPlatz -ge 1 -and $taErgebnisPlatz -le 3) {
+                            $taPodien++
+                        }
+
+                        if (
+                            $taBestePlatzierung -eq 0 -or
+                            $taErgebnisPlatz -lt $taBestePlatzierung
+                        ) {
+                            $taBestePlatzierung = $taErgebnisPlatz
+                        }
+                    }
+
+                    [void]$taErgebnisse.Add(
+                        [PSCustomObject][ordered]@{
+                            runde       = [int]$taRundenSpalte.runde
+                            ergebnis    = $taErgebnis
+                            platzierung = $taErgebnisPlatz
+                        }
+                    )
+                }
+
+                $taBild = 'default.png'
+                if ($bildNachNummer.ContainsKey($taNummer)) {
+                    $taBild = [string]$bildNachNummer[$taNummer]
+                }
+
+                [void]$taFahrer.Add(
+                    [PSCustomObject][ordered]@{
+                        platzierung     = $taPlatzierung
+                        nummer          = $taNummer
+                        name            = $taName
+                        team            = $taTeam
+                        fahrzeug        = $taFahrzeug
+                        bild            = $taBild
+                        wertung         = $taWertung
+                        fahrzeugwechsel = $taFahrzeugwechsel
+                        punkte           = $taPunkte
+                        teilnahmen       = $taErgebnisse.Count
+                        siege            = $taSiege
+                        podiums          = $taPodien
+                        bestePlatzierung = $taBestePlatzierung
+                        runden           = $taErgebnisse.ToArray()
+                    }
+                )
+            }
+        }
+
+        $taFahrerSortiert = @(
+            $taFahrer |
+            Sort-Object `
+                @{ Expression = {
+                    if ($_.platzierung -gt 0) { $_.platzierung }
+                    else { [int]::MaxValue }
+                } },
+                @{ Expression = 'punkte'; Descending = $true },
+                @{ Expression = 'name'; Descending = $false }
+        )
+
+        $taKalenderDerSaison = @(
+            $kalenderSortiert |
+            Where-Object {
+                $_.serieId -eq 'ta' -and
+                [int]$_.saison -eq $taJahr
+            }
+        )
+
+        $taStatus = 'in Vorbereitung'
+
+        if ($taFahrerSortiert.Count -gt 0) {
+            $taStatus = 'läuft'
+        }
+
+        if (
+            $taKalenderDerSaison.Count -gt 0 -and
+            @(
+                $taKalenderDerSaison |
+                Where-Object { -not $_.abgeschlossen }
+            ).Count -eq 0
+        ) {
+            $taStatus = 'abgeschlossen'
+        }
+
+        $taRundenAbgeschlossen = 0
+        if ($taAbgeschlosseneRunden.Count -gt 0) {
+            $taRundenAbgeschlossen = [int](
+                $taAbgeschlosseneRunden |
+                Measure-Object -Maximum
+            ).Maximum
+        }
+
+        [void]$taSaisons.Add(
+            [PSCustomObject][ordered]@{
+                id                   = "ta-$taJahr"
+                saison               = $taJahr
+                saisonName           = "GTM Time Attack Saison $taJahr"
+                status               = $taStatus
+                rundenGesamt         = $taRundenSpalten.Count
+                rundenAbgeschlossen  = $taRundenAbgeschlossen
+                termine              = $taKalenderDerSaison.Count
+                fahrerAnzahl         = $taFahrerSortiert.Count
+                fahrerwertung        = $taFahrerSortiert
+            }
+        )
+
+        Write-Host (
+            'TA-Wertung erkannt: {0} ({1} Fahrer, Status: {2})' -f
+            $taSheet.Name,
+            $taFahrerSortiert.Count,
+            $taStatus
+        ) -ForegroundColor Cyan
+    }
+
+    $taSaisonsSortiert = @(
+        $taSaisons |
+        Sort-Object -Property saison
+    )
+
+    $taExport = [PSCustomObject][ordered]@{
+        serieId = 'ta'
+        serie   = 'GTM Time Attack'
+        saisons = $taSaisonsSortiert
+    }
+
+    Write-JsonFile `
+        -FileName 'ta.json' `
+        -Data $taExport
+
+
+
+    # =========================================================
     # 5. FAHRZEUGLISTE
     # =========================================================
     #
@@ -2082,6 +2988,12 @@ catch {
     Write-Host `
         $_.Exception.Message `
         -ForegroundColor Red
+
+    if ($_.InvocationInfo.PositionMessage) {
+        Write-Host `
+            $_.InvocationInfo.PositionMessage `
+            -ForegroundColor DarkYellow
+    }
 
     Write-Host ""
 

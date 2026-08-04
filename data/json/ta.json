@@ -1,0 +1,1713 @@
+{
+    "serieId":  "ta",
+    "serie":  "GTM Time Attack",
+    "saisons":  [
+                    {
+                        "id":  "ta-2026",
+                        "saison":  2026,
+                        "saisonName":  "GTM Time Attack Saison 2026",
+                        "status":  "lÃ¤uft",
+                        "rundenGesamt":  21,
+                        "rundenAbgeschlossen":  14,
+                        "termine":  21,
+                        "fahrerAnzahl":  31,
+                        "fahrerwertung":  [
+                                              {
+                                                  "platzierung":  1,
+                                                  "nummer":  89,
+                                                  "name":  "M. Figge",
+                                                  "team":  "Bremsbackenspreizer",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  348.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  348.5,
+                                                  "teilnahmen":  14,
+                                                  "siege":  11,
+                                                  "podiums":  14,
+                                                  "bestePlatzierung":  1,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  2,
+                                                  "nummer":  20,
+                                                  "name":  "O. Gambert",
+                                                  "team":  "DarkTrade Racing by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  315,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  315,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  4,
+                                                  "bestePlatzierung":  2,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  3,
+                                                  "nummer":  169,
+                                                  "name":  "A. Freller",
+                                                  "team":  "GG Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  314.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  314.5,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  4,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  4,
+                                                  "nummer":  3,
+                                                  "name":  "Pascal",
+                                                  "team":  "PM Performance by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "3.png",
+                                                  "wertung":  308,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  308,
+                                                  "teilnahmen":  14,
+                                                  "siege":  1,
+                                                  "podiums":  2,
+                                                  "bestePlatzierung":  1,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  5,
+                                                  "nummer":  971,
+                                                  "name":  "R. Friedel",
+                                                  "team":  "DarkTrade Racing by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  293.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  293.5,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  4,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  6,
+                                                  "nummer":  77,
+                                                  "name":  "Thomas",
+                                                  "team":  "77Performance by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  290,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  290,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  6,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  7,
+                                                  "nummer":  80,
+                                                  "name":  "ALDAPUNKER80 BE",
+                                                  "team":  "Rennsteig Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  277,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  277,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  7,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P19",
+                                                                     "platzierung":  19
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  8,
+                                                  "nummer":  88,
+                                                  "name":  "Mariusz",
+                                                  "team":  "PM Performance by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "88.png",
+                                                  "wertung":  266,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  266,
+                                                  "teilnahmen":  14,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  7,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P19",
+                                                                     "platzierung":  19
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  9,
+                                                  "nummer":  156,
+                                                  "name":  "BeSa",
+                                                  "team":  "Jamaica Connection",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  240.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  240.5,
+                                                  "teilnahmen":  10,
+                                                  "siege":  1,
+                                                  "podiums":  9,
+                                                  "bestePlatzierung":  1,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  10,
+                                                  "nummer":  7,
+                                                  "name":  "P.Zuber",
+                                                  "team":  "MAD Racer",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  197,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  197,
+                                                  "teilnahmen":  9,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  4,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  11,
+                                                  "nummer":  872,
+                                                  "name":  "A. Löbcke",
+                                                  "team":  "Rennsteig Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "872.png",
+                                                  "wertung":  196,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  196,
+                                                  "teilnahmen":  10,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  7,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  11,
+                                                  "nummer":  511,
+                                                  "name":  "S. Deinert",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  196,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  196,
+                                                  "teilnahmen":  9,
+                                                  "siege":  0,
+                                                  "podiums":  1,
+                                                  "bestePlatzierung":  3,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  13,
+                                                  "nummer":  47,
+                                                  "name":  "Janissimo",
+                                                  "team":  "Golden Graining by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  189.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  189.5,
+                                                  "teilnahmen":  10,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  6,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  14,
+                                                  "nummer":  69,
+                                                  "name":  "R. Skopp",
+                                                  "team":  "MAD Racer",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  180.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  180.5,
+                                                  "teilnahmen":  9,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  5,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  15,
+                                                  "nummer":  696,
+                                                  "name":  "T. Müller",
+                                                  "team":  "BMW M Sport",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  178.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  178.5,
+                                                  "teilnahmen":  9,
+                                                  "siege":  0,
+                                                  "podiums":  1,
+                                                  "bestePlatzierung":  3,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P13",
+                                                                     "platzierung":  13
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  16,
+                                                  "nummer":  257,
+                                                  "name":  "Fahrer #257 - noch nicht zugeordnet",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  169.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  169.5,
+                                                  "teilnahmen":  7,
+                                                  "siege":  1,
+                                                  "podiums":  5,
+                                                  "bestePlatzierung":  1,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P1",
+                                                                     "platzierung":  1
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P4",
+                                                                     "platzierung":  4
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  17,
+                                                  "nummer":  232,
+                                                  "name":  "D. Makkaber",
+                                                  "team":  "MAD Racer",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  159,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  159,
+                                                  "teilnahmen":  7,
+                                                  "siege":  0,
+                                                  "podiums":  4,
+                                                  "bestePlatzierung":  2,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P6",
+                                                                     "platzierung":  6
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  18,
+                                                  "nummer":  19,
+                                                  "name":  "L. Garske",
+                                                  "team":  "Quantum Point",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  138.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  138.5,
+                                                  "teilnahmen":  8,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  14,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  6,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P21",
+                                                                     "platzierung":  21
+                                                                 },
+                                                                 {
+                                                                     "runde":  8,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  19,
+                                                  "nummer":  141,
+                                                  "name":  "F. Hopf",
+                                                  "team":  "Rennsteig Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "141.png",
+                                                  "wertung":  127,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  127,
+                                                  "teilnahmen":  7,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  11,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P16",
+                                                                     "platzierung":  16
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  10,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  20,
+                                                  "nummer":  118,
+                                                  "name":  "Ralf B.",
+                                                  "team":  "77Performance by GHc",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  99,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  99,
+                                                  "teilnahmen":  5,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  8,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 },
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P10",
+                                                                     "platzierung":  10
+                                                                 },
+                                                                 {
+                                                                     "runde":  9,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  21,
+                                                  "nummer":  403,
+                                                  "name":  "M.Lamoth",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  64,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  64,
+                                                  "teilnahmen":  3,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  5,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  2,
+                                                                     "ergebnis":  "P5",
+                                                                     "platzierung":  5
+                                                                 },
+                                                                 {
+                                                                     "runde":  3,
+                                                                     "ergebnis":  "P8",
+                                                                     "platzierung":  8
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  22,
+                                                  "nummer":  206,
+                                                  "name":  "Noel",
+                                                  "team":  "MAD Racer",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  55.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  55.5,
+                                                  "teilnahmen":  3,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  7,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P17",
+                                                                     "platzierung":  17
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  23,
+                                                  "nummer":  261,
+                                                  "name":  "Stigion13",
+                                                  "team":  "Maro Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  49,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  49,
+                                                  "teilnahmen":  3,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  18,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P19",
+                                                                     "platzierung":  19
+                                                                 },
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 },
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P18",
+                                                                     "platzierung":  18
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  24,
+                                                  "nummer":  880,
+                                                  "name":  "T. Hermanns",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  48.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  48.5,
+                                                  "teilnahmen":  2,
+                                                  "siege":  0,
+                                                  "podiums":  2,
+                                                  "bestePlatzierung":  2,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  1,
+                                                                     "ergebnis":  "P2",
+                                                                     "platzierung":  2
+                                                                 },
+                                                                 {
+                                                                     "runde":  4,
+                                                                     "ergebnis":  "P3",
+                                                                     "platzierung":  3
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  25,
+                                                  "nummer":  812,
+                                                  "name":  "S. Schneider",
+                                                  "team":  "Jamaica Connection",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  40.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  40.5,
+                                                  "teilnahmen":  2,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  7,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  11,
+                                                                     "ergebnis":  "P7",
+                                                                     "platzierung":  7
+                                                                 },
+                                                                 {
+                                                                     "runde":  12,
+                                                                     "ergebnis":  "P14",
+                                                                     "platzierung":  14
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  26,
+                                                  "nummer":  97,
+                                                  "name":  "M. Helsberg",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  21,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  21,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  9,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  5,
+                                                                     "ergebnis":  "P9",
+                                                                     "platzierung":  9
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  27,
+                                                  "nummer":  10,
+                                                  "name":  "Kondomian",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  20,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  20,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  11,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P11",
+                                                                     "platzierung":  11
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  28,
+                                                  "nummer":  56,
+                                                  "name":  "Lone-Wolf_Mike",
+                                                  "team":  "Rennsteig Racing",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  19.5,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  19.5,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  12,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  14,
+                                                                     "ergebnis":  "P12",
+                                                                     "platzierung":  12
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  29,
+                                                  "nummer":  800,
+                                                  "name":  "Fahrer #800 - noch nicht zugeordnet",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  18,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  18,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  15,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P15",
+                                                                     "platzierung":  15
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  30,
+                                                  "nummer":  997,
+                                                  "name":  "M.Thiel",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  16,
+                                                  "fahrzeugwechsel":  0,
+                                                  "punkte":  16,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  19,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  13,
+                                                                     "ergebnis":  "P19",
+                                                                     "platzierung":  19
+                                                                 }
+                                                             ]
+                                              },
+                                              {
+                                                  "platzierung":  39,
+                                                  "nummer":  8,
+                                                  "name":  "Gabriel",
+                                                  "team":  "",
+                                                  "fahrzeug":  "",
+                                                  "bild":  "default.png",
+                                                  "wertung":  15.5,
+                                                  "fahrzeugwechsel":  30,
+                                                  "punkte":  -14.5,
+                                                  "teilnahmen":  1,
+                                                  "siege":  0,
+                                                  "podiums":  0,
+                                                  "bestePlatzierung":  20,
+                                                  "runden":  [
+                                                                 {
+                                                                     "runde":  7,
+                                                                     "ergebnis":  "P20",
+                                                                     "platzierung":  20
+                                                                 }
+                                                             ]
+                                              }
+                                          ]
+                    },
+                    {
+                        "id":  "ta-2027",
+                        "saison":  2027,
+                        "saisonName":  "GTM Time Attack Saison 2027",
+                        "status":  "in Vorbereitung",
+                        "rundenGesamt":  21,
+                        "rundenAbgeschlossen":  0,
+                        "termine":  0,
+                        "fahrerAnzahl":  0,
+                        "fahrerwertung":  [
+
+                                          ]
+                    }
+                ]
+}

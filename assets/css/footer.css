@@ -1,0 +1,147 @@
+/* ==========================================================
+   GTM FOOTER
+========================================================== */
+
+#site-footer {
+    display: block;
+}
+
+.gtm-footer {
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+    background: linear-gradient(145deg, #111113, #080809 70%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gtm-footer::before {
+    content: "GTM";
+    position: absolute;
+    right: -35px;
+    bottom: -85px;
+    color: rgba(255, 255, 255, 0.025);
+    font-size: clamp(9rem, 22vw, 20rem);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    transform: rotate(-9deg);
+    pointer-events: none;
+}
+
+.gtm-footer-main {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.35fr);
+    gap: clamp(45px, 8vw, 110px);
+    padding: 70px 0 55px;
+}
+
+.gtm-footer-brand img {
+    display: block;
+    width: 118px;
+    height: auto;
+}
+
+.gtm-footer-brand p {
+    max-width: 420px;
+    margin: 20px 0 0;
+    color: #929297;
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.gtm-footer-serien {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 22px;
+}
+
+.gtm-footer-serien span {
+    padding: 6px 9px;
+    border: 1px solid;
+    border-radius: 99px;
+    font-size: 0.56rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.gtm-footer-serien .serie-masters { color: #ff5b70; background: rgba(180, 0, 28, 0.16); border-color: rgba(217, 4, 41, 0.55); }
+.gtm-footer-serien .serie-ta { color: #f4d36d; background: rgba(170, 121, 0, 0.14); border-color: rgba(212, 175, 55, 0.5); }
+.gtm-footer-serien .serie-fun { color: #69dcff; background: rgba(0, 128, 166, 0.14); border-color: rgba(20, 166, 207, 0.5); }
+
+.gtm-footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.gtm-footer-nav h2 {
+    margin: 0 0 17px;
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gtm-footer-nav a {
+    display: table;
+    padding: 5px 0;
+    color: #8e8e93;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.gtm-footer-nav a:hover,
+.gtm-footer-nav a:focus-visible {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.gtm-footer-bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    color: #737378;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+}
+
+.gtm-footer-bottom p {
+    margin: 0;
+}
+
+.gtm-footer-bottom a {
+    color: #c6c6c8;
+    text-decoration: none;
+}
+
+.gtm-footer-bottom a:hover,
+.gtm-footer-bottom a:focus-visible {
+    color: var(--gtm-red, #d90429);
+}
+
+@media (max-width: 850px) {
+    .gtm-footer-main { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .gtm-footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gtm-footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 400px) {
+    .gtm-footer-nav { grid-template-columns: 1fr; }
+}

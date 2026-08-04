@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="../">
+
+    <title>GTM Control Center | Time Attack</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/timeattack.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+
+<body>
+    <header id="site-navbar"></header>
+
+    <main class="ta-page">
+        <section class="ta-hero">
+            <div class="container">
+                <p class="ta-eyebrow">GTM Rennserien</p>
+                <div class="ta-hero-grid">
+                    <div>
+                        <h1>Time Attack</h1>
+                        <p>
+                            Alle TA-Saisons, Fahrerwertungen und Rundenergebnisse –
+                            dynamisch aus der GTM-Datenbank.
+                        </p>
+                    </div>
+                    <div class="ta-hero-mark" aria-hidden="true">TA</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ta-control">
+            <div class="container">
+                <div class="ta-control-panel">
+                    <div>
+                        <span>Saison auswählen</span>
+                        <div id="ta-saison-tabs" class="ta-saison-tabs" role="tablist"></div>
+                    </div>
+                    <div class="ta-season-state">
+                        <span id="ta-saison-name">GTM Time Attack</span>
+                        <strong id="ta-saison-status">Wird geladen …</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ta-content">
+            <div class="container">
+                <div class="ta-stat-grid">
+                    <article><strong id="ta-fahrer-anzahl">–</strong><span>Fahrer</span></article>
+                    <article><strong id="ta-runden-stand">–</strong><span>Runden</span></article>
+                    <article><strong id="ta-tabellenfuehrer">–</strong><span>Tabellenführer</span></article>
+                    <article><strong id="ta-fuehrungspunkte">–</strong><span>Punkte an der Spitze</span></article>
+                </div>
+
+                <section id="ta-vorbereitung" class="ta-placeholder" hidden>
+                    <span>Vorbereitet</span>
+                    <h2>Diese Time-Attack-Saison steht bereit.</h2>
+                    <p>
+                        Sobald Fahrer und Rundenergebnisse im entsprechenden Excel-Reiter
+                        eingetragen sind, erscheint die komplette Wertung hier automatisch.
+                    </p>
+                </section>
+
+                <section id="ta-wertung" hidden>
+                    <header class="ta-section-heading">
+                        <p>Spitzenfeld</p>
+                        <h2>Podium</h2>
+                    </header>
+                    <div id="ta-podium" class="ta-podium"></div>
+
+                    <div class="ta-ranking-head">
+                        <div>
+                            <p>Gesamtwertung</p>
+                            <h2>Fahrerwertung</h2>
+                        </div>
+                        <div class="ta-filter-grid">
+                            <label>
+                                <span>Fahrer suchen</span>
+                                <input id="ta-suche" type="search" placeholder="Name, Nummer, Team oder Fahrzeug">
+                            </label>
+                            <label>
+                                <span>Sortierung</span>
+                                <select id="ta-sortierung">
+                                    <option value="platzierung">Platzierung</option>
+                                    <option value="punkte">Punkte</option>
+                                    <option value="siege">Siege</option>
+                                    <option value="teilnahmen">Teilnahmen</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="ta-rangliste" class="ta-ranking-list"></div>
+                    <p id="ta-keine-treffer" class="ta-empty" hidden>Keine passenden Fahrer gefunden.</p>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/gtm-data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/timeattack.js"></script>
+</body>
+
+</html>

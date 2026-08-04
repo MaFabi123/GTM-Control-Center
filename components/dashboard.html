@@ -3,217 +3,257 @@
     <div class="container">
 
         <header class="control-center-heading">
-            <p>Echte Daten aus der GTM-Datenbank</p>
+            <p>Alle GTM-Bereiche an einem Ort</p>
             <h2>GTM Control Center</h2>
+            <span>
+                Aktuelle Daten aus GTM Masters, Time Attack, FUN Events
+                sowie den Fahrer-, Team-, Fahrzeug- und Streckenbibliotheken.
+            </span>
+        </header>
+
+        <div class="dashboard-live-grid">
+
+            <a href="pages/kalender.html" class="dashboard-live-card">
+                <div class="dashboard-live-media">
+                    <img id="dashboard-live-foto" class="dashboard-live-foto" src="assets/images/logo/gtm-logo.png" alt="">
+                    <span class="dashboard-live-verlauf"></span>
+                    <img id="dashboard-live-layout" class="dashboard-live-layout" src="assets/images/logo/gtm-logo.png" alt="">
+                </div>
+
+                <div class="dashboard-live-content">
+                    <div class="dashboard-live-kopf">
+                        <span id="dashboard-live-label">GTM Live</span>
+                        <strong id="dashboard-live-status">Wird geladen</strong>
+                    </div>
+
+                    <p id="dashboard-live-serie">GTM Rennserien</p>
+                    <h3 id="dashboard-live-strecke">Nächster Termin</h3>
+                    <span id="dashboard-live-datum">Kalenderdaten werden geladen …</span>
+
+                    <div class="dashboard-live-aktion">Zum Rennkalender <i>→</i></div>
+                </div>
+            </a>
+
+            <article class="dashboard-serien-card">
+                <div class="dashboard-serien-kopf">
+                    <p>Rennbereiche</p>
+                    <h3>GTM Serienstatus</h3>
+                </div>
+
+                <a href="pages/kalender.html" class="dashboard-serie serie-masters">
+                    <span>GTM Masters</span>
+                    <strong id="dashboard-serie-masters-count">–</strong>
+                    <small id="dashboard-serie-masters-status">Wird geladen …</small>
+                </a>
+
+                <a href="pages/timeattack.html" class="dashboard-serie serie-ta">
+                    <span>GTM Time Attack</span>
+                    <strong id="dashboard-serie-ta-count">–</strong>
+                    <small id="dashboard-serie-ta-status">Wird geladen …</small>
+                </a>
+
+                <a href="pages/kalender.html" class="dashboard-serie serie-fun">
+                    <span>GTM FUN Events</span>
+                    <strong id="dashboard-serie-fun-count">–</strong>
+                    <small id="dashboard-serie-fun-status">Wird geladen …</small>
+                </a>
+            </article>
+
+        </div>
+
+        <div class="dashboard-overview-grid">
+            <article><strong id="dashboard-fahrer-anzahl">–</strong><span>Aktive Fahrer</span></article>
+            <article><strong id="dashboard-team-anzahl">–</strong><span>Team-Einträge</span></article>
+            <article><strong id="dashboard-fahrzeuge-anzahl">–</strong><span>Fahrzeuge</span></article>
+            <article><strong id="dashboard-strecken-anzahl">–</strong><span>Strecken</span></article>
+            <article><strong id="dashboard-termine-anzahl">–</strong><span>GTM-Termine</span></article>
+        </div>
+
+        <header class="control-center-subheading">
+            <p>Schnellzugriff</p>
+            <h2>Bereiche öffnen</h2>
         </header>
 
         <div class="control-center-grid">
 
-            <a
-                href="pages/meisterschaft.html"
-                class="control-card control-card-featured"
-            >
-                <span class="control-card-number">01</span>
-                <span class="control-card-icon">🏆</span>
-
-                <div class="control-card-content">
-                    <span id="dashboard-saison">
-                        Aktuelle Saison
-                    </span>
-
-                    <h3>Meisterschaft</h3>
-
-                    <p id="dashboard-meisterschaft-text">
-                        Meisterschaftsdaten werden geladen …
-                    </p>
+            <a href="pages/meisterschaft.html" class="control-card control-card-featured control-card-with-visual">
+                <div class="control-card-visual control-card-visual-hero" aria-hidden="true">
+                    <img src="assets/images/hero/mercedes-amg-gt3.png" alt="">
                 </div>
-
+                <span class="control-card-number">01</span>
+                <span class="control-card-icon">P1</span>
+                <div class="control-card-content">
+                    <span id="dashboard-saison">Aktuelle Saison</span>
+                    <h3>Meisterschaft</h3>
+                    <p id="dashboard-meisterschaft-text">Meisterschaftsdaten werden geladen …</p>
+                </div>
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <article class="control-card dashboard-ranking-card">
-
+            <article class="control-card dashboard-ranking-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-logo" aria-hidden="true">
+                    <img src="assets/images/logo/gtm-logo.png" alt="">
+                </div>
                 <span class="control-card-number">02</span>
-                <span class="control-card-icon">🥇</span>
-
+                <span class="control-card-icon">TOP</span>
                 <div class="control-card-content dashboard-ranking-content">
-                    <span>Aktuelle Fahrerwertung</span>
-
+                    <span>Aktuelle Masters-Wertung</span>
                     <h3>Top 3</h3>
-
-                    <ol
-                        id="dashboard-top-drei"
-                        class="dashboard-top-three"
-                    >
+                    <ol id="dashboard-top-drei" class="dashboard-top-three">
                         <li>Fahrerwertung wird geladen …</li>
                     </ol>
-
-                    <a
-                        href="pages/meisterschaft.html"
-                        class="dashboard-inline-link"
-                    >
-                        Komplette Wertung →
-                    </a>
+                    <a href="pages/meisterschaft.html" class="dashboard-inline-link">Komplette Wertung →</a>
                 </div>
-
             </article>
 
-            <a
-                href="pages/kalender.html"
-                class="control-card dashboard-next-race-card"
-            >
+            <a href="pages/kalender.html" class="control-card dashboard-next-race-card control-card-with-visual control-card-photo">
+                <div class="control-card-visual control-card-visual-track" aria-hidden="true">
+                    <img id="dashboard-next-race-foto" class="control-card-track-photo" src="assets/images/strecken/bilder/snetterton.jpg" alt="">
+                    <img id="dashboard-next-race-layout" class="control-card-track-layout" src="assets/images/strecken/layouts/snetterton-layout.png" alt="">
+                </div>
                 <span class="control-card-number">03</span>
-                <span class="control-card-icon">📅</span>
-
+                <span class="control-card-icon">DAT</span>
                 <div class="control-card-content">
-                    <span>Nächster Saisonlauf</span>
-
-                    <h3 id="dashboard-naechste-strecke">
-                        Wird geladen
-                    </h3>
-
-                    <p id="dashboard-naechstes-rennen">
-                        Rennkalender wird geladen …
-                    </p>
-
+                    <span>Nächster Masters-Lauf</span>
+                    <h3 id="dashboard-naechste-strecke">Wird geladen</h3>
+                    <p id="dashboard-naechstes-rennen">Rennkalender wird geladen …</p>
                     <div class="dashboard-race-progress">
                         <div class="dashboard-progress-label">
                             <span>Saisonfortschritt</span>
-
-                            <strong id="dashboard-fortschritt-text">
-                                –
-                            </strong>
+                            <strong id="dashboard-fortschritt-text">–</strong>
                         </div>
-
                         <div class="dashboard-progress-track">
-                            <div
-                                id="dashboard-fortschritt-balken"
-                                class="dashboard-progress-bar"
-                            ></div>
+                            <div id="dashboard-fortschritt-balken" class="dashboard-progress-bar"></div>
                         </div>
                     </div>
                 </div>
-
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <a
-                href="pages/fahrer.html"
-                class="control-card"
-            >
+            <a href="pages/strecken.html" class="control-card control-card-track control-card-with-visual control-card-photo">
+                <div class="control-card-visual control-card-visual-track" aria-hidden="true">
+                    <img class="control-card-track-photo" src="assets/images/strecken/bilder/spa.jpg" alt="">
+                    <img class="control-card-track-layout" src="assets/images/strecken/layouts/spa-layout.png" alt="">
+                </div>
                 <span class="control-card-number">04</span>
-                <span class="control-card-icon">👤</span>
-
+                <span class="control-card-icon">TRK</span>
                 <div class="control-card-content">
-                    <span>Teilnehmer</span>
-                    <h3>Fahrer</h3>
-
-                    <p>
-                        <strong id="dashboard-fahrer-anzahl">–</strong>
-                        aktive Fahrer nehmen an der aktuellen Saison teil.
-                    </p>
+                    <span>Streckenbibliothek</span>
+                    <h3>Strecken</h3>
+                    <p>Charakteristische Bilder, Layouts und sämtliche GTM-Termine jeder Strecke.</p>
                 </div>
-
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <a
-                href="pages/teams.html"
-                class="control-card"
-            >
+            <a href="pages/fahrer.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-person" aria-hidden="true">
+                    <img src="assets/images/fahrer/default.png" alt="">
+                </div>
                 <span class="control-card-number">05</span>
-                <span class="control-card-icon">👥</span>
-
+                <span class="control-card-icon">DRV</span>
                 <div class="control-card-content">
-                    <span>Organisation</span>
-                    <h3>Teams</h3>
-
-                    <p>
-                        <strong id="dashboard-team-anzahl">–</strong>
-                        Teams sind in der GTM Masters Saison registriert.
-                    </p>
+                    <span>Fahrerbibliothek</span>
+                    <h3>Fahrer</h3>
+                    <p>Fahrerprofile, Teilnahmen, Teams, Fahrzeuge und saisonübergreifende Historie.</p>
                 </div>
-
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <a
-                href="pages/startnummern.html"
-                class="control-card"
-            >
+            <a href="pages/teams.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-team" aria-hidden="true">
+                    <img src="assets/images/teams/rennsteig-racing-i.png" alt="">
+                </div>
                 <span class="control-card-number">06</span>
-                <span class="control-card-icon">#</span>
+                <span class="control-card-icon">TEM</span>
+                <div class="control-card-content">
+                    <span>Team-Bibliothek</span>
+                    <h3>Teams</h3>
+                    <p>Alle GTM Teams mit Einsatzteams, Fahrern und Teilnahmen in allen Rennbereichen.</p>
+                </div>
+                <span class="control-card-arrow">→</span>
+            </a>
 
+            <a href="pages/fahrzeuge.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-vehicle" aria-hidden="true">
+                    <img src="assets/images/fahrzeuge/Ferrari-296-GT3-2023.png" alt="">
+                </div>
+                <span class="control-card-number">07</span>
+                <span class="control-card-icon">CAR</span>
+                <div class="control-card-content">
+                    <span>Fahrzeugbibliothek</span>
+                    <h3>Fahrzeuge</h3>
+                    <p><strong id="dashboard-fahrzeuge-kartenanzahl">–</strong> Fahrzeuge mit GTM-Statistik und dynamischen Profilseiten.</p>
+                </div>
+                <span class="control-card-arrow">→</span>
+            </a>
+
+            <a href="pages/startnummern.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-number" aria-hidden="true">
+                    <strong>#01</strong>
+                </div>
+                <span class="control-card-number">08</span>
+                <span class="control-card-icon">#</span>
                 <div class="control-card-content">
                     <span>Startnummernverwaltung</span>
                     <h3>Startnummern</h3>
-
-                    <p>
-                        <strong id="dashboard-startnummern-anzahl">–</strong>
-                        Startnummern sind aktuell vergeben.
-                    </p>
+                    <p><strong id="dashboard-startnummern-anzahl">–</strong> Startnummern sind aktuell vergeben.</p>
                 </div>
-
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <a
-                href="pages/strafencenter.html"
-                class="control-card"
-            >
-                <span class="control-card-number">07</span>
-                <span class="control-card-icon">⚖️</span>
+            <a href="pages/statistiken.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-data" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <span class="control-card-number">09</span>
+                <span class="control-card-icon">STA</span>
+                <div class="control-card-content">
+                    <span>Auswertungen</span>
+                    <h3>Statistiken</h3>
+                    <p>GTM-Zahlen, Leistungen und Entwicklungen kompakt ausgewertet.</p>
+                </div>
+                <span class="control-card-arrow">→</span>
+            </a>
 
+            <a href="pages/strafencenter.html" class="control-card control-card-with-visual">
+                <div class="control-card-visual control-card-visual-racecontrol" aria-hidden="true">
+                    <strong>RC</strong>
+                </div>
+                <span class="control-card-number">10</span>
+                <span class="control-card-icon">RC</span>
                 <div class="control-card-content">
                     <span>Rennleitung</span>
                     <h3>Strafencenter</h3>
-
-                    <p>
-                        Öffentliche Entscheidungen, Verwarnungen,
-                        Strafpunkte und Rennsperren.
-                    </p>
+                    <p>Öffentliche Entscheidungen, Verwarnungen, Strafpunkte und Rennsperren.</p>
                 </div>
-
                 <span class="control-card-arrow">→</span>
             </a>
 
-            <a
-                href="pages/fahrzeuge.html"
-                class="control-card"
-            >
-                <span class="control-card-number">08</span>
-                <span class="control-card-icon">🏎️</span>
-
-                <div class="control-card-content">
-                    <span>Assetto Corsa Competizione</span>
-                    <h3>Fahrzeuge</h3>
-
-                    <p>
-                        Alle Fahrzeuge und aktuellen Einsatzwagen
-                        der German Touring Masters.
-                    </p>
+            <a href="pages/halloffame.html" class="control-card control-card-gold control-card-with-visual">
+                <div class="control-card-visual control-card-visual-logo control-card-visual-logo-gold" aria-hidden="true">
+                    <img src="assets/images/logo/gtm-logo.png" alt="">
                 </div>
-
-                <span class="control-card-arrow">→</span>
-            </a>
-
-            <a
-                href="pages/halloffame.html"
-                class="control-card control-card-gold"
-            >
-                <span class="control-card-number">09</span>
-                <span class="control-card-icon">⭐</span>
-
+                <span class="control-card-number">11</span>
+                <span class="control-card-icon">HOF</span>
                 <div class="control-card-content">
                     <span>GTM Geschichte</span>
                     <h3>Hall of Fame</h3>
-
-                    <p>
-                        Meister, Rekorde und besondere Leistungen
-                        der German Touring Masters.
-                    </p>
+                    <p>Meister, Rekorde und besondere Leistungen der German Touring Masters.</p>
                 </div>
+                <span class="control-card-arrow">→</span>
+            </a>
 
+            <a href="pages/timeattack.html" class="control-card control-card-ta control-card-with-visual">
+                <div class="control-card-visual control-card-visual-vehicle" aria-hidden="true">
+                    <img src="assets/images/fahrzeuge/Porsche-992-GT3-R-2023.png" alt="">
+                </div>
+                <span class="control-card-number">12</span>
+                <span class="control-card-icon">TA</span>
+                <div class="control-card-content">
+                    <span>Saisonübergreifende Wertung</span>
+                    <h3>Time Attack</h3>
+                    <p>TA-Fahrerwertung, Rundenergebnisse und kommende Saisons auf einer eigenen Seite.</p>
+                </div>
                 <span class="control-card-arrow">→</span>
             </a>
 
