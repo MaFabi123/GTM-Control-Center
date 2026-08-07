@@ -91,7 +91,9 @@
 
 .strecken-slider {
     position: relative;
+    overflow: hidden;
     min-height: 390px;
+    border-radius: 23px;
 }
 
 .strecken-slider-karte {

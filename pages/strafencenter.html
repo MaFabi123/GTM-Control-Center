@@ -3,266 +3,218 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../">
 
     <title>GTM Control Center | Strafencenter</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/strafencenter.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-
     <header id="site-navbar"></header>
 
-    <main class="strafencenter-page">
-
-        <section class="strafencenter-hero">
-
-            <div class="container">
-
-                <p class="strafencenter-eyebrow">
-                    German Touring Masters
-                </p>
-
-                <h1>
-                    Strafencenter
-                </h1>
-
-                <p class="strafencenter-intro">
-                    Öffentliche Übersicht aller aktuellen und abgeschlossenen
-                    Entscheidungen der Rennleitung.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section class="strafencenter-statistik">
-
-            <div class="container">
-
-                <div class="strafencenter-statistik-grid">
-
-                    <article class="strafencenter-statistik-karte">
-
-                        <strong id="strafen-gesamt">
-                            –
-                        </strong>
-
-                        <span>
-                            Entscheidungen
-                        </span>
-
-                    </article>
-
-                    <article class="strafencenter-statistik-karte">
-
-                        <strong id="strafen-aktiv">
-                            –
-                        </strong>
-
-                        <span>
-                            Aktive Strafen
-                        </span>
-
-                    </article>
-
-                    <article class="strafencenter-statistik-karte">
-
-                        <strong id="strafen-sperren">
-                            –
-                        </strong>
-
-                        <span>
-                            Rennsperren
-                        </span>
-
-                    </article>
-
-                    <article class="strafencenter-statistik-karte">
-
-                        <strong id="strafen-punkte">
-                            –
-                        </strong>
-
-                        <span>
-                            Strafpunkte gesamt
-                        </span>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="strafencenter-filterbereich">
-
-            <div class="container">
-
-                <div class="strafencenter-toolbar">
-
-                    <label class="strafencenter-suche">
-
-                        <span>
-                            Eintrag suchen
-                        </span>
-
-                        <input
-                            id="strafen-suche"
-                            type="search"
-                            autocomplete="off"
-                            placeholder="Fahrer, Startnummer, Team oder Vorfall"
-                        >
-
-                    </label>
-
-                    <label class="strafencenter-filter">
-
-                        <span>
-                            Status
-                        </span>
-
-                        <select id="strafen-status-filter">
-
-                            <option value="">
-                                Alle Einträge
-                            </option>
-
-                            <option value="aktiv">
-                                Aktiv
-                            </option>
-
-                            <option value="erledigt">
-                                Erledigt
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                    <label class="strafencenter-filter">
-
-                        <span>
-                            Strafart
-                        </span>
-
-                        <select id="strafen-art-filter">
-
-                            <option value="">
-                                Alle Strafarten
-                            </option>
-
-                            <option value="verwarnung">
-                                Verwarnung
-                            </option>
-
-                            <option value="strafpunkte">
-                                Strafpunkte
-                            </option>
-
-                            <option value="rennssperre">
-                                Rennsperre
-                            </option>
-
-                            <option value="disqualifikation">
-                                Disqualifikation
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                    <label class="strafencenter-filter">
-
-                        <span>
-                            Sortierung
-                        </span>
-
-                        <select id="strafen-sortierung">
-
-                            <option value="datum">
-                                Datum
-                            </option>
-
-                            <option value="fahrer">
-                                Fahrer
-                            </option>
-
-                            <option value="punkte">
-                                Strafpunkte
-                            </option>
-
-                            <option value="status">
-                                Status
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="strafencenter-inhalt">
-
-            <div class="container">
-
-                <div
-                    id="strafen-grid"
-                    class="strafen-grid"
-                    aria-live="polite"
-                    aria-busy="true"
-                >
-
-                    <div class="text-center text-light py-5">
-                        Strafendaten werden geladen …
+    <main class="penalty-page">
+        <section class="penalty-hero">
+            <div class="container penalty-hero-grid">
+                <div class="penalty-hero-copy">
+                    <p class="penalty-eyebrow">GTM Race Control</p>
+                    <h1>Strafen<span>center</span></h1>
+                    <p class="penalty-hero-intro">
+                        Nachvollziehbare Entscheidungen, aktive Sanktionen und das öffentliche
+                        Archiv der GTM-Rennleitung – klar getrennt von internen Prüfungen.
+                    </p>
+
+                    <div class="penalty-release-note">
+                        <span aria-hidden="true">✓</span>
+                        <div>
+                            <small>Öffentliche Ansicht</small>
+                            <strong>Nur freigegebene Entscheidungen werden angezeigt</strong>
+                        </div>
                     </div>
-
                 </div>
 
-                <div
-                    id="keine-strafen"
-                    class="keine-strafen"
-                    hidden
-                >
-                    Keine passenden Einträge gefunden.
+                <div class="penalty-control-visual" aria-hidden="true">
+                    <span class="penalty-signal penalty-signal-red"></span>
+                    <span class="penalty-signal penalty-signal-amber"></span>
+                    <span class="penalty-signal penalty-signal-green"></span>
+                    <strong>RC</strong>
+                    <small>RACE CONTROL</small>
                 </div>
-
             </div>
-
         </section>
 
+        <section class="penalty-overview" aria-label="Übersicht der veröffentlichten Entscheidungen">
+            <div class="container">
+                <div class="penalty-kpi-grid">
+                    <article data-index="01">
+                        <span>Entscheidungen</span>
+                        <strong id="penalty-total">–</strong>
+                        <small>Öffentlich im Archiv</small>
+                    </article>
+                    <article data-index="02">
+                        <span>Aktive Sanktionen</span>
+                        <strong id="penalty-active">–</strong>
+                        <small>Derzeit wirksam</small>
+                    </article>
+                    <article data-index="03">
+                        <span>Strafpunkte</span>
+                        <strong id="penalty-points">–</strong>
+                        <small>Im veröffentlichten Bestand</small>
+                    </article>
+                    <article data-index="04">
+                        <span>Rennsperren</span>
+                        <strong id="penalty-bans">–</strong>
+                        <small>Verhängte Event-Sperren</small>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="penalty-active-section">
+            <div class="container">
+                <header class="penalty-section-heading">
+                    <div>
+                        <p>Aktuelle Lage</p>
+                        <h2>Wirksame Sanktionen</h2>
+                    </div>
+                    <p class="penalty-heading-note">
+                        Abgelaufene Entscheidungen bleiben vollständig im Archiv erhalten.
+                    </p>
+                </header>
+
+                <div id="penalty-active-list" class="penalty-active-list" aria-live="polite" aria-busy="true">
+                    <div class="penalty-loading">Aktive Sanktionen werden geprüft …</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="penalty-archive-section">
+            <div class="container">
+                <header class="penalty-section-heading penalty-archive-heading">
+                    <div>
+                        <p>Öffentliches Entscheidungsarchiv</p>
+                        <h2>Alle freigegebenen Fälle</h2>
+                    </div>
+                    <p id="penalty-result-count" class="penalty-result-count" aria-live="polite">Daten werden geladen …</p>
+                </header>
+
+                <div class="penalty-toolbar">
+                    <label class="penalty-field penalty-search-field">
+                        <span>Fall suchen</span>
+                        <input id="penalty-search" type="search" autocomplete="off" placeholder="Fahrer, Startnummer, Team, Fall oder Vorfall">
+                    </label>
+
+                    <label class="penalty-field">
+                        <span>Veranstaltung</span>
+                        <select id="penalty-event-filter">
+                            <option value="">Alle Veranstaltungen</option>
+                        </select>
+                    </label>
+
+                    <label class="penalty-field">
+                        <span>Strafart</span>
+                        <select id="penalty-type-filter">
+                            <option value="">Alle Strafarten</option>
+                            <option value="strafpunkte">Strafpunkte</option>
+                            <option value="verwarnung">Verwarnung</option>
+                            <option value="rennssperre">Rennsperre</option>
+                            <option value="disqualifikation">Disqualifikation</option>
+                            <option value="sonstige">Sonstige</option>
+                        </select>
+                    </label>
+
+                    <label class="penalty-field">
+                        <span>Fallstatus</span>
+                        <select id="penalty-status-filter">
+                            <option value="">Alle Status</option>
+                            <option value="aktiv">Aktiv</option>
+                            <option value="erledigt">Erledigt</option>
+                        </select>
+                    </label>
+
+                    <label class="penalty-field">
+                        <span>Sortierung</span>
+                        <select id="penalty-sort">
+                            <option value="datum">Neueste zuerst</option>
+                            <option value="fall">Fallnummer</option>
+                            <option value="fahrer">Fahrer</option>
+                            <option value="punkte">Strafpunkte</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div id="penalty-grid" class="penalty-grid" aria-live="polite" aria-busy="true">
+                    <div class="penalty-loading">Entscheidungen werden geladen …</div>
+                </div>
+
+                <div id="penalty-empty" class="penalty-empty" hidden>
+                    <strong>Keine passenden Entscheidungen</strong>
+                    <p>Ändere die Suche oder setze einen Filter zurück.</p>
+                    <button id="penalty-reset" type="button">Filter zurücksetzen</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="penalty-principles">
+            <div class="container">
+                <header class="penalty-section-heading">
+                    <div>
+                        <p>Verlässlicher Prozess</p>
+                        <h2>Vom Vorfall zur Veröffentlichung</h2>
+                    </div>
+                </header>
+
+                <div class="penalty-process-grid">
+                    <article>
+                        <span>01</span>
+                        <strong>Entwurf</strong>
+                        <p>Ein Vorfall wird mit Event, Fahrer und sportlichem Kontext erfasst.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <strong>Prüfung</strong>
+                        <p>Rennsteward und Rennleitung prüfen Sachlage, Regel und Auswirkung.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <strong>Freigabe</strong>
+                        <p>Eine berechtigte Stelle bestätigt die Entscheidung getrennt vom Entwurf.</p>
+                    </article>
+                    <article>
+                        <span>04</span>
+                        <strong>Veröffentlichung</strong>
+                        <p>Erst die freigegebene Fassung erscheint öffentlich und bleibt nachvollziehbar.</p>
+                    </article>
+                </div>
+
+                <aside class="penalty-integrity-note">
+                    <div>
+                        <small>Datenintegrität</small>
+                        <strong>Interne Notizen, Beweismittel und ungeprüfte Entwürfe bleiben geschützt.</strong>
+                    </div>
+                    <p>
+                        Historische Entscheidungen werden durch spätere Team-, Simulations- oder
+                        Plattformwechsel nicht verändert. Korrekturen benötigen einen nachvollziehbaren Freigabeweg.
+                    </p>
+                </aside>
+            </div>
+        </section>
     </main>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <footer id="site-footer"></footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/gtm-data.js"></script>
     <script src="assets/js/gtm-utils.js"></script>
     <script src="assets/js/gtm-ui.js"></script>
     <script src="assets/js/gtm-page.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/strafencenter.js"></script>
-
 </body>
 
 </html>

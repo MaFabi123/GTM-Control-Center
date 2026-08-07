@@ -1,470 +1,694 @@
 /* =========================================================
-   GTM STARTNUMMERN
+   GTM STARTNUMMERN · ARBEITSBLOCK A4
 ========================================================= */
 
-.startnummern-page {
+:root {
+    --number-red: #ef1026;
+    --number-red-dark: #70000b;
+    --number-green: #45e77a;
+    --number-amber: #f3b72c;
+    --number-blue: #3fc4ff;
+    --number-bg: #070708;
+    --number-panel: #121214;
+    --number-panel-soft: #18181b;
+    --number-line: rgba(255, 255, 255, 0.11);
+    --number-muted: #a4a4aa;
+}
+
+.number-page {
     min-height: 100vh;
+    overflow: hidden;
     color: #ffffff;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(130, 0, 0, 0.14),
-            transparent 34rem
-        ),
-        linear-gradient(
-            180deg,
-            #070707 0%,
-            #101010 100%
-        );
+        radial-gradient(circle at 82% 7%, rgba(239, 16, 38, 0.12), transparent 28rem),
+        linear-gradient(180deg, #070708 0%, #0a0a0b 100%);
+}
+
+.number-page button,
+.number-page input,
+.number-page select {
+    font: inherit;
 }
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.startnummern-hero {
-    padding: 76px 0 42px;
-    text-align: center;
+.number-hero {
+    position: relative;
+    padding: clamp(70px, 8vw, 118px) 0 56px;
+    border-bottom: 1px solid var(--number-line);
 }
 
-.startnummern-eyebrow {
-    margin: 0 0 12px;
-    color: #d40000;
-    font-size: 0.88rem;
-    font-weight: 800;
+.number-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.26;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(90deg, #000, transparent 62%);
+}
+
+.number-hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+    gap: clamp(42px, 8vw, 110px);
+    align-items: center;
+}
+
+.number-eyebrow,
+.number-section-heading > div > p {
+    margin: 0 0 13px;
+    color: var(--number-red);
+    font-size: 0.78rem;
+    font-weight: 900;
     letter-spacing: 0.22em;
     text-transform: uppercase;
 }
 
-.startnummern-hero h1 {
+.number-hero h1 {
+    max-width: 780px;
     margin: 0;
-    color: #ffffff;
-    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 950;
+    letter-spacing: -0.075em;
+    line-height: 0.78;
+    text-transform: uppercase;
+}
+
+.number-hero h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.88);
+}
+
+.number-hero-intro {
+    max-width: 710px;
+    margin: 30px 0 0;
+    color: #c5c5c9;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    line-height: 1.75;
+}
+
+.number-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.number-primary-action,
+.number-secondary-action {
+    min-height: 50px;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 0.82rem;
     font-weight: 900;
-    letter-spacing: -0.05em;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.number-primary-action {
+    background: var(--number-red);
+    border: 1px solid var(--number-red);
+}
+
+.number-secondary-action {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--number-line);
+}
+
+.number-primary-action:hover,
+.number-secondary-action:hover {
+    transform: translateY(-2px);
+    border-color: var(--number-red);
+}
+
+.number-data-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 23px 0 0;
+    color: #797980;
+    font-size: 0.78rem;
+}
+
+.number-data-note > span {
+    width: 8px;
+    height: 8px;
+    background: var(--number-green);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(69, 231, 122, 0.72);
+}
+
+.number-hero-board {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 360px;
+    padding: 38px;
+    background:
+        linear-gradient(145deg, rgba(91, 0, 10, 0.95), rgba(20, 5, 8, 0.97) 56%, #101012),
+        #111;
+    border: 1px solid rgba(239, 16, 38, 0.48);
+    border-radius: 26px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(239, 16, 38, 0.08);
+    transform: rotate(2deg);
+}
+
+.number-hero-board::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 17px;
+}
+
+.number-board-label,
+.number-hero-board small {
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.73rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+}
+
+.number-hero-board strong {
+    position: relative;
+    z-index: 1;
+    margin: 8px 0 10px;
+    font-size: clamp(5rem, 10vw, 8.6rem);
+    font-weight: 950;
+    letter-spacing: -0.08em;
+    line-height: 1;
+}
+
+.number-board-stripes {
+    position: absolute;
+    right: -24px;
+    bottom: -38px;
+    width: 200px;
+    height: 130px;
+    opacity: 0.5;
+    transform: rotate(-11deg);
+    background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.12) 18px 30px);
+}
+
+/* =========================================================
+   KPI
+========================================================= */
+
+.number-overview {
+    position: relative;
+    z-index: 2;
+    padding: 34px 0 50px;
+}
+
+.number-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.number-kpi-grid article {
+    position: relative;
+    overflow: hidden;
+    min-height: 154px;
+    padding: 25px;
+    background: linear-gradient(145deg, rgba(28, 28, 31, 0.97), rgba(15, 15, 17, 0.98));
+    border: 1px solid var(--number-line);
+    border-radius: 17px;
+}
+
+.number-kpi-grid article::after {
+    content: attr(data-index);
+    position: absolute;
+    right: 13px;
+    top: 5px;
+    color: rgba(255, 255, 255, 0.035);
+    font-size: 4.6rem;
+    font-weight: 950;
+    font-style: italic;
+}
+
+.number-kpi-grid span,
+.number-kpi-grid small {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+.number-kpi-grid span {
+    color: var(--number-muted);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.number-kpi-grid strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 8px 0 5px;
+    font-size: 2.6rem;
+    font-weight: 950;
+    line-height: 1;
+}
+
+.number-kpi-grid small {
+    color: #77777d;
+    font-size: 0.76rem;
+}
+
+/* =========================================================
+   EXPLORER / FILTER
+========================================================= */
+
+.number-explorer {
+    padding: 34px 0 30px;
+}
+
+.number-section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+.number-section-heading h2 {
+    margin: 0;
+    font-size: clamp(2.1rem, 5vw, 4rem);
+    font-weight: 950;
+    letter-spacing: -0.055em;
     line-height: 0.95;
 }
 
-.startnummern-intro {
-    max-width: 760px;
-    margin: 22px auto 0;
-    color: #b8b8b8;
-    font-size: 1.08rem;
-    line-height: 1.7;
-}
-
-/* =========================================================
-   STATISTIK
-========================================================= */
-
-.startnummern-statistik {
-    padding: 12px 0 32px;
-}
-
-.startnummern-statistik-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.startnummern-statistik-karte {
-    position: relative;
-    overflow: hidden;
-    min-height: 138px;
-    padding: 26px 22px;
-    text-align: center;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(32, 32, 32, 0.98),
-            rgba(19, 19, 19, 0.98)
-        );
-    border: 1px solid #303030;
-    border-radius: 20px;
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.22);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.startnummern-statistik-karte::after {
-    content: "";
-    position: absolute;
-    right: -35px;
-    bottom: -45px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: rgba(212, 0, 0, 0.08);
-}
-
-.startnummern-statistik-karte:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 0, 0, 0.75);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.32),
-        0 0 26px rgba(212, 0, 0, 0.08);
-}
-
-.startnummern-statistik-karte strong {
-    position: relative;
-    z-index: 1;
-    display: block;
-    color: #ffffff;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 900;
-    line-height: 1.1;
-}
-
-.startnummern-statistik-karte span {
-    position: relative;
-    z-index: 1;
-    display: block;
-    margin-top: 10px;
-    color: #999999;
+.number-result-count,
+.number-process-note {
+    max-width: 430px;
+    margin: 0;
+    color: #8f8f96;
     font-size: 0.86rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    line-height: 1.6;
+    text-align: right;
 }
 
-/* =========================================================
-   FILTER
-========================================================= */
-
-.startnummern-filterbereich {
-    padding: 10px 0 35px;
-}
-
-.startnummern-toolbar {
+.number-toolbar {
     display: grid;
-    grid-template-columns:
-        minmax(260px, 1.8fr)
-        repeat(3, minmax(170px, 1fr));
-    gap: 16px;
-    padding: 20px;
-    background: rgba(20, 20, 20, 0.92);
-    border: 1px solid #2d2d2d;
-    border-radius: 22px;
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.2);
+    grid-template-columns: minmax(260px, 1.65fr) repeat(4, minmax(145px, 1fr));
+    gap: 12px;
+    padding: 18px;
+    background: rgba(18, 18, 20, 0.94);
+    border: 1px solid var(--number-line);
+    border-radius: 18px;
 }
 
-.startnummern-suche,
-.startnummern-filter {
+.number-field {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 8px;
 }
 
-.startnummern-suche span,
-.startnummern-filter span {
-    color: #9f9f9f;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.startnummern-suche input,
-.startnummern-filter select {
-    width: 100%;
-    min-height: 54px;
-    padding: 0 16px;
-    color: #ffffff;
-    background: #111111;
-    border: 1px solid #383838;
-    border-radius: 13px;
-    outline: none;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-}
-
-.startnummern-filter select {
-    cursor: pointer;
-}
-
-.startnummern-filter select option {
-    color: #ffffff;
-    background: #151515;
-}
-
-.startnummern-suche input::placeholder {
-    color: #6f6f6f;
-}
-
-.startnummern-suche input:focus,
-.startnummern-filter select:focus {
-    background: #151515;
-    border-color: #d40000;
-    box-shadow:
-        0 0 0 4px rgba(212, 0, 0, 0.12);
-}
-
-/* =========================================================
-   INHALT
-========================================================= */
-
-.startnummern-inhalt {
-    padding: 0 0 80px;
-}
-
-.startnummern-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}/* =========================================================
-   STARTNUMMERNKARTE
-========================================================= */
-
-.startnummer-karte {
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    min-height: 220px;
-    background:
-        linear-gradient(
-            145deg,
-            #202020 0%,
-            #151515 60%,
-            #101010 100%
-        );
-    border: 1px solid #303030;
-    border-radius: 22px;
-    box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.28);
-    transition:
-        transform 0.28s ease,
-        border-color 0.28s ease,
-        box-shadow 0.28s ease;
-}
-
-.startnummer-karte::after {
-    content: "GTM";
-    position: absolute;
-    right: -28px;
-    bottom: -40px;
-    color: rgba(255, 255, 255, 0.025);
-    font-size: 7rem;
+.number-field > span {
+    color: #8a8a91;
+    font-size: 0.68rem;
     font-weight: 900;
-    transform: rotate(-10deg);
-    pointer-events: none;
-}
-
-.startnummer-karte:hover {
-    transform: translateY(-8px);
-    border-color: rgba(212, 0, 0, 0.85);
-    box-shadow:
-        0 28px 55px rgba(0, 0, 0, 0.42),
-        0 0 28px rgba(212, 0, 0, 0.08);
-}
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.startnummer-karte.status-vergeben {
-    border-left: 6px solid #d40000;
-}
-
-.startnummer-karte.status-frei {
-    border-left: 6px solid #4caf50;
-}
-
-.startnummer-status {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 11px;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-
-.startnummer-status.vergeben {
-    color: #ffb3b3;
-    background: rgba(212, 0, 0, 0.12);
-    border: 1px solid rgba(212, 0, 0, 0.35);
-}
-
-.startnummer-status.frei {
-    color: #7cff9d;
-    background: rgba(40, 180, 80, 0.12);
-    border: 1px solid rgba(70, 220, 110, 0.35);
-}
-
-/* =========================================================
-   NUMMER
-========================================================= */
-
-.startnummer-nummer {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    min-height: 100%;
-    color: #ffffff;
-    background:
-        linear-gradient(
-            145deg,
-            #2a2a2a,
-            #111111
-        );
-    border-right: 1px solid #303030;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 900;
-    line-height: 1;
-    text-align: center;
-}
-
-.status-vergeben .startnummer-nummer {
-    background:
-        linear-gradient(
-            145deg,
-            #650000,
-            #1a0b0b
-        );
-}
-
-.status-frei .startnummer-nummer {
-    background:
-        linear-gradient(
-            145deg,
-            #16451f,
-            #0d1810
-        );
-}
-
-/* =========================================================
-   INHALT
-========================================================= */
-
-.startnummer-inhalt {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    padding: 22px;
-}
-
-.startnummer-kopf {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 16px;
-}
-
-.startnummer-label {
-    color: #d40000;
-    font-size: 0.72rem;
-    font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
-.startnummer-inhalt h2 {
-    margin: 0 0 18px;
-    color: #ffffff;
-    font-size: 1.45rem;
-    font-weight: 900;
-    line-height: 1.15;
+.number-field input,
+.number-field select {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 14px;
+    color: #fff;
+    background: #0d0d0f;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    outline: none;
 }
 
-.startnummer-details {
-    display: grid;
-    gap: 10px;
-    margin-top: auto;
+.number-field input:focus,
+.number-field select:focus {
+    border-color: var(--number-red);
+    box-shadow: 0 0 0 3px rgba(239, 16, 38, 0.12);
 }
 
-.startnummer-details > div {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 14px;
-    align-items: start;
-    padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid #2f2f2f;
-    border-radius: 11px;
+.number-field select option {
+    color: #fff;
+    background: #111;
 }
 
-.startnummer-details span {
-    color: #777777;
+.number-quick-picks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 14px 0 26px;
+}
+
+.number-quick-picks > span {
+    margin-right: 5px;
+    color: #77777d;
     font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
+    font-weight: 900;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
-.startnummer-details strong {
-    color: #d6d6d6;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-align: right;
-    overflow-wrap: anywhere;
+.number-quick-picks button,
+.number-load-more,
+.number-empty button {
+    min-height: 37px;
+    padding: 0 13px;
+    color: #bcbcc2;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--number-line);
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.startnummer-frei-hinweis {
-    margin-top: auto;
-    padding: 16px;
-    color: #a9d8b5;
-    background: rgba(40, 180, 80, 0.08);
-    border: 1px solid rgba(70, 220, 110, 0.2);
-    border-radius: 12px;
-    line-height: 1.5;
-}/* =========================================================
-   FEHLER / KEINE ERGEBNISSE
-========================================================= */
-
-.keine-startnummern,
-.gtm-data-error {
-    padding: 48px 28px;
-    color: #bdbdbd;
-    text-align: center;
-    background: #171717;
-    border: 1px solid #303030;
-    border-radius: 20px;
-}
-
-.gtm-data-error strong {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-    font-size: 1.15rem;
-}
-
-.gtm-data-error p {
-    margin: 0;
-    color: #8f8f8f;
+.number-quick-picks button:hover,
+.number-quick-picks button.is-active,
+.number-load-more:hover,
+.number-empty button:hover {
+    color: #fff;
+    background: rgba(239, 16, 38, 0.13);
+    border-color: rgba(239, 16, 38, 0.7);
 }
 
 /* =========================================================
-   ANIMATION
+   NUMBER GRID
 ========================================================= */
 
-.startnummer-karte {
-    animation: startnummerEinblenden 0.35s ease both;
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
 }
 
-@keyframes startnummerEinblenden {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
+.number-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+    padding: 15px;
+    color: #fff;
+    background: linear-gradient(145deg, #18181b, #0f0f11);
+    border: 1px solid var(--number-line);
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.number-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--status-color, #777);
+}
+
+.number-card:hover,
+.number-card:focus-within {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--status-color, #777) 70%, white 10%);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+}
+
+.number-card.status-frei { --status-color: var(--number-green); }
+.number-card.status-vergeben { --status-color: var(--number-red); }
+.number-card.status-reserviert { --status-color: var(--number-amber); }
+.number-card.status-gesperrt { --status-color: #8d8d94; }
+.number-card.status-historisch { --status-color: var(--number-blue); }
+
+.number-card-number {
+    display: block;
+    margin-bottom: 9px;
+    font-size: clamp(2.1rem, 4vw, 3.3rem);
+    font-weight: 950;
+    letter-spacing: -0.065em;
+    line-height: 1;
+}
+
+.number-card-status {
+    align-self: flex-start;
+    margin-bottom: 16px;
+    padding: 5px 8px;
+    color: var(--status-color);
+    background: color-mix(in srgb, var(--status-color) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--status-color) 42%, transparent);
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.number-card h3 {
+    margin: auto 0 3px;
+    font-size: 0.93rem;
+    font-weight: 900;
+    line-height: 1.24;
+    overflow-wrap: anywhere;
+}
+
+.number-card p {
+    min-height: 2.4em;
+    margin: 0;
+    color: #898990;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.number-card-action {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 34px;
+    margin-top: 12px;
+    padding: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--number-line);
+    border-radius: 7px;
+    font-size: 0.68rem;
+    font-weight: 850;
+    cursor: pointer;
+}
+
+.number-card-action:hover {
+    color: #fff;
+    border-color: var(--status-color);
+}
+
+.number-card.is-selected {
+    border-color: var(--number-green);
+    box-shadow: 0 0 0 2px rgba(69, 231, 122, 0.16), 0 18px 35px rgba(0, 0, 0, 0.35);
+}
+
+.number-loading,
+.number-empty,
+.number-data-error {
+    grid-column: 1 / -1;
+    padding: 55px 24px;
+    color: #929299;
+    text-align: center;
+    background: #121214;
+    border: 1px solid var(--number-line);
+    border-radius: 16px;
+}
+
+.number-empty strong,
+.number-data-error strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.number-empty p,
+.number-data-error p {
+    margin: 0 0 16px;
+}
+
+.number-load-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.number-load-more {
+    min-height: 44px;
+    padding: 0 22px;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+.number-selection-section {
+    padding: 36px 0 70px;
+}
+
+.number-selection {
+    display: grid;
+    grid-template-columns: 170px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 22px;
+    background: linear-gradient(120deg, rgba(30, 30, 33, 0.98), rgba(13, 13, 15, 0.98));
+    border: 1px solid var(--number-line);
+    border-left: 4px solid #666;
+    border-radius: 17px;
+}
+
+.number-selection.has-selection {
+    border-left-color: var(--number-green);
+}
+
+.number-selection-id {
+    padding: 17px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--number-line);
+    border-radius: 11px;
+}
+
+.number-selection-id small {
+    display: block;
+    color: #8b8b91;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.number-selection-id strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 2rem;
+    font-weight: 950;
+}
+
+.number-selection-copy > strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.08rem;
+}
+
+.number-selection-copy p {
+    margin: 0;
+    color: #8f8f96;
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.number-selection-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.number-selection-actions button {
+    min-height: 42px;
+    padding: 0 14px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--number-line);
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 850;
+    cursor: pointer;
+}
+
+.number-selection-actions button:not(:disabled):hover {
+    border-color: var(--number-green);
+}
+
+.number-selection-actions button:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+.number-reservation-warning {
+    margin: 13px 0 0;
+    color: #85858b;
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.number-reservation-warning strong {
+    color: var(--number-amber);
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.number-process-section {
+    padding: 70px 0 95px;
+    background: #0d0d0f;
+    border-top: 1px solid var(--number-line);
+}
+
+.number-process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.number-process-grid article {
+    position: relative;
+    min-height: 210px;
+    padding: 25px;
+    background: linear-gradient(145deg, #19191c, #111113);
+    border: 1px solid var(--number-line);
+    border-radius: 15px;
+}
+
+.number-process-grid span {
+    display: block;
+    margin-bottom: 35px;
+    color: var(--number-red);
+    font-size: 0.74rem;
+    font-weight: 950;
+    letter-spacing: 0.12em;
+}
+
+.number-process-grid strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.number-process-grid p {
+    margin: 0;
+    color: #898990;
+    font-size: 0.8rem;
+    line-height: 1.62;
 }
 
 /* =========================================================
@@ -472,73 +696,115 @@
 ========================================================= */
 
 @media (max-width: 1200px) {
-    .startnummern-toolbar {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .number-toolbar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .startnummern-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .number-search-field {
+        grid-column: span 2;
     }
-}
 
-@media (max-width: 900px) {
-    .startnummern-statistik-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .number-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 700px) {
-    .startnummern-hero {
-        padding-top: 54px;
-    }
-
-    .startnummern-toolbar {
-        grid-template-columns: 1fr;
-        padding: 16px;
-    }
-
-    .startnummern-grid {
+@media (max-width: 992px) {
+    .number-hero-grid {
         grid-template-columns: 1fr;
     }
 
-    .startnummer-karte {
-        grid-template-columns: 100px 1fr;
-        min-height: 200px;
+    .number-hero-board {
+        min-height: 250px;
+        transform: none;
     }
 
-    .startnummer-inhalt {
-        padding: 18px;
+    .number-kpi-grid,
+    .number-process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .number-selection {
+        grid-template-columns: 140px 1fr;
+    }
+
+    .number-selection-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 720px) {
+    .number-hero {
+        padding-top: 58px;
+    }
+
+    .number-hero h1 {
+        font-size: clamp(3.2rem, 17vw, 5.4rem);
+    }
+
+    .number-section-heading {
+        display: block;
+    }
+
+    .number-result-count,
+    .number-process-note {
+        margin-top: 14px;
+        text-align: left;
+    }
+
+    .number-toolbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .number-search-field {
+        grid-column: 1 / -1;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 520px) {
-    .startnummern-statistik-grid {
+    .number-kpi-grid,
+    .number-process-grid,
+    .number-toolbar {
         grid-template-columns: 1fr;
     }
 
-    .startnummer-karte {
+    .number-search-field {
+        grid-column: auto;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .number-card {
+        min-height: 174px;
+        padding: 13px;
+    }
+
+    .number-selection {
         grid-template-columns: 1fr;
     }
 
-    .startnummer-nummer {
-        min-height: 110px;
-        border-right: 0;
-        border-bottom: 1px solid #303030;
-    }
-
-    .startnummer-kopf {
+    .number-selection-actions {
+        grid-column: auto;
         flex-direction: column;
     }
+}
 
-    .startnummer-details > div {
-        grid-template-columns: 1fr;
-        gap: 5px;
-    }
-
-    .startnummer-details strong {
-        text-align: left;
+@media (prefers-reduced-motion: reduce) {
+    .number-page *,
+    .number-page *::before,
+    .number-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }

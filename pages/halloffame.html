@@ -3,320 +3,175 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../">
 
     <title>GTM Control Center | Hall of Fame</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/halloffame.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-
     <header id="site-navbar"></header>
 
-    <main class="halloffame-page">
+    <main class="hof-page">
+        <section class="hof-hero">
+            <div class="container hof-hero-grid">
+                <div class="hof-hero-copy">
+                    <p class="hof-eyebrow">GTM Legacy Archive</p>
+                    <h1>Hall <br>of Fame</h1>
+                    <p class="hof-hero-intro">
+                        Der dauerhafte Platz für bestätigte Meister, besondere Leistungen
+                        und die großen Kapitel der GTM-Geschichte.
+                    </p>
 
-        <section class="halloffame-hero">
-
-            <div class="container">
-
-                <p class="halloffame-eyebrow">
-                    German Touring Masters
-                </p>
-
-                <h1>
-                    Hall of Fame
-                </h1>
-
-                <p class="halloffame-intro">
-                    Die größten Fahrer, Teams, Hersteller und Rekorde
-                    der GTM-Geschichte.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section class="halloffame-statistik">
-
-            <div class="container">
-
-                <div class="halloffame-statistik-grid">
-
-                    <article class="halloffame-statistik-karte">
-
-                        <strong id="hof-meister">
-                            –
-                        </strong>
-
-                        <span>
-                            Meister
-                        </span>
-
-                    </article>
-
-                    <article class="halloffame-statistik-karte">
-
-                        <strong id="hof-rennen">
-                            –
-                        </strong>
-
-                        <span>
-                            Rennen
-                        </span>
-
-                    </article>
-
-                    <article class="halloffame-statistik-karte">
-
-                        <strong id="hof-fahrer">
-                            –
-                        </strong>
-
-                        <span>
-                            Fahrer
-                        </span>
-
-                    </article>
-
-                    <article class="halloffame-statistik-karte">
-
-                        <strong id="hof-teams">
-                            –
-                        </strong>
-
-                        <span>
-                            Teams
-                        </span>
-
-                    </article>
-
+                    <div class="hof-integrity-badge">
+                        <span aria-hidden="true">✓</span>
+                        <div>
+                            <small>Archivregel</small>
+                            <strong>Nur abgeschlossen, geprüft und freigegeben</strong>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="hof-trophy-stage" aria-hidden="true">
+                    <span class="hof-trophy-glow"></span>
+                    <span class="hof-trophy-ring"></span>
+                    <strong>★</strong>
+                    <small>LEGACY</small>
+                </div>
             </div>
-
         </section>
 
-        <section class="halloffame-inhalt">
-
+        <section class="hof-overview" aria-label="Hall-of-Fame-Status">
             <div class="container">
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Champions
-                            </span>
-
-                            <h2>
-                                Meistergalerie
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-meister-grid"
-                        class="hof-meister-grid"
-                    >
-
-                        <div class="hof-laden">
-                            Meisterdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Aktuelle Saison
-                            </span>
-
-                            <h2>
-                                Vorläufige Rekordhalter
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-rekorde-grid"
-                        class="hof-rekorde-grid"
-                    >
-
-                        <div class="hof-laden">
-                            Rekorde werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Saisonwertung
-                            </span>
-
-                            <h2>
-                                Aktuell erfolgreichste Fahrer
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-fahrer-grid"
-                        class="hof-fahrer-grid"
-                    >
-
-                        <div class="hof-laden">
-                            Fahrerdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Aktuelle Teamwertung
-                            </span>
-
-                            <h2>
-                                Aktuell erfolgreichste Teams
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-teams-grid"
-                        class="hof-teams-grid"
-                    >
-
-                        <div class="hof-laden">
-                            Teamdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Aktuelle Saison
-                            </span>
-
-                            <h2>
-                                Erfolgreichste Hersteller der Saison
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-hersteller-grid"
-                        class="hof-hersteller-grid"
-                    >
-
-                        <div class="hof-laden">
-                            Herstellerdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="hof-bereich">
-
-                    <div class="hof-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Historie
-                            </span>
-
-                            <h2>
-                                Saison-Zeitstrahl
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="hof-timeline"
-                        class="hof-timeline"
-                    >
-
-                        <div class="hof-laden">
-                            Saisonhistorie wird geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
+                <div class="hof-kpi-grid">
+                    <article data-index="01">
+                        <span>Bestätigte Meister</span>
+                        <strong id="hof-confirmed-champions">–</strong>
+                        <small>Offiziell freigegebene Titel</small>
+                    </article>
+                    <article data-index="02">
+                        <span>Fixierte Saisons</span>
+                        <strong id="hof-fixed-seasons">–</strong>
+                        <small>Unveränderlich archiviert</small>
+                    </article>
+                    <article data-index="03">
+                        <span>Historische Rekorde</span>
+                        <strong id="hof-confirmed-records">–</strong>
+                        <small>Geprüfte Rekordeinträge</small>
+                    </article>
+                    <article data-index="04">
+                        <span>Laufende Wertungen</span>
+                        <strong id="hof-active-series">–</strong>
+                        <small>Noch nicht Teil der Hall of Fame</small>
+                    </article>
+                </div>
             </div>
-
         </section>
 
+        <section class="hof-content">
+            <div class="container">
+                <header class="hof-section-heading hof-gallery-heading">
+                    <div>
+                        <p>Ewige Galerie</p>
+                        <h2>Bestätigte Einträge</h2>
+                    </div>
+
+                    <div id="hof-category-tabs" class="hof-category-tabs" role="tablist" aria-label="Hall-of-Fame-Kategorie auswählen">
+                        <button class="is-active" type="button" role="tab" aria-selected="true" data-category="alle">Alle</button>
+                        <button type="button" role="tab" aria-selected="false" data-category="masters">Masters</button>
+                        <button type="button" role="tab" aria-selected="false" data-category="ta">Time Attack</button>
+                        <button type="button" role="tab" aria-selected="false" data-category="fun">FUN Events</button>
+                    </div>
+                </header>
+
+                <section class="hof-panel hof-gallery-panel">
+                    <div id="hof-gallery" class="hof-gallery" aria-live="polite" aria-busy="true">
+                        <div class="hof-loading">Ehrenarchiv wird geprüft …</div>
+                    </div>
+                </section>
+
+                <section class="hof-live-section">
+                    <header class="hof-section-heading">
+                        <div>
+                            <p>Auf dem Weg zur Geschichte</p>
+                            <h2>Aktuelle Spitzenreiter</h2>
+                        </div>
+                        <p class="hof-heading-note">
+                            Diese Werte sind live und ausdrücklich noch keine Hall-of-Fame-Einträge.
+                        </p>
+                    </header>
+
+                    <div id="hof-live-grid" class="hof-live-grid" aria-live="polite">
+                        <div class="hof-loading">Laufende Wertungen werden geladen …</div>
+                    </div>
+                </section>
+
+                <section class="hof-panel hof-history-panel">
+                    <header class="hof-section-heading">
+                        <div>
+                            <p>Archivstatus</p>
+                            <h2>Saisons und Kapitel</h2>
+                        </div>
+                    </header>
+
+                    <div id="hof-season-timeline" class="hof-season-timeline" aria-live="polite">
+                        <div class="hof-loading">Saisonstatus wird geladen …</div>
+                    </div>
+                </section>
+
+                <section class="hof-process">
+                    <header class="hof-section-heading">
+                        <div>
+                            <p>Schutz der GTM-Geschichte</p>
+                            <h2>Der Weg ins Ehrenarchiv</h2>
+                        </div>
+                    </header>
+
+                    <div class="hof-process-grid">
+                        <article>
+                            <span>01</span>
+                            <strong>Abgeschlossen</strong>
+                            <p>Eine Saison oder Veranstaltung ist sportlich vollständig beendet.</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <strong>Geprüft</strong>
+                            <p>Ergebnisse, Strafen und Zuordnungen sind fachlich kontrolliert.</p>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <strong>Freigegeben</strong>
+                            <p>Die Orga fixiert den Datensatz. Erst dann wird er dauerhaft geehrt.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <aside class="hof-source-note">
+                    <strong>Historischer Schutz</strong>
+                    <p>
+                        Ein späterer Team-, Fahrzeug-, Simulations- oder Plattformwechsel verändert
+                        keinen freigegebenen Hall-of-Fame-Eintrag. Die damalige Zuordnung bleibt erhalten.
+                    </p>
+                </aside>
+            </div>
+        </section>
     </main>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <footer id="site-footer"></footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/gtm-data.js"></script>
     <script src="assets/js/gtm-utils.js"></script>
     <script src="assets/js/gtm-ui.js"></script>
     <script src="assets/js/gtm-page.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/halloffame.js"></script>
-
 </body>
 
 </html>

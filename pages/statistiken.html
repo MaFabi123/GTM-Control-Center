@@ -3,439 +3,213 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../">
 
     <title>GTM Control Center | Statistiken</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/statistiken.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-
     <header id="site-navbar"></header>
 
-    <main class="statistiken-page">
+    <main class="stats-page">
+        <section class="stats-hero">
+            <div class="container stats-hero-grid">
+                <div class="stats-hero-copy">
+                    <p class="stats-eyebrow">GTM Data Hub</p>
+                    <h1>Statistiken</h1>
+                    <p class="stats-hero-intro">
+                        Fahrer, Einsatzteams, Fahrzeuge und Rennserien in einer gemeinsamen,
+                        dynamischen GTM-Datenwelt.
+                    </p>
 
-        <section class="statistiken-hero">
-
-            <div class="container">
-
-                <p class="statistiken-eyebrow">
-                    German Touring Masters
-                </p>
-
-                <h1>
-                    Statistiken
-                </h1>
-
-                <p class="statistiken-intro">
-                    Zahlen, Leistungen und Entwicklungen der aktuellen
-                    GTM Masters Saison im vollständigen Überblick.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section class="statistiken-uebersicht">
-
-            <div class="container">
-
-                <div class="statistiken-uebersicht-grid">
-
-                    <article class="statistik-hauptkarte">
-
-                        <span class="statistik-hauptkarte-label">
-                            Fahrer
-                        </span>
-
-                        <strong id="statistik-fahrer">
-                            –
-                        </strong>
-
-                        <small>
-                            Aktive Meisterschaftsfahrer
-                        </small>
-
-                    </article>
-
-                    <article class="statistik-hauptkarte">
-
-                        <span class="statistik-hauptkarte-label">
-                            Teams
-                        </span>
-
-                        <strong id="statistik-teams">
-                            –
-                        </strong>
-
-                        <small>
-                            Teams in der Meisterschaft
-                        </small>
-
-                    </article>
-
-                    <article class="statistik-hauptkarte">
-
-                        <span class="statistik-hauptkarte-label">
-                            Rennen
-                        </span>
-
-                        <strong id="statistik-rennen">
-                            –
-                        </strong>
-
-                        <small>
-                            Läufe im Rennkalender
-                        </small>
-
-                    </article>
-
-                    <article class="statistik-hauptkarte">
-
-                        <span class="statistik-hauptkarte-label">
-                            Fortschritt
-                        </span>
-
-                        <strong id="statistik-fortschritt">
-                            –
-                        </strong>
-
-                        <small>
-                            Abgeschlossene Rennen
-                        </small>
-
-                    </article>
-
+                    <div class="stats-data-state">
+                        <span class="stats-data-light" aria-hidden="true"></span>
+                        <div>
+                            <small>Datenbasis</small>
+                            <strong id="stats-data-state">Letzter erfolgreicher Excel-Export</strong>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="stats-hero-visual" aria-hidden="true">
+                    <span class="stats-hero-ring stats-hero-ring-one"></span>
+                    <span class="stats-hero-ring stats-hero-ring-two"></span>
+                    <strong>GTM</strong>
+                    <span>DATA</span>
+                </div>
             </div>
-
         </section>
 
-        <section class="statistiken-filterbereich">
-
+        <section class="stats-overview" aria-label="GTM Gesamtzahlen">
             <div class="container">
+                <div id="stats-kpi-grid" class="stats-kpi-grid" aria-live="polite">
+                    <article class="stats-kpi-card">
+                        <span>Fahrer</span>
+                        <strong>–</strong>
+                        <small>Daten werden geladen</small>
+                    </article>
+                    <article class="stats-kpi-card">
+                        <span>Teams</span>
+                        <strong>–</strong>
+                        <small>Daten werden geladen</small>
+                    </article>
+                    <article class="stats-kpi-card">
+                        <span>Fahrzeuge</span>
+                        <strong>–</strong>
+                        <small>Daten werden geladen</small>
+                    </article>
+                    <article class="stats-kpi-card">
+                        <span>Events</span>
+                        <strong>–</strong>
+                        <small>Daten werden geladen</small>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <div class="statistiken-toolbar">
+        <section class="stats-controls-section">
+            <div class="container">
+                <div class="stats-controls">
+                    <div class="stats-view-control">
+                        <span>Statistikbereich</span>
+                        <div id="stats-view-tabs" class="stats-view-tabs" role="tablist" aria-label="Statistikbereich auswählen">
+                            <button class="is-active" type="button" role="tab" aria-selected="true" data-view="gesamt">
+                                GTM Gesamt
+                            </button>
+                            <button type="button" role="tab" aria-selected="false" data-view="masters">
+                                Masters
+                            </button>
+                            <button type="button" role="tab" aria-selected="false" data-view="ta">
+                                Time Attack
+                            </button>
+                        </div>
+                    </div>
 
-                    <label class="statistiken-filter">
-
-                        <span>
-                            Ansicht
-                        </span>
-
-                        <select id="statistik-ansicht">
-
-                            <option value="gesamt">
-                                Gesamtübersicht
-                            </option>
-
-                            <option value="fahrer">
-                                Fahrerstatistiken
-                            </option>
-
-                            <option value="teams">
-                                Teamstatistiken
-                            </option>
-
-                            <option value="fahrzeuge">
-                                Fahrzeugstatistiken
-                            </option>
-
+                    <label class="stats-control-field" id="stats-season-field">
+                        <span>Saison</span>
+                        <select id="stats-season-select" aria-label="Saison auswählen">
+                            <option value="all">Alle verfügbaren Daten</option>
                         </select>
-
                     </label>
 
-                    <label class="statistiken-filter">
-
-                        <span>
-                            Fahrer suchen
-                        </span>
-
-                        <input
-                            id="statistik-suche"
-                            type="search"
-                            autocomplete="off"
-                            placeholder="Fahrer, Team oder Fahrzeug"
-                        >
-
+                    <label class="stats-control-field">
+                        <span>Suche</span>
+                        <input id="stats-search" type="search" autocomplete="off" placeholder="Fahrer, Team oder Fahrzeug">
                     </label>
 
-                    <label class="statistiken-filter">
-
-                        <span>
-                            Sortierung
-                        </span>
-
-                        <select id="statistik-sortierung">
-
-                            <option value="punkte">
-                                Punkte
-                            </option>
-
-                            <option value="platzierung">
-                                Platzierung
-                            </option>
-
-                            <option value="fastlaps">
-                                Fast Laps
-                            </option>
-
-                            <option value="startnummer">
-                                Startnummer
-                            </option>
-
+                    <label class="stats-control-field">
+                        <span>Sortierung</span>
+                        <select id="stats-sort" aria-label="Statistik sortieren">
+                            <option value="platzierung">Platzierung</option>
+                            <option value="punkte">Punkte</option>
+                            <option value="name">Name</option>
                         </select>
-
                     </label>
+                </div>
+            </div>
+        </section>
 
+        <section class="stats-content">
+            <div class="container">
+                <header class="stats-section-heading stats-intro-heading">
+                    <div>
+                        <p id="stats-scope-label">GTM Gesamtüberblick</p>
+                        <h2 id="stats-scope-title">Das GTM-Universum in Zahlen</h2>
+                    </div>
+                    <p id="stats-scope-note" class="stats-scope-note">
+                        Serienübergreifende Kennzahlen ohne Vermischung unterschiedlicher Punktesysteme.
+                    </p>
+                </header>
+
+                <section class="stats-panel stats-podium-panel">
+                    <header class="stats-section-heading">
+                        <div>
+                            <p id="stats-podium-label">Spitzenreiter</p>
+                            <h2 id="stats-podium-title">GTM im Fokus</h2>
+                        </div>
+                    </header>
+
+                    <div id="stats-podium" class="stats-podium-grid" aria-live="polite" aria-busy="true">
+                        <div class="stats-loading">Statistik wird geladen …</div>
+                    </div>
+                </section>
+
+                <div class="stats-two-column">
+                    <section class="stats-panel">
+                        <header class="stats-section-heading stats-section-heading-small">
+                            <div>
+                                <p id="stats-team-label">Community</p>
+                                <h2 id="stats-team-title">Teampräsenz</h2>
+                            </div>
+                            <a href="pages/teams.html">Alle Teams <span>→</span></a>
+                        </header>
+
+                        <div id="stats-team-list" class="stats-compact-list" aria-live="polite">
+                            <div class="stats-loading">Teams werden geladen …</div>
+                        </div>
+                    </section>
+
+                    <section class="stats-panel">
+                        <header class="stats-section-heading stats-section-heading-small">
+                            <div>
+                                <p id="stats-vehicle-label">Fahrzeugwelt</p>
+                                <h2 id="stats-vehicle-title">Fahrzeugverteilung</h2>
+                            </div>
+                            <a href="pages/fahrzeuge.html">Alle Fahrzeuge <span>→</span></a>
+                        </header>
+
+                        <div id="stats-vehicle-list" class="stats-compact-list" aria-live="polite">
+                            <div class="stats-loading">Fahrzeuge werden geladen …</div>
+                        </div>
+                    </section>
                 </div>
 
+                <section class="stats-panel stats-ranking-panel">
+                    <header class="stats-ranking-header">
+                        <div>
+                            <p id="stats-ranking-label">GTM Community</p>
+                            <h2 id="stats-ranking-title">Aktive Fahrer</h2>
+                        </div>
+                        <span id="stats-result-count" class="stats-result-count">– Einträge</span>
+                    </header>
+
+                    <div id="stats-ranking" class="stats-ranking-list" aria-live="polite" aria-busy="true">
+                        <div class="stats-loading">Rangliste wird geladen …</div>
+                    </div>
+
+                    <div id="stats-empty" class="stats-empty" hidden>
+                        <strong>Keine passenden Daten gefunden.</strong>
+                        <span>Bitte passe Suche, Saison oder Statistikbereich an.</span>
+                    </div>
+                </section>
+
+                <aside class="stats-source-note">
+                    <strong>So werden die Zahlen gelesen</strong>
+                    <p id="stats-source-text">
+                        Gesamtwerte zeigen die im Export vorhandenen GTM-Datensätze. Masters- und
+                        Time-Attack-Punkte bleiben getrennt, weil die Serien unterschiedliche Wertungen besitzen.
+                    </p>
+                </aside>
             </div>
-
         </section>
-
-        <section class="statistiken-inhalt">
-
-            <div class="container">
-
-                <section class="statistik-bereich">
-
-                    <div class="statistik-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Fahrerwertung
-                            </span>
-
-                            <h2>
-                                Top 3 Fahrer
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="statistik-top-fahrer"
-                        class="statistik-top-grid"
-                    >
-
-                        <div class="statistik-laden">
-                            Fahrerdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="statistik-bereich">
-
-                    <div class="statistik-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Teamwertung
-                            </span>
-
-                            <h2>
-                                Top 3 Teams
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="statistik-top-teams"
-                        class="statistik-top-grid"
-                    >
-
-                        <div class="statistik-laden">
-                            Teamdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="statistik-bereich">
-
-                    <div class="statistik-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Performance
-                            </span>
-
-                            <h2>
-                                Saisonwerte
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div class="statistik-detail-grid">
-
-                        <article class="statistik-detailkarte">
-
-                            <span>
-                                Fast Laps gesamt
-                            </span>
-
-                            <strong id="statistik-fastlaps">
-                                –
-                            </strong>
-
-                        </article>
-
-                        <article class="statistik-detailkarte">
-
-                            <span>
-                                Fahrzeugwechsel
-                            </span>
-
-                            <strong id="statistik-wechsel">
-                                –
-                            </strong>
-
-                        </article>
-
-                        <article class="statistik-detailkarte">
-
-                            <span>
-                                Punkte gesamt
-                            </span>
-
-                            <strong id="statistik-punkte">
-                                –
-                            </strong>
-
-                        </article>
-
-                        <article class="statistik-detailkarte">
-
-                            <span>
-                                Eingesetzte Fahrzeuge
-                            </span>
-
-                            <strong id="statistik-fahrzeuge">
-                                –
-                            </strong>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-                <section class="statistik-bereich">
-
-                    <div class="statistik-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Fahrzeugübersicht
-                            </span>
-
-                            <h2>
-                                Fahrzeugverteilung
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="statistik-fahrzeug-grid"
-                        class="statistik-fahrzeug-grid"
-                    >
-
-                        <div class="statistik-laden">
-                            Fahrzeugdaten werden geladen …
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <section class="statistik-bereich">
-
-                    <div class="statistik-bereich-kopf">
-
-                        <div>
-
-                            <span>
-                                Fahrerübersicht
-                            </span>
-
-                            <h2>
-                                Alle Saisonfahrer
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="statistik-fahrer-grid"
-                        class="statistik-fahrer-grid"
-                        aria-live="polite"
-                        aria-busy="true"
-                    >
-
-                        <div class="statistik-laden">
-                            Statistiken werden geladen …
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="keine-statistiken"
-                        class="keine-statistiken"
-                        hidden
-                    >
-                        Keine passenden Statistiken gefunden.
-                    </div>
-
-                </section>
-
-            </div>
-
-        </section>
-
     </main>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <footer id="site-footer"></footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/gtm-data.js"></script>
     <script src="assets/js/gtm-utils.js"></script>
     <script src="assets/js/gtm-ui.js"></script>
     <script src="assets/js/gtm-page.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/statistiken.js"></script>
-
 </body>
 
 </html>

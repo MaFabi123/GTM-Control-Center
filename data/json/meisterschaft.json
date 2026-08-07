@@ -1,6 +1,6 @@
 {
     "saison":  "GTM Masters Saison 1",
-    "status":  "lÃ¤uft",
+    "status":  "läuft",
     "fahrerwertung":  [
                           {
                               "platzierung":  1,
@@ -92,6 +92,19 @@
                               "fastLap":  0,
                               "fahrzeugwechsel":  0,
                               "punkte":  417
+                          },
+                          {
+                              "platzierung":  8,
+                              "nummer":  21,
+                              "name":  "O. Gambert",
+                              "team":  "DarkTrade Racing by GHc",
+                              "teamZuordnung":  "DarkTrade Racing by GHc",
+                              "fahrzeug":  "BMW M4 GT3",
+                              "bild":  "default.png",
+                              "wertung":  404,
+                              "fastLap":  0,
+                              "fahrzeugwechsel":  0,
+                              "punkte":  404
                           },
                           {
                               "platzierung":  9,

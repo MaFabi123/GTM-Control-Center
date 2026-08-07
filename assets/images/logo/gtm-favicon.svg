@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GTM">
+    <defs>
+        <linearGradient id="gtm-red" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff2338"/>
+            <stop offset="1" stop-color="#9b000f"/>
+        </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="13" fill="#0b0b0d"/>
+    <path d="M7 15h50v5H7zm0 29h50v5H7z" fill="url(#gtm-red)"/>
+    <path d="M8 24h20l-4 5H14v7h8v-3h-5v-4h12v11H8zm24 0h24v5h-9v11h-6V29h-9zm0 8h6v8h-6zm17 0h7v8h-7z" fill="#fff"/>
+</svg>

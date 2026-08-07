@@ -1,43 +1,46 @@
 /* ==========================================================
-   GTM STARTNUMMERNVERWALTUNG
+   GTM STARTNUMMERN · ARBEITSBLOCK A4
 ========================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
     "use strict";
 
-    const grid =
-        document.getElementById("startnummern-grid");
+    const FIRST_NUMBER = 1;
+    const LAST_NUMBER = 999;
+    const PAGE_SIZE = 72;
+    const STORAGE_KEY = "gtm-startnummer-vorauswahl";
 
-    const searchInput =
-        document.getElementById("startnummern-suche");
+    const elements = {
+        grid: document.getElementById("number-grid"),
+        empty: document.getElementById("number-empty"),
+        resultCount: document.getElementById("number-result-count"),
+        search: document.getElementById("number-search"),
+        status: document.getElementById("number-status-filter"),
+        range: document.getElementById("number-range-filter"),
+        team: document.getElementById("number-team-filter"),
+        sort: document.getElementById("number-sort"),
+        loadMore: document.getElementById("number-load-more"),
+        random: document.getElementById("number-random"),
+        reset: document.getElementById("number-reset"),
+        heroDisplay: document.getElementById("number-hero-display"),
+        heroCaption: document.getElementById("number-hero-caption"),
+        total: document.getElementById("number-total"),
+        assigned: document.getElementById("number-assigned"),
+        available: document.getElementById("number-available"),
+        freeRate: document.getElementById("number-free-rate"),
+        selection: document.getElementById("number-selection"),
+        selectionValue: document.getElementById("number-selection-value"),
+        selectionTitle: document.getElementById("number-selection-title"),
+        selectionText: document.getElementById("number-selection-text"),
+        selectionCopy: document.getElementById("number-selection-copy"),
+        selectionClear: document.getElementById("number-selection-clear")
+    };
 
-    const statusFilter =
-        document.getElementById("startnummern-status-filter");
-
-    const teamFilter =
-        document.getElementById("startnummern-team-filter");
-
-    const sortSelect =
-        document.getElementById("startnummern-sortierung");
-
-    const noResults =
-        document.getElementById("keine-startnummern");
-
-    const ersteStartnummer = 1;
-    const letzteStartnummer = 999;
-
-    let alleStartnummern = [];
-
-    if (
-        !window.GTM ||
-        typeof window.GTM.load !== "function"
-    ) {
-        showError(
-            "Die GTM Data Engine wurde nicht geladen."
-        );
-
-        return;
-    }
+    let allNumbers = [];
+    let filteredNumbers = [];
+    let visibleCount = PAGE_SIZE;
+    let endingFilter = "";
+    let selectedNumber = null;
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -56,641 +59,433 @@ document.addEventListener("DOMContentLoaded", async () => {
             .replace(/[\u0300-\u036f]/g, "");
     }
 
-    function toNumber(
-        value,
-        fallback = 0
-    ) {
-        const number =
-            Number(
-                String(value ?? "")
-                    .replace(/[^0-9.-]/g, "")
-            );
+    function toInteger(value, fallback = 0) {
+        const parsed = Number.parseInt(String(value ?? "").replace(/[^0-9-]/g, ""), 10);
+        return Number.isFinite(parsed) ? parsed : fallback;
+    }
 
-        return Number.isFinite(number)
-            ? number
-            : fallback;
+    function getFirstValue(entry, keys, fallback = "") {
+        for (const key of keys) {
+            const value = entry?.[key];
+            if (value !== undefined && value !== null && String(value).trim() !== "") {
+                return value;
+            }
+        }
+        return fallback;
     }
 
     function getNumber(entry) {
-        return toNumber(
-            entry?.nummer ||
-            entry?.startnummer ||
-            entry?.fahrernummer,
-            0
-        );
+        return toInteger(getFirstValue(entry, ["nummer", "startnummer", "fahrernummer"]), 0);
     }
 
     function getDriver(entry) {
-        return String(
-            entry?.fahrer ||
-            entry?.name ||
-            entry?.anzeigename ||
-            ""
-        ).trim();
+        return String(getFirstValue(entry, ["fahrer", "anzeigename", "name"])).trim();
     }
 
     function getTeam(entry) {
-        return String(
-            entry?.team ||
-            entry?.teamZuordnung ||
-            ""
-        ).trim();
+        return String(getFirstValue(entry, ["team", "teamZuordnung", "einsatzteam"])).trim();
     }
 
     function getVehicle(entry) {
-        return String(
-            entry?.fahrzeug ||
-            ""
-        ).trim();
+        return String(getFirstValue(entry, ["fahrzeug", "vehicle"])).trim();
     }
 
-    function getStatus(entry) {
-        const driver =
-            getDriver(entry);
+    function normalizeStatus(entry) {
+        const raw = normalizeText(getFirstValue(entry, ["status", "nummerStatus", "belegungsstatus"]));
+        const driver = getDriver(entry);
 
-        const status =
-            normalizeText(
-                entry?.status
-            );
-
-        if (
-            status === "vergeben" ||
-            status === "belegt" ||
-            driver !== ""
-        ) {
-            return "vergeben";
-        }
-
+        if (["reserviert", "reservation", "vorgemerkt"].includes(raw)) return "reserviert";
+        if (["gesperrt", "blocked", "blockiert"].includes(raw)) return "gesperrt";
+        if (["historisch", "history", "archiviert", "archived"].includes(raw)) return "historisch";
+        if (["frei", "verfugbar", "available"].includes(raw) && driver === "") return "frei";
+        if (["vergeben", "belegt", "assigned", "aktiv"].includes(raw) || driver !== "") return "vergeben";
         return "frei";
     }
 
-    function buildNumberList(entries) {
-        const assignedMap =
-            new Map();
+    function buildNumberSpace(entries) {
+        const sourceByNumber = new Map();
 
         entries.forEach((entry) => {
-            const number =
-                getNumber(entry);
-
-            if (
-                number < ersteStartnummer ||
-                number > letzteStartnummer
-            ) {
-                return;
-            }
-
-            if (!assignedMap.has(number)) {
-                assignedMap.set(
-                    number,
-                    entry
-                );
-            }
+            const number = getNumber(entry);
+            if (number < FIRST_NUMBER || number > LAST_NUMBER || sourceByNumber.has(number)) return;
+            sourceByNumber.set(number, entry);
         });
 
-        const result = [];
+        return Array.from({ length: LAST_NUMBER }, (_, index) => {
+            const number = index + FIRST_NUMBER;
+            const source = sourceByNumber.get(number);
 
-        for (
-            let number = ersteStartnummer;
-            number <= letzteStartnummer;
-            number++
-        ) {
-            const assignedEntry =
-                assignedMap.get(number);
-
-            if (assignedEntry) {
-                result.push({
-                    nummer: number,
-                    status: "vergeben",
-                    fahrer:
-                        getDriver(
-                            assignedEntry
-                        ),
-                    team:
-                        getTeam(
-                            assignedEntry
-                        ),
-                    fahrzeug:
-                        getVehicle(
-                            assignedEntry
-                        )
-                });
-            } else {
-                result.push({
+            if (!source) {
+                return {
                     nummer: number,
                     status: "frei",
                     fahrer: "",
                     team: "",
                     fahrzeug: ""
-                });
+                };
             }
+
+            return {
+                nummer: number,
+                status: normalizeStatus(source),
+                fahrer: getDriver(source),
+                team: getTeam(source),
+                fahrzeug: getVehicle(source),
+                saison: String(getFirstValue(source, ["saison", "saisonName", "season"])).trim(),
+                reserviertBis: String(getFirstValue(source, ["reserviertBis", "reservationEndsAt"])).trim()
+            };
+        });
+    }
+
+    function statusLabel(status) {
+        return {
+            frei: "Verfügbar",
+            vergeben: "Vergeben",
+            reserviert: "Reserviert",
+            gesperrt: "Gesperrt",
+            historisch: "Historisch gebunden"
+        }[status] || "Unbekannt";
+    }
+
+    function statusDescription(entry) {
+        if (entry.status === "frei") return "Bereit für deine Vorauswahl";
+        if (entry.status === "reserviert") return entry.reserviertBis ? `Reserviert bis ${entry.reserviertBis}` : "Aktuell nicht auswählbar";
+        if (entry.status === "gesperrt") return "Von der GTM nicht freigegeben";
+        if (entry.status === "historisch") return "Historische Zuordnung geschützt";
+        return entry.team || entry.fahrzeug || "Aktiv zugeordnet";
+    }
+
+    function createCard(entry) {
+        const number = entry.nummer;
+        const isFree = entry.status === "frei";
+        const isAssigned = entry.status === "vergeben";
+        const title = isAssigned ? entry.fahrer || `Startnummer ${number}` : `Startnummer ${number}`;
+        const detail = statusDescription(entry);
+        const selected = selectedNumber === number;
+
+        let action = "";
+        if (isFree) {
+            action = `
+                <button class="number-card-action" type="button" data-select-number="${number}">
+                    <span>${selected ? "Ausgewählt" : "Vorauswählen"}</span>
+                    <span aria-hidden="true">${selected ? "✓" : "→"}</span>
+                </button>`;
+        } else if (isAssigned && entry.fahrer) {
+            action = `
+                <a class="number-card-action" href="pages/fahrerprofil.html?nummer=${encodeURIComponent(number)}">
+                    <span>Fahrerprofil</span>
+                    <span aria-hidden="true">→</span>
+                </a>`;
         }
-
-        return result;
-    }
-
-    function getSearchText(entry) {
-        return normalizeText(
-            [
-                entry.nummer,
-                entry.status,
-                entry.fahrer,
-                entry.team,
-                entry.fahrzeug,
-                entry.status === "frei"
-                    ? "frei verfügbar"
-                    : "vergeben belegt"
-            ].join(" ")
-        );
-    }
-
-    function createNumberCard(entry) {
-        const number =
-            toNumber(
-                entry.nummer,
-                0
-            );
-
-        const status =
-            getStatus(entry);
-
-        const isAssigned =
-            status === "vergeben";
-
-        const driver =
-            escapeHtml(
-                entry.fahrer ||
-                "Noch nicht vergeben"
-            );
-
-        const team =
-            escapeHtml(
-                entry.team ||
-                "Kein Team"
-            );
-
-        const vehicle =
-            escapeHtml(
-                entry.fahrzeug ||
-                "Kein Fahrzeug eingetragen"
-            );
 
         return `
-            <article
-                class="startnummer-karte status-${status}"
-                data-status="${status}"
-                data-nummer="${number}"
-            >
-
-                <div class="startnummer-nummer">
-                    ${number}
-                </div>
-
-                <div class="startnummer-inhalt">
-
-                    <div class="startnummer-kopf">
-
-                        <span class="startnummer-label">
-                            GTM Startnummer
-                        </span>
-
-                        <span class="startnummer-status ${status}">
-                            ${
-                                isAssigned
-                                    ? "Vergeben"
-                                    : "Verfügbar"
-                            }
-                        </span>
-
-                    </div>
-
-                    <h2>
-                        ${
-                            isAssigned
-                                ? driver
-                                : `Nummer ${number}`
-                        }
-                    </h2>
-
-                    ${
-                        isAssigned
-                            ? `
-                                <div class="startnummer-details">
-
-                                    <div>
-
-                                        <span>
-                                            Team
-                                        </span>
-
-                                        <strong>
-                                            ${team}
-                                        </strong>
-
-                                    </div>
-
-                                    <div>
-
-                                        <span>
-                                            Fahrzeug
-                                        </span>
-
-                                        <strong>
-                                            ${vehicle}
-                                        </strong>
-
-                                    </div>
-
-                                </div>
-                            `
-                            : `
-                                <div class="startnummer-frei-hinweis">
-
-                                    Diese Startnummer ist derzeit
-                                    nicht vergeben.
-
-                                </div>
-                            `
-                    }
-
-                </div>
-
-            </article>
-        `;
+            <article class="number-card status-${entry.status}${selected ? " is-selected" : ""}"
+                data-number="${number}" tabindex="0">
+                <strong class="number-card-number">#${number}</strong>
+                <span class="number-card-status">${statusLabel(entry.status)}</span>
+                <h3>${escapeHtml(title)}</h3>
+                <p>${escapeHtml(detail)}</p>
+                ${action}
+            </article>`;
     }
 
-    function fillTeamFilter() {
-        if (!teamFilter) {
-            return;
-        }
+    function populateTeamFilter() {
+        if (!elements.team) return;
+        const currentValue = elements.team.value;
+        const teams = [...new Set(allNumbers.map((entry) => entry.team).filter(Boolean))]
+            .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
 
-        const currentValue =
-            teamFilter.value;
-
-        const teams = [
-            ...new Set(
-                alleStartnummern
-                    .filter(
-                        (entry) =>
-                            entry.status ===
-                                "vergeben" &&
-                            entry.team
-                    )
-                    .map(
-                        (entry) =>
-                            entry.team.trim()
-                    )
-            )
-        ].sort(
-            (a, b) =>
-                a.localeCompare(
-                    b,
-                    "de",
-                    {
-                        sensitivity: "base"
-                    }
-                )
-        );
-
-        teamFilter.innerHTML = `
-            <option value="">
-                Alle Teams
-            </option>
-        `;
-
+        elements.team.innerHTML = '<option value="">Alle Teams</option>';
         teams.forEach((team) => {
-            const option =
-                document.createElement(
-                    "option"
-                );
-
+            const option = document.createElement("option");
             option.value = team;
             option.textContent = team;
-
-            teamFilter.appendChild(
-                option
-            );
+            elements.team.appendChild(option);
         });
 
-        if (
-            teams.includes(
-                currentValue
-            )
-        ) {
-            teamFilter.value =
-                currentValue;
-        }
+        if (teams.includes(currentValue)) elements.team.value = currentValue;
     }
 
     function updateStatistics() {
-        const assigned =
-            alleStartnummern.filter(
-                (entry) =>
-                    entry.status ===
-                    "vergeben"
-            );
+        const available = allNumbers.filter((entry) => entry.status === "frei").length;
+        const assigned = allNumbers.filter((entry) => entry.status === "vergeben").length;
+        const rate = allNumbers.length ? Math.round((available / allNumbers.length) * 100) : 0;
 
-        const available =
-            alleStartnummern.filter(
-                (entry) =>
-                    entry.status ===
-                    "frei"
-            );
-
-        const highestAssigned =
-            assigned.reduce(
-                (
-                    highest,
-                    entry
-                ) =>
-                    Math.max(
-                        highest,
-                        toNumber(
-                            entry.nummer,
-                            0
-                        )
-                    ),
-                0
-            );
-
-        window.GTM.Utils?.setText(
-            "startnummern-gesamt",
-            alleStartnummern.length
-        );
-
-        window.GTM.Utils?.setText(
-            "startnummern-vergeben",
-            assigned.length
-        );
-
-        window.GTM.Utils?.setText(
-            "startnummern-frei",
-            available.length
-        );
-
-        window.GTM.Utils?.setText(
-            "startnummern-hoechste",
-            highestAssigned || "–"
-        );
+        if (elements.total) elements.total.textContent = allNumbers.length.toLocaleString("de-DE");
+        if (elements.assigned) elements.assigned.textContent = assigned.toLocaleString("de-DE");
+        if (elements.available) elements.available.textContent = available.toLocaleString("de-DE");
+        if (elements.freeRate) elements.freeRate.textContent = `${rate} %`;
     }
 
-    function sortNumbers(entries) {
-        const sortValue =
-            sortSelect?.value ||
-            "nummer";
+    function getRange(value) {
+        if (!value || !value.includes("-")) return [FIRST_NUMBER, LAST_NUMBER];
+        const [minimum, maximum] = value.split("-").map((item) => toInteger(item));
+        return [minimum || FIRST_NUMBER, maximum || LAST_NUMBER];
+    }
 
-        return [...entries].sort(
-            (a, b) => {
-                if (
-                    sortValue ===
-                    "fahrer"
-                ) {
-                    const firstDriver =
-                        a.fahrer ||
-                        "ZZZZZZ";
+    function getSearchText(entry) {
+        return normalizeText([
+            entry.nummer,
+            `#${entry.nummer}`,
+            statusLabel(entry.status),
+            entry.fahrer,
+            entry.team,
+            entry.fahrzeug,
+            entry.saison
+        ].join(" "));
+    }
 
-                    const secondDriver =
-                        b.fahrer ||
-                        "ZZZZZZ";
+    function applyFilters() {
+        const query = normalizeText(elements.search?.value);
+        const status = elements.status?.value || "";
+        const team = elements.team?.value || "";
+        const [minimum, maximum] = getRange(elements.range?.value || "");
 
-                    const comparison =
-                        firstDriver.localeCompare(
-                            secondDriver,
-                            "de",
-                            {
-                                sensitivity:
-                                    "base"
-                            }
-                        );
+        filteredNumbers = allNumbers.filter((entry) => {
+            const matchesQuery = query === "" || getSearchText(entry).includes(query);
+            const matchesStatus = status === "" || entry.status === status;
+            const matchesTeam = team === "" || entry.team === team;
+            const matchesRange = entry.nummer >= minimum && entry.nummer <= maximum;
+            const matchesEnding = endingFilter === "" || String(entry.nummer).endsWith(endingFilter);
+            return matchesQuery && matchesStatus && matchesTeam && matchesRange && matchesEnding;
+        });
 
-                    if (comparison !== 0) {
-                        return comparison;
-                    }
-                }
+        sortNumbers();
+        visibleCount = PAGE_SIZE;
+        renderNumbers();
+    }
 
-                if (
-                    sortValue ===
-                    "team"
-                ) {
-                    const firstTeam =
-                        a.team ||
-                        "ZZZZZZ";
+    function sortNumbers() {
+        const sort = elements.sort?.value || "nummer-auf";
 
-                    const secondTeam =
-                        b.team ||
-                        "ZZZZZZ";
-
-                    const comparison =
-                        firstTeam.localeCompare(
-                            secondTeam,
-                            "de",
-                            {
-                                sensitivity:
-                                    "base"
-                            }
-                        );
-
-                    if (comparison !== 0) {
-                        return comparison;
-                    }
-                }
-
-                if (
-                    sortValue ===
-                    "status"
-                ) {
-                    const priority = {
-                        vergeben: 1,
-                        frei: 2
-                    };
-
-                    const difference =
-                        priority[a.status] -
-                        priority[b.status];
-
-                    if (difference !== 0) {
-                        return difference;
-                    }
-                }
-
-                return (
-                    toNumber(
-                        a.nummer,
-                        0
-                    ) -
-                    toNumber(
-                        b.nummer,
-                        0
-                    )
-                );
+        filteredNumbers.sort((a, b) => {
+            if (sort === "nummer-ab") return b.nummer - a.nummer;
+            if (sort === "fahrer") {
+                const comparison = (a.fahrer || "ZZZZZZ").localeCompare(b.fahrer || "ZZZZZZ", "de", { sensitivity: "base" });
+                return comparison || a.nummer - b.nummer;
             }
-        );
-    }
-
-    function filterNumbers() {
-        const query =
-            normalizeText(
-                searchInput?.value
-            );
-
-        const selectedStatus =
-            String(
-                statusFilter?.value ||
-                ""
-            ).trim();
-
-        const selectedTeam =
-            String(
-                teamFilter?.value ||
-                ""
-            ).trim();
-
-        const filtered =
-            alleStartnummern.filter(
-                (entry) => {
-                    const matchesSearch =
-                        query === "" ||
-                        getSearchText(
-                            entry
-                        ).includes(query);
-
-                    const matchesStatus =
-                        selectedStatus === "" ||
-                        entry.status ===
-                            selectedStatus;
-
-                    const matchesTeam =
-                        selectedTeam === "" ||
-                        entry.team ===
-                            selectedTeam;
-
-                    return (
-                        matchesSearch &&
-                        matchesStatus &&
-                        matchesTeam
-                    );
-                }
-            );
-
-        renderNumbers(
-            sortNumbers(
-                filtered
-            )
-        );
-    }
-
-    function renderNumbers(entries) {
-        if (!grid) {
-            return;
-        }
-
-        if (entries.length === 0) {
-            grid.innerHTML = "";
-
-            if (noResults) {
-                noResults.hidden =
-                    false;
+            if (sort === "team") {
+                const comparison = (a.team || "ZZZZZZ").localeCompare(b.team || "ZZZZZZ", "de", { sensitivity: "base" });
+                return comparison || a.nummer - b.nummer;
             }
+            return a.nummer - b.nummer;
+        });
+    }
 
-            grid.setAttribute(
-                "aria-busy",
-                "false"
-            );
+    function renderNumbers() {
+        if (!elements.grid) return;
 
-            return;
+        const visible = filteredNumbers.slice(0, visibleCount);
+        elements.grid.setAttribute("aria-busy", "false");
+
+        if (filteredNumbers.length === 0) {
+            elements.grid.innerHTML = "";
+            if (elements.empty) elements.empty.hidden = false;
+            if (elements.loadMore) elements.loadMore.hidden = true;
+        } else {
+            elements.grid.innerHTML = visible.map(createCard).join("");
+            if (elements.empty) elements.empty.hidden = true;
+            if (elements.loadMore) {
+                elements.loadMore.hidden = visible.length >= filteredNumbers.length;
+                elements.loadMore.textContent = `Weitere Nummern anzeigen (${filteredNumbers.length - visible.length})`;
+            }
         }
 
-        grid.innerHTML =
-            entries
-                .map(createNumberCard)
-                .join("");
-
-        grid.setAttribute(
-            "aria-busy",
-            "false"
-        );
-
-        if (noResults) {
-            noResults.hidden =
-                true;
+        if (elements.resultCount) {
+            const shown = Math.min(visibleCount, filteredNumbers.length);
+            elements.resultCount.textContent = filteredNumbers.length === 0
+                ? "Keine Treffer"
+                : `${shown} von ${filteredNumbers.length} Nummern angezeigt`;
         }
+    }
+
+    function updateHero(number, caption = "GTM STARTNUMMER") {
+        if (elements.heroDisplay) elements.heroDisplay.textContent = number ? `#${number}` : "#---";
+        if (elements.heroCaption) elements.heroCaption.textContent = caption;
+    }
+
+    function readStoredSelection() {
+        try {
+            return toInteger(window.sessionStorage.getItem(STORAGE_KEY), 0) || null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function storeSelection(number) {
+        try {
+            if (number) window.sessionStorage.setItem(STORAGE_KEY, String(number));
+            else window.sessionStorage.removeItem(STORAGE_KEY);
+        } catch (error) {
+            console.warn("Die Startnummer-Vorauswahl konnte nicht lokal gespeichert werden.", error);
+        }
+    }
+
+    function updateSelectionPanel() {
+        const entry = allNumbers.find((item) => item.nummer === selectedNumber && item.status === "frei");
+        if (!entry) selectedNumber = null;
+
+        elements.selection?.classList.toggle("has-selection", Boolean(selectedNumber));
+        if (elements.selectionValue) elements.selectionValue.textContent = selectedNumber ? `#${selectedNumber}` : "#---";
+        if (elements.selectionTitle) {
+            elements.selectionTitle.textContent = selectedNumber
+                ? `Startnummer ${selectedNumber} ist vorausgewählt`
+                : "Noch keine Nummer ausgewählt";
+        }
+        if (elements.selectionText) {
+            elements.selectionText.textContent = selectedNumber
+                ? "Diese lokale Vorauswahl bleibt für die aktuelle Browser-Sitzung gespeichert. Sie blockiert die Nummer noch nicht für andere Fahrer."
+                : "Wähle oben eine verfügbare Nummer. Die Auswahl wird nur auf diesem Gerät vorgemerkt.";
+        }
+        if (elements.selectionCopy) elements.selectionCopy.disabled = !selectedNumber;
+        if (elements.selectionClear) elements.selectionClear.disabled = !selectedNumber;
+        if (selectedNumber) updateHero(selectedNumber, "DEINE VORAUSWAHL");
+    }
+
+    function selectNumber(number) {
+        const entry = allNumbers.find((item) => item.nummer === number);
+        if (!entry || entry.status !== "frei") return;
+        selectedNumber = number;
+        storeSelection(number);
+        updateSelectionPanel();
+        renderNumbers();
+        elements.selection?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function clearSelection() {
+        selectedNumber = null;
+        storeSelection(null);
+        updateSelectionPanel();
+        updateHero(null, "FREIE NUMMER FINDEN");
+        renderNumbers();
+    }
+
+    async function copySelection() {
+        if (!selectedNumber) return;
+        const text = `Meine GTM-Wunschstartnummer: #${selectedNumber} (noch nicht reserviert)`;
+        try {
+            await navigator.clipboard.writeText(text);
+            elements.selectionCopy.textContent = "Kopiert ✓";
+            window.setTimeout(() => { elements.selectionCopy.textContent = "Auswahl kopieren"; }, 1800);
+        } catch (error) {
+            window.prompt("Vorauswahl kopieren:", text);
+        }
+    }
+
+    function resetFilters() {
+        if (elements.search) elements.search.value = "";
+        if (elements.status) elements.status.value = "frei";
+        if (elements.range) elements.range.value = "";
+        if (elements.team) elements.team.value = "";
+        if (elements.sort) elements.sort.value = "nummer-auf";
+        endingFilter = "";
+        document.querySelectorAll("[data-number-ending]").forEach((button) => button.classList.remove("is-active"));
+        applyFilters();
+    }
+
+    function chooseRandomFreeNumber() {
+        const freeNumbers = filteredNumbers.filter((entry) => entry.status === "frei");
+        const pool = freeNumbers.length ? freeNumbers : allNumbers.filter((entry) => entry.status === "frei");
+        if (!pool.length) return;
+        const entry = pool[Math.floor(Math.random() * pool.length)];
+        if (elements.search) elements.search.value = String(entry.nummer);
+        if (elements.status) elements.status.value = "frei";
+        endingFilter = "";
+        applyFilters();
+        updateHero(entry.nummer, "ZUFÄLLIGER VORSCHLAG");
     }
 
     function showError(message) {
         console.error(message);
-
-        if (!grid) {
-            return;
-        }
-
-        grid.innerHTML = `
-            <div class="gtm-data-error">
-
-                <strong>
-                    Die Startnummern konnten nicht geladen werden.
-                </strong>
-
-                <p>
-                    ${escapeHtml(message)}
-                </p>
-
-            </div>
-        `;
-
-        grid.setAttribute(
-            "aria-busy",
-            "false"
-        );
+        if (!elements.grid) return;
+        elements.grid.innerHTML = `
+            <div class="number-data-error">
+                <strong>Die Startnummern konnten nicht geladen werden.</strong>
+                <p>${escapeHtml(message)}</p>
+            </div>`;
+        elements.grid.setAttribute("aria-busy", "false");
+        if (elements.resultCount) elements.resultCount.textContent = "Datenfehler";
     }
 
     async function loadNumbers() {
+        if (!window.GTM || typeof window.GTM.load !== "function") {
+            showError("Die GTM Data Engine wurde nicht geladen.");
+            return;
+        }
+
         try {
-            const data =
-                await window.GTM.load(
-                    "startnummern",
-                    {
-                        forceReload: true
-                    }
-                );
+            const data = await window.GTM.load("startnummern", { forceReload: true });
+            if (!Array.isArray(data)) throw new Error("startnummern.json enthält keine gültige Liste.");
 
-            if (!Array.isArray(data)) {
-                throw new Error(
-                    "startnummern.json enthält keine gültige Liste."
-                );
-            }
-
-            alleStartnummern =
-                buildNumberList(data);
-
-            fillTeamFilter();
+            allNumbers = buildNumberSpace(data);
+            populateTeamFilter();
             updateStatistics();
-            filterNumbers();
+
+            const stored = readStoredSelection();
+            selectedNumber = allNumbers.some((entry) => entry.nummer === stored && entry.status === "frei") ? stored : null;
+            if (!selectedNumber) storeSelection(null);
+
+            updateSelectionPanel();
+            applyFilters();
         } catch (error) {
-            showError(
-                error.message ||
-                "Unbekannter Fehler"
-            );
+            showError(error?.message || "Unbekannter Fehler");
         }
     }
 
-    searchInput?.addEventListener(
-        "input",
-        filterNumbers
-    );
+    [elements.search, elements.status, elements.range, elements.team, elements.sort]
+        .filter(Boolean)
+        .forEach((element) => {
+            element.addEventListener(element === elements.search ? "input" : "change", applyFilters);
+        });
 
-    statusFilter?.addEventListener(
-        "change",
-        filterNumbers
-    );
+    elements.grid?.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-select-number]");
+        if (button) selectNumber(toInteger(button.dataset.selectNumber));
+    });
 
-    teamFilter?.addEventListener(
-        "change",
-        filterNumbers
-    );
+    elements.grid?.addEventListener("mouseover", (event) => {
+        const card = event.target.closest(".number-card");
+        if (!card) return;
+        const number = toInteger(card.dataset.number);
+        const entry = allNumbers.find((item) => item.nummer === number);
+        updateHero(number, entry ? statusLabel(entry.status).toUpperCase() : "GTM STARTNUMMER");
+    });
 
-    sortSelect?.addEventListener(
-        "change",
-        filterNumbers
-    );
+    elements.loadMore?.addEventListener("click", () => {
+        visibleCount += PAGE_SIZE;
+        renderNumbers();
+    });
+    elements.random?.addEventListener("click", chooseRandomFreeNumber);
+    elements.reset?.addEventListener("click", resetFilters);
+    elements.selectionCopy?.addEventListener("click", copySelection);
+    elements.selectionClear?.addEventListener("click", clearSelection);
+    document.querySelector("[data-reset-filters]")?.addEventListener("click", resetFilters);
+
+    document.querySelectorAll("[data-number-ending]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const value = String(button.dataset.numberEnding || "");
+            endingFilter = endingFilter === value ? "" : value;
+            document.querySelectorAll("[data-number-ending]").forEach((item) => {
+                item.classList.toggle("is-active", endingFilter !== "" && item === button);
+            });
+            applyFilters();
+        });
+    });
+
+    document.querySelectorAll("[data-number-range]").forEach((button) => {
+        button.addEventListener("click", () => {
+            if (elements.range) elements.range.value = button.dataset.numberRange || "";
+            applyFilters();
+        });
+    });
+
+    document.querySelectorAll("[data-jump-to]").forEach((button) => {
+        button.addEventListener("click", () => {
+            if (elements.status) elements.status.value = button.dataset.jumpTo || "";
+            applyFilters();
+            document.getElementById("number-explorer")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    });
 
     await loadNumbers();
 });

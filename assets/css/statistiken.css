@@ -1,1155 +1,1117 @@
-/* =========================================================
+/* ==========================================================
    GTM STATISTIKEN
-========================================================= */
+   Serienfähiger Data Hub für Gesamt, Masters und Time Attack
+========================================================== */
 
-.statistiken-page {
+:root {
+    --stats-red: #e10600;
+    --stats-red-dark: #720500;
+    --stats-gold: #d6a83b;
+    --stats-blue: #20a9df;
+    --stats-surface: #111111;
+    --stats-surface-light: #191919;
+    --stats-border: rgba(255, 255, 255, 0.12);
+    --stats-muted: #9f9f9f;
+}
+
+.stats-page {
     min-height: 100vh;
+    overflow: hidden;
     color: #ffffff;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(130, 0, 0, 0.14),
-            transparent 34rem
-        ),
-        linear-gradient(
-            180deg,
-            #070707 0%,
-            #101010 100%
-        );
+        radial-gradient(circle at 88% 12%, rgba(141, 0, 0, 0.18), transparent 31rem),
+        radial-gradient(circle at 8% 58%, rgba(214, 168, 59, 0.055), transparent 26rem),
+        #070707;
 }
 
-/* =========================================================
+.stats-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ==========================================================
    HERO
-========================================================= */
+========================================================== */
 
-.statistiken-hero {
-    padding: 76px 0 42px;
-    text-align: center;
+.stats-hero {
+    position: relative;
+    min-height: 500px;
+    padding: 105px 0 112px;
+    isolation: isolate;
+    border-bottom: 1px solid var(--stats-border);
+    background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.98), rgba(8, 8, 8, 0.9) 50%, rgba(54, 2, 2, 0.54)),
+        repeating-linear-gradient(115deg, transparent 0 17px, rgba(255, 255, 255, 0.018) 17px 18px);
 }
 
-.statistiken-eyebrow {
-    margin: 0 0 12px;
-    color: #d40000;
-    font-size: 0.88rem;
-    font-weight: 800;
-    letter-spacing: 0.22em;
+.stats-hero::before {
+    position: absolute;
+    right: -2vw;
+    bottom: -45px;
+    z-index: -1;
+    content: "NUMBERS";
+    color: rgba(255, 255, 255, 0.025);
+    font-size: clamp(8rem, 17vw, 18rem);
+    font-weight: 1000;
+    font-style: italic;
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+    white-space: nowrap;
+}
+
+.stats-hero::after {
+    position: absolute;
+    inset: 12% -12% auto 58%;
+    z-index: -2;
+    height: 420px;
+    content: "";
+    border-radius: 50%;
+    background: rgba(225, 6, 0, 0.2);
+    filter: blur(95px);
+}
+
+.stats-hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.75fr);
+    align-items: center;
+    gap: 48px;
+}
+
+.stats-hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.stats-eyebrow,
+.stats-section-heading > div > p,
+.stats-ranking-header > div > p {
+    margin: 0 0 10px;
+    color: var(--stats-red);
+    font-size: 0.78rem;
+    font-weight: 1000;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
 }
 
-.statistiken-hero h1 {
+.stats-hero h1 {
     margin: 0;
-    color: #ffffff;
-    font-size: clamp(2.8rem, 7vw, 5rem);
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    line-height: 0.95;
+    font-size: clamp(4.4rem, 9vw, 9rem);
+    font-weight: 1000;
+    font-style: italic;
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    text-shadow: 0 18px 50px rgba(0, 0, 0, 0.52);
 }
 
-.statistiken-intro {
-    max-width: 760px;
-    margin: 22px auto 0;
-    color: #b8b8b8;
+.stats-hero-intro {
+    max-width: 680px;
+    margin: 28px 0 0;
+    color: #cecece;
     font-size: 1.08rem;
     line-height: 1.7;
 }
 
-/* =========================================================
-   HAUPTÜBERSICHT
-========================================================= */
-
-.statistiken-uebersicht {
-    padding: 12px 0 32px;
+.stats-data-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 30px;
+    padding: 12px 17px;
+    border: 1px solid var(--stats-border);
+    border-radius: 12px;
+    background: rgba(13, 13, 13, 0.72);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(12px);
 }
 
-.statistiken-uebersicht-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.statistik-hauptkarte {
-    position: relative;
-    overflow: hidden;
-    min-height: 150px;
-    padding: 26px 22px;
-    text-align: center;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(32, 32, 32, 0.98),
-            rgba(19, 19, 19, 0.98)
-        );
-    border: 1px solid #303030;
-    border-radius: 20px;
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.22);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.statistik-hauptkarte::after {
-    content: "";
-    position: absolute;
-    right: -35px;
-    bottom: -45px;
-    width: 120px;
-    height: 120px;
+.stats-data-light {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(212, 0, 0, 0.08);
+    background: #39e56f;
+    box-shadow: 0 0 0 5px rgba(57, 229, 111, 0.1), 0 0 18px rgba(57, 229, 111, 0.55);
 }
 
-.statistik-hauptkarte:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 0, 0, 0.75);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.32),
-        0 0 26px rgba(212, 0, 0, 0.08);
-}
-
-.statistik-hauptkarte-label {
-    position: relative;
-    z-index: 1;
+.stats-data-state small,
+.stats-data-state strong {
     display: block;
-    margin-bottom: 10px;
-    color: #8e8e8e;
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
 }
 
-.statistik-hauptkarte strong {
-    position: relative;
-    z-index: 1;
-    display: block;
-    color: #ffffff;
-    font-size: clamp(2rem, 4vw, 3rem);
+.stats-data-state small {
+    color: #7f7f7f;
+    font-size: 0.62rem;
     font-weight: 900;
-    line-height: 1;
-}
-
-.statistik-hauptkarte small {
-    position: relative;
-    z-index: 1;
-    display: block;
-    margin-top: 10px;
-    color: #777777;
-    font-size: 0.76rem;
-    line-height: 1.4;
-}
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-.statistiken-filterbereich {
-    padding: 10px 0 35px;
-}
-
-.statistiken-toolbar {
-    display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    padding: 20px;
-    background: rgba(20, 20, 20, 0.92);
-    border: 1px solid #2d2d2d;
-    border-radius: 22px;
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.2);
-}
-
-.statistiken-filter {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-}
-
-.statistiken-filter span {
-    color: #9f9f9f;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.statistiken-filter input,
-.statistiken-filter select {
-    width: 100%;
-    min-height: 54px;
-    padding: 0 16px;
-    color: #ffffff;
-    background: #111111;
-    border: 1px solid #383838;
-    border-radius: 13px;
-    outline: none;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-}
-
-.statistiken-filter select {
-    cursor: pointer;
-}
-
-.statistiken-filter select option {
-    color: #ffffff;
-    background: #151515;
-}
-
-.statistiken-filter input::placeholder {
-    color: #6f6f6f;
-}
-
-.statistiken-filter input:focus,
-.statistiken-filter select:focus {
-    background: #151515;
-    border-color: #d40000;
-    box-shadow:
-        0 0 0 4px rgba(212, 0, 0, 0.12);
-}
-
-/* =========================================================
-   INHALT
-========================================================= */
-
-.statistiken-inhalt {
-    padding: 0 0 80px;
-}
-
-.statistik-bereich {
-    margin-bottom: 34px;
-    padding: 26px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(28, 28, 28, 0.98),
-            rgba(15, 15, 15, 0.98)
-        );
-    border: 1px solid #2f2f2f;
-    border-radius: 24px;
-    box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.22);
-}
-
-.statistik-bereich-kopf {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 18px;
-    margin-bottom: 22px;
-}
-
-.statistik-bereich-kopf span {
-    display: block;
-    margin-bottom: 7px;
-    color: #d40000;
-    font-size: 0.75rem;
-    font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-.statistik-bereich-kopf h2 {
-    margin: 0;
-    color: #ffffff;
-    font-size: clamp(1.55rem, 3vw, 2.35rem);
-    font-weight: 900;
-    line-height: 1.05;
+.stats-data-state strong {
+    margin-top: 2px;
+    font-size: 0.82rem;
 }
 
-.statistik-laden {
-    padding: 34px 20px;
-    color: #8d8d8d;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid #2d2d2d;
-    border-radius: 14px;
-}/* =========================================================
-   TOP 3
-========================================================= */
-
-.statistik-top-grid {
+.stats-hero-visual {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    place-items: center;
+    min-height: 290px;
+    color: #ffffff;
 }
 
-.statistik-top-karte {
+.stats-hero-visual strong {
+    z-index: 2;
+    font-size: clamp(5.5rem, 10vw, 9rem);
+    font-weight: 1000;
+    font-style: italic;
+    line-height: 0.75;
+    letter-spacing: -0.09em;
+    text-shadow: 0 22px 52px rgba(0, 0, 0, 0.65);
+}
+
+.stats-hero-visual > span:last-child {
+    z-index: 2;
+    margin-top: -24px;
+    color: var(--stats-red);
+    font-size: 1rem;
+    font-weight: 1000;
+    letter-spacing: 0.65em;
+}
+
+.stats-hero-ring {
+    position: absolute;
+    border: 1px solid rgba(225, 6, 0, 0.48);
+    border-radius: 50%;
+}
+
+.stats-hero-ring-one {
+    width: 285px;
+    height: 285px;
+    box-shadow: inset 0 0 70px rgba(225, 6, 0, 0.1), 0 0 45px rgba(225, 6, 0, 0.08);
+}
+
+.stats-hero-ring-two {
+    width: 205px;
+    height: 205px;
+    border-color: rgba(214, 168, 59, 0.34);
+}
+
+/* ==========================================================
+   KPI-BAND
+========================================================== */
+
+.stats-overview {
+    position: relative;
+    z-index: 3;
+    margin-top: -55px;
+}
+
+.stats-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid var(--stats-border);
+    border-radius: 22px;
+    background: rgba(10, 10, 10, 0.96);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.48);
+}
+
+.stats-kpi-card {
+    position: relative;
+    min-height: 160px;
+    padding: 28px 30px;
+    border-right: 1px solid var(--stats-border);
+    background:
+        radial-gradient(circle at 100% 100%, rgba(225, 6, 0, 0.13), transparent 42%),
+        linear-gradient(145deg, #191919, #101010);
+}
+
+.stats-kpi-card:last-child {
+    border-right: 0;
+}
+
+.stats-kpi-card::after {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    content: attr(data-index);
+    color: rgba(255, 255, 255, 0.055);
+    font-size: 3.3rem;
+    font-weight: 1000;
+    font-style: italic;
+}
+
+.stats-kpi-card span,
+.stats-kpi-card small {
+    display: block;
+}
+
+.stats-kpi-card span {
+    color: var(--stats-muted);
+    font-size: 0.7rem;
+    font-weight: 1000;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.stats-kpi-card strong {
+    display: block;
+    margin-top: 11px;
+    font-size: clamp(2.3rem, 4vw, 3.6rem);
+    font-weight: 1000;
+    line-height: 0.95;
+}
+
+.stats-kpi-card small {
+    margin-top: 11px;
+    color: #777777;
+    font-size: 0.74rem;
+    line-height: 1.35;
+}
+
+/* ==========================================================
+   STEUERUNG
+========================================================== */
+
+.stats-controls-section {
+    padding: 42px 0 0;
+}
+
+.stats-controls {
+    display: grid;
+    grid-template-columns: minmax(310px, 1.4fr) repeat(3, minmax(170px, 0.75fr));
+    gap: 14px;
+    align-items: end;
+    padding: 22px;
+    border: 1px solid var(--stats-border);
+    border-radius: 18px;
+    background: rgba(18, 18, 18, 0.9);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.stats-view-control > span,
+.stats-control-field > span {
+    display: block;
+    margin: 0 0 9px;
+    color: #9c9c9c;
+    font-size: 0.66rem;
+    font-weight: 1000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.stats-view-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 5px;
+    border: 1px solid var(--stats-border);
+    border-radius: 12px;
+    background: #0b0b0b;
+}
+
+.stats-view-tabs button {
+    min-height: 44px;
+    padding: 8px 11px;
+    color: #a5a5a5;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 0.78rem;
+    font-weight: 900;
+    transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-view-tabs button:hover,
+.stats-view-tabs button:focus-visible {
+    color: #ffffff;
+    outline: none;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.stats-view-tabs button.is-active {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--stats-red), #9d0500);
+    box-shadow: 0 8px 22px rgba(225, 6, 0, 0.25);
+}
+
+.stats-control-field select,
+.stats-control-field input {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 15px;
+    color: #ffffff;
+    border: 1px solid var(--stats-border);
+    border-radius: 12px;
+    outline: none;
+    background: #0c0c0c;
+    font-size: 0.88rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-control-field input::placeholder {
+    color: #686868;
+}
+
+.stats-control-field select:focus,
+.stats-control-field input:focus {
+    border-color: rgba(225, 6, 0, 0.8);
+    box-shadow: 0 0 0 4px rgba(225, 6, 0, 0.1);
+}
+
+.stats-control-field.is-disabled {
+    opacity: 0.42;
+}
+
+/* ==========================================================
+   INHALT / UEBERSCHRIFTEN
+========================================================== */
+
+.stats-content {
+    padding: 70px 0 90px;
+}
+
+.stats-section-heading,
+.stats-ranking-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 25px;
+}
+
+.stats-section-heading h2,
+.stats-ranking-header h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    font-weight: 1000;
+    font-style: italic;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+}
+
+.stats-section-heading-small h2 {
+    font-size: clamp(1.7rem, 3vw, 2.65rem);
+}
+
+.stats-section-heading a {
+    flex: 0 0 auto;
+    color: #bcbcbc;
+    font-size: 0.78rem;
+    font-weight: 900;
+    transition: color 0.2s ease;
+}
+
+.stats-section-heading a span {
+    margin-left: 7px;
+    color: var(--stats-red);
+}
+
+.stats-section-heading a:hover {
+    color: #ffffff;
+}
+
+.stats-intro-heading {
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+.stats-scope-note {
+    max-width: 520px;
+    margin: 0;
+    color: #8d8d8d;
+    line-height: 1.65;
+}
+
+.stats-panel {
     position: relative;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: 64px 92px minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: center;
-    min-height: 180px;
-    padding: 20px;
+    margin-bottom: 24px;
+    padding: 28px;
+    border: 1px solid var(--stats-border);
+    border-radius: 22px;
     background:
-        linear-gradient(
-            145deg,
-            #202020 0%,
-            #151515 60%,
-            #101010 100%
-        );
-    border: 1px solid #303030;
-    border-radius: 20px;
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.24);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        radial-gradient(circle at 100% 0, rgba(225, 6, 0, 0.07), transparent 28rem),
+        linear-gradient(145deg, rgba(24, 24, 24, 0.98), rgba(12, 12, 12, 0.98));
+    box-shadow: 0 22px 52px rgba(0, 0, 0, 0.25);
 }
 
-.statistik-top-karte:hover {
-    transform: translateY(-6px);
-    border-color: rgba(212, 0, 0, 0.85);
-    box-shadow:
-        0 22px 42px rgba(0, 0, 0, 0.34),
-        0 0 24px rgba(212, 0, 0, 0.08);
+.stats-panel::after {
+    position: absolute;
+    right: -25px;
+    bottom: -50px;
+    content: "GTM";
+    color: rgba(255, 255, 255, 0.018);
+    font-size: 9rem;
+    font-weight: 1000;
+    font-style: italic;
+    transform: rotate(-9deg);
+    pointer-events: none;
 }
 
-.statistik-top-platz {
+.stats-two-column {
     display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
-    color: #111111;
-    background:
-        linear-gradient(
-            135deg,
-            #f0cc48,
-            #a97b10
-        );
-    border-radius: 50%;
-    font-size: 1.35rem;
-    font-weight: 900;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
-.statistik-top-bild,
-.statistik-team-symbol {
-    width: 84px;
-    height: 84px;
-    overflow: hidden;
-    border-radius: 16px;
-    background:
-        linear-gradient(
-            145deg,
-            #2b2b2b,
-            #151515
-        );
-    border: 1px solid #363636;
-}
-
-.statistik-top-bild img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center top;
-}
-
-.statistik-team-symbol {
-    display: grid;
-    place-items: center;
-    color: rgba(255, 255, 255, 0.22);
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-}
-
-.statistik-top-inhalt {
+.stats-two-column .stats-panel {
     min-width: 0;
 }
 
-.statistik-top-nummer,
-.statistik-top-label {
-    display: inline-flex;
-    align-items: center;
-    min-height: 30px;
-    padding: 0 10px;
-    margin-bottom: 9px;
-    color: #ffffff;
-    background:
-        linear-gradient(
-            135deg,
-            #e00000,
-            #9e0000
-        );
-    border-radius: 8px;
-    font-size: 0.72rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
+/* ==========================================================
+   PODIUM / FOKUSKARTEN
+========================================================== */
 
-.statistik-top-inhalt h3 {
-    margin: 0 0 7px;
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 900;
-    line-height: 1.1;
-}
-
-.statistik-top-inhalt p,
-.statistik-top-inhalt small {
-    display: block;
-    margin: 0;
-    color: #a8a8a8;
-    font-size: 0.82rem;
-    line-height: 1.45;
-}
-
-.statistik-top-inhalt small {
-    margin-top: 3px;
-    color: #777777;
-}
-
-.statistik-top-werte {
-    text-align: right;
-}
-
-.statistik-top-werte strong {
-    display: block;
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 900;
-    line-height: 1;
-}
-
-.statistik-top-werte span,
-.statistik-top-werte small {
-    display: block;
-    margin-top: 6px;
-    color: #777777;
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   DETAILWERTE
-========================================================= */
-
-.statistik-detail-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 16px;
-}
-
-.statistik-detailkarte {
-    padding: 22px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid #303030;
-    border-radius: 16px;
-}
-
-.statistik-detailkarte span {
-    display: block;
-    color: #808080;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.statistik-detailkarte strong {
-    display: block;
-    margin-top: 10px;
-    color: #ffffff;
-    font-size: 2.15rem;
-    font-weight: 900;
-}
-
-/* =========================================================
-   FAHRZEUGVERTEILUNG
-========================================================= */
-
-.statistik-fahrzeug-grid {
-    display: grid;
-    gap: 12px;
-}
-
-.statistik-fahrzeug-karte {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr) 110px;
-    gap: 16px;
-    align-items: center;
-    padding: 15px 16px;
-    background: rgba(255, 255, 255, 0.028);
-    border: 1px solid #2e2e2e;
-    border-radius: 14px;
-}
-
-.statistik-fahrzeug-rang {
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    color: #111111;
-    background:
-        linear-gradient(
-            135deg,
-            #d4af37,
-            #8f6815
-        );
-    border-radius: 50%;
-    font-weight: 900;
-}
-
-.statistik-fahrzeug-inhalt h3 {
-    margin: 0 0 10px;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 800;
-}
-
-.statistik-fahrzeug-balken {
-    overflow: hidden;
-    height: 8px;
-    background: #202020;
-    border-radius: 999px;
-}
-
-.statistik-fahrzeug-balken span {
-    display: block;
-    height: 100%;
-    background:
-        linear-gradient(
-            90deg,
-            #d40000,
-            #f03b3b
-        );
-    border-radius: inherit;
-}
-
-.statistik-fahrzeug-wert {
-    text-align: right;
-}
-
-.statistik-fahrzeug-wert strong {
-    display: block;
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 900;
-}
-
-.statistik-fahrzeug-wert span,
-.statistik-fahrzeug-wert small {
-    display: block;
-    margin-top: 3px;
-    color: #777777;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}/* =========================================================
-   FAHRERSTATISTIKEN
-========================================================= */
-
-.statistik-fahrer-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-    gap: 16px;
-}
-
-.statistik-fahrer-karte {
+.stats-podium-grid {
     position: relative;
-    overflow: hidden;
-    padding: 20px;
-    background:
-        linear-gradient(
-            145deg,
-            #202020 0%,
-            #151515 60%,
-            #101010 100%
-        );
-    border: 1px solid #303030;
-    border-radius: 18px;
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.22);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.statistik-fahrer-karte:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 0, 0, 0.85);
-    box-shadow:
-        0 22px 42px rgba(0, 0, 0, 0.34),
-        0 0 24px rgba(212, 0, 0, 0.08);
-}
-
-.statistik-fahrer-kopf {
+    z-index: 1;
     display: grid;
-    grid-template-columns: 54px 1fr auto;
-    gap: 14px;
-    align-items: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
-.statistik-fahrer-platz {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    color: #111111;
-    background:
-        linear-gradient(
-            135deg,
-            #d4af37,
-            #8f6815
-        );
-    border-radius: 50%;
-    font-size: 1rem;
-    font-weight: 900;
-}
-
-.statistik-fahrer-nummer {
-    display: inline-flex;
-    align-items: center;
-    min-height: 28px;
-    padding: 0 9px;
-    margin-bottom: 7px;
-    color: #ffffff;
-    background:
-        linear-gradient(
-            135deg,
-            #e00000,
-            #9e0000
-        );
-    border-radius: 7px;
-    font-size: 0.68rem;
-    font-weight: 900;
-}
-
-.statistik-fahrer-kopf h3 {
-    margin: 0;
-    color: #ffffff;
-    font-size: 1.15rem;
-    font-weight: 900;
-}
-
-.statistik-fahrer-punkte {
-    color: #ffffff;
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-align: right;
-}
-
-.statistik-fahrer-punkte small {
-    display: block;
-    margin-top: 4px;
-    color: #777777;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.statistik-fahrer-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    margin: 16px 0;
-    color: #8d8d8d;
-    font-size: 0.8rem;
-}
-
-.statistik-fahrer-werte {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 8px;
-}
-
-.statistik-fahrer-werte div {
-    padding: 11px 7px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid #2f2f2f;
-    border-radius: 10px;
-}
-
-.statistik-fahrer-werte strong {
-    display: block;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 900;
-}
-
-.statistik-fahrer-werte span {
-    display: block;
-    margin-top: 5px;
-    color: #777777;
-    font-size: 0.63rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   ANSICHTEN
-========================================================= */
-
-body[data-statistik-ansicht="fahrer"]
-.statistik-bereich:nth-of-type(2),
-
-body[data-statistik-ansicht="fahrer"]
-.statistik-bereich:nth-of-type(3),
-
-body[data-statistik-ansicht="fahrer"]
-.statistik-bereich:nth-of-type(4) {
-    display: none;
-}
-
-body[data-statistik-ansicht="teams"]
-.statistik-bereich:nth-of-type(1),
-
-body[data-statistik-ansicht="teams"]
-.statistik-bereich:nth-of-type(3),
-
-body[data-statistik-ansicht="teams"]
-.statistik-bereich:nth-of-type(4),
-
-body[data-statistik-ansicht="teams"]
-.statistik-bereich:nth-of-type(5) {
-    display: none;
-}
-
-body[data-statistik-ansicht="fahrzeuge"]
-.statistik-bereich:nth-of-type(1),
-
-body[data-statistik-ansicht="fahrzeuge"]
-.statistik-bereich:nth-of-type(2),
-
-body[data-statistik-ansicht="fahrzeuge"]
-.statistik-bereich:nth-of-type(3),
-
-body[data-statistik-ansicht="fahrzeuge"]
-.statistik-bereich:nth-of-type(5) {
-    display: none;
-}
-
-/* =========================================================
-   FEHLER / KEINE ERGEBNISSE
-========================================================= */
-
-.keine-statistiken,
-.gtm-data-error {
-    padding: 48px 28px;
-    color: #bdbdbd;
-    text-align: center;
-    background: #171717;
-    border: 1px solid #303030;
-    border-radius: 20px;
-}
-
-.gtm-data-error strong {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-    font-size: 1.15rem;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1200px) {
-    .statistiken-uebersicht-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    .statistik-top-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .statistik-fahrer-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 900px) {
-    .statistiken-toolbar {
-        grid-template-columns: 1fr;
-    }
-
-    .statistik-detail-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    .statistik-top-karte {
-        grid-template-columns:
-            54px 76px minmax(0, 1fr);
-    }
-
-    .statistik-top-werte {
-        grid-column: 2 / -1;
-        text-align: left;
-    }
-}
-
-@media (max-width: 700px) {
-    .statistiken-hero {
-        padding-top: 54px;
-    }
-
-    .statistik-bereich {
-        padding: 20px;
-    }
-
-    .statistik-detail-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .statistik-fahrer-kopf {
-        grid-template-columns: 48px 1fr;
-    }
-
-    .statistik-fahrer-punkte {
-        grid-column: 2;
-        text-align: left;
-    }
-
-    .statistik-fahrer-werte {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 520px) {
-    .statistiken-uebersicht-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .statistik-top-karte {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .statistik-top-platz,
-    .statistik-top-bild,
-    .statistik-team-symbol {
-        margin: 0 auto;
-    }
-
-    .statistik-top-werte {
-        grid-column: auto;
-        text-align: center;
-    }
-
-    .statistik-fahrzeug-karte {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .statistik-fahrzeug-rang {
-        margin: 0 auto;
-    }
-
-    .statistik-fahrzeug-wert {
-        text-align: center;
-    }
-}/* =========================================================
-   NEUE TOP-3-KARTEN
-========================================================= */
-
-.statistik-top-grid {
-    align-items: stretch;
-}
-
-.statistik-podium-karte {
+.stats-focus-card {
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: 430px;
-    padding: 24px;
+    min-height: 390px;
+    padding: 22px;
+    color: #ffffff;
+    border: 1px solid var(--stats-border);
+    border-radius: 18px;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255, 255, 255, 0.055),
-            transparent 42%
-        ),
-        linear-gradient(
-            145deg,
-            #202020,
-            #141414 65%,
-            #0d0d0d
-        );
-    border: 1px solid #333333;
-    border-radius: 22px;
-    box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.3);
-    transition:
-        transform 0.28s ease,
-        border-color 0.28s ease,
-        box-shadow 0.28s ease;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 34%),
+        #101010;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.statistik-podium-karte::after {
-    content: "GTM";
-    position: absolute;
-    right: -30px;
-    bottom: -42px;
-    color: rgba(255, 255, 255, 0.025);
-    font-size: 7rem;
-    font-weight: 900;
-    transform: rotate(-12deg);
-    pointer-events: none;
+.stats-focus-card:hover {
+    color: #ffffff;
+    transform: translateY(-7px);
+    border-color: rgba(225, 6, 0, 0.72);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.38), 0 0 24px rgba(225, 6, 0, 0.08);
 }
 
-.statistik-podium-karte:hover {
-    transform: translateY(-8px);
-    border-color: rgba(212, 0, 0, 0.85);
-    box-shadow:
-        0 28px 55px rgba(0, 0, 0, 0.42),
-        0 0 28px rgba(212, 0, 0, 0.1);
-}
-
-.statistik-podium-karte.platz-1 {
-    border-color: rgba(212, 175, 55, 0.7);
+.stats-focus-card.rank-1 {
+    border-color: rgba(214, 168, 59, 0.58);
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(212, 175, 55, 0.13),
-            transparent 45%
-        ),
-        linear-gradient(
-            145deg,
-            #282313,
-            #161511 60%,
-            #0d0d0d
-        );
+        radial-gradient(circle at 50% 0, rgba(214, 168, 59, 0.12), transparent 44%),
+        #11100d;
 }
 
-.statistik-podium-karte.platz-2 {
-    border-color: rgba(200, 200, 200, 0.42);
-}
-
-.statistik-podium-karte.platz-3 {
-    border-color: rgba(184, 115, 51, 0.55);
-}
-
-.statistik-podium-kopf {
-    position: relative;
-    z-index: 2;
+.stats-focus-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 12px;
 }
 
-.statistik-podium-medaille {
-    font-size: 2.3rem;
-    line-height: 1;
-}
-
-.statistik-podium-nummer,
-.statistik-team-badge {
+.stats-focus-category,
+.stats-focus-rank {
     display: inline-flex;
     align-items: center;
-    min-height: 34px;
-    padding: 0 12px;
-    color: #ffffff;
-    background:
-        linear-gradient(
-            135deg,
-            #e00000,
-            #980000
-        );
-    border-radius: 9px;
-    font-size: 0.78rem;
-    font-weight: 900;
+    min-height: 31px;
+    padding: 0 11px;
+    border-radius: 999px;
+    font-size: 0.67rem;
+    font-weight: 1000;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.statistik-podium-bild,
-.statistik-team-logo {
+.stats-focus-category {
+    color: #ff7772;
+    border: 1px solid rgba(225, 6, 0, 0.42);
+    background: rgba(225, 6, 0, 0.1);
+}
+
+.stats-focus-rank {
+    color: #151515;
+    background: linear-gradient(135deg, #efc957, #aa7913);
+}
+
+.stats-focus-image {
     position: relative;
-    z-index: 2;
+    width: 138px;
+    height: 138px;
     overflow: hidden;
-    width: 132px;
-    height: 132px;
-    margin: 0 auto 22px;
-    background:
-        linear-gradient(
-            145deg,
-            #303030,
-            #171717
-        );
-    border: 3px solid rgba(255, 255, 255, 0.13);
+    margin: 22px auto 18px;
+    border: 3px solid rgba(255, 255, 255, 0.14);
     border-radius: 50%;
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.42);
+    background: #202020;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
 }
 
-.statistik-podium-karte.platz-1 .statistik-podium-bild,
-.statistik-podium-karte.platz-1 .statistik-team-logo {
-    border-color: rgba(212, 175, 55, 0.9);
+.rank-1 .stats-focus-image {
+    border-color: rgba(214, 168, 59, 0.85);
 }
 
-.statistik-podium-karte.platz-2 .statistik-podium-bild,
-.statistik-podium-karte.platz-2 .statistik-team-logo {
-    border-color: rgba(215, 215, 215, 0.8);
-}
-
-.statistik-podium-karte.platz-3 .statistik-podium-bild,
-.statistik-podium-karte.platz-3 .statistik-team-logo {
-    border-color: rgba(184, 115, 51, 0.9);
-}
-
-.statistik-podium-bild img {
+.stats-focus-image img {
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
     object-position: center top;
 }
 
-.statistik-podium-platz {
-    position: absolute;
-    right: 3px;
-    bottom: 3px;
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    color: #111111;
-    background:
-        linear-gradient(
-            135deg,
-            #f0cc48,
-            #a97b10
-        );
-    border: 3px solid #151515;
-    border-radius: 50%;
-    font-weight: 900;
-}
-
-.statistik-team-logo {
-    display: grid;
-    place-items: center;
-    color: rgba(255, 255, 255, 0.24);
-    font-size: 1.65rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-}
-
-.statistik-podium-inhalt {
-    position: relative;
-    z-index: 2;
+.stats-focus-body {
     min-width: 0;
     text-align: center;
 }
 
-.statistik-podium-inhalt h3 {
+.stats-focus-number {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--stats-red);
+    font-size: 0.7rem;
+    font-weight: 1000;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.stats-focus-body h3 {
     overflow: hidden;
-    margin: 0 0 9px;
-    color: #ffffff;
-    font-size: 1.55rem;
-    font-weight: 900;
+    margin: 0;
+    font-size: 1.48rem;
+    font-weight: 1000;
     line-height: 1.12;
     text-overflow: ellipsis;
-}
-
-.statistik-podium-inhalt p {
-    overflow: hidden;
-    margin: 0 0 7px;
-    color: #c4c4c4;
-    font-size: 0.92rem;
-    font-weight: 700;
-    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.statistik-podium-inhalt small {
-    display: block;
+.stats-focus-body p {
     overflow: hidden;
-    color: #858585;
+    margin: 8px 0 0;
+    color: #a6a6a6;
     font-size: 0.82rem;
-    line-height: 1.4;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.statistik-podium-ergebnis {
-    position: relative;
-    z-index: 2;
-    margin-top: 24px;
-    text-align: center;
+.stats-focus-result {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 22px;
 }
 
-.statistik-podium-ergebnis strong {
+.stats-focus-result div span,
+.stats-focus-result small {
     display: block;
-    color: #ffffff;
-    font-size: 2.8rem;
+    color: #737373;
+    font-size: 0.64rem;
     font-weight: 900;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.stats-focus-result strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 2.15rem;
+    font-weight: 1000;
     line-height: 1;
 }
 
-.statistik-podium-ergebnis span {
+.stats-focus-result small {
+    max-width: 110px;
+    color: #a5a5a5;
+    line-height: 1.4;
+    text-align: right;
+}
+
+/* ==========================================================
+   KOMPAKTLISTEN
+========================================================== */
+
+.stats-compact-list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 10px;
+}
+
+.stats-compact-row {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 13px;
+    align-items: center;
+    min-height: 76px;
+    padding: 12px 14px;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+a.stats-compact-row:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+    border-color: rgba(225, 6, 0, 0.58);
+    background: rgba(225, 6, 0, 0.055);
+}
+
+.stats-compact-rank {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    color: #171717;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--stats-gold), #9e6e10);
+    font-weight: 1000;
+}
+
+.stats-compact-main {
+    min-width: 0;
+}
+
+.stats-compact-main strong,
+.stats-compact-main span {
     display: block;
-    margin-top: 7px;
-    color: #888888;
-    font-size: 0.73rem;
-    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stats-compact-main strong {
+    font-size: 0.92rem;
+}
+
+.stats-compact-main span {
+    margin-top: 4px;
+    color: #797979;
+    font-size: 0.7rem;
+}
+
+.stats-compact-value {
+    min-width: 82px;
+    text-align: right;
+}
+
+.stats-compact-value strong,
+.stats-compact-value span {
+    display: block;
+}
+
+.stats-compact-value strong {
+    font-size: 1.05rem;
+}
+
+.stats-compact-value span {
+    margin-top: 3px;
+    color: #6f6f6f;
+    font-size: 0.58rem;
+    font-weight: 900;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.statistik-podium-zusatz {
-    position: relative;
-    z-index: 2;
-    display: flex;
+.stats-progress {
+    overflow: hidden;
+    height: 5px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: #252525;
+}
+
+.stats-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--stats-red), #ff4740);
+}
+
+/* ==========================================================
+   RANGLISTE
+========================================================== */
+
+.stats-result-count {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-top: auto;
-    padding: 13px 14px;
+    min-height: 38px;
+    padding: 0 13px;
+    color: #b4b4b4;
+    border: 1px solid var(--stats-border);
+    border-radius: 999px;
     background: rgba(255, 255, 255, 0.035);
-    border: 1px solid #303030;
-    border-radius: 12px;
-}
-
-.statistik-podium-zusatz span {
-    color: #808080;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.statistik-podium-zusatz strong {
-    color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.72rem;
     font-weight: 900;
 }
 
+.stats-ranking-list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 10px;
+}
+
+.stats-ranking-row {
+    display: grid;
+    grid-template-columns: 58px 62px minmax(170px, 1.4fr) minmax(150px, 1fr) minmax(135px, 1fr) repeat(3, minmax(70px, 0.55fr)) 34px;
+    gap: 14px;
+    align-items: center;
+    min-height: 92px;
+    padding: 12px 17px;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+a.stats-ranking-row:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+    border-color: rgba(225, 6, 0, 0.62);
+    background: rgba(225, 6, 0, 0.045);
+}
+
+.stats-ranking-position {
+    color: var(--stats-gold);
+    font-size: 1.55rem;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.stats-ranking-avatar {
+    width: 58px;
+    height: 66px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 11px;
+    background: #202020;
+}
+
+.stats-ranking-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.stats-ranking-main,
+.stats-ranking-meta,
+.stats-ranking-value {
+    min-width: 0;
+}
+
+.stats-ranking-main span,
+.stats-ranking-meta span,
+.stats-ranking-value span {
+    display: block;
+    color: #737373;
+    font-size: 0.58rem;
+    font-weight: 1000;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.stats-ranking-main strong,
+.stats-ranking-meta strong,
+.stats-ranking-value strong {
+    display: block;
+    overflow: hidden;
+    margin-top: 5px;
+    font-size: 0.86rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stats-ranking-arrow {
+    color: var(--stats-red);
+    font-size: 1.2rem;
+    font-weight: 1000;
+    text-align: right;
+}
+
+/* ==========================================================
+   HINWEISE / LEERZUSTAENDE
+========================================================== */
+
+.stats-loading,
+.stats-empty,
+.stats-inline-empty {
+    position: relative;
+    z-index: 2;
+    grid-column: 1 / -1;
+    padding: 38px 22px;
+    color: #8e8e8e;
+    text-align: center;
+    border: 1px dashed rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.stats-empty strong,
+.stats-empty span,
+.stats-inline-empty strong,
+.stats-inline-empty span {
+    display: block;
+}
+
+.stats-empty strong,
+.stats-inline-empty strong {
+    color: #d0d0d0;
+}
+
+.stats-empty span,
+.stats-inline-empty span {
+    margin-top: 6px;
+    font-size: 0.8rem;
+}
+
+.stats-source-note {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    margin-top: 28px;
+    padding: 22px 25px;
+    border-left: 4px solid var(--stats-gold);
+    border-radius: 0 14px 14px 0;
+    background: rgba(214, 168, 59, 0.055);
+}
+
+.stats-source-note strong {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.stats-source-note p {
+    margin: 0;
+    color: #969696;
+    font-size: 0.83rem;
+    line-height: 1.65;
+}
+
+.stats-error {
+    padding: 42px 24px;
+    color: #cccccc;
+    text-align: center;
+    border: 1px solid rgba(225, 6, 0, 0.5);
+    border-radius: 16px;
+    background: rgba(225, 6, 0, 0.08);
+}
+
+.stats-error strong,
+.stats-error span {
+    display: block;
+}
+
+.stats-error span {
+    margin-top: 7px;
+    color: #969696;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
 @media (max-width: 1200px) {
-    .statistik-podium-karte {
-        min-height: 390px;
+    .stats-controls {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .stats-view-control {
+        grid-column: 1 / -1;
+    }
+
+    .stats-ranking-row {
+        grid-template-columns: 48px 58px minmax(170px, 1.3fr) minmax(140px, 1fr) repeat(3, minmax(70px, 0.55fr)) 28px;
+    }
+
+    .stats-ranking-meta.vehicle-column {
+        display: none;
     }
 }
 
-@media (max-width: 520px) {
-    .statistik-podium-karte {
-        min-height: 0;
-        padding: 20px;
+@media (max-width: 1000px) {
+    .stats-hero-grid {
+        grid-template-columns: 1fr;
     }
 
-    .statistik-podium-bild,
-    .statistik-team-logo {
-        width: 115px;
-        height: 115px;
+    .stats-hero-visual {
+        position: absolute;
+        right: 0;
+        bottom: -20px;
+        min-height: 250px;
+        opacity: 0.32;
+    }
+
+    .stats-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats-kpi-card:nth-child(2) {
+        border-right: 0;
+    }
+
+    .stats-kpi-card:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--stats-border);
+    }
+
+    .stats-two-column,
+    .stats-podium-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-focus-card {
+        display: grid;
+        grid-template-columns: 1fr 150px 1.4fr 1fr;
+        align-items: center;
+        gap: 18px;
+        min-height: 0;
+    }
+
+    .stats-focus-card-top,
+    .stats-focus-image,
+    .stats-focus-result {
+        margin: 0;
+    }
+
+    .stats-focus-body {
+        text-align: left;
+    }
+
+    .stats-ranking-row {
+        grid-template-columns: 44px 54px minmax(160px, 1fr) repeat(2, minmax(70px, 0.55fr)) 25px;
+    }
+
+    .stats-ranking-meta.team-column,
+    .stats-ranking-value.tertiary-value {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .stats-hero {
+        min-height: 440px;
+        padding: 78px 0 100px;
+    }
+
+    .stats-hero h1 {
+        font-size: clamp(3.7rem, 17vw, 6.2rem);
+    }
+
+    .stats-overview {
+        margin-top: -42px;
+    }
+
+    .stats-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-view-control {
+        grid-column: auto;
+    }
+
+    .stats-intro-heading,
+    .stats-section-heading,
+    .stats-ranking-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .stats-panel {
+        padding: 21px;
+    }
+
+    .stats-focus-card {
+        display: flex;
+        min-height: 365px;
+    }
+
+    .stats-focus-image {
+        margin: 22px auto 18px;
+    }
+
+    .stats-focus-body {
+        text-align: center;
+    }
+
+    .stats-focus-result {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    .stats-ranking-row {
+        grid-template-columns: 40px 52px minmax(0, 1fr) 24px;
+        min-height: 84px;
+    }
+
+    .stats-ranking-value,
+    .stats-ranking-meta {
+        display: none;
+    }
+
+    .stats-source-note {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 540px) {
+    .stats-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-kpi-card,
+    .stats-kpi-card:nth-child(2) {
+        min-height: 135px;
+        border-right: 0;
+        border-bottom: 1px solid var(--stats-border);
+    }
+
+    .stats-kpi-card:last-child {
+        border-bottom: 0;
+    }
+
+    .stats-view-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-compact-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+    }
+
+    .stats-compact-value {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .stats-ranking-avatar {
+        width: 48px;
+        height: 58px;
+    }
+
+    .stats-ranking-row {
+        grid-template-columns: 34px 48px minmax(0, 1fr) 18px;
+        gap: 9px;
+        padding: 11px;
+    }
+
+    .stats-ranking-position {
+        font-size: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stats-focus-card,
+    .stats-compact-row,
+    .stats-ranking-row,
+    .stats-view-tabs button {
+        transition: none;
     }
 }

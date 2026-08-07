@@ -312,6 +312,51 @@
                        ]
     },
     {
+        "nummer":  21,
+        "name":  "O. Gambert",
+        "team":  "DarkTrade Racing by GHc",
+        "teamZuordnung":  "DarkTrade Racing by GHc",
+        "bild":  "default.png",
+        "aktiveSaison":  true,
+        "platzierung":  8,
+        "fahrzeug":  "BMW M4 GT3",
+        "wertung":  404,
+        "fastLap":  0,
+        "fahrzeugwechsel":  0,
+        "punkte":  404,
+        "serien":  [
+                       "fun",
+                       "masters",
+                       "ta"
+                   ],
+        "teilnahmen":  [
+                           {
+                               "id":  "fun-laguna-seca-26-07-26",
+                               "serieId":  "fun",
+                               "serie":  "GTM FUN Events",
+                               "saison":  0,
+                               "saisonName":  "GTM FUN Events",
+                               "event":  "Laguna Seca 26.07.26"
+                           },
+                           {
+                               "id":  "masters-s1",
+                               "serieId":  "masters",
+                               "serie":  "GTM Masters",
+                               "saison":  1,
+                               "saisonName":  "GTM Masters Saison 1",
+                               "event":  "GTM Masters Saison 1"
+                           },
+                           {
+                               "id":  "ta-2026",
+                               "serieId":  "ta",
+                               "serie":  "GTM Time Attack",
+                               "saison":  2026,
+                               "saisonName":  "GTM Time Attack Saison 2026",
+                               "event":  "GTM Time Attack Saison 2026"
+                           }
+                       ]
+    },
+    {
         "nummer":  118,
         "name":  "Ralf B.",
         "team":  "77Performance by GHc",
@@ -1208,33 +1253,6 @@
         "name":  "Kondomian",
         "team":  "",
         "teamZuordnung":  "",
-        "bild":  "default.png",
-        "aktiveSaison":  false,
-        "platzierung":  0,
-        "fahrzeug":  "",
-        "wertung":  0,
-        "fastLap":  0,
-        "fahrzeugwechsel":  0,
-        "punkte":  0,
-        "serien":  [
-                       "ta"
-                   ],
-        "teilnahmen":  [
-                           {
-                               "id":  "ta-2026",
-                               "serieId":  "ta",
-                               "serie":  "GTM Time Attack",
-                               "saison":  2026,
-                               "saisonName":  "GTM Time Attack Saison 2026",
-                               "event":  "GTM Time Attack Saison 2026"
-                           }
-                       ]
-    },
-    {
-        "nummer":  20,
-        "name":  "O. Gambert",
-        "team":  "DarkTrade Racing by GHc",
-        "teamZuordnung":  "DarkTrade Racing by GHc",
         "bild":  "default.png",
         "aktiveSaison":  false,
         "platzierung":  0,

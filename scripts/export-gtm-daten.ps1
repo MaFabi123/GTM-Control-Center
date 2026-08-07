@@ -880,7 +880,7 @@ $strafenkontoSheet =
 
     $meisterschaft = [PSCustomObject][ordered]@{
         saison = "GTM Masters Saison 1"
-        status = "läuft"
+        status = ("l{0}uft" -f [char]0x00E4)
         fahrerwertung = $saisonFahrerSortiert
     }
 
@@ -1202,7 +1202,7 @@ $strafenkontoSheet =
 
     $meisterschaft = [PSCustomObject][ordered]@{
         saison = "GTM Masters Saison 1"
-        status = "läuft"
+        status = ("l{0}uft" -f [char]0x00E4)
         fahrerwertung = $saisonFahrerSortiert
     }
 
@@ -1761,7 +1761,7 @@ $strafenkontoSheet =
                 $status = "aktuell"
             }
             elseif ($naechster) {
-                $status = "nächster"
+                $status = ("n{0}chster" -f [char]0x00E4)
             }
 
             $saisonId = "{0}-s{1}" -f `
@@ -2098,7 +2098,7 @@ $strafenkontoSheet =
             $status = "aktuell"
         }
         elseif ($naechster) {
-            $status = "nächster"
+            $status = ("n{0}chster" -f [char]0x00E4)
         }
 
         $saisonId = "ta-s{0}" -f $taTermin.saison
@@ -2168,7 +2168,7 @@ $strafenkontoSheet =
             $status = "aktuell"
         }
         elseif ($naechster) {
-            $status = "nächster"
+            $status = ("n{0}chster" -f [char]0x00E4)
         }
 
         $saisonId = "fun-{0}" -f $funEvent.jahr
@@ -2739,7 +2739,7 @@ $strafenkontoSheet =
 
     $dashboard = [PSCustomObject][ordered]@{
         saison                    = "GTM Masters Saison 1"
-        status                    = "läuft"
+        status                    = ("l{0}uft" -f [char]0x00E4)
         aktiveFahrer              = $saisonFahrerSortiert.Count
         registrierteStartnummern  = $startnummernSortiert.Count
         teams                     = $teamsSortiert.Count

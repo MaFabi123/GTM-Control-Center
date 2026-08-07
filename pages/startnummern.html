@@ -3,250 +3,243 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../">
 
     <title>GTM Control Center | Startnummern</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/startnummern.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-
     <header id="site-navbar"></header>
 
-    <main class="startnummern-page">
-
-        <section class="startnummern-hero">
-
-            <div class="container">
-
-                <p class="startnummern-eyebrow">
-                    German Touring Masters
-                </p>
-
-                <h1>
-                    Startnummern
-                </h1>
-
-                <p class="startnummern-intro">
-                    Übersicht aller vergebenen und verfügbaren Startnummern
-                    der German Touring Masters.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section class="startnummern-statistik">
-
-            <div class="container">
-
-                <div class="startnummern-statistik-grid">
-
-                    <article class="startnummern-statistik-karte">
-
-                        <strong id="startnummern-gesamt">
-                            –
-                        </strong>
-
-                        <span>
-                            Nummern gesamt
-                        </span>
-
-                    </article>
-
-                    <article class="startnummern-statistik-karte">
-
-                        <strong id="startnummern-vergeben">
-                            –
-                        </strong>
-
-                        <span>
-                            Vergeben
-                        </span>
-
-                    </article>
-
-                    <article class="startnummern-statistik-karte">
-
-                        <strong id="startnummern-frei">
-                            –
-                        </strong>
-
-                        <span>
-                            Verfügbar
-                        </span>
-
-                    </article>
-
-                    <article class="startnummern-statistik-karte">
-
-                        <strong id="startnummern-hoechste">
-                            –
-                        </strong>
-
-                        <span>
-                            Höchste Nummer
-                        </span>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="startnummern-filterbereich">
-
-            <div class="container">
-
-                <div class="startnummern-toolbar">
-
-                    <label class="startnummern-suche">
-
-                        <span>
-                            Startnummer suchen
-                        </span>
-
-                        <input
-                            id="startnummern-suche"
-                            type="search"
-                            autocomplete="off"
-                            placeholder="Nummer, Fahrer, Team oder Fahrzeug"
-                        >
-
-                    </label>
-
-                    <label class="startnummern-filter">
-
-                        <span>
-                            Status
-                        </span>
-
-                        <select id="startnummern-status-filter">
-
-                            <option value="">
-                                Alle Nummern
-                            </option>
-
-                            <option value="vergeben">
-                                Vergeben
-                            </option>
-
-                            <option value="frei">
-                                Verfügbar
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                    <label class="startnummern-filter">
-
-                        <span>
-                            Team
-                        </span>
-
-                        <select id="startnummern-team-filter">
-
-                            <option value="">
-                                Alle Teams
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                    <label class="startnummern-filter">
-
-                        <span>
-                            Sortierung
-                        </span>
-
-                        <select id="startnummern-sortierung">
-
-                            <option value="nummer">
-                                Startnummer
-                            </option>
-
-                            <option value="fahrer">
-                                Fahrer
-                            </option>
-
-                            <option value="team">
-                                Team
-                            </option>
-
-                            <option value="status">
-                                Status
-                            </option>
-
-                        </select>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="startnummern-inhalt">
-
-            <div class="container">
-
-                <div
-                    id="startnummern-grid"
-                    class="startnummern-grid"
-                    aria-live="polite"
-                    aria-busy="true"
-                >
-
-                    <div class="text-center text-light py-5">
-                        Startnummern werden geladen …
+    <main class="number-page">
+        <section class="number-hero">
+            <div class="container number-hero-grid">
+                <div class="number-hero-copy">
+                    <p class="number-eyebrow">Deine Nummer. Deine GTM-Identität.</p>
+                    <h1>Start<span>nummern</span></h1>
+                    <p class="number-hero-intro">
+                        Finde freie Nummern, prüfe bestehende Zuordnungen und bereite deine
+                        Wunschstartnummer für die spätere GTM-Fahreraufnahme vor.
+                    </p>
+
+                    <div class="number-hero-actions">
+                        <button class="number-primary-action" type="button" data-jump-to="frei">
+                            Freie Nummern finden
+                        </button>
+                        <button class="number-secondary-action" type="button" data-jump-to="vergeben">
+                            Vergebene Nummern ansehen
+                        </button>
                     </div>
 
+                    <p class="number-data-note">
+                        <span aria-hidden="true"></span>
+                        Öffentliche Lesesicht · Datenstand aus dem letzten GTM-Export
+                    </p>
                 </div>
 
-                <div
-                    id="keine-startnummern"
-                    class="keine-startnummern"
-                    hidden
-                >
-                    Keine passenden Startnummern gefunden.
+                <div class="number-hero-board" aria-hidden="true">
+                    <span class="number-board-label">GTM DRIVER ID</span>
+                    <strong id="number-hero-display">#---</strong>
+                    <small id="number-hero-caption">FREIE NUMMER FINDEN</small>
+                    <div class="number-board-stripes"></div>
                 </div>
-
             </div>
-
         </section>
 
+        <section class="number-overview" aria-label="Startnummernübersicht">
+            <div class="container">
+                <div class="number-kpi-grid">
+                    <article data-index="01">
+                        <span>Nummernraum</span>
+                        <strong id="number-total">–</strong>
+                        <small>Startnummern von 1 bis 999</small>
+                    </article>
+                    <article data-index="02">
+                        <span>Vergeben</span>
+                        <strong id="number-assigned">–</strong>
+                        <small>Aktuell einem Fahrer zugeordnet</small>
+                    </article>
+                    <article data-index="03">
+                        <span>Verfügbar</span>
+                        <strong id="number-available">–</strong>
+                        <small>Nach öffentlichem Datenstand</small>
+                    </article>
+                    <article data-index="04">
+                        <span>Freie Quote</span>
+                        <strong id="number-free-rate">–</strong>
+                        <small>Im gesamten Nummernraum</small>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="number-explorer" class="number-explorer">
+            <div class="container">
+                <header class="number-section-heading">
+                    <div>
+                        <p>Nummernfinder</p>
+                        <h2>Finde deine Startnummer</h2>
+                    </div>
+                    <p id="number-result-count" class="number-result-count" aria-live="polite">
+                        Daten werden geladen …
+                    </p>
+                </header>
+
+                <div class="number-toolbar">
+                    <label class="number-field number-search-field">
+                        <span>Nummer, Fahrer oder Team</span>
+                        <input id="number-search" type="search" inputmode="search" autocomplete="off"
+                            placeholder="Zum Beispiel 24, Pascal oder Rennsteig">
+                    </label>
+
+                    <label class="number-field">
+                        <span>Status</span>
+                        <select id="number-status-filter">
+                            <option value="frei">Nur verfügbare</option>
+                            <option value="">Alle Nummern</option>
+                            <option value="vergeben">Nur vergebene</option>
+                            <option value="reserviert">Nur reservierte</option>
+                            <option value="gesperrt">Nur gesperrte</option>
+                            <option value="historisch">Nur historische</option>
+                        </select>
+                    </label>
+
+                    <label class="number-field">
+                        <span>Nummernbereich</span>
+                        <select id="number-range-filter">
+                            <option value="">1 bis 999</option>
+                            <option value="1-99">1 bis 99</option>
+                            <option value="100-199">100 bis 199</option>
+                            <option value="200-399">200 bis 399</option>
+                            <option value="400-699">400 bis 699</option>
+                            <option value="700-999">700 bis 999</option>
+                        </select>
+                    </label>
+
+                    <label class="number-field">
+                        <span>Team</span>
+                        <select id="number-team-filter">
+                            <option value="">Alle Teams</option>
+                        </select>
+                    </label>
+
+                    <label class="number-field">
+                        <span>Sortierung</span>
+                        <select id="number-sort">
+                            <option value="nummer-auf">Nummer aufsteigend</option>
+                            <option value="nummer-ab">Nummer absteigend</option>
+                            <option value="fahrer">Fahrername</option>
+                            <option value="team">Teamname</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="number-quick-picks" aria-label="Schnellauswahl">
+                    <span>Schnellwahl</span>
+                    <button type="button" data-number-range="1-99">Zweistellig</button>
+                    <button type="button" data-number-ending="0">Endet auf 0</button>
+                    <button type="button" data-number-ending="7">Endet auf 7</button>
+                    <button type="button" data-number-ending="9">Endet auf 9</button>
+                    <button type="button" id="number-random">Zufällige freie Nummer</button>
+                    <button type="button" id="number-reset">Filter zurücksetzen</button>
+                </div>
+
+                <div id="number-grid" class="number-grid" aria-live="polite" aria-busy="true">
+                    <div class="number-loading">Startnummern werden geprüft …</div>
+                </div>
+
+                <div id="number-empty" class="number-empty" hidden>
+                    <strong>Keine passende Startnummer gefunden</strong>
+                    <p>Ändere die Suche oder setze die Filter zurück.</p>
+                    <button type="button" data-reset-filters>Filter zurücksetzen</button>
+                </div>
+
+                <div class="number-load-more-wrap">
+                    <button id="number-load-more" class="number-load-more" type="button" hidden>
+                        Weitere Nummern anzeigen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="number-selection-section">
+            <div class="container">
+                <div id="number-selection" class="number-selection" aria-live="polite">
+                    <div class="number-selection-id">
+                        <small>Deine Vorauswahl</small>
+                        <strong id="number-selection-value">#---</strong>
+                    </div>
+                    <div class="number-selection-copy">
+                        <strong id="number-selection-title">Noch keine Nummer ausgewählt</strong>
+                        <p id="number-selection-text">
+                            Wähle oben eine verfügbare Nummer. Die Auswahl wird nur auf diesem Gerät vorgemerkt.
+                        </p>
+                    </div>
+                    <div class="number-selection-actions">
+                        <button id="number-selection-copy" type="button" disabled>Auswahl kopieren</button>
+                        <button id="number-selection-clear" type="button" disabled>Auswahl löschen</button>
+                    </div>
+                </div>
+
+                <p class="number-reservation-warning">
+                    <strong>Wichtig:</strong> Eine Vorauswahl ist noch keine Reservierung. Erst der künftige
+                    geschützte Aufnahmeassistent prüft die Nummer serverseitig und reserviert sie konfliktfrei.
+                </p>
+            </div>
+        </section>
+
+        <section class="number-process-section">
+            <div class="container">
+                <header class="number-section-heading">
+                    <div>
+                        <p>Künftige Fahreraufnahme</p>
+                        <h2>Von der Wunschzahl zur GTM-Identität</h2>
+                    </div>
+                    <p class="number-process-note">Die öffentliche Übersicht ist bereits vorbereitet – die echte Reservierung folgt im geschützten Bereich.</p>
+                </header>
+
+                <div class="number-process-grid">
+                    <article>
+                        <span>01</span>
+                        <strong>Freie Nummer finden</strong>
+                        <p>Nur nach aktuellem Datenstand verfügbare Nummern kommen für die Auswahl infrage.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <strong>Konfliktfrei reservieren</strong>
+                        <p>Der Aufnahmeassistent prüft Reservierungen und Vergaben nochmals direkt am Server.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <strong>Profil verknüpfen</strong>
+                        <p>Nach erfolgreicher Aufnahme wird die Nummer über eine stabile Zuordnung mit dem Fahrer verbunden.</p>
+                    </article>
+                    <article>
+                        <span>04</span>
+                        <strong>Historie bewahren</strong>
+                        <p>Spätere Wiederverwendung verändert keine früheren Saison- oder Eventnennungen.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <footer id="site-footer"></footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/gtm-data.js"></script>
     <script src="assets/js/gtm-utils.js"></script>
     <script src="assets/js/gtm-ui.js"></script>
     <script src="assets/js/gtm-page.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/startnummern.js"></script>
-
 </body>
 
 </html>

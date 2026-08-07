@@ -33,6 +33,25 @@ const GTM_TRACK_ASSETS = {
     "zolder": "zolder"
 };
 
+const GTM_VERSION = "v0.9.0 · Phase A";
+
+function ensureFavicon() {
+    let favicon = document.querySelector('link[rel~="icon"]');
+
+    if (!favicon) {
+        favicon = document.createElement("link");
+        document.head.appendChild(favicon);
+    }
+
+    favicon.rel = "icon";
+    favicon.type = "image/png";
+    favicon.sizes = "any";
+    favicon.href = new URL(
+        "assets/images/logo/gtm-logo.png?v=phase-a",
+        document.baseURI
+    ).href;
+}
+
 async function loadComponent(id, file) {
     const element = document.getElementById(id);
     if (!element) return false;
@@ -291,6 +310,7 @@ async function loadDashboardData() {
 
 function activateFooter() {
     setText("gtm-footer-jahr", new Date().getFullYear());
+    setText("gtm-footer-version", GTM_VERSION);
     document.querySelector("[data-footer-nach-oben]")?.addEventListener("click", event => {
         event.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -298,6 +318,7 @@ function activateFooter() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+    ensureFavicon();
     await loadComponent("site-navbar", "components/navbar.html");
 
     const dashboardRoot = document.getElementById("site-dashboard");

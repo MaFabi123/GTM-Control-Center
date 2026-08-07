@@ -36,6 +36,24 @@
         "status":  "abgeschlossen"
     },
     {
+        "id":  "fun-2026-event-3",
+        "modul":  "fun",
+        "format":  "fun-event",
+        "serieId":  "fun",
+        "serie":  "GTM FUN Events",
+        "saisonId":  "fun-2026",
+        "saison":  2026,
+        "saisonName":  "GTM FUN Events 2026",
+        "laufnummer":  3,
+        "eventName":  "Monza",
+        "strecke":  "Monza",
+        "datum":  "2026-08-16",
+        "abgeschlossen":  false,
+        "aktuell":  false,
+        "naechster":  true,
+        "status":  "nächster"
+    },
+    {
         "id":  "masters-s1-lauf-1",
         "modul":  "masters",
         "format":  "rennen",
@@ -135,7 +153,7 @@
         "abgeschlossen":  false,
         "aktuell":  false,
         "naechster":  true,
-        "status":  "nÃ¤chster"
+        "status":  "nächster"
     },
     {
         "id":  "masters-s1-lauf-7",
@@ -492,7 +510,7 @@
         "abgeschlossen":  false,
         "aktuell":  false,
         "naechster":  true,
-        "status":  "nÃ¤chster"
+        "status":  "nächster"
     },
     {
         "id":  "ta-s2026-runde-18",
